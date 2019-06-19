@@ -124,8 +124,11 @@ header-img: "img/post-bg-rwd.jpg"
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.setAttribute('data-timestamp', +new Date());
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
+
+    
 </script>
 <!-- disqus 公共JS代码 end -->
 {% endif %}
