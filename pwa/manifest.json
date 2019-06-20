@@ -1,10 +1,10 @@
 {
-  "name": "BY Blog",
-  "short_name": "BY Blog",
-  "description": "A personal blog by engineer",
+  "name": "招文桃",
+  "short_name": "招文桃",
+  "description": "招文桃的日常记录",
   "icons": [{
-    "src": "icons/pwa_icon_128.png",
-    "sizes": "128x128",
+    "src": "icons/pwa_icon_192.png",
+    "sizes": "192x192",
     "type": "image/png"
   }, {
     "src": "icons/pwa_icon_512.png",
