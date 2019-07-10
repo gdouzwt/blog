@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      编译器构造——编译
-subtitle:   如何度过
+subtitle:   第一章
 date:       2019-07-10
 author:     招文桃
-header-img: img/programming-languages.png
+header-img: img/post-bg-house.jpg
 catalog: true
 tags:
     - 编译器构造
@@ -14,7 +14,7 @@ tags:
 
 ## 编译器
 
-![compiler](../img/compiler.png)
+![compiler](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/compiler.png)
 
 编译器就是将用高级语言编写的源程序编译成为对应的低级语言（例如机器语言）的程序。
 
@@ -46,7 +46,7 @@ tags:
 
 ## 编译器是如何工作的——编译的过程
 
-![how-it-works](../img/how-it-works.png)
+![how-it-works](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/how-it-works.png)
 
 #### 前端
 
@@ -56,7 +56,7 @@ tags:
 
 - 可以细分为一系列分析阶段，如下图：
 
-  ![forntend](../img/frontend.png)
+  ![forntend](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/frontend.png)
 
 **扫描器**作用是将字符串分解成标记串：标识符、字面量、保留字、操作符和分隔符等。
 
