@@ -66,7 +66,25 @@ tags:
 
 #### 后端
 
+- 将中间表示转换成目标机器程序
+
+- 依赖于目标语言（与源语言无关）
+
+- 可以进一步划分成一些了综合阶段，如下图所示：
+
+  ![backend](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/backend.png)
+
+  **代码生成**阶段负责选择生成哪些机器指令。
+
+  **peephole**即窥视孔，`peephole optimizer`是窥孔优化，是一种局部优化方式，编译器仅仅在一个[基本块](https://baike.baidu.com/item/基本块/6316788)或者多个基本块中，针对已经生成的代码，结合CPU自己指令的特点，通过一些认为可能带来性能提升的转换规则，或者通过整体的分析，通过指令转换，提升代码性能。别看这些代码转换很局部，很小，但可能会带来很大的性能提升。
+
+  最后**对象**阶段将生成的模块链接起来称为可执行程序。
+
 #### “中端”
+
+有时候前端和后端之间会存在“优化器”，可理解为“中端”，如图：
+
+![1562810846427](C:\Users\tao\Desktop\gdouzwt.github.io\img\middle-end)
 
 #### 分离的好处
 
