@@ -46,7 +46,11 @@ tags:
 
 ## 编译器是如何工作的——编译的过程
 
+
+
 ![how-it-works](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/how-it-works.png)
+
+
 
 #### 前端
 
@@ -56,7 +60,11 @@ tags:
 
 - 可以细分为一系列分析阶段，如下图：
 
+  
+  
   ![forntend](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/frontend.png)
+  
+  
 
 **扫描器**作用是将字符串分解成标记串：标识符、字面量、保留字、操作符和分隔符等。
 
@@ -72,19 +80,27 @@ tags:
 
 - 可以进一步划分成一些了综合阶段，如下图所示：
 
+  
+
   ![backend](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/backend.png)
 
-  **代码生成**阶段负责选择生成哪些机器指令。
 
-  **peephole**即窥视孔，`peephole optimizer`是窥孔优化，是一种局部优化方式，编译器仅仅在一个[基本块](https://baike.baidu.com/item/基本块/6316788)或者多个基本块中，针对已经生成的代码，结合CPU自己指令的特点，通过一些认为可能带来性能提升的转换规则，或者通过整体的分析，通过指令转换，提升代码性能。别看这些代码转换很局部，很小，但可能会带来很大的性能提升。
 
-  最后**对象**阶段将生成的模块链接起来称为可执行程序。
+**代码生成**阶段负责选择生成哪些机器指令。
+
+**peephole**即窥视孔，`peephole optimizer`是窥孔优化，是一种局部优化方式，编译器仅仅在一个[基本块](https://baike.baidu.com/item/基本块/6316788)或者多个基本块中，针对已经生成的代码，结合CPU自己指令的特点，通过一些认为可能带来性能提升的转换规则，或者通过整体的分析，通过指令转换，提升代码性能。别看这些代码转换很局部，很小，但可能会带来很大的性能提升。
+
+最后**对象**阶段将生成的模块链接起来称为可执行程序。
 
 #### “中端”
 
 有时候前端和后端之间会存在“优化器”，可理解为“中端”，如图：
 
+
+
 ![middle-end](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/middle-end.png)
+
+
 
 #### 分离的好处
 
