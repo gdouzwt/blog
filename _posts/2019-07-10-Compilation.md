@@ -84,7 +84,7 @@ tags:
 
 有时候前端和后端之间会存在“优化器”，可理解为“中端”，如图：
 
-![middle-end](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/.midlle-end.png)
+![middle-end](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/midlle-end.png)
 
 #### 分离的好处
 
