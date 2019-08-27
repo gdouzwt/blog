@@ -133,6 +133,18 @@ Java编译器`javac`产生适用于JVM的“字节码”，字节码也属于一
 
 #### 解析器
 
+`syntax directed`, `recursive descent`
+
+```java
+compilationUnit ::= [package qualifiedIdentifier;]
+					{import qualifiedIdentifier;}
+					{typeDeclaration} EOF
+```
+
+
+
+
+
 #### 抽象语法树
 
 #### 类型
