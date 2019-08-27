@@ -100,7 +100,7 @@ tags:
 
 ![middle-end](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/middle-end.png)
 
-
+**（勘误：上图左端文字应为“源语言程序”）**
 
 #### 分离的好处
 
