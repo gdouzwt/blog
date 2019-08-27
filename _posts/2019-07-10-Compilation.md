@@ -115,6 +115,12 @@ Java编译器`javac`产生适用于JVM的“字节码”，字节码也属于一
 
 #### `j--`编译器的组织
 
+编译器的主入口是**Main**，它会读入一系列参数，然后创建一个扫描器对象用于扫描标记（Token），接着解析器对输入的源语言程序进行解析，并构造抽象语法树。
+
+
+
+![j-- compiler](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/j--compiler)
+
 #### 扫描器
 
 #### 解析器
