@@ -117,11 +117,13 @@ Java编译器`javac`产生适用于JVM的“字节码”，字节码也属于一
 
 编译器的主入口是**Main**，它会读入一系列参数，然后创建一个扫描器对象用于扫描标记（Token），接着解析器对输入的源语言程序进行解析，并构造抽象语法树。
 
-
-
 ![j-- compiler](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/j--compiler.png)
 
+抽象语法树的每个节点具有特定的类型，反映了背后的语法结构或支持的操作。例如类型`JCompilationUnit`在抽象语法树的根部，表示被编译的程序。它有子树，表示包名，导入的类型的列表，以及声明的类型。在抽象语法树中的一个类型为`JMultiplyOp`的对象，表示乘法操作。它的两棵子树分别表示两个操作数。
+
 #### 扫描器
+
+
 
 #### 解析器
 
