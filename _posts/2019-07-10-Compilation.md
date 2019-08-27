@@ -119,7 +119,7 @@ Java编译器`javac`产生适用于JVM的“字节码”，字节码也属于一
 
 
 
-![j-- compiler](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/j--compiler)
+![j-- compiler](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/j--compiler.png)
 
 #### 扫描器
 
