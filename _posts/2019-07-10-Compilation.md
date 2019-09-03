@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      编译器构造——编译
+title:      编译器构造—编译
 subtitle:   第一章
 date:       2019-07-10
 author:     招文桃
