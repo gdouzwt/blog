@@ -4,7 +4,7 @@ title:      编译器构造——编译
 subtitle:   第一章
 date:       2019-07-10
 author:     招文桃
-header-img: img/post-bg-house.jpg
+header-img: img/post-bg-long.jpg
 catalog: true
 tags:
     - 编译器构造
