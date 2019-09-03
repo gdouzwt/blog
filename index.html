@@ -19,7 +19,7 @@ description: "偶尔记录"
         </div>
     </a>
     <p class="post-meta">
-        由{% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}在{{ post.date | date: "%Y年%m月%d日" }}发布
+        由{% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}在{{ post.date | date: "%Y年%-m月%d日" }}发布
     </p>
 </div>
 <hr>
