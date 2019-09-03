@@ -4,7 +4,7 @@ title:      不同领域的对数记法差异
 subtitle:   Log notation in various contexts
 date:       2019-06-26
 author:     招文桃
-header-img: img/post-bg-ios9-web.jpg
+header-img: img/post-bg-logarithm.jpg
 catalog: true
 tags:
     - 微积分

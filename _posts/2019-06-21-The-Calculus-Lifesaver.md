@@ -4,7 +4,7 @@ title:      普林斯顿微积分读本
 subtitle:   微积分救生圈
 date:       2019-06-21
 author:     招文桃
-header-img: img/post-bg-ios9-web.jpg
+header-img: img/post-bg-calculus.jpg
 catalog: true
 tags:
     - 微积分
