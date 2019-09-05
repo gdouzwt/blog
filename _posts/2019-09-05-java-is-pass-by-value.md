@@ -33,10 +33,10 @@ public class Test {
 ```
 
 问上面程序运行的结果是（）
-A. good and abc
-B. good and gbc
-C. test ok and abc
-D. test ok and gbc
+A. good and abc  
+B. good and gbc  
+C. test ok and abc  
+D. test ok and gbc  
 
 > 答案是 **B**
 
