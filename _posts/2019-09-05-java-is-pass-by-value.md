@@ -32,7 +32,7 @@ public class Test {
 }
 ```
 
-问上面程序运行的结果是（）
+问上面程序运行的结果是（）  
 A. good and abc  
 B. good and gbc  
 C. test ok and abc  
