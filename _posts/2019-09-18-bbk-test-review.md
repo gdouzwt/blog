@@ -141,5 +141,99 @@ public class Test {
 
 ![img](https://uploadfiles.nowcoder.com/images/20180227/3472441_1519736375385_5643D19A23970891816A811891CE6DE0)
 
-- 关于 String, StringBuffer, StringBuilder 基本是必考的内容，所以不能错。
+- 关于 `String`,  `StringBuffer`,` StringBuilder` 基本是必考的内容，所以不能错。
 
+
+
+竟然又有机会继续红牛加三明治的组合了。通宵啊，为了准备明天的笔试，总不能白白浪费了机会，时间也不能浪费！ 搞！搞到尽！
+
+一个关于 `StringBuffer` 的题目，如下。
+
+以下代码执行结果为（）
+
+```java
+public class TestRef {
+    
+    public static void main(String[] args) {
+        StringBuffer a = new StringBuffer("a");
+        StringBuffer b = new StringBuffer("b");
+        append(a, b);
+        System.out.println(a.toString()+","+b.toString());
+        a = b;
+        append(b, a);
+        System.out.println(a.toString()+","+b.toString());
+    }
+    
+    public static void append(StringBuffer a, StringBuffer b) {
+        a.append(b);
+        b = a;
+    }
+}
+```
+
+> A. a,b b,b
+>
+> B. a,b bb,b
+>
+> C. ab,b bb,b
+>
+> D. ab,b bb,bb
+
+答案是C（上面选项没有换行，实际运行会换行）
+
+解释：
+
+
+
+
+
+
+
+### String Handling(字符串处理)
+
+`String`, `StringBuffer`, `StringBuilder` 这3个都是`final` 修饰的，所以不能被继承。 而且它们都实现了 `CharSequence` 接口。 
+
+`String` 的几个构造方法：
+
+- `String s = new String();  // 会创建空的字符串，是没有字符，不是空格`
+
+- `String(char chars[]) // 由字符数组构建字符串`
+
+  ```java
+  char chars[] = {'a', 'b', 'c'};
+  String s = new String(chars);
+  ```
+
+- `String(char chars[], int startIndex, int numChars)`
+
+- `String(String strObj)` 这里`strObj` 是一个 `String` 对象。
+
+- `String(byte chrs[])`
+
+- `String(byte chrs[], int startIndex, int numChars)` 字节数组转化为字符串，编码格式使用平台默认的。 Java 的`char`是16位的 Unicode， 但是网络上经常使用 8 位的 ASCII， 所以有时候需要转换一下。看下面一个例子：
+
+```java
+// Construct string from subset of char array.
+class SubStringCons {
+    public static void main(String[] args) {
+            byte ascii[] = {65, 66, 67, 68, 69, 70};
+        	
+        	String s1 = new String(ascii);
+        	System.out.println(s1);
+        
+        	String s2 = new String(ascii, 2, 3);
+    		System.out.println(s2);
+    }
+}
+```
+
+> ABCDEF
+>
+> CDE
+
+**注意** 由数组创建的字符串在创建时候复制了值，之后再修改数组的内容对创建的字符串没有影响。
+
+- `String(StringBuffer strBufObj) // 由StringBuffer创建字符串`
+- `String(StringBuilder strBuildObj) // 由StringBuilder创建字符串`
+
+String Literals 是可以作`String` 对象直接调用方法的， 如 `"abc".length();`
