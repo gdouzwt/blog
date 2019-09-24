@@ -1,6 +1,12 @@
 ---
-title: 男女位置最小交换次数
-date: '2019-09-24 23:51:36'
+layout:     post
+title:      男女位置最小交换次数
+date:       '2019-09-24 23:51:36'
+subtitle:   不要将简单问题想得太复杂
+author:     招文桃
+catalog:    true
+tags:
+    - 笔试面试
 ---
 
 ### 题目
