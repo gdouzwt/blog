@@ -4,9 +4,9 @@ title:      关于OCA的一些想法
 date:       '2019-09-25 23:40:36'
 subtitle:   要啥自行车呢？
 author:     招文桃
-catalog:    false
+catalog:    true
 tags:
-    - 笔试面试
+    - 考试
 ---
 
 ### 为什么考OCA
@@ -38,3 +38,7 @@ On the contrary, even the most experienced Java developers often claim that havi
 ### 阅读建议
 
 - 留意那些 Two-Minute Drill 部分，多读几次。
+- 重读所有 Exam Watch notes.
+- 重做所有 Self Tests.
+- 完成所有练习。
+- 写很多很多 Java 代码。（不要用 IDE）
