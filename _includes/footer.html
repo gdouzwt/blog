@@ -218,7 +218,7 @@
 
 
 <!-- Baidu Tongji -->
-{% if site.ba_track_id %}
+<!-- {% if site.ba_track_id %}
 <script>
     // dynamic User by Hux
     var _baId = '{{ site.ba_track_id }}';
@@ -232,7 +232,18 @@
       s.parentNode.insertBefore(hm, s);
     })();
 </script>
-{% endif %}
+{% endif %} -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e37b3c459855d395042e0ead932247db";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
 
 
 
