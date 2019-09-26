@@ -307,14 +307,166 @@ tags:
 
 #### Web基础 - 6题
 
-1. 假设有以下的web.xml设定档：
+1. 假设有以下的web.xml设定档：  ---- 多选题
 
    ```xml
    <security-constraint>
        <web-resource-collection>
-           
+           <web-resource-name>Login Required</web-resource-name>
+           <url-pattern>/delete.jsp</url-pattern>
+           <url-pattern>/delete.do</url-pattern>
+           <http-method>GET</http-method>
+           <http-method>POST</http-method>
        </web-resource-collection>
+       <auth-constraint>
+           <role-name>admin</role-name>
+       </auth-constraint>
    </security-constraint>
    ```
 
-   
+   以下描述何者正确？
+
+   > - [ ] A. 其他角色可以使用GET、POST以外的HTTP方法存取
+   > - [ ] B. GET与POST方法只允许admin使用
+   > - [ ] C. admin角色只允许使用GET和POST方法
+   > - [ ] D. 只有admin角色才可以存取/delete.jsp与/delete.do
+
+#### HTML
+
+2. HTML中，target属性等于什么值，浏览器才会在一个新的、未命名的窗口中加载文档？
+
+   > A. _blank
+   >
+   > B. _top
+   >
+   > C. _self
+   >
+   > D. _parent
+
+3. 在HTML页面中，CSS样式的属性名为background-image对应的style对象的属性名是
+
+   > A. back-ground
+   >
+   > B. background
+   >
+   > C. image
+   >
+   > D. backgroundImage
+
+4. 表示放在每个定义术语词之前的HTML代码是？
+
+   > A. <dt>
+   >
+   > B. <dl></dl>
+   >
+   > C. <dd>
+
+5. 哪个HTML标签用来包含外部的样式表？
+
+   > A. <STYLE>
+   >
+   > B. <INCLUDE>
+   >
+   > C. <LINK>
+   >
+   > D. <CSS>
+
+6. 下列关于绝对路径的说法正确的一项是
+
+   > A. 创建外部链接时，必须使用绝对路径
+   >
+   > B. 使用绝对路径需要考虑源文件的位置
+   >
+   > C. 在绝对路径中，如果目标文件被移动，则链接同时可用
+   >
+   > D. 绝对路径时被链接文档的完整URL，不包含使用的传输协议
+
+#### 软件工程和计算机基础
+
+##### 软件工程
+
+1. 程序的三种基本控制结构的共同特点是（）。
+
+   > A. 不能嵌套使用
+   >
+   > B. 仅用于自动控制系统
+   >
+   > C. 只能用来描述简单程序
+   >
+   > D. 单入口，单出口
+
+##### 计算机基础
+
+2. 32位处理器的最大虚拟地址空间为
+
+   > A. 16GB
+   >
+   > B. 2GB
+   >
+   > C. 8GB
+   >
+   > D. 4GB
+
+#### Linux
+
+1. /dev/hdd3分区表示（）
+
+   > A. 第4块IDE硬盘的第3个分区，是扩展区
+   >
+   > B. 第3块IDE硬盘的第3个分区，是主分区
+   >
+   > C. 第1块IDE硬盘的第3个分区，是逻辑分区
+   >
+   > D. 第4块IDE硬盘的第3个分区，是主分区或扩展分区
+
+2. Linux管道符
+
+   > A. <
+   >
+   > B. >
+   >
+   > C. >>
+   >
+   > D. |
+
+#### 数据结构与算法
+
+1. 设无向图G=(V, E)和G' =(V', E')，如果G'是G的生成树，则下面的说法中错误的是（）
+
+   > A. G' 为 G的连通分量
+   >
+   > B. G' 是 G的一个无环子图
+   >
+   > C. G' 为 G的子图
+   >
+   > D. G' 为G的极小连通图且 V = V'
+
+2. 若长度为 $n$ 的线性表采用顺序存储结构，在其第 $i$ 个位置插入一个新元素的算法的时间复杂度为（）(1<=i<=n+1)。
+
+   > A. $O(0)$
+   >
+   > B. $O(n)$
+   >
+   > C. $O(1)$
+   >
+   > D. $O(n^2)$
+
+3. 栈和队列的共同点是
+
+   > A. 都是先进后出
+   >
+   > B. 没有共同点
+   >
+   > C. 都是先进先出
+   >
+   > D. 只允许在端点处插入和删除元素
+
+4. 线性表的顺序存储结构和线性表的链式存储结构分别是
+
+   > A. 顺序存取的存储结构、顺序存取的存储结构
+   >
+   > B. 随机存取的存储结构、随机存取的存储结构
+   >
+   > C. 任意存取的存储结构、任意存取的存储结构
+   >
+   > D. 随机存取的存储结构、顺序存取的存储结构
