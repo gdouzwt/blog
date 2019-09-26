@@ -9,7 +9,9 @@ tags:
     - 笔试面试
 ---
 
-### 多选一选择题和编程题（JavaCore - 14题）
+### 多选一选择题和编程题
+
+#### JavaCore - 14题
 
 1. 下述哪些说法是正确的？（）
 
@@ -175,4 +177,18 @@ tags:
     > C. 其余三种说法全错
     >
     > D. 不会执行。
+
+#### JSP - 4题
+
+1. 要设置某个JSP页面为错误处理页面，以下page指令正确的是
+
+   > A. `%@ page extends="javax.servlet.jsp.JspErrorPage"%`
+   >
+   > B. `%@ page isErrorPage="true"%`
+   >
+   > C. `%@ page info="error"%`
+   >
+   > D. `%@ page errorPage="true"%`
+
+2. 
 
