@@ -470,3 +470,92 @@ tags:
    > C. 任意存取的存储结构、任意存取的存储结构
    >
    > D. 随机存取的存储结构、顺序存取的存储结构
+
+#### 测试理论->白盒测试
+
+1. 有以下C语言代码段：下列测试用例可以实现条件覆盖的是（）。
+
+   ```c
+   int cal(int x,int y,int z){
+   	int k = 0;
+       if(x>3 || y>4){
+           k = x + y;
+       }
+       if(z > 2){
+           k += z;
+       }
+       return k;
+   }
+   ```
+
+   > A. {x = 4、y = 4、z = 1} {x = 2、y = 5、 z = 3}
+   >
+   > B. {x = 4、y = 4、z = 3} {x = 2、 y = 3、z = 3}
+   >
+   > C. {x = 4、y = 4、z = 1} {x = 2、 y = 5、z = 2}
+   >
+   > D. {x = 4、y = 4、z = 4} {x = 4、 y = 4、z = 3}
+
+2. 有以下C语言代码段：下列测试用例可以实现判定覆盖的是（）。
+
+   ```c
+   void cal(intx, int y, int z)
+   {
+       int k=0,j=0;
+       if(x>3&&y>4){
+           k=x+y;
+       }
+       if((x+y)>5||z>5){
+           j=x+y+z;
+       }
+   }
+   ```
+
+   > A. {x = 3, y = 5, z = 5} {x = 2, y = 3, z = 5}
+   >
+   > B. {x = 4, y = 5, z = 5} {x = 3, y = 3, z = 5}
+   >
+   > C. {x = 4, y = 5, z = 5} {x = 2, y = 3, z = 5}
+   >
+   > D. {x = 4, y = 5, z = 5} {x = 2, y = 4, z = 5}
+
+#### 编程题
+
+按升序顺序输出begin到end闭区间的所有素数（在大于1的自然数中，除了1和它本身以外不再有其他因数）。
+
+无需添加主函数，试题采用 JDK 1.7 编译。
+
+样例一
+
+> 输入
+>
+> int begin 1
+>
+> int end 10
+>
+> 输出（int[])
+>
+> 2，3，5，7
+
+```java
+package com.baiyi;
+
+import java.util.*;
+
+public class TestUtils {
+    
+    /**
+     * 按升序顺序获取闭区间内的素数列表
+     *
+     * @param begin 开始值
+     * @param end 结束值
+     * @return 整型数组
+     */
+    public static int[] getPrimers(int begin, int end) throws Exception{
+        // 请在此添加代码
+    }
+    
+    // 若有需要，请在此处添加辅助变量、方法
+}
+```
+
