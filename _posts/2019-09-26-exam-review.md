@@ -9,7 +9,7 @@ tags:
     - 笔试面试
 ---
 
-### 多选一选择题和编程题
+### 多选一选择题和编程题（JavaCore - 14题）
 
 1. 下述哪些说法是正确的？（）
 
@@ -95,3 +95,84 @@ tags:
    > C. 所有类都只能生成一个对象（即支持单例模式）
    >
    > D. 当前的依赖注入方式时构造方法注入
+
+7. JDBC中，一条SQL语句的执行结果存放在一个类的对象中，这个类时（）
+
+   > A. ResultSetMetaData
+   >
+   > B. Driver
+   >
+   > C. DatabaseMetaData
+   >
+   > D. ResultSet
+
+8. 关于持久化状态的说法正确的是（）
+
+   > A. 持久化状态只能由load方法转换过来；
+   >
+   > B. 持久化状态和游离状态的区别在于游离态没有对应的数据库记录；
+   >
+   > C. 持久化状态不能改变；
+   >
+   > D. 调用session的save方法可以改变变成持久化状态
+
+9. JDBC中向MySQL发送并执行一个静态sql语句，应创建SQL语句对象的类是（）
+
+   > A. Statement
+   >
+   > B. ResultSet
+   >
+   > C. Connection
+   >
+   > D. Driver
+
+10. 下列说法中错误的是：
+
+    > A. 没有在方法定义中指明throws的方法，不可能抛出checked异常
+    >
+    > B.程序不应该尝试捕捉处理Error
+    >
+    > C. 任何情况下，catch块都不应该将捕获的异常重新抛出
+    >
+    > D. 异常的逃逸可能会导致线程的终止
+
+11. System.out.println(Math.floor(-2.1));
+
+    打印的结果为：
+
+    > A. 2.0
+    >
+    > B. -2.0
+    >
+    > C. -3.0
+
+12. 以下声明中，错误的是？
+
+    > A. float f = 1;
+    >
+    > B. float f = 1.2;
+    >
+    > C. float f = (float)1.2;
+    >
+    > D. float f = 12.f;
+
+13. 设数组Array由以下语句定义int Array = new int[10];则数组的第一个元素的正确引用方法为：
+
+    > A. Array[]
+    >
+    > B. Array
+    >
+    > C. Array[0]
+    >
+    > D. Array[1]
+
+14. try {}里有一个return语句，那么紧跟在这个try后的finally {}里的code会不会被执行？
+
+    > A. 会执行，在return前执行。
+    >
+    > B. 会执行，在return后执行。
+    >
+    > C. 其余三种说法全错
+    >
+    > D. 不会执行。
+
