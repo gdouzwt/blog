@@ -220,3 +220,101 @@ tags:
    >
    > D. 错误信息，因为表式是错误
 
+#### 数据库 - 6题
+
+##### Oracle
+
+1. 如下语句：
+
+   ```plsql
+   if v_num>5 then
+   	v_example: =1:
+   elsif v_num>10 then
+   	v_example: =2:
+   elsif v_hum<20 then
+   	v_example: =3:
+   elsif v_num<39 then
+   	v_example: =4:
+   else
+   	v_example: =5:
+   ```
+
+   如果v_num=37, 则v_example的值是多少？
+
+   > A. 4
+   >
+   > B. 5
+   >
+   > C. 1
+   >
+   > D. 3
+   >
+   > E. 2
+
+##### MySQL
+
+2. 数据库恢复的重要依据是什么？
+
+   > A. DD
+   >
+   > B. 文档
+   >
+   > C. DBA
+   >
+   > D. 事务日志
+
+3. 用户经常查询雇员工资增长12%的情况，为提高性能需要建立一个索引，下列那条语句比较合适？
+
+   > A. create bitmap index my_idx_1 on employee (salary)
+   >
+   > B. create unique index my_idex_1 on employee (salary)
+   >
+   > C. create index my_idx_1 on employee (salary * 1.12)
+   >
+   > D. create index my_idx_1 on employee (salary) reverse
+
+4. 在创建触发器时，哪一个语句决定了触发器是针对每一行执行一次，还是针对每个语句执行一次？
+
+   > A. REFERENCING
+   >
+   > B. FOR EACH
+   >
+   > C. NEW
+   >
+   > D. ON
+
+5. MySQL的数值处理函数不包含（）。
+
+   > A. Exp()
+   >
+   > B. Cot()
+   >
+   > C. Cos()
+   >
+   > D. Tan()
+
+6. MySQL中，以下哪个函数可以计算出日期之差？
+
+   > A. DateDiff()
+   >
+   > B. DateSub()
+   >
+   > C. SubDate()
+   >
+   > D. DiffDate()
+
+   这题选 **A** 测试过了。`SELECT DateDiff('2019-10-25', now())` 现在到 2019 年 10 月 25 日还有几天？
+
+#### Web基础 - 6题
+
+1. 假设有以下的web.xml设定档：
+
+   ```xml
+   <security-constraint>
+       <web-resource-collection>
+           
+       </web-resource-collection>
+   </security-constraint>
+   ```
+
+   
