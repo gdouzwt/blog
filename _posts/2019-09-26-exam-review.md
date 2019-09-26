@@ -326,10 +326,10 @@ tags:
 
    以下描述何者正确？
 
-   > - [ ] A. 其他角色可以使用GET、POST以外的HTTP方法存取
-   > - [ ] B. GET与POST方法只允许admin使用
-   > - [ ] C. admin角色只允许使用GET和POST方法
-   > - [ ] D. 只有admin角色才可以存取/delete.jsp与/delete.do
+   >  [ ] A. 其他角色可以使用GET、POST以外的HTTP方法存取
+   >  [ ] B. GET与POST方法只允许admin使用
+   >  [ ] C. admin角色只允许使用GET和POST方法
+   >  [ ] D. 只有admin角色才可以存取/delete.jsp与/delete.do
 
 #### HTML
 
@@ -421,13 +421,13 @@ tags:
 
 2. Linux管道符
 
-   > A. <
+   > A. `<`
    >
-   > B. >
+   > B. `>`
    >
-   > C. >>
+   > C. `>>`
    >
-   > D. |
+   > D. `|`
 
 #### 数据结构与算法
 
