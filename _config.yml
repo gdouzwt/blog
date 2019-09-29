@@ -20,7 +20,7 @@ sidebar-avatar: /img/large.png      # use absolute URL, seeing it's used in both
 # SNS settings
 RSS: false
 weibo_username: 1889654893
-zhihu_username: wen-taodotcom
+# zhihu_username: wen-taodotcom
 github_username: gdouzwt
 # facebook_username:  gdouzwt
 jianshu_username:   4f528075fae8
@@ -40,8 +40,12 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate]
+# gems: [jekyll-paginate]
+# gem 'jemoji'
 
+plugins:
+  - jekyll-paginate
+  - jemoji
 
 
 
