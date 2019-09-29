@@ -31,6 +31,8 @@ tags:
     >
     > B. 对
 
+    A 错的
+
 3. 定义一个接口使用的关键字是（）
 
     > A. interface
@@ -41,15 +43,19 @@ tags:
     >
     > D. implements
 
+    A
+
 4. 在hibernate的多对多关系中，对inverse属性描述正确的是（）
 
-    > A. 关系双方都在<set>节点中设置inverse="true"属性
+    > A. 关系双方都在`<set>`节点中设置inverse="true"属性
     >
-    > B. 一方在<set>节点中设置inverse="false"属性，另一方不设置
+    > B. 一方在`<set>`节点中设置inverse="false"属性，另一方不设置
     >
-    > C. 关系双方都在<set>节点中设置inverse="false"属性
+    > C. 关系双方都在`<set>`节点中设置inverse="false"属性
     >
-    > D. 关系双方都在<set>节点中去掉inverse属性
+    > D. 关系双方都在`<set>`节点中去掉inverse属性
+
+    很少直接用 hibernate 用Spring Data JPA，还要查一下文档。
 
 5. 下列代码的输出是什么？
 
@@ -70,6 +76,8 @@ tags:
     > D. 1,2
     >
     > E. 编译错误
+
+    A
 
 6. 在spring中， applicationContext.xml如下：
 
@@ -99,6 +107,8 @@ tags:
    > C. 所有类都只能生成一个对象（即支持单例模式）
    >
    > D. 当前的依赖注入方式时构造方法注入
+
+   spring 的 xml 配置方式也要熟悉啊，虽然现在基本用 Spring Boot，而且多采用 Java 配置。
 
 7. JDBC中，一条SQL语句的执行结果存放在一个类的对象中，这个类时（）
 
