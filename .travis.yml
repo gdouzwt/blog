@@ -4,7 +4,9 @@ env:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 install: 
   - gem install jekyll
+  - gem install rouge
   - gem install jekyll-paginate
+  - gem install jemoji
 script: 
   - jekyll build
 after_success:
