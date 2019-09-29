@@ -44,7 +44,6 @@ anchorjs: true                          # if you want to customize anchor. check
 # gem 'jemoji'
 
 plugins:
-  - jekyll-paginate
   - jemoji
 
 
