@@ -8,7 +8,7 @@ keyword: "ZWT, Blog, zhaowentao, 招文桃, Spring Boot, gdouzwt"
 url: "https://zwt.io"       # your host, for absolute URL
 baseurl: "/"      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/gdouzwt/gdouzwt.github.io.git"
-logo: /img/brand-logo.png
+logo: img/brand-logo.png
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
