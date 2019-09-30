@@ -14,7 +14,7 @@ tags:
 
 ## 编译器
 
-![compiler](https://raw.githubusercontent.com/gdouzwt/gdouzwt.github.io/master/img/compiler.png)
+![compiler](/img/compiler.png)
 
 编译器就是将用高级语言编写的源程序编译成为对应的低级语言（例如机器语言）的程序。
 
