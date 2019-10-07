@@ -82,7 +82,7 @@ tags:
    >
    > A subclass may have a static method with the same signature as a static method in the base class but it is not called overriding. It is called hiding because **the concept of polymorphism doesn't apply to static members.**
    >
-   > 这部分这有点意思，之前没有了解到。关于方法重写和重载，还有静态成员的知识。对于静态方法，子类中具有与父类相同方法签名的静态方法，不叫重写，叫隐藏，因为多态的概念不适用与静态成员。
+   > 这部分这有点意思，之前没有了解到。关于方法重写和重载，还有静态成员的知识。对于静态方法，子类中具有与父类相同方法签名的静态方法，不叫重写，叫隐藏，因为多态的概念不适用于静态成员。
    
 5. Given: **(Working with Methods)**
 
