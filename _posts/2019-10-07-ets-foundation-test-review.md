@@ -16,7 +16,7 @@ tags:
 
 ![foundation-test](/img/foundation-test.png)
 
-按照考试的主题（或者说考点）来看的话，Java Basics 正确率 6/7。然后，OO Concepts 过关的，Java Data Types 部分就只对了 3 题，有点危险。基础测试没有涉及到垃圾回收的内容，但是真正考试应该会有的，而且现在工作要求也肯定会问，需要了解的。关于操作符和条件判断结构居然也只有对了 6 个题，看起来真的有点 tricky。接下来的数组、循环结构和构造方法这些考点感觉还过得去的样子。 关于方法的使用居然有点不稳，要搞清楚了，可能需要翻译 coderanch 的文章加深一下理解。这次没有设计方法重载的题目，然而关于继承的理解，可能还不够深，要看看编程思想了。instanceof 没有考到，异常处理需要加强。最基本的 String， 以及相关的类要烂熟了，至少 API 文档过一遍。最后 Java 8 新的时间日期 API 还没有了解，这一次就新的旧的都看一遍吧，所以今天是要看完错题，找出对应的知识点，考点，然后读 API 文档。
+按照考试的主题（或者说考点）来看的话，Java Basics 正确率 6/7。然后，OO Concepts 过关的，Java Data Types 部分就只对了 3 题，有点危险。基础测试没有涉及到垃圾回收的内容，但是真正考试应该会有的，而且现在工作要求也肯定会问，需要了解的。关于操作符和条件判断结构居然也只有对了 6 个题，看起来真的有点 tricky。接下来的数组、循环结构和构造方法这些考点感觉还过得去的样子。 关于方法的使用居然有点不稳，要搞清楚了，可能需要翻译 coderanch 的文章加深一下理解。这次没有设计方法重载的题目，然而关于继承的理解，可能还不够深，要看看编程思想了。`instanceof` 没有考到，异常处理需要加强。最基本的 `String`， 以及相关的类要烂熟了，至少 API 文档过一遍。最后 Java 8 新的时间日期 API 还没有了解，这一次就新的旧的都看一遍吧，所以今天是要看完错题，找出对应的知识点，考点，然后读 API 文档。
 
 ### 接下来做什么
 
@@ -24,11 +24,11 @@ tags:
 
 1. Compared to public, protected, and private accessibilities, default accessibility is ... **(Working with Methods)**
 
-   - [ ] Less restrictive than public  肯定错啦，public 最宽了。
-   - [ ] More restrictive than public, but less restrictive than protected. 想到 "by default is protect"，默认情况下，就相当于保护了，但是更深一层限制在同一个包里。所以就 `default` < `protected` 所以下一个选项是正确的。
-   - [x] More restrictive than protected, but less restrictive than private.
-   - [ ] More restrictive than private. 肯定错， private 最窄了。
-   - [ ] Less restrictive than protected from within a package, and more restrictive than protected from outside a package. 当时选择了这个选项，因为看起来好像很有道理，而且描述全面。但现在仔细看看，说的是，在同一个包内，访问权限比 `protected` 更受限，这已经错了，同一个包内两个一样的。后面部分就不用看了，当时就没多想，这次知道了，下次就不会错了。
+   - [ ] Less restrictive than `public`  肯定错啦，`public` 最宽了。
+   - [ ] More restrictive than `public`, but less restrictive than `protected`. 想到 "by default is protect"，默认情况下，就相当于保护了，但是更深一层限制在同一个包里。所以就 `default` < `protected` 所以下一个选项是正确的。
+   - [x] More restrictive than `protected`, but less restrictive than `private`.
+   - [ ] More restrictive than `private`. 肯定错， `private` 最窄了。
+   - [ ] Less restrictive than `protected` from within a package, and more restrictive than `protected` from outside a package. 当时选择了这个选项，因为看起来好像很有道理，而且描述全面。但现在仔细看看，说的是，在同一个包内，访问权限比 `protected` 更受限，这已经错了，同一个包内两个一样的。后面部分就不用看了，当时就没多想，这次知道了，下次就不会错了。
 
 2. What can be the type of a `catch` argument? (Select the best option.) **(Handling Exceptions)**
 
@@ -46,9 +46,9 @@ tags:
    - [ ] True
    - [x] False 我答对了，不过好像没有理解正确。 解释是这样说的：
 
-   > This would have been true prior to Java 1.5. But from Java 1.5, an overriding method is allowed to change the return type to any subclass of the original return type, also known as covariant return type. This does not apply to primitives, in which case, the return type of the overriding method must match exactly to the return type of the overridden method.
+   > This would have been true prior to Java 1.5. But from Java 1.5, an overriding method is allowed to change the return type to any subclass of the original return type, also known as **covariant return type**. This does not apply to primitives, in which case, the return type of the overriding method must match exactly to the return type of the overridden method.
    >
-   > 所以主要看返回值类型，重写必须参数列表相同才算重写，不然就是重载了。而在 Java 1.5 之前，重写方法的返回值必须与被重写方法返回值一致。不过从 Java 1.5 开始，重写方法的返回值类型可以是被重写方法返回值的任意子类，也称为 covariant return type（好像中文译为“协变返回类型”）
+   > 所以主要看返回值类型，重写必须参数列表相同才算重写，不然就是重载了。而在 Java 1.5 之前，重写方法的返回值必须与被重写方法返回值一致。不过从 Java 1.5 开始，重写方法的返回值类型可以是被重写方法返回值的任意子类，也称为 covariant return type（好像中文译为“**协变返回类型**”）
 
 4. Which of the following statements are true?**(Working with Inheritance)** 选择两个正确的，当时选错了。
 
@@ -226,10 +226,40 @@ tags:
    ...
        
    //use the filter method with the specific criteria to filter the collection.
-   filterEmployees(employeeList, new MyCheckEmployee());    
+   filterEmployees(employeeList, new MyCheckEmployee());   
+   
    ```
 
+   > This is a very common requirement across applications. The purpose of `Predicate` interface (and other standard functional interfaces) is to eliminate the need for every application to write a customized interface. For example, you can do the same thing with the `Predicate` interface as follows - 
+
+   ```java
+   public void filterEmployees(ArrayList<Employee dataList, Predicate<Employee> p) {
+       Iterator<Employee> i = dataList.iterator();
+       while(i.hasNext()) {
+           if(p.test(i.next())) {
+               i.remove();
+           }
+       }
+   }
    
+   ...
+       
+   // Instead of defining a MyPredicate class (like we did with MyCheckEmployee), we could also define and instantiate an anonymous inner class to reduce code clutter
+   Predicate<Employee> p = new Predicate<Employee>() {
+       public boolean test(Employee e) {
+           return e.getSalary()>1000000;
+       }
+   }    
+   ...
+       
+   filterEmployees(employeeList, p);
+   ```
+
+   > Note that both the interfaces (`CheckEmployee` and `Predicate`) can be used with lambda expressions in exactly the same way. Instead of creating an anonymous inner class that implements the `CheckEmployee` or `Predicate` interface, you could just do - 
+   >
+   > `filterEmployees(employeeList, e -> e.getSalary()>1000000);`
+   >
+   > The benefit with `Predicate` is that you don't have to write it, It is already there in the standard java library.
 
 #### 读 API 文档
 
