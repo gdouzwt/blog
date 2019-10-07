@@ -50,6 +50,92 @@ tags:
    >
    > 所以主要看返回值类型，重写必须参数列表相同才算重写，不然就是重载了。而在 Java 1.5 之前，重写方法的返回值必须与被重写方法返回值一致。不过从 Java 1.5 开始，重写方法的返回值类型可以是被重写方法返回值的任意子类，也称为 covariant return type（好像中文译为“协变返回类型”）
 
+4. Which of the following statements are true?**(Working with Inheritance)** 选择两个正确的，当时选错了。
+
+   - [x] Private methods cannot be overridden in subclasses.
+
+      > Only methods that are inherited can be overridden and private methods are not inherited. 只有被继承的方法才能被重写，私有方法不会被继承。
+
+   - [ ] A subclass can override any method in a non-final superclass.
+
+     > Only the methods that are not declared to be final can be overridden. Further, private methods are not inherited so they cannot be overridden either.
+
+   - [ ] An overriding method can declare that it throws a wider spectrum of checked exceptions than the method it is overriding.
+
+     > 这个没有在选项给出解释，看底下更长的解释。
+
+   - [ ] The parameter list of an overriding method must be a subset of the parameter list of the method that it is overriding.
+
+     > An overriding method (the method that is trying to override the base class's method) must have the same parameters.
+
+   - [x] The overriding method may opt not to declare any throws clause even if the original method has a throws clause.
+
+     > No exception(i.e. an empty set of exceptions) is a valid subset of the set of exceptions thrown by the original method so an overriding method can choose to not have any throws clause.
+
+   > A method can be overridden by defining a method with the same signature(i.e. name and parameter list) and return type as the method in a superclass. The return type can also be a subclass of the original method's return type.
+   >
+   > Only methods that are accessible can be overridden. A private method cannot, therefore, be overridden in subclasses, but the subclasses are allowed to define a new method with exactly the same signature.
+   >
+   > A final method cannot be overridden.
+   >
+   > An overriding method cannot exhibit behavior that contradicts the declaration of the original method. An overriding method therefore cannot return a different type (except a subtype) or throw a wider spectrum of exceptions than the original method in the superclass. This, of course, applies only to checked exceptions because unchecked exceptions are not required to be declared at all.
+   >
+   > A subclass may have a static method with the same signature as a static method in the base class but it is not called overriding. It is called hiding because **the concept of polymorphism doesn't apply to static members.**
+   >
+   > 这部分这有点意思，之前没有了解到。关于方法重写和重载，还有静态成员的知识。对于静态方法，子类中具有与父类相同方法签名的静态方法，不叫重写，叫隐藏，因为多态的概念不适用与静态成员。
+   
+5. Given: **(Working with Methods)**
+
+   ```java
+   //In file AccessTest.java
+   package a;
+   public class AccessTest {
+       int a;
+       private int b;
+       protected void c() {}
+       public int d() {	return 0; }
+   }
+   
+   //In file AccessTester.java
+   package b;
+   import a.AccessTest;
+   
+   public class AccessTester extends AccessTest {
+       public static void main(String[] args) {
+           AccessTest ref = new AccessTest();
+       }
+   }
+   ```
+
+   Identify the correct statements -
+
+   - [ ] Only `c()` and `b()` can be accessed by `ref`.
+   - [ ] `b`, `c()` as well as `d()`, can be accessed by `ref`.
+   - [x] Only `d()` can be accessed by `ref`.
+   - [ ] Only a and `d()` can be accessed by `ref`.
+
+> The wording of this question is a bit vague because it is not clear what is meant by "can be accessed by". Expect such wording in the real exam as well. Our guess is that it means what variables of class `AceesssTest` can be accessed using the reference named `ref`.
+>
+> Since a public member is always accessible to every one, `ref.d()` is definitely correct. private is only accessible within that class, therefore, b cannot be accessed from anywhere outside of class `AccessTest`. A default (aka package protected) member is accessible only from members of the same package. Since `AccessTester` is in a different package `a` cannot be accessed from `AccessTester` either.
+>
+> Now, the question is only about the method `c()`. A protected member is inherited by a subclass and it is therefore accessible in the subclass. However, in the words of Java Language Specification, protected members of a class are accessible outside the package only in subclasses of that class, and only when they are fields of objects that are being implemented by the code that is accessing them.
+>
+> Basically, it implies that a protected member is accessible in the subclass only using a reference whose declared type is of the same subclass (or its subclass.).
+>
+> In this case, the declared type of `ref` is `AccessTest`, which is not of the same type as the class from which you are trying to access `c()`. Therefore, you cannot do `ref.c()` in `AccessTester`. If you had `AccessTester ref = new AccessTester();` you could do `ref.c()` because now the declared type of `ref`(i.e. `AccessTester`) is the same subclass from which you are trying to access `c()`. It will work even if the declared type of the reference is a child of the subclass. For example, the following would be valid as well.
+>
+> ​            `SubAccessTester ref = new SubAccessTester();`
+>
+> ​            `ref.c();   // this is valid`
+>
+> Where `SubAccessTester` is a subclass of `AccessTester` - 
+>
+> `class SubAccessTester extends AccessTester {}`
+
+
+
+
+
 #### 读 API 文档
 
 ##### String
