@@ -331,13 +331,13 @@ tags:
 
 14. Identify the valid members of Boolean class.
 
-    - [ ] `parseBoolean(String)`
+    - [x] `parseBoolean(String)`
 
-    - [ ] `valueOf(boolean)`
+    - [x] `valueOf(boolean)`
 
     - [ ] `parseBoolean(boolean)`
 
-    - [ ] `FALSE`
+    - [x] `FALSE`
 
       > `TRUE` and `FALSE` are valid static members of `Boolean` class.
 
@@ -360,6 +360,37 @@ tags:
        `Boolean.valueOf(String )` and its overloaded `Boolean.valueOf(boolean )` version, on the other hand, work similarly but return a reference to either `Boolean.TRUE` or `Boolean.FALSE` wrapper objects. Observe that they don't create a new Boolean object but just return the static constants `TRUE` or `FALSE` defined in `Boolean` class.
 
     3. When you use the equality operator ( == ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`.
+
+15. **(Working with Inheritance)** A method with no access modifier defined in a class can be overridden by a method marked protected (assuming that it is not final) in the sub class. (You had to select 1 option)
+
+    - [x] True
+    - [ ] False
+
+    An overriding method is allowed to make the overridden method more accessible, and since protected is more accessible than default (package), this is allowed. Note that protected access will allow access to the subclass even if the subclass is in a different package but package access will not.
+
+16. Which of the following are NOT valid operators in Java? **(Using Operators and Decision Constructs)**
+
+    - [x] `sizeof`
+
+      > It is a valid operator in C++ but not in java because size of everything is known at compile time and is not machine dependent.
+
+    - [x] `<<<`
+
+      > For left shifts there is no difference between shifting signed and unsigned values so there is only one leftshift '<<' in java.
+
+    - [ ] `instanceof`
+
+      > 这个居然也算是运算符，记混了，以为只是关键字！
+
+    - [x] `mod`
+
+      > No such thing.
+
+    - [x] `equals`
+
+      > `boolean equals(Object o)` is a method in `java.lang.Object.` It is not an operator.
+
+17. Which of these statements are true?
 
 #### 读 API 文档
 
