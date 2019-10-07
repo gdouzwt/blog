@@ -187,6 +187,50 @@ tags:
 
    - [x] abstract public void add() throws Exception;
 
+9. Which of the following are correct about `java.util.function.Predicate` ?
+
+   - [ ] It is an interface that has only one abstract method (among other non-abstract methods) with the signature - `public void test(T t);`
+   - [x] It is an interface class that has only one abstract method (among other non-abstract methods) with the signature - `public boolean test(T t);`
+   - [ ] It is an abstract class that has only abstract method (among other non-abstract methods) with the signature - `public abstract void test(T t);`
+   - [ ] It is an abstract class that has only on abstract method (among other non-abstract methods) with the signature - `public abstract boolean test(T t);`
+
+   > `java.util.function.Predicate` is one of the several functional interfaces that have been added to Java 8. This interface has exactly one abstract method named `test`, which takes any object as input and returns a `boolean`. This comes in very handy when you have a collection of objects and you want to go through each object of that collection and see if that object satisfies some criteria. For example, you may have a collection of `Employee` objects and, in one place of your application, you want to remove all such employees whose age is below 50, while in other place, you want to remove all such employees whose salary is above 100,000. In both the cases, you want to go through your collection of employees, and check each `Employee` object to determine if it fits the criteria. This can be implemented by writing an interface named `CheckEmployee` and having a method `check(Employee)` which would return `true` if the passed object satisfies the criteria. The following code fragments illustrate how it can be done - 
+
+   ```java
+   //define the interface for creating criteria
+   interface CheckEmployee {
+   	boolean check(Employee e);
+   }
+   
+   ...
+       
+   //write a method that filters Employees based on given criteria.
+   public void filterEmployees(ArrayList<Employee> dataList, CheckEmployee p) {
+       Iterator<Employee> i = dataList.iterator();
+       while(i.hasNext()) {
+           if(p.check(i.next())) {
+               i.remove();
+           }
+       }
+   } 
+   
+   ...
+       
+   //create a specific criteria by defining a class that implements CheckEmployee
+   class MyCheckEmployee implements CheckEmployee {
+       public boolean check(Employee e) {
+           return e.getSalary()>100000;
+       }
+   }    
+   
+   ...
+       
+   //use the filter method with the specific criteria to filter the collection.
+   filterEmployees(employeeList, new MyCheckEmployee());    
+   ```
+
+   
+
 #### 读 API 文档
 
 ##### String
