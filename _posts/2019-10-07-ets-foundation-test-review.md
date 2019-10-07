@@ -132,9 +132,60 @@ tags:
 >
 > `class SubAccessTester extends AccessTester {}`
 
+6. Which of these statements concerning the use of modifiers are true? **(Java Basics)**
 
+   - [ ] By default (i.e. no modifier) the member is only accessible to classes in the same package and subclasses of the class.
 
+     > No. the member will be accessible only within the package.
 
+   - [x] You cannot specify visibility of local variables.
+
+     > They are always only accessible within the block in which they are declared.
+
+   - [ ] Local variable always have default accessibility.
+
+     > A local variable (aka automatic variable) means a variable declared in a method. They don't have any accessibility. They are accessible only from the block they are declared in.
+     >
+     > **Remember**, they are not initialized automatically. You have to initialize them explicitly.
+
+   - [ ] Local variables can be declared as private.
+
+   - [ ] Local variables can only by declared as public.
+
+   > You cannot apply any modifier except `final` to a local variable. i.e. you cannot make them `transient`, `volatile`, `static`, `public`, and `private`.
+   >
+   > But you can apply access modifier (`public` `private` and `protected`) and `final`, `transient`, `volatile`, `static` to instance variables.
+   >
+   > You cannot apply `native` and `synchronized` to any kind of variable.
+   >
+   > 这些很经典的基础，关键词的运用，必须熟记。
+
+7. An abstract method cannot be overridden. **(Working with inheritance)**
+
+   - [ ] True
+   - [x] False
+
+   > Abstract methods are meant to be overridden in the subclass. Abstract methods describe a behavior but do not implement it. So the subclasses have to override it to actually implement the behavior. A subclass may chose to override it, in which case, the subclass will have to be abstract too.
+
+8. What is the correct declaration for an abstract method 'add' in a class that is accessible to any class, takes no arguments and returns nothing? (You had to select 1 option)
+
+   - [ ] `public void add();`
+
+     > An abstract method must have the `abstract` keyword and must not have a method body i.e. {}.
+
+   - [ ] `abstract add();`
+
+     > A method that is not supposed to return anything must specify `void` as its return type.
+
+   - [ ] `abstract null add();`
+
+     > A method that is not supposed to return anything must specify `void` as its return type. `null` is not a type, though it is a valid return value for any reference type.
+
+   - [ ] `abstract public void add();`
+
+     > It is invalid because has a method body i.e. {}.  有方法体都不可以。
+
+   - [x] abstract public void add() throws Exception;
 
 #### 读 API 文档
 
