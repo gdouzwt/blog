@@ -260,6 +260,106 @@ tags:
    > `filterEmployees(employeeList, e -> e.getSalary()>1000000);`
    >
    > The benefit with `Predicate` is that you don't have to write it, It is already there in the standard java library.
+   
+10. Which of the following are valid declarations in a class? (You had to select 1 option) **(Working with Inheritance)**
+
+    - [ ] abstract int absMethod(int param) throws Exception;
+
+    - [ ] abstract native int absMethod(int param) throws Exception;
+
+      > `native` method cannot be `abstract`
+
+    - [ ] float native getVariance() throws Exception;
+
+      > return type should always be on the immediate left of method name.
+
+    - [ ] abstract private int absMethod(int param) throws Exception;
+
+      > `private` method cannot be `abstract`. A `private` method is not inherited so how can a subclass implement it?
+
+11. Which of the following statements is/are true? (You had to select 1 option)
+
+    - [ ] Subclasses must define all the abstract methods that the superclass defines.
+
+      > Not if the subclass is also defined abstract!
+
+    - [ ] A class implementing an interface must define all the methods of that interface.
+
+      > Not if the class is defined abstract. Further, Java 8 allows interface to have and static methods, which need not be implemented by a non-abstract class that says it implements that interface.
+
+    - [x] A class cannot override the super class's constructor.
+
+      > Because constructors are not inherited.
+
+    - [ ] It is possible for two classes to be the superclass of each other.
+
+    - [ ] An interface can implement multiple interfaces.
+
+      > Interface cannot "implement" another interfaces. It can extend multiple interfaces. The following is a valid declaration `interface I1 extends I2, I3, I4 {}`。 **记得了，接口是不可以实现其它接口的，但是可以实现多个接口。**
+
+12. Which of the following statements regarding 'break' and 'continue' are true? (You had to select 1 option) **(Using Loop Constructs)** 这题选错了，注意。
+
+    - [x] `break` without a label, can occur only in a `switch`, `while`, `do`, or `for` statement.
+
+    - [ ] `continue` without a label, can occur only in a `switch`, `while`, `do`, or `for` statement.
+
+      > It cannot occur in a switch.
+
+    - [ ] `break` can never occur without a label.
+
+    - [ ] `continue` can never occur WITH a label.
+
+    - [ ] None of the above.
+
+    A break statement with no label attempts to transfer control to the innermost enclosing switch, while, do, or for statement; this statement, which is called the break target, then immediately completes normally. If no switch, while, do, or for statement encloses the break statement, a compile-time error occurs.
+
+    A break statement with label Identifier attempts to transfer control to the enclosing labeled statement  that has the same Identifier as its label; this statement, which is called the break target, then immediately completes normally. In this case, the break target need not be a while, do, for, or switch statement.
+
+    A continue statement with no label attempts to transfer control to the innermost enclosing while, do, or for statement; this statement, which is called the continue target, then immediately ends the current iteration and begins a new one. If no while, do, or for statement encloses the continue statement, a compile-time error occurs.
+
+    A continue statement with label Identifier attempts to transfer control to the enclosing labelled statement that has the same Identifier as its label; that statement, which is called the continue target, then immediately ends the current iteration and begins a new one. The continue target must be a while, do, or for statement or a compile-time error occurs. If no labelled statement with Identifier as its label contains the continue statement, a compile-time error occurs.
+
+13. What class of objects can be declared by the throws clause? **(Handling Exceptions)**
+
+    - [x] `Exception`
+    - [x] `Error`
+    - [ ] `Event`
+    - [ ] `Object`
+    - [x] `RuntimeException`
+
+    You can declare anything that is a `Throwable` or a subclass of `Throwable`, in the `throws` clause.
+
+14. Identify the valid members of Boolean class.
+
+    - [ ] `parseBoolean(String)`
+
+    - [ ] `valueOf(boolean)`
+
+    - [ ] `parseBoolean(boolean)`
+
+    - [ ] `FALSE`
+
+      > `TRUE` and `FALSE` are valid static members of `Boolean` class.
+
+    - [ ] `Boolean(Boolean)`
+
+      > There is no constructor that takes a `Boolean`.
+
+    **You need to remember the following points about Boolean:**
+
+    1. `Boolean` class has two constructors - `Boolean(String)` and `Boolean(boolean)`
+
+       The `String` constructor allocates a `Boolean` object representing the value `true` if string argument is not null and is equal, ignoring case, to the string "true". Otherwise, allocate a Boolean object representing the value `false`. Examples: `new Boolean("True")` produces a `Boolean` object that represents `true`. `new Boolean("yes")` produces a `Boolean` object that represents `false`.
+
+       The `boolean` constructor is self explanatory.
+
+    2. `Boolean` class has two static helper methods for creating booleans - `parseBoolean` and `valueOf`.
+
+       `Boolean.parseBoolean(String )` method returns a primitive boolean and not a `Boolean` object (Note - Same is with the case with other `parseXXX` methods such as `Integer.parseInt` - they return primitives and not objects). The boolean returned represents the value `true` if the string argument is not null and is equal, ignoring case, to the string "true".
+
+       `Boolean.valueOf(String )` and its overloaded `Boolean.valueOf(boolean )` version, on the other hand, work similarly but return a reference to either `Boolean.TRUE` or `Boolean.FALSE` wrapper objects. Observe that they don't create a new Boolean object but just return the static constants `TRUE` or `FALSE` defined in `Boolean` class.
+
+    3. When you use the equality operator ( == ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`.
 
 #### 读 API 文档
 
