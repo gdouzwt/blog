@@ -195,6 +195,9 @@ br + small.img-hint {
 img.shadow {
   box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
 }
+ul.task-list li.task-list-item {
+  list-style: none;
+}
 select {
   -webkit-appearance: none;
   margin-top: 15px;
