@@ -24,37 +24,63 @@ tags:
 
 1. Compared to public, protected, and private accessibilities, default accessibility is ... **(Working with Methods)**
 
-   - [ ] Less restrictive than `public`  肯定错啦，`public` 最宽了。
-   - [ ] More restrictive than `public`, but less restrictive than `protected`. 想到 "by default is protect"，默认情况下，就相当于保护了，但是更深一层限制在同一个包里。所以就 `default` < `protected` 所以下一个选项是正确的。
+   - [ ] Less restrictive than `public`  
+
+     > 肯定错啦，`public` 最宽了。
+
+   - [ ] More restrictive than `public`, but less restrictive than `protected`. 
+
+     > 想到 "by default is protect"，默认情况下，就相当于保护了，但是更深一层限制在同一个包里。所以就 `default` < `protected` 所以下一个选项是正确的。
+
    - [x] More restrictive than `protected`, but less restrictive than `private`.
-   - [ ] More restrictive than `private`. 肯定错， `private` 最窄了。
-   - [ ] Less restrictive than `protected` from within a package, and more restrictive than `protected` from outside a package. 当时选择了这个选项，因为看起来好像很有道理，而且描述全面。但现在仔细看看，说的是，在同一个包内，访问权限比 `protected` 更受限，这已经错了，同一个包内两个一样的。后面部分就不用看了，当时就没多想，这次知道了，下次就不会错了。
+
+   - [ ] More restrictive than `private`. 
+
+     > 肯定错， `private` 最窄了。
+
+   - [ ] Less restrictive than `protected` from within a package, and more restrictive than `protected` from outside a package. 
+
+     > 当时选择了这个选项，因为看起来好像很有道理，而且描述全面。但现在仔细看看，说的是，在同一个包内，访问权限比 `protected` 更受限，这已经错了，同一个包内两个一样的。后面部分就不用看了，当时就没多想，这次知道了，下次就不会错了。
+
+   ---
 
 2. What can be the type of a `catch` argument? (Select the best option.) **(Handling Exceptions)**
 
    - [ ] Any class that extends `java.lang.Exception`
-   - [ ] Any class that extends `java.lang.Exception` except any class that extends `java.lang.RuntimeException`
-   - [x] Any class that is-a `Throwable`. 这个是正确答案，解释如下
 
-   > The catch argument type declares the type of exception that the handler can handle and must be the name of a class that extends `Throwable` or `Throwable` itself.
+   - [ ] Any class that extends `java.lang.Exception` except any class that extends `java.lang.RuntimeException`
+
+   - [x] Any class that is-a `Throwable`. 
+
+     > The catch argument type declares the type of exception that the handler can handle and must be the name of a class that extends `Throwable` or `Throwable` itself.
 
    - [ ] Any Object
+
    - [ ] Any class that extends `Error`
+
+   ---
 
 3. 记录一个关于重写的： An overriding method must have a same parameter list and the same return type as that of the overridden method. 翻译成中文就是，重写方法必须与被重写方法具有相同的参数列表和返回类型。
 
    - [ ] True
-   - [x] False 我答对了，不过好像没有理解正确。 解释是这样说的：
 
-   > This would have been true prior to Java 1.5. But from Java 1.5, an overriding method is allowed to change the return type to any subclass of the original return type, also known as **covariant return type**. This does not apply to primitives, in which case, the return type of the overriding method must match exactly to the return type of the overridden method.
-   >
-   > 所以主要看返回值类型，重写必须参数列表相同才算重写，不然就是重载了。而在 Java 1.5 之前，重写方法的返回值必须与被重写方法返回值一致。不过从 Java 1.5 开始，重写方法的返回值类型可以是被重写方法返回值的任意子类，也称为 covariant return type（好像中文译为“**协变返回类型**”）
+   - [x] False 
+
+     > 我答对了，不过好像没有理解正确。 解释是这样说的：
+     >
+     > This would have been true prior to Java 1.5. But from Java 1.5, an overriding method is allowed to change the return type to any subclass of the original return type, also known as **covariant return type**. This does not apply to primitives, in which case, the return type of the overriding method must match exactly to the return type of the overridden method.
+     >
+     > 所以主要看返回值类型，重写必须参数列表相同才算重写，不然就是重载了。而在 Java 1.5 之前，重写方法的返回值必须与被重写方法返回值一致。不过从 Java 1.5 开始，重写方法的返回值类型可以是被重写方法返回值的任意子类，也称为 covariant return type（好像中文译为“**协变返回类型**”）
+
+   ---
 
 4. Which of the following statements are true?**(Working with Inheritance)** 选择两个正确的，当时选错了。
 
    - [x] Private methods cannot be overridden in subclasses.
 
-      > Only methods that are inherited can be overridden and private methods are not inherited. 只有被继承的方法才能被重写，私有方法不会被继承。
+      > Only methods that are inherited can be overridden and private methods are not inherited. 
+      >
+      > 只有被继承的方法才能被重写，**私有方法不会被继承**。
 
    - [ ] A subclass can override any method in a non-final superclass.
 
@@ -73,17 +99,19 @@ tags:
      > No exception(i.e. an empty set of exceptions) is a valid subset of the set of exceptions thrown by the original method so an overriding method can choose to not have any throws clause.
 
    A method can be overridden by defining a method with the same signature(i.e. name and parameter list) and return type as the method in a superclass. The return type can also be a subclass of the original method's return type.
-   
+
    Only methods that are accessible can be overridden. A private method cannot, therefore, be overridden in subclasses, but the subclasses are allowed to define a new method with exactly the same signature.
-   
+
    A final method cannot be overridden.
-   
+
    An overriding method cannot exhibit behavior that contradicts the declaration of the original method. An overriding method therefore cannot return a different type (except a subtype) or throw a wider spectrum of exceptions than the original method in the superclass. This, of course, applies only to checked exceptions because unchecked exceptions are not required to be declared at all.
-   
+
    A subclass may have a static method with the same signature as a static method in the base class but it is not called overriding. It is called hiding because **the concept of polymorphism doesn't apply to static members.**
-   
+
    这部分这有点意思，之前没有了解到。关于方法重写和重载，还有静态成员的知识。对于静态方法，子类中具有与父类相同方法签名的静态方法，不叫重写，叫隐藏，因为多态的概念不适用于静态成员。
-   
+
+   ---
+
 5. Given: **(Working with Methods)**
 
    ```java
@@ -115,23 +143,26 @@ tags:
    - [ ] Only a and `d()` can be accessed by `ref`.
 
    The wording of this question is a bit vague because it is not clear what is meant by "can be accessed by". Expect such wording in the real exam as well. Our guess is that it means what variables of class `AceesssTest` can be accessed using the reference named `ref`.
-   
+
    Since a public member is always accessible to every one, `ref.d()` is definitely correct. private is only accessible within that class, therefore, b cannot be accessed from anywhere outside of class `AccessTest`. A default (aka package protected) member is accessible only from members of the same package. Since `AccessTester` is in a different package `a` cannot be accessed from `AccessTester` either.
-   
+
    Now, the question is only about the method `c()`. A protected member is inherited by a subclass and it is therefore accessible in the subclass. However, in the words of Java Language Specification, protected members of a class are accessible outside the package only in subclasses of that class, and only when they are fields of objects that are being implemented by the code that is accessing them.
-   
+
    Basically, it implies that a protected member is accessible in the subclass only using a reference whose declared type is of the same subclass (or its subclass.).
-   
+
    In this case, the declared type of `ref` is `AccessTest`, which is not of the same type as the class from which you are trying to access `c()`. Therefore, you cannot do `ref.c()` in `AccessTester`. If you had `AccessTester ref = new AccessTester();` you could do `ref.c()` because now the declared type of `ref`(i.e. `AccessTester`) is the same subclass from which you are trying to access `c()`. It will work even if the declared type of the reference is a child of the subclass. For example, the following would be valid as well.
-   
-   ​            `SubAccessTester ref = new SubAccessTester();`
-   
-   ​            `ref.c();   // this is valid`
-   
+
+   ```
+   SubAccessTester ref = new SubAccessTester();
+   ref.c();   // this is valid
+   ```
+
    Where `SubAccessTester` is a subclass of `AccessTester` - 
-   
+
    `class SubAccessTester extends AccessTester {}`
-   
+
+   ---
+
 6. Which of these statements concerning the use of modifiers are true? **(Java Basics)**
 
    - [ ] By default (i.e. no modifier) the member is only accessible to classes in the same package and subclasses of the class.
@@ -160,18 +191,22 @@ tags:
 
    这些很经典的基础，关键词的运用，必须熟记。
 
+   ---
+
 7. An abstract method cannot be overridden. **(Working with inheritance)**
 
    - [ ] True
    - [x] False
 
-   > Abstract methods are meant to be overridden in the subclass. Abstract methods describe a behavior but do not implement it. So the subclasses have to override it to actually implement the behavior. A subclass may chose to override it, in which case, the subclass will have to be abstract too.
+   Abstract methods are meant to be overridden in the subclass. Abstract methods describe a behavior but do not implement it. So the subclasses have to override it to actually implement the behavior. A subclass may chose to override it, in which case, the subclass will **have to be abstract too**.
+
+   ---
 
 8. What is the correct declaration for an abstract method 'add' in a class that is accessible to any class, takes no arguments and returns nothing? (You had to select 1 option)
 
    - [ ] `public void add();`
 
-     > An abstract method must have the `abstract` keyword and must not have a method body i.e. {}.
+     > An abstract method must have the `abstract` keyword and must not have a method body i.e. `{}`.
 
    - [ ] `abstract add();`
 
@@ -183,7 +218,7 @@ tags:
 
    - [ ] `abstract public void add();`
 
-     > It is invalid because has a method body i.e. {}.  有方法体都不可以。
+     > It is invalid because has a method body i.e. `{}`.  **有方法体都不可以**。
 
    - [x] abstract public void add() throws Exception;
 
@@ -194,16 +229,14 @@ tags:
    - [ ] It is an abstract class that has only abstract method (among other non-abstract methods) with the signature - `public abstract void test(T t);`
    - [ ] It is an abstract class that has only on abstract method (among other non-abstract methods) with the signature - `public abstract boolean test(T t);`
 
-   > `java.util.function.Predicate` is one of the several functional interfaces that have been added to Java 8. This interface has exactly one abstract method named `test`, which takes any object as input and returns a `boolean`. This comes in very handy when you have a collection of objects and you want to go through each object of that collection and see if that object satisfies some criteria. For example, you may have a collection of `Employee` objects and, in one place of your application, you want to remove all such employees whose age is below 50, while in other place, you want to remove all such employees whose salary is above 100,000. In both the cases, you want to go through your collection of employees, and check each `Employee` object to determine if it fits the criteria. This can be implemented by writing an interface named `CheckEmployee` and having a method `check(Employee)` which would return `true` if the passed object satisfies the criteria. The following code fragments illustrate how it can be done - 
+   `java.util.function.Predicate` is one of the several functional interfaces that have been added to Java 8. This interface has exactly one abstract method named `test`, which takes any object as input and returns a `boolean`. This comes in very handy when you have a collection of objects and you want to go through each object of that collection and see if that object satisfies some criteria. For example, you may have a collection of `Employee` objects and, in one place of your application, you want to remove all such employees whose age is below 50, while in other place, you want to remove all such employees whose salary is above 100,000. In both the cases, you want to go through your collection of employees, and check each `Employee` object to determine if it fits the criteria. This can be implemented by writing an interface named `CheckEmployee` and having a method `check(Employee)` which would return `true` if the passed object satisfies the criteria. The following code fragments illustrate how it can be done - 
 
    ```java
    //define the interface for creating criteria
    interface CheckEmployee {
    	boolean check(Employee e);
    }
-   
    ...
-       
    //write a method that filters Employees based on given criteria.
    public void filterEmployees(ArrayList<Employee> dataList, CheckEmployee p) {
        Iterator<Employee> i = dataList.iterator();
@@ -213,24 +246,19 @@ tags:
            }
        }
    } 
-   
    ...
-       
    //create a specific criteria by defining a class that implements CheckEmployee
    class MyCheckEmployee implements CheckEmployee {
        public boolean check(Employee e) {
            return e.getSalary()>100000;
        }
    }    
-   
    ...
-       
    //use the filter method with the specific criteria to filter the collection.
    filterEmployees(employeeList, new MyCheckEmployee());   
-   
    ```
 
-   > This is a very common requirement across applications. The purpose of `Predicate` interface (and other standard functional interfaces) is to eliminate the need for every application to write a customized interface. For example, you can do the same thing with the `Predicate` interface as follows - 
+   This is a very common requirement across applications. The purpose of `Predicate` interface (and other standard functional interfaces) is to eliminate the need for every application to write a customized interface. For example, you can do the same thing with the `Predicate` interface as follows - 
 
    ```java
    public void filterEmployees(ArrayList<Employee dataList, Predicate<Employee> p) {
@@ -241,9 +269,7 @@ tags:
            }
        }
    }
-   
    ...
-       
    // Instead of defining a MyPredicate class (like we did with MyCheckEmployee), we could also define and instantiate an anonymous inner class to reduce code clutter
    Predicate<Employee> p = new Predicate<Employee>() {
        public boolean test(Employee e) {
@@ -251,19 +277,20 @@ tags:
        }
    }    
    ...
-       
    filterEmployees(employeeList, p);
    ```
 
-   > Note that both the interfaces (`CheckEmployee` and `Predicate`) can be used with lambda expressions in exactly the same way. Instead of creating an anonymous inner class that implements the `CheckEmployee` or `Predicate` interface, you could just do - 
-   >
-   > `filterEmployees(employeeList, e -> e.getSalary()>1000000);`
-   >
-   > The benefit with `Predicate` is that you don't have to write it, It is already there in the standard java library.
-   
+   Note that both the interfaces (`CheckEmployee` and `Predicate`) can be used with lambda expressions in exactly the same way. Instead of creating an anonymous inner class that implements the `CheckEmployee` or `Predicate` interface, you could just do - 
+
+   `filterEmployees(employeeList, e -> e.getSalary()>1000000);`
+
+   The benefit with `Predicate` is that you don't have to write it, It is already there in the standard java library.
+
+   ---
+
 10. Which of the following are valid declarations in a class? (You had to select 1 option) **(Working with Inheritance)**
 
-    - [ ] abstract int absMethod(int param) throws Exception;
+    - [x] abstract int absMethod(int param) throws Exception;
 
     - [ ] abstract native int absMethod(int param) throws Exception;
 
@@ -276,6 +303,8 @@ tags:
     - [ ] abstract private int absMethod(int param) throws Exception;
 
       > `private` method cannot be `abstract`. A `private` method is not inherited so how can a subclass implement it?
+
+    ---
 
 11. Which of the following statements is/are true? (You had to select 1 option)
 
@@ -296,6 +325,8 @@ tags:
     - [ ] An interface can implement multiple interfaces.
 
       > Interface cannot "implement" another interfaces. It can extend multiple interfaces. The following is a valid declaration `interface I1 extends I2, I3, I4 {}`。 **记得了，接口是不可以实现其它接口的，但是可以实现多个接口。**
+
+    ---
 
 12. Which of the following statements regarding 'break' and 'continue' are true? (You had to select 1 option) **(Using Loop Constructs)** 这题选错了，注意。
 
@@ -319,6 +350,8 @@ tags:
 
     A continue statement with label Identifier attempts to transfer control to the enclosing labelled statement that has the same Identifier as its label; that statement, which is called the continue target, then immediately ends the current iteration and begins a new one. The continue target must be a while, do, or for statement or a compile-time error occurs. If no labelled statement with Identifier as its label contains the continue statement, a compile-time error occurs.
 
+    ---
+
 13. What class of objects can be declared by the throws clause? **(Handling Exceptions)**
 
     - [x] `Exception`
@@ -328,6 +361,8 @@ tags:
     - [x] `RuntimeException`
 
     You can declare anything that is a `Throwable` or a subclass of `Throwable`, in the `throws` clause.
+
+    ---
 
 14. Identify the valid members of Boolean class.
 
@@ -361,12 +396,16 @@ tags:
 
     3. When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`.
 
+    ---
+
 15. **(Working with Inheritance)** A method with no access modifier defined in a class can be overridden by a method marked protected (assuming that it is not final) in the sub class. (You had to select 1 option)
 
     - [x] True
     - [ ] False
 
     An overriding method is allowed to make the overridden method more accessible, and since protected is more accessible than default (package), this is allowed. Note that protected access will allow access to the subclass even if the subclass is in a different package but package access will not.
+
+    ---
 
 16. Which of the following are NOT valid operators in Java? **(Using Operators and Decision Constructs)**
 
@@ -390,6 +429,8 @@ tags:
 
       > `boolean equals(Object o)` is a method in `java.lang.Object.` It is not an operator.
 
+    ---
+
 17. Which of these statements are true?
 
     - [ ] All classes must explicitly define a constructor
@@ -412,6 +453,8 @@ tags:
 
     Constructors need not initialize **all** the member variables of the class. A non-final member(i.e. an instance) variable will be assigned a default value if not explicitly initialized.
 
+    ---
+
 18. Which of these statements are true? (You had to select 2 option(s)) **(Working with Inheritance)**
 
     - [ ] A `super(<appropriate list of arguments>)` or `this(<appropriate list of arguments>)` call must always be provided explicitly as the first statement in the body of the constructor.
@@ -429,6 +472,8 @@ tags:
     - [x] You can either call `super(<appropriate list of arguments>)` or `this(<appropriate list of arguments>)` but not both from a constructor.
 
     Note that calling `super();` will not always work because if the super class has defined a constructor with arguments and has not defined a no args constructor then no args constructor will not be provided by the compiler. It is provided only to the class that does not define ANY constructor explicitly.
+
+    ---
 
 19. Which of these combinations of switch expression types and case label value types are legal within a switch statement? (You had to select 1 option(s)) **(Using Operators and Decision Constructs)**
 
@@ -483,6 +528,8 @@ tags:
 
     6. At most one default label may be associated with the same switch statement.
 
+    ---
+
 20. Consider the following code:
 
     ```java
@@ -505,6 +552,8 @@ tags:
 
     Actually it prints -46. This is because the information was lost during the conversion from type int to type `float` as values of type `float` are not precise to nine significant digits.
     Note: **You are not required to know the number of significant digits that can be stored by a float for the exam. However, it is good to know about loss of precision while using float and double.**
+
+    ---
 
 21. Which of the following statements are true? (You had to select 2 option(s))
 
@@ -547,7 +596,9 @@ tags:
 
     `k = b.i;//assigns 10 to k` because which field is accessed depends on the class of the variable and not on the class of the actual object. Same rule applies to static methods but the opposite is true for instance methods.
 
-    final keyword when applied to a class means the class cannot be subclassed, when applied to a method means the method cannot be overridden (it can be overloaded though) and when applied to a variable means that the variable is a constant.
+    `final` keyword when applied to a class means the class cannot be subclassed, when applied to a method means the method cannot be overridden (it can be overloaded though) and when applied to a variable means that the variable is a constant.
+
+    ---
 
 22. **(Working with Java API - Time and Date)** Identify the correct statements.
 
@@ -613,6 +664,8 @@ tags:
        Durations and periods differ in their treatment of daylight savings time when added to `ZonedDateTime`. A Duration will add an exact number of seconds, thus a duration of one day is always exactly 24 hours. By contrast, a Period will add a conceptual day, trying to maintain the local time.
 
        For example, consider adding a period of one day and a duration of one day to 18:00 on the evening before a daylight savings gap. The Period will add the conceptual day and result in a `ZonedDateTime` at 18:00 the following day. By contrast, the Duration will add exactly 24 hours, resulting in a `ZonedDateTime` at 19:00 the following day (assuming a one hour DST gap).
+
+    ---
 
 23. **(Q 40 of 69 Working with Java API - Time and Date)** Which of the following are true regarding the new Date-Time API of Java 8? (You had to select 2 option(s))
 
