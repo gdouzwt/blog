@@ -205,7 +205,7 @@ ul.task-list li.task-list-item {
 input.task-list-item-checkbox {
   margin-right: 5px;
 }
-input.task-list-item-checkbox :checked {
+input.task-list-item-checkbox:checked {
   color: green;
 }
 select {
