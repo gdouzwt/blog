@@ -376,7 +376,7 @@ tags:
 
     - [x] `<<<`
 
-      > For left shifts there is no difference between shifting signed and unsigned values so there is only one leftshift '<<' in java.
+      > For left shifts there is no difference between shifting signed and unsigned values so there is only one leftshift `'<<'` in java.
 
     - [ ] `instanceof`
 
@@ -436,13 +436,12 @@ tags:
 
       > Note that the following is invalid though because a char cannot be assigned to an Integer.
       >
-      > `Integer x = 1;   // int x = 1; is valid.`
-      >
-      > `switch(x) {`
-      >
-      > ​	`case 'a' : System.out.println("a");`
-      >
-      > `}`
+      > ```java
+      > Integer x = 1;   // int x = 1; is valid.
+      > switch(x) {
+      > case 'a' : System.out.println("a");
+      > }
+      > ```
 
     - [ ] switch expression of type float and case label value of type int.
 
@@ -452,30 +451,36 @@ tags:
 
       > This will not work in all cases because a byte may have negative values which cannot be assigned to a char. For example, `char ch = -1;` does not compile. Therefore, the following does not compile either:
       >
+      > ```java
       > char ch = 'x';
-      >
       > switch (ch) {
-      >
-      > ​	case -1 : System.out.println("-1"); break; // This will not compile: "**possible loss of precision**"
-      >
-      > ​	default:  System.out.println("default");
-      >
+      > 	case -1 : System.out.println("-1"); break; // This will not compile: possible loss of precision
+      > 	default:  System.out.println("default");
       > }
+      > ```
 
     - [ ] switch expression of type boolean and case label value of type boolean.
 
     You should remember the following rules for a switch statement:
 
     1. Only `String`, `byte`, `char`, `short`, `int`, and `enum` values can be used as types of a switch variable. (String is allowed since Java 7.) Wrapper classes `Byte`, `Character`, `Short`, and `Integer` are allowed as well.
+
     2. The case constants must be assignable to the switch variable. For example, if your switch variable is of class String, your case labels must use Strings as well.
-    3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char, then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535. Similarly, the following will not compile because 300 cannot be assigned to 'by', which can only hold values from -128 to 127.
-    byte by = 10;
-    switch(by){
-        case 200 :  //some code;
-        case 300 :  //some code;
-    }
+
+    3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type `char`, then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535. Similarly, the following will not compile because 300 cannot be assigned to 'by', which can only hold values from -128 to 127.
+
+      ```java
+      byte by = 10;
+      switch(by){
+       case 200 :  //some code;
+       case 300 :  //some code;
+      }
+      ```
+
     4. All case labels should be **COMPILE TIME CONSTANTS**.
+
     5. No two of the case constant expressions associated with a switch statement may have the same value.
+
     6. At most one default label may be associated with the same switch statement.
 
 20. Consider the following code:
@@ -498,7 +503,7 @@ tags:
     - [ ] It will throw an exception at runtime.
     - [ ] None of the above.
 
-    Actually it prints -46. This is because the information was lost during the conversion from type int to type float as values of type float are not precise to nine significant digits.
+    Actually it prints -46. This is because the information was lost during the conversion from type int to type `float` as values of type `float` are not precise to nine significant digits.
     Note: **You are not required to know the number of significant digits that can be stored by a float for the exam. However, it is good to know about loss of precision while using float and double.**
 
 21. Which of the following statements are true? (You had to select 2 option(s))
@@ -521,22 +526,26 @@ tags:
 
     - [x] A final variable can be hidden in a subclass.
 
-      > If the class declares a field with a certain name, then the declaration of that field is said to hide any and all accessible declarations of fields with the same name in superclasses, and superinterfaces of the class.
-      > For example,
-      > class Base{
-      >    int i=10;
-      > }
-      > class Sub extends Base{
-      >   int i=20; //This i hides Base's i.   
-      > }
-      > ...
-      > Sub s = new Sub();
-      > int k = s.i; //assigns 20 to k.
-      >
-      > k = ((Base)s).i;//assigns 10 to k. The cast is used to show the Base's i.
-      >
-      > Base b = new Sub();
-      > k = b.i;//assigns 10 to k because which field is accessed depends on the class of the variable and not on the class of the actual object. Same rule applies to static methods but the opposite is true for instance methods.
+    If the class declares a field with a certain name, then the declaration of that field is said to hide any and all accessible declarations of fields with the same name in superclasses, and superinterfaces of the class.
+    For example,
+
+    ```java
+    class Base{
+    int i=10;
+    }
+    class Sub extends Base{
+    int i=20; //This i hides Base's i.   
+    }
+    ...
+    Sub s = new Sub();
+    int k = s.i; //assigns 20 to k.
+    
+    k = ((Base)s).i;//assigns 10 to k. The cast is used to show the Base's i.
+    
+    Base b = new Sub();
+    ```
+
+    `k = b.i;//assigns 10 to k` because which field is accessed depends on the class of the variable and not on the class of the actual object. Same rule applies to static methods but the opposite is true for instance methods.
 
     final keyword when applied to a class means the class cannot be subclassed, when applied to a method means the method cannot be overridden (it can be overloaded though) and when applied to a variable means that the variable is a constant.
 
@@ -588,7 +597,8 @@ tags:
        The parameter type and return type of the methods of `DateTimeFormatter` class is the base interface `TemporalAccessor` instead of concrete classes such as `LocalDate` or `LocalDateTime`. So you shouldn't directly cast the returned values to concrete classes like this -
 
        ```java
-       LocalDate d2 = (LocalDate) DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"); //will compile but may or may not throw a ClassCastException at runtime.
+       LocalDate d2 = (LocalDate) DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"); 
+       //will compile but may or may not throw a ClassCastException at runtime.
        ```
 
        You should do like this -
@@ -597,8 +607,6 @@ tags:
        LocalDate d2 = 
            LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"));
        ```
-
-       
 
     5. Besides dates, `java.time` package also provides Period and Duration classes. Period is used for quantity or amount of time in terms of years, months and days, while Duration is used for quantity or amount of time in terms of hour, minute, and seconds.
 
