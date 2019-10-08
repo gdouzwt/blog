@@ -222,6 +222,8 @@ tags:
 
    - [x] abstract public void add() throws Exception;
 
+   ---
+
 9. Which of the following are correct about `java.util.function.Predicate` ?
 
    - [ ] It is an interface that has only one abstract method (among other non-abstract methods) with the signature - `public void test(T t);`
@@ -304,7 +306,7 @@ tags:
 
       > `private` method cannot be `abstract`. A `private` method is not inherited so how can a subclass implement it?
 
-    ---
+   ---
 
 11. Which of the following statements is/are true? (You had to select 1 option)
 
@@ -326,7 +328,7 @@ tags:
 
       > Interface cannot "implement" another interfaces. It can extend multiple interfaces. The following is a valid declaration `interface I1 extends I2, I3, I4 {}`。 **记得了，接口是不可以实现其它接口的，但是可以实现多个接口。**
 
-    ---
+   ---
 
 12. Which of the following statements regarding 'break' and 'continue' are true? (You had to select 1 option) **(Using Loop Constructs)** 这题选错了，注意。
 
@@ -350,7 +352,7 @@ tags:
 
     A continue statement with label Identifier attempts to transfer control to the enclosing labelled statement that has the same Identifier as its label; that statement, which is called the continue target, then immediately ends the current iteration and begins a new one. The continue target must be a while, do, or for statement or a compile-time error occurs. If no labelled statement with Identifier as its label contains the continue statement, a compile-time error occurs.
 
-    ---
+   ---
 
 13. What class of objects can be declared by the throws clause? **(Handling Exceptions)**
 
@@ -362,7 +364,7 @@ tags:
 
     You can declare anything that is a `Throwable` or a subclass of `Throwable`, in the `throws` clause.
 
-    ---
+   ---
 
 14. Identify the valid members of Boolean class.
 
@@ -396,7 +398,7 @@ tags:
 
     3. When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`.
 
-    ---
+   ---
 
 15. **(Working with Inheritance)** A method with no access modifier defined in a class can be overridden by a method marked protected (assuming that it is not final) in the sub class. (You had to select 1 option)
 
@@ -405,7 +407,7 @@ tags:
 
     An overriding method is allowed to make the overridden method more accessible, and since protected is more accessible than default (package), this is allowed. Note that protected access will allow access to the subclass even if the subclass is in a different package but package access will not.
 
-    ---
+   ---
 
 16. Which of the following are NOT valid operators in Java? **(Using Operators and Decision Constructs)**
 
@@ -429,7 +431,7 @@ tags:
 
       > `boolean equals(Object o)` is a method in `java.lang.Object.` It is not an operator.
 
-    ---
+   ---
 
 17. Which of these statements are true?
 
@@ -453,7 +455,7 @@ tags:
 
     Constructors need not initialize **all** the member variables of the class. A non-final member(i.e. an instance) variable will be assigned a default value if not explicitly initialized.
 
-    ---
+   ---
 
 18. Which of these statements are true? (You had to select 2 option(s)) **(Working with Inheritance)**
 
@@ -473,7 +475,7 @@ tags:
 
     Note that calling `super();` will not always work because if the super class has defined a constructor with arguments and has not defined a no args constructor then no args constructor will not be provided by the compiler. It is provided only to the class that does not define ANY constructor explicitly.
 
-    ---
+   ---
 
 19. Which of these combinations of switch expression types and case label value types are legal within a switch statement? (You had to select 1 option(s)) **(Using Operators and Decision Constructs)**
 
@@ -528,7 +530,7 @@ tags:
 
     6. At most one default label may be associated with the same switch statement.
 
-    ---
+   ---
 
 20. Consider the following code:
 
@@ -553,7 +555,7 @@ tags:
     Actually it prints -46. This is because the information was lost during the conversion from type int to type `float` as values of type `float` are not precise to nine significant digits.
     Note: **You are not required to know the number of significant digits that can be stored by a float for the exam. However, it is good to know about loss of precision while using float and double.**
 
-    ---
+   ---
 
 21. Which of the following statements are true? (You had to select 2 option(s))
 
@@ -598,7 +600,7 @@ tags:
 
     `final` keyword when applied to a class means the class cannot be subclassed, when applied to a method means the method cannot be overridden (it can be overloaded though) and when applied to a variable means that the variable is a constant.
 
-    ---
+   ---
 
 22. **(Working with Java API - Time and Date)** Identify the correct statements.
 
@@ -665,7 +667,7 @@ tags:
 
        For example, consider adding a period of one day and a duration of one day to 18:00 on the evening before a daylight savings gap. The Period will add the conceptual day and result in a `ZonedDateTime` at 18:00 the following day. By contrast, the Duration will add exactly 24 hours, resulting in a `ZonedDateTime` at 19:00 the following day (assuming a one hour DST gap).
 
-    ---
+   ---
 
 23. **(Q 40 of 69 Working with Java API - Time and Date)** Which of the following are true regarding the new Date-Time API of Java 8? (You had to select 2 option(s))
 
