@@ -359,7 +359,7 @@ tags:
 
        `Boolean.valueOf(String )` and its overloaded `Boolean.valueOf(boolean )` version, on the other hand, work similarly but return a reference to either `Boolean.TRUE` or `Boolean.FALSE` wrapper objects. Observe that they don't create a new Boolean object but just return the static constants `TRUE` or `FALSE` defined in `Boolean` class.
 
-    3. When you use the equality operator ( == ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`.
+    3. When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`.
 
 15. **(Working with Inheritance)** A method with no access modifier defined in a class can be overridden by a method marked protected (assuming that it is not final) in the sub class. (You had to select 1 option)
 
@@ -391,6 +391,156 @@ tags:
       > `boolean equals(Object o)` is a method in `java.lang.Object.` It is not an operator.
 
 17. Which of these statements are true?
+
+    - [ ] All classes must explicitly define a constructor
+
+      > A default no args one will be provided if not defined any.
+
+    - [x] A constructor can be declared private.
+
+      > **This feature is used for implementing Singleton Classes.** 单例模式，要可以手写。
+
+    - [ ] A constructor can declare a return value.
+
+    - [ ] A constructor must initialize all the member variables of a class.
+
+      > All non-final instance variables get default values if not explicitly initialized.
+
+    - [x] A constructor can access the non-static members of a class.
+
+      > A constructor is non-static, and so it can access directly both the static and non-static members of the class.
+
+    Constructors need not initialize **all** the member variables of the class. A non-final member(i.e. an instance) variable will be assigned a default value if not explicitly initialized.
+
+18. Which of these statements are true? (You had to select 2 option(s)) **(Working with Inheritance)**
+
+    - [ ] A `super(<appropriate list of arguments>)` or `this(<appropriate list of arguments>)` call must always be provided explicitly as the first statement in the body of the constructor.
+
+      > `super();` is automatically added if the sub class constructor doesn't call any of the super class's constructors.
+
+    - [x] If a subclass does not have any declared constructors, the implicit default constructor of the subclass will have a call to `super()`.
+
+    - [ ] If neither `super()` or `this()` id declared as the first statement of the body of a constructor, then `this()` will implicitly be inserted as the first statement.
+
+      > `super()` is added and not `this()`
+
+    - [ ] `super(<appropriate list of arguments>)` can only be called in the first line of the constructor but `this(<appropriate list of arguments>)` can be called from anywhere.
+
+    - [x] You can either call `super(<appropriate list of arguments>)` or `this(<appropriate list of arguments>)` but not both from a constructor.
+
+    Note that calling `super();` will not always work because if the super class has defined a constructor with arguments and has not defined a no args constructor then no args constructor will not be provided by the compiler. It is provided only to the class that does not define ANY constructor explicitly.
+
+19. Which of these combinations of switch expression types and case label value types are legal within a switch statement? (You had to select 1 option(s)) **(Using Operators and Decision Constructs)**
+
+    - [x] switch expression of type int and case label value of type char.
+
+      > Note that the following is invalid though because a char cannot be assigned to an Integer.
+      >
+      > `Integer x = 1;   // int x = 1; is valid.`
+      >
+      > `switch(x) {`
+      >
+      > ​	`case 'a' : System.out.println("a");`
+      >
+      > `}`
+
+    - [ ] switch expression of type float and case label value of type int.
+
+    - [ ] switch expression of type byte and case label value of type float.
+
+    - [ ] switch expression of type char and case label value of type byte.
+
+      > This will not work in all cases because a byte may have negative values which cannot be assigned to a char. For example, `char ch = -1;` does not compile. Therefore, the following does not compile either:
+      >
+      > char ch = 'x';
+      >
+      > switch (ch) {
+      >
+      > ​	case -1 : System.out.println("-1"); break; // This will not compile: "**possible loss of precision**"
+      >
+      > ​	default:  System.out.println("default");
+      >
+      > }
+
+    - [ ] switch expression of type boolean and case label value of type boolean.
+
+    You should remember the following rules for a switch statement:
+
+    1. Only `String`, `byte`, `char`, `short`, `int`, and `enum` values can be used as types of a switch variable. (String is allowed since Java 7.) Wrapper classes `Byte`, `Character`, `Short`, and `Integer` are allowed as well.
+    2. The case constants must be assignable to the switch variable. For example, if your switch variable is of class String, your case labels must use Strings as well.
+    3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char, then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535. Similarly, the following will not compile because 300 cannot be assigned to 'by', which can only hold values from -128 to 127.
+    byte by = 10;
+    switch(by){
+        case 200 :  //some code;
+        case 300 :  //some code;
+    }
+    4. All case labels should be **COMPILE TIME CONSTANTS**.
+    5. No two of the case constant expressions associated with a switch statement may have the same value.
+    6. At most one default label may be associated with the same switch statement.
+
+20. Consider the following code:
+
+    ```java
+    public class Conversion {
+    	public static void main(String[] args) {
+    		int i = 1234567890;
+    		float f = i;
+    		System.out.println( i - (int)f);
+    	}
+    }
+    ```
+
+    What will it print when run?
+
+    - [ ] It will print 0.
+    - [x] It will not print 0.
+    - [ ] It will not compile.
+    - [ ] It will throw an exception at runtime.
+    - [ ] None of the above.
+
+    Actually it prints -46. This is because the information was lost during the conversion from type int to type float as values of type float are not precise to nine significant digits.
+    Note: **You are not required to know the number of significant digits that can be stored by a float for the exam. However, it is good to know about loss of precision while using float and double.**
+
+21. Which of the following statements are true? (You had to select 2 option(s))
+
+    - [ ] private keyword can never be applied to a class.
+
+      > private, protected and public can be applied to nested class.
+      >
+      > Although not too important for the exam, you should still know the following terminology: A top level class is a class that is not a nested class. A nested class is any class whose declaration occurs within the body of another class or interface.
+
+    - [x] synchronized keyword can never be applied to a class.
+
+    - [ ] synchronized keyword may be applied to a non-primitive variable.
+
+      > It can only be applied to a method or a block.
+
+    - [ ] final keyword can never be applied to a class.
+
+      > It can be applied to class, variable and methods.
+
+    - [x] A final variable can be hidden in a subclass.
+
+      > If the class declares a field with a certain name, then the declaration of that field is said to hide any and all accessible declarations of fields with the same name in superclasses, and superinterfaces of the class.
+      > For example,
+      > class Base{
+      >    int i=10;
+      > }
+      > class Sub extends Base{
+      >   int i=20; //This i hides Base's i.   
+      > }
+      > ...
+      > Sub s = new Sub();
+      > int k = s.i; //assigns 20 to k.
+      >
+      > k = ((Base)s).i;//assigns 10 to k. The cast is used to show the Base's i.
+      >
+      > Base b = new Sub();
+      > k = b.i;//assigns 10 to k because which field is accessed depends on the class of the variable and not on the class of the actual object. Same rule applies to static methods but the opposite is true for instance methods.
+
+    final keyword when applied to a class means the class cannot be subclassed, when applied to a method means the method cannot be overridden (it can be overloaded though) and when applied to a variable means that the variable is a constant.
+
+22. 
 
 #### 读 API 文档
 

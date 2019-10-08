@@ -170,7 +170,7 @@ a:focus {
 }
 a img:hover,
 a img:focus {
-  cursor: zoom-in;
+  cursor: pointer;
 }
 article {
   overflow-x: hidden;
@@ -586,7 +586,7 @@ pre code {
 }
 .intro-header .post-heading .meta {
   font-family: 'Lora', 'Times New Roman', serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 300;
   font-size: 18px;
 }
@@ -656,7 +656,7 @@ pre code {
 }
 .post-content-preview {
   font-size: 13px;
-  font-style: italic;
+  font-style: normal;
   color: #a3a3a3;
 }
 .post-content-preview:hover {
@@ -676,7 +676,7 @@ pre code {
   text-align: center;
   font-size: 14px;
   padding: 10px;
-  font-style: italic;
+  font-style: normal;
   margin: 0;
   display: block;
   border-bottom-right-radius: 5px;
