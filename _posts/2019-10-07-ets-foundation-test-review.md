@@ -556,15 +556,16 @@ tags:
     3. `LocalDate`, `LocalTime`, and `LocalDateTime` classes do not have any parent/child relationship among themselves. As their names imply, `LocalDate` contains just the date information and no time information, `LocalTime` contains only time and no date, while `LocalDateTime` contains date as well as time. None of them contains zone information. For that, you can use `ZonedDateTime`.
 
        These classes are immutable and have no public constructors. You create objects of these classes using their static factory methods such as of(...) and from(`TemporalAccessor` ).  For example,
-       `LocalDate ld = LocalDate.of(2015, Month.JANUARY, 1);` or `LocalDate ld = LocalDate.from(anotherDate);` or `LocalDateTime ldt = LocalDateTime.of(2015, Month.JANUARY, 1, 21, 10); //9.10 PM`
+
+       `LocalDate ld = LocalDate.of(2015, Month.JANUARY, 1);` 
+
+       or `LocalDate ld = LocalDate.from(anotherDate);` or 
+
+       `LocalDateTime ldt = LocalDateTime.of(2015, Month.JANUARY, 1, 21, 10); //9.10 PM`
 
        Since you can't modify them once created, if you want to create new object with some changes to the original, you can use the instance method named with(...). For example,
 
-       ```java
-       LocalDate sunday = ld.with(java.time.temporal.TemporalAdjusters.next(DayOfWeek.SUNDAY));
-       ```
-
-       
+       `LocalDate sunday = ld.with(java.time.temporal.TemporalAdjusters.next(DayOfWeek.SUNDAY));`
 
     4. Formatting of date objects into String and parsing of Strings into date objects is done by `java.time.format.DateTimeFormatter` class. This class provides public static references to readymade `DateTimeFormatter` objects through the fields named `ISO_DATE`, `ISO_LOCAL_DATE`, `ISO_LOCAL_DATE_TIME`, etc.  For example -
 
@@ -572,17 +573,11 @@ tags:
 
        The parameter type and return type of the methods of `DateTimeFormatter` class is the base interface `TemporalAccessor` instead of concrete classes such as `LocalDate` or `LocalDateTime`. So you shouldn't directly cast the returned values to concrete classes like this -
 
-       ```Java
-       LocalDate d2 = (LocalDate) DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"); //will compile but may or may not throw a `ClassCastException` at runtime.
-       ```
+       `LocalDate d2 = (LocalDate) DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"); //will compile but may or may not throw a ClassCastException at runtime.`
 
        You should do like this -
 
-       ```Java
-       LocalDate d2 = LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"));
-       ```
-
-       
+       `LocalDate d2 = LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"));`
 
     5. Besides dates, `java.time` package also provides Period and Duration classes. Period is used for quantity or amount of time in terms of years, months and days, while Duration is used for quantity or amount of time in terms of hour, minute, and seconds.
 
