@@ -577,6 +577,10 @@ tags:
     >
     >    For example, consider adding a period of one day and a duration of one day to 18:00 on the evening before a daylight savings gap. The Period will add the conceptual day and result in a `ZonedDateTime` at 18:00 the following day. By contrast, the Duration will add exactly 24 hours, resulting in a `ZonedDateTime` at 19:00 the following day (assuming a one hour DST gap).
 
+23. **(Q 40 of 69 Working with Java API - Time and Date)** Which of the following are true regarding the new Date-Time API of Java 8? (You had to select 2 option(s))
+
+    - [ ] It uses the calendar system defined in ISO-8601 as the default calendar.
+
 #### 读 API 文档
 
 ##### String
