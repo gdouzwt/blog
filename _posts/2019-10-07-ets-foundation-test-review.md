@@ -42,7 +42,7 @@ tags:
 
      > 当时选择了这个选项，因为看起来好像很有道理，而且描述全面。但现在仔细看看，说的是，在同一个包内，访问权限比 `protected` 更受限，这已经错了，同一个包内两个一样的。后面部分就不用看了，当时就没多想，这次知道了，下次就不会错了。 
 
-   ---
+    ---
 
 2. What can be the type of a `catch` argument? (Select the best option.) **(Handling Exceptions)**
 
@@ -58,7 +58,7 @@ tags:
 
    - [ ] Any class that extends `Error` 
 
-   ---
+    ---
 
 3. 记录一个关于重写的： An overriding method must have a same parameter list and the same return type as that of the overridden method. 翻译成中文就是，重写方法必须与被重写方法具有相同的参数列表和返回类型。
 
@@ -72,7 +72,7 @@ tags:
      >
      > 所以主要看返回值类型，重写必须参数列表相同才算重写，不然就是重载了。而在 Java 1.5 之前，重写方法的返回值必须与被重写方法返回值一致。不过从 Java 1.5 开始，重写方法的返回值类型可以是被重写方法返回值的任意子类，也称为 covariant return type（好像中文译为“**协变返回类型**”） 
 
-   ---
+    ---
 
 4. Which of the following statements are true?**(Working with Inheritance)** 选择两个正确的，当时选错了。
 
@@ -110,7 +110,7 @@ tags:
 
    这部分这有点意思，之前没有了解到。关于方法重写和重载，还有静态成员的知识。对于静态方法，子类中具有与父类相同方法签名的静态方法，不叫重写，叫隐藏，因为多态的概念不适用于静态成员。 
 
-   ---
+    ---
 
 5. Given: **(Working with Methods)**
 
@@ -160,7 +160,7 @@ tags:
    Where `SubAccessTester` is a subclass of `AccessTester` - 
    `class SubAccessTester extends AccessTester {}` 
 
-   ---
+    ---
 
 6. Which of these statements concerning the use of modifiers are true? **(Java Basics)**
 
@@ -190,7 +190,7 @@ tags:
 
    这些很经典的基础，关键词的运用，必须熟记。 
 
-   ---
+    ---
 
 7. An abstract method cannot be overridden. **(Working with inheritance)**
 
@@ -199,7 +199,7 @@ tags:
 
    Abstract methods are meant to be overridden in the subclass. Abstract methods describe a behavior but do not implement it. So the subclasses have to override it to actually implement the behavior. A subclass may chose to override it, in which case, the subclass will **have to be abstract too**. 
 
-   ---
+    ---
 
 8. What is the correct declaration for an abstract method 'add' in a class that is accessible to any class, takes no arguments and returns nothing? (You had to select 1 option)
 
@@ -221,7 +221,7 @@ tags:
 
    - [x] abstract public void add() throws Exception; 
 
-   ---
+    ---
 
 9. Which of the following are correct about `java.util.function.Predicate` ?
 
@@ -237,7 +237,7 @@ tags:
    interface CheckEmployee {
    	boolean check(Employee e);
    }
-   ...
+    ...
    //write a method that filters Employees based on given criteria.
    public void filterEmployees(ArrayList<Employee> dataList, CheckEmployee p) {
        Iterator<Employee> i = dataList.iterator();
@@ -287,7 +287,7 @@ tags:
 
    The benefit with `Predicate` is that you don't have to write it, It is already there in the standard java library. 
 
-   ---
+    ---
 
 10. Which of the following are valid declarations in a class? (You had to select 1 option) **(Working with Inheritance)**
 
