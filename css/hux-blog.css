@@ -202,6 +202,9 @@ ul.task-list {
 ul.task-list li.task-list-item {
   list-style-type: none;
 }
+input.task-list-item-checkbot {
+  margin: 4px;
+}
 select {
   -webkit-appearance: none;
   margin-top: 15px;
