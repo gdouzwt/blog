@@ -202,7 +202,7 @@ ul.task-list {
 ul.task-list li.task-list-item {
   list-style-type: none;
 }
-input.task-list-item-checkbot {
+input.task-list-item-checkbox {
   margin: 4px;
 }
 select {
