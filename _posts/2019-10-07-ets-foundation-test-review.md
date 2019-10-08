@@ -42,7 +42,7 @@ tags:
 
      > 当时选择了这个选项，因为看起来好像很有道理，而且描述全面。但现在仔细看看，说的是，在同一个包内，访问权限比 `protected` 更受限，这已经错了，同一个包内两个一样的。后面部分就不用看了，当时就没多想，这次知道了，下次就不会错了。
 
-   ---
+---
 
 2. What can be the type of a `catch` argument? (Select the best option.) **(Handling Exceptions)**
 
@@ -58,7 +58,7 @@ tags:
 
    - [ ] Any class that extends `Error`
 
-   ---
+---
 
 3. 记录一个关于重写的： An overriding method must have a same parameter list and the same return type as that of the overridden method. 翻译成中文就是，重写方法必须与被重写方法具有相同的参数列表和返回类型。
 
@@ -72,7 +72,7 @@ tags:
      >
      > 所以主要看返回值类型，重写必须参数列表相同才算重写，不然就是重载了。而在 Java 1.5 之前，重写方法的返回值必须与被重写方法返回值一致。不过从 Java 1.5 开始，重写方法的返回值类型可以是被重写方法返回值的任意子类，也称为 covariant return type（好像中文译为“**协变返回类型**”）
 
-   ---
+---
 
 4. Which of the following statements are true?**(Working with Inheritance)** 选择两个正确的，当时选错了。
 
@@ -110,7 +110,7 @@ tags:
 
    这部分这有点意思，之前没有了解到。关于方法重写和重载，还有静态成员的知识。对于静态方法，子类中具有与父类相同方法签名的静态方法，不叫重写，叫隐藏，因为多态的概念不适用于静态成员。
 
-   ---
+---
 
 5. Given: **(Working with Methods)**
 
@@ -161,7 +161,7 @@ tags:
 
    `class SubAccessTester extends AccessTester {}`
 
-   ---
+---
 
 6. Which of these statements concerning the use of modifiers are true? **(Java Basics)**
 
@@ -191,7 +191,7 @@ tags:
 
    这些很经典的基础，关键词的运用，必须熟记。
 
-   ---
+---
 
 7. An abstract method cannot be overridden. **(Working with inheritance)**
 
@@ -200,7 +200,7 @@ tags:
 
    Abstract methods are meant to be overridden in the subclass. Abstract methods describe a behavior but do not implement it. So the subclasses have to override it to actually implement the behavior. A subclass may chose to override it, in which case, the subclass will **have to be abstract too**.
 
-   ---
+---
 
 8. What is the correct declaration for an abstract method 'add' in a class that is accessible to any class, takes no arguments and returns nothing? (You had to select 1 option)
 
@@ -286,7 +286,7 @@ tags:
 
    The benefit with `Predicate` is that you don't have to write it, It is already there in the standard java library.
 
-   ---
+---
 
 10. Which of the following are valid declarations in a class? (You had to select 1 option) **(Working with Inheritance)**
 
@@ -304,7 +304,7 @@ tags:
 
       > `private` method cannot be `abstract`. A `private` method is not inherited so how can a subclass implement it?
 
-    ---
+---
 
 11. Which of the following statements is/are true? (You had to select 1 option)
 
@@ -326,7 +326,7 @@ tags:
 
       > Interface cannot "implement" another interfaces. It can extend multiple interfaces. The following is a valid declaration `interface I1 extends I2, I3, I4 {}`。 **记得了，接口是不可以实现其它接口的，但是可以实现多个接口。**
 
-    ---
+---
 
 12. Which of the following statements regarding 'break' and 'continue' are true? (You had to select 1 option) **(Using Loop Constructs)** 这题选错了，注意。
 
@@ -350,7 +350,7 @@ tags:
 
     A continue statement with label Identifier attempts to transfer control to the enclosing labelled statement that has the same Identifier as its label; that statement, which is called the continue target, then immediately ends the current iteration and begins a new one. The continue target must be a while, do, or for statement or a compile-time error occurs. If no labelled statement with Identifier as its label contains the continue statement, a compile-time error occurs.
 
-    ---
+---
 
 13. What class of objects can be declared by the throws clause? **(Handling Exceptions)**
 
@@ -362,7 +362,7 @@ tags:
 
     You can declare anything that is a `Throwable` or a subclass of `Throwable`, in the `throws` clause.
 
-    ---
+---
 
 14. Identify the valid members of Boolean class.
 
@@ -396,7 +396,7 @@ tags:
 
     3. When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`.
 
-    ---
+---
 
 15. **(Working with Inheritance)** A method with no access modifier defined in a class can be overridden by a method marked protected (assuming that it is not final) in the sub class. (You had to select 1 option)
 
@@ -405,7 +405,7 @@ tags:
 
     An overriding method is allowed to make the overridden method more accessible, and since protected is more accessible than default (package), this is allowed. Note that protected access will allow access to the subclass even if the subclass is in a different package but package access will not.
 
-    ---
+---
 
 16. Which of the following are NOT valid operators in Java? **(Using Operators and Decision Constructs)**
 
@@ -429,7 +429,7 @@ tags:
 
       > `boolean equals(Object o)` is a method in `java.lang.Object.` It is not an operator.
 
-    ---
+---
 
 17. Which of these statements are true?
 
@@ -453,7 +453,7 @@ tags:
 
     Constructors need not initialize **all** the member variables of the class. A non-final member(i.e. an instance) variable will be assigned a default value if not explicitly initialized.
 
-    ---
+---
 
 18. Which of these statements are true? (You had to select 2 option(s)) **(Working with Inheritance)**
 
@@ -473,7 +473,7 @@ tags:
 
     Note that calling `super();` will not always work because if the super class has defined a constructor with arguments and has not defined a no args constructor then no args constructor will not be provided by the compiler. It is provided only to the class that does not define ANY constructor explicitly.
 
-    ---
+---
 
 19. Which of these combinations of switch expression types and case label value types are legal within a switch statement? (You had to select 1 option(s)) **(Using Operators and Decision Constructs)**
 
@@ -528,7 +528,7 @@ tags:
 
     6. At most one default label may be associated with the same switch statement.
 
-    ---
+---
 
 20. Consider the following code:
 
@@ -553,7 +553,7 @@ tags:
     Actually it prints -46. This is because the information was lost during the conversion from type int to type `float` as values of type `float` are not precise to nine significant digits.
     Note: **You are not required to know the number of significant digits that can be stored by a float for the exam. However, it is good to know about loss of precision while using float and double.**
 
-    ---
+---
 
 21. Which of the following statements are true? (You had to select 2 option(s))
 
@@ -598,7 +598,7 @@ tags:
 
     `final` keyword when applied to a class means the class cannot be subclassed, when applied to a method means the method cannot be overridden (it can be overloaded though) and when applied to a variable means that the variable is a constant.
 
-    ---
+---
 
 22. **(Working with Java API - Time and Date)** Identify the correct statements.
 
@@ -665,7 +665,7 @@ tags:
 
        For example, consider adding a period of one day and a duration of one day to 18:00 on the evening before a daylight savings gap. The Period will add the conceptual day and result in a `ZonedDateTime` at 18:00 the following day. By contrast, the Duration will add exactly 24 hours, resulting in a `ZonedDateTime` at 19:00 the following day (assuming a one hour DST gap).
 
-    ---
+---
 
 23. **(Q 40 of 69 Working with Java API - Time and Date)** Which of the following are true regarding the new Date-Time API of Java 8? (You had to select 2 option(s))
 
