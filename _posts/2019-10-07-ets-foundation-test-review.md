@@ -469,13 +469,13 @@ tags:
 
     3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type `char`, then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535. Similarly, the following will not compile because 300 cannot be assigned to 'by', which can only hold values from -128 to 127.
 
-      ```java
-      byte by = 10;
-      switch(by){
-       case 200 :  //some code;
-       case 300 :  //some code;
-      }
-      ```
+          ```java
+          byte by = 10;
+          switch(by){
+              case 200 :  //some code;
+              case 300 :  //some code;
+          }
+          ```
 
     4. All case labels should be **COMPILE TIME CONSTANTS**.
 
