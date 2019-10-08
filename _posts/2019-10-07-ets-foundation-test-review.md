@@ -370,11 +370,9 @@ tags:
     - [x] `parseBoolean(String)` 
     - [x] `valueOf(boolean)` 
     - [ ] `parseBoolean(boolean)` 
-    - [x] `FALSE` 
-      
+    - [x] `FALSE`       
       > `TRUE` and `FALSE` are valid static members of `Boolean` class. 
-    - [ ] `Boolean(Boolean)` 
-      
+    - [ ] `Boolean(Boolean)`       
       > There is no constructor that takes a `Boolean`. 
 
     **You need to remember the following points about Boolean:** 
