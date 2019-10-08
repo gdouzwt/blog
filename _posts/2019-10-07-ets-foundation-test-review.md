@@ -1,4 +1,5 @@
 ---
+typora-root-url: ../
 layout:     post
 title:      EST 基础测试回顾
 date:       '2019-10-07'
