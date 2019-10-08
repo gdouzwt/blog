@@ -197,6 +197,7 @@ img.shadow {
 }
 ul.task-list {
   list-style-type: none;
+  padding: 0;
 }
 ul.task-list li.task-list-item {
   list-style-type: none;
