@@ -2,7 +2,7 @@
 layout:     post
 title:      关于OCA的一些想法
 date:       '2019-09-25 23:40:36'
-subtitle:   要啥自行车呢？
+subtitle:   为什么要考OCA
 author:     招文桃
 catalog:    true
 tags:
