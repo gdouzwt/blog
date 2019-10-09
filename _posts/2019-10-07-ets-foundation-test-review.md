@@ -661,12 +661,12 @@ tags:
 
 23. **(Q 40 of 69 Working with Java API - Time and Date)** Which of the following are true regarding the new Date-Time API of Java 8? (You had to select 2 option(s))
 
-    - [ ] It uses the calendar system defined in ISO-8601 as the default calendar.
+    - [x] It uses the calendar system defined in ISO-8601 as the default calendar.
       > This calendar is based on the Gregorian calendar system and is used globally as the defacto standard for representing date and time. The core classes in the Date-Time API have names such as `LocalDateTime`, `ZonedDateTime`, and `OffsetDateTime`. All of these use the ISO calendar system. 
       > 
       > If you want to use an alternative calendar system, such as Hijrah or Thai Buddhist, the java.time.chrono package allows you to use one of the predefined calendar systems. Or you can create your own. 
     
-    - [ ] Most of the actual date related classes in the Date-Time API such as `LocalDate`, `LocalTime`, and `LocalDateTime` are immutable.
+    - [x] Most of the actual date related classes in the Date-Time API such as `LocalDate`, `LocalTime`, and `LocalDateTime` are immutable.
       > These classes do not have any setters. Once created you cannot change their contents. Even their constructors are **private**.
 
     - [ ] `LocalDateTime` includes time zone information but `LocalDate` does not.
