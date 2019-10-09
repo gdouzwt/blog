@@ -1,4 +1,5 @@
 ---
+typora-root-url: ../
 layout:     post
 title:      编译器构造—编译
 subtitle:   第一章
