@@ -19,7 +19,7 @@ tags:
 
 ![foundation-test](/img/foundation-test.png)
 
-按照考试的主题（或者说考点）来看的话，Java Basics 正确率 6/7。然后，OO Concepts 过关的，Java Data Types 部分就只对了 3 题，有点危险。基础测试没有涉及到垃圾回收的内容，但是真正考试应该会有的，而且现在工作要求也肯定会问，需要了解的。关于操作符和条件判断结构居然也只有对了 6 个题，看起来真的有点 tricky。接下来的数组、循环结构和构造方法这些考点感觉还过得去的样子。 关于方法的使用居然有点不稳，要搞清楚了，可能需要翻译 coderanch 的文章加深一下理解。这次没有设计方法重载的题目，然而关于继承的理解，可能还不够深，要看看编程思想了。`instanceof` 没有考到，异常处理需要加强。最基本的 `String`， 以及相关的类要烂熟了，至少 API 文档过一遍。最后 Java 8 新的时间日期 API 还没有了解，这一次就新的旧的都看一遍吧，所以今天是要看完错题，找出对应的知识点，考点，然后读 API 文档。 
+按照考试的主题（或者说考点）来看的话，Java Basics 正确率 6/7。然后，OO Concepts 过关的，Java Data Types 部分就只对了 3 题，有点危险。基础测试没有涉及到垃圾回收的内容，但是真正考试应该会有的，而且现在工作要求也肯定会问，需要了解的。关于操作符和条件判断结构居然也只有对了 6 个题，看起来真的有点 tricky。接下来的数组、循环结构和构造方法这些考点感觉还过得去的样子。 关于方法的使用居然有点不稳，要搞清楚了，可能需要翻译 Coderanch 的文章加深一下理解。这次没有涉及方法重载的题目，然而关于继承的理解，可能还不够深，要看看编程思想了。`instanceof`在继承相关主题没有考到，但在操作符题目里出现了，异常处理方面需要加强。最基本的 `String`， 以及相关的类要烂熟了，至少 API 文档过一遍。最后 Java 8 新的时间日期 API 还没有了解，这一次就新的旧的都看一遍吧，所以今天是要看完错题，找出对应的知识点，考点，然后读 API 文档。 
 
 ### 接下来做什么 
 
@@ -294,17 +294,17 @@ tags:
 
 10. Which of the following are valid declarations in a class? (You had to select 1 option) **(Working with Inheritance)** 
 
-    - [x] abstract int absMethod(int param) throws Exception; 
+    - [x] `abstract int absMethod(int param) throws Exception;` 
 
-    - [ ] abstract native int absMethod(int param) throws Exception; 
+    - [ ] `abstract native int absMethod(int param) throws Exception;` 
 
       > `native` method cannot be `abstract` 
 
-    - [ ] float native getVariance() throws Exception; 
+    - [ ] `float native getVariance() throws Exception;` 
 
       > return type should always be on the immediate left of the method name. 
 
-    - [ ] abstract private int absMethod(int param) throws Exception; 
+    - [ ] `abstract private int absMethod(int param) throws Exception;` 
 
       > `private` method cannot be `abstract`. A `private` method is not inherited so how can a subclass implement it? 
 
@@ -650,7 +650,7 @@ tags:
 
     5. Besides dates, `java.time` package also provides `Period` and `Duration` classes. `Period` is used for quantity or amount of time in terms of years, months and days, while `Duration` is used for quantity or amount of time in terms of hour, minute, and seconds. 
 
-       Durations and periods differ in their treatment of daylight savings time when added to `ZonedDateTime`. A `Duration` will add an exact number of seconds, thus a duration of one day is always exactly 24 hours. By contrast, a Period will add a conceptual day, trying to maintain the local time. 
+       Durations and periods differ in their treatment of daylight savings time when added to `ZonedDateTime`. A `Duration` will add an exact number of seconds, thus a duration of one day is always exactly 24 hours. By contrast, a `Period` will add a conceptual day, trying to maintain the local time. 
 
        For example, consider adding a period of one day and a duration of one day to 18:00 on the evening before a daylight savings gap. The Period will add the conceptual day and result in a `ZonedDateTime` at 18:00 the following day. By contrast, the `Duration` will add exactly 24 hours, resulting in a `ZonedDateTime` at 19:00 the following day (assuming a one hour DST gap). 
 
