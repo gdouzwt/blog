@@ -247,7 +247,8 @@ pre code {
   margin-bottom: 15px;
 }
 .post-container a {
-  color: #337ab7;
+  color: #339ef9;
+  word-break: break-all;
 }
 .post-container a:hover,
 .post-container a:focus {
