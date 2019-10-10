@@ -699,6 +699,7 @@ tags:
     --- 
 
 24. Which of the following statements concerning the switch construct are true? (You had to select 3 option(s)) 
+
     - [x] A character literal can be used as a value for a case label.
       > `boolean`, `long`, `float` and `double` cannot be used. 
 
@@ -722,15 +723,298 @@ tags:
 
     --- 
 
-25. 
+25. How can you declare a method someMethod() such that an instance of the class is not needed to access it and all the members of the same package have access to it. 
 
+    - [x] public static void someMethod() 
 
+    - [x] static void someMethod() 
 
-#### 读 API 文档
+    - [x] protected static void someMethod() 
 
-##### String
+    - [ ] void someMethod() 
 
-##### StringBuilder
+    - [ ] protected void someMethod() 
 
-##### StringBuffer
+    - [ ] public abstract static void someMethod() 
+      > static methods can't be abstract. 
 
+    Since the question says, "...an instance of the class is not needed...", the method has to be static. 
+    Also, as the question does not say that other packages should not have access to the method so public or protected is also correct. 
+
+    --- 
+
+26. Objects of which of the following classes can be thrown using a throw statement? **(Handling Exceptions)** 
+
+    - [ ] Event 
+
+    - [ ] Object 
+
+    - [x] Throwable 
+
+    - [x] Exception 
+
+    - [x] RuntimeException 
+
+    You can only throw a Throwable using a throws clause. Exception and Error are two main subclasses of Throwable. 
+
+    --- 
+
+27. In which of these variable declarations, will the variable remain uninitialized unless explicitly initialized? (You had to select 1 option(s)) 
+
+    - [ ] Declaration of an instance variable of type int. 
+
+    - [ ] Declaration of a static class variable of type float. 
+
+    - [x] Declaration of a local variable of type float. 
+
+    - [ ] Declaration of a static class variable of class Object. 
+
+    - [ ] Declaration of an instance variable of class Object. 
+
+    We have to explicitly initialize local variables otherwise they remain uninitialized and it will be a compile time error if such variables are accessed without getting initialized first. 
+    Instance variables and static variables receive  a default value if not explicitly initialized. All primitive types get a defaults value equivalent to 0, that is, int to 0 and float to 0.0f and so on and boolean to false. 
+    The type/class of a variable does not affect whether a variable is initialized or not. 
+
+    --- 
+
+28. A try statement must always have a ............. associated with it. 
+
+    - [ ] catch 
+
+    - [ ] throws 
+
+    - [ ] finally 
+
+    - [x] catch, finally or both 
+
+    - [ ] throw 
+
+    A try without resources must have either a catch or a finally. It may have both as well. 
+    Thus, the following constructs are valid: 
+
+    1. 
+    ```java
+    try{
+    }
+    catch(Exception e){  }  // no finally 
+    ``` 
+
+    2. 
+    ```java
+    try{
+    }
+    finally{  }  // no catch 
+    ``` 
+
+    3. 
+    ```java
+    try{
+    } 
+    catch(Exception e) {  } 
+    finally{  } 
+    ``` 
+
+    4. A catch can catch multiple exceptions: 
+    ```java
+    try{
+    } 
+    catch(Exception1 | Exception2 | Exception3 e) {  } 
+    ``` 
+
+    Note: try with resources (which is not on this exam) may omit catch as well as finally blocks. 
+
+    --- 
+
+29. Which of the following classes should you use to represent just a date without any time or zone information? **(Working with Java API - Time and Date)** 
+
+    - [ ] java.util.Date 
+
+    - [ ] java.sql.Date 
+
+    - [ ] java.time.Date 
+
+    - [x] java.time.LocalDate 
+
+    Java 8 introduces a new package java.time to deal with dates. The old classes such as java.util.Date are not recommended anymore. 
+
+    Briefly: 
+    java.time Package: This is the base package of new Java Date Time API. All the commonly used classes such as LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration are part of this package. All of these classes are immutable and thread safe. 
+
+    java.time.format Package: This package contains classes used for formatting and parsing date time objects such as java.time.format.DateTimeFormatter. 
+
+    (The following two are not important for the exam.) 
+
+    java.time.zone Package: This package contains classes for supporting different time zones and their rules. 
+
+    java.time.chrono Package: This package defines generic APIs for non ISO calendar systems. We can extend AbstractChronology class to create our own calendar system. 
+
+    java.time.temporal Package: This package contains temporal objects and we can use it for find out specific date or time related to date/time object. For example, we can use these to find out the first or last day of the month. You can identify these methods easily because they always have format “withXXX”. 
+
+    --- 
+
+30. Consider the following variable declaration within the definition of an interface: 
+  `int i = 10;`
+Which of the following declarations defined in a non-abstract class, is equivalent to the above? (You had to select 1 option(s))) 
+
+    - [ ] public static int i = 10; 
+
+    - [ ] public final int i = 10; 
+
+    - [x] public static final int i = 10; 
+
+    - [ ] public int i = 10; 
+
+    - [ ] final int i = 10; 
+
+    Fields in an interface are implicitly public, static and final. Although you can put these words in the interface definition but it is not a good practice to do so. 
+
+    --- 
+
+31. Which of the following statements are true? (You had to select 2 option(s)) 
+
+    - [ ] The modulus operator % can only be used with integer operands. 
+      > It can be used on floating points operands also. For example, `5.5 % 3 = 2.5` 
+
+    - [x] & can have integral as well as boolean operands. 
+
+    - [x] The arithmetic operators *, / and % have the same level of precedence. 
+
+    - [ ] && can have integer as well as boolean operands. 
+      > !, && and || operate only on booleans. 
+
+    - [ ] ~ can have integer as well as boolean operands. 
+      > ~ Operates only on integral types. 
+
+    **Note :** 
+    integral types means byte, short, int, long, and, char 
+
+    As per Section 4.1 of JLS 8 - 
+
+    The integral types are byte, short, int, and long, whose values are 8-bit, 16-bit, 32-bit and 64-bit signed two's-complement integers, respectively, and char, whose values are 16-bit unsigned integers representing UTF-16 code units. 
+
+    --- 
+
+32. Which of the following statements are correct? (You had to select 3 option(s)) 
+
+    - [x] An abstract class can be extended by an abstract or a concrete class. 
+
+    - [x] A concrete class can be extended by an abstract class or a concrete class. 
+
+    - [x] An interface can be extended by another interface. 
+
+    - [ ] An interface can be extended by an abstract class. 
+      > A class "implements" an interface. It does not "extend" an interface. 
+
+    - [ ] An interface can be extended by a concrete class. 
+
+    - [ ] An abstract class cannot implement an interface. 
+      > Any class, whether abstract or concrete, can implement any interface. 
+
+    --- 
+
+33. Which statements concerning conversion are true? (You had to select 4 option(s)) 
+
+    - [x] Conversion from char to long does not need a cast. 
+
+    - [x] Conversion from byte to short does not need a case. 
+
+    - [x] Conversion from short to char needs a cast. 
+
+    - [ ] Conversion from int to float needs a cast. 
+      > It does not need a cast because a float can hold any value of int. Note that opposite is not true because of loss of precision. 
+
+    - [x] Conversion from byte, char, or short to int, long or float does not need a case. 
+      > Because int, long, or float are bigger than byte char or short. 
+
+    Think of it as transferring contents of one bucket into another. You can always transfer the contents of a smaller bucket to a bigger one. But the opposite is not always possible. You can transfer the contents of the bigger bucket into the smaller bucket only if the actual content in the bigger bucket can fit into the smaller one. Otherwise, it will spill. 
+
+    It is the same with integral types as well. byte is smaller than short or int. So you can assign a byte to an int (or an int to a float, or a float to a double) without any cast. But for the reverse you need to assure the compiler that the actual contents in my int will be smaller than a byte so let me assign this int to a byte. This is achieved by the cast. 
+
+    ```java
+    int i = 10; 
+    byte b = 20; 
+    b = i;//will not compile because byte is smaller than int 
+    b = (byte) i; //OK 
+    ``` 
+
+    Further, if you have a final variable and its value fits into a smaller type, then you can assign it without a cast because compiler already knows its value and realizes that it can fit into the smaller type. This is called implicit narrowing and is allowed between byte, int, char, and, short but not for long, float, and double. 
+
+    ```java
+    final int k = 10; 
+    b = k; //Okay because k is final and 10 fits into a byte 
+    final float f = 10.0;//will not compile because 10.0 is a double even though the value 10.0 fits into a float 
+    i = f;//will not compile. 
+    ``` 
+
+    --- 
+
+34. Which of the following statements are correct regarding a functional interface? (Lambda Expressions) 
+
+    - [ ] It has exactly one method and it must be abstract. 
+
+    - [ ] It has exactly one method and it may or may not be abstract. 
+
+    - [x] It must have exactly one abstract method and may have other default or static methods. 
+
+    - [ ] It must have exactly one static method and may have other default or abstract methods. 
+
+    A functional interface is an interface that contains exactly one abstract method. It may contain zero or more default methods and/or static methods. Because a functional interface contains exactly one abstract method, you can omit the name of that method when you implement it using a lambda expression. For example, consider the following interface - 
+
+    ```java
+    interface Predicate<T> {
+      boolean test(T t);
+    }
+    ``` 
+
+    The purpose of this interface is to provide a method that operates on an object of class T and return a boolean. 
+
+    You could have a method that takes an instance of class that implements this interface defined like this - 
+    ```java
+    public void printImportantData(ArrayList<Data> dataList, Predicate<Data> p){ 
+      for(Data d: dataList) { 
+        if(p.test(d)) System.out.println(d); 
+      } 
+    } 
+    ``` 
+
+    where Data class could be as simple as `public class Data { public int value;}` 
+
+    Now, you can call the above method as follows: 
+
+      `printImportantData(al, (Data d)->{ return d.value>1;});` 
+    Notice the lack of method name here. This is possible because the interface has only one abstract method so the compiler can figure out the name. This can be shortened to: 
+
+      `printImportantData(al, (Data d)->d.value>1);` 
+
+    Notice the lack of curly brackets, the `return` keyword, and the semicolon. This is possible because the method returns a boolean and the expression `d.value>1` also returns a boolean. The compiler is therefore able to figure out that the value of this expression is to be returned from the method. This can be shortened even more to: 
+
+      `printImportantData(al, d->d.value>1);` 
+
+    Notice that there is no declaration of d! The compiler can figure out all information it needs because the interface has only one abstract method and that method has only one parameter. So you don't need to write all those things in your code. 
+
+    Compare the above approach to the old style using an inner class that does the same thing - 
+
+      ```java
+      printImportantData(al, new Predicate<Data>() { 
+        public boolean test(Data d) { 
+          return d.value > 1; 
+        } 
+      }); 
+      ``` 
+    The Predicate interface described above can be used anywhere there is a need to "do something with an object and return a boolean" and is actually provided by the standard java library in java.util.function package. This package provides a few other useful functional interfaces. 
+
+    `Predicate<T>` Represents a predicate (boolean-valued function) of one argument of type `T`. 
+
+    `Consumer<T>` Represents an operation that accepts a single input argument of type `T` and returns no result. 
+
+    `Function<T,R>` Represents a function that accepts one argument of type `T` and produces a result of type `R` 
+
+    `Supplier<T>` Represents a supplier of results of type `T`. 
+
+    For the exam, you only need to be aware of `Predicate`. 
+
+    Please see [http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html) for learning Lambda expressions in Java. 
+
+#### 结束
+
+这个错题整理也太长了，到这里结束了，其他内容放到其他文章。
