@@ -161,15 +161,15 @@ Maven配置参考pom.xml
 Log4j挺有用的，方便，配置参考如下：
 
 ```properties
-#全局配置
-log4j.rootLogger=ERROR, stdout
-#MyBatis 日志配置
-log4j.logger.io.zwt.simple.mapper=TRACE
-#控制台输出配置
-log4j.appender.stdout=org.apache.log4j.ConsoleAppender
-log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
-log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
-```
+#全局配置 
+log4j.rootLogger=ERROR, stdout 
+#MyBatis 日志配置 
+log4j.logger.io.zwt.simple.mapper=TRACE 
+#控制台输出配置 
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender 
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout 
+log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n 
+``` 
 
  - 1.3.5 编写测试代码让MyBatis跑起来 12
 
