@@ -61,7 +61,7 @@ tags:
 
     ---
 
-3. 记录一个关于重写的： An overriding method must have a same parameter list and the same return type as that of the overridden method. 翻译成中文就是，重写方法必须与被重写方法具有相同的参数列表和返回类型。
+3. 记录一个关于重写的： An overriding method must have the same parameter list and the same return type as that of the overridden method. 翻译成中文就是，重写方法必须与被重写方法具有相同的参数列表和返回类型。
 
    - [ ] True 
 
@@ -105,7 +105,7 @@ tags:
 
    A final method cannot be overridden. 
 
-   An overriding method cannot exhibit behavior that contradicts the declaration of the original method. An overriding method therefore cannot return a different type (except a subtype) or throw a wider spectrum of exceptions than the original method in the superclass. This, of course, applies only to checked exceptions because unchecked exceptions are not required to be declared at all. 
+   An overriding method cannot exhibit behavior that contradicts the declaration of the original method. An overriding method, therefore, cannot return a different type (except a subtype) or throw a wider spectrum of exceptions than the original method in the superclass. This, of course, applies only to checked exceptions because unchecked exceptions are not required to be declared at all. 
 
    A subclass may have a static method with the same signature as a static method in the base class but it is not called overriding. It is called hiding because **the concept of polymorphism doesn't apply to static members.** 
 
@@ -122,7 +122,7 @@ tags:
        int a;
        private int b;
        protected void c() {}
-       public int d() {	return 0; }
+       public int d() { return 0; }
    }
    
    //In file AccessTester.java
@@ -145,7 +145,7 @@ tags:
 
    The wording of this question is a bit vague because it is not clear what is meant by "can be accessed by". Expect such wording in the real exam as well. Our guess is that it means what variables of class `AceesssTest` can be accessed using the reference named `ref`. 
 
-   Since a public member is always accessible to every one, `ref.d()` is definitely correct. private is only accessible within that class, therefore, b cannot be accessed from anywhere outside of class `AccessTest`. A default (aka package protected) member is accessible only from members of the same package. Since `AccessTester` is in a different package `a` cannot be accessed from `AccessTester` either. 
+   Since a public member is always accessible to everyone, `ref.d()` is definitely correct. private is only accessible within that class, therefore, b cannot be accessed from anywhere outside of class `AccessTest`. A default (aka package protected) member is accessible only from members of the same package. Since `AccessTester` is in a different package `a` cannot be accessed from `AccessTester` either. 
 
    Now, the question is only about the method `c()`. A protected member is inherited by a subclass and it is therefore accessible in the subclass. However, in the words of Java Language Specification, protected members of a class are accessible outside the package only in subclasses of that class, and only when they are fields of objects that are being implemented by the code that is accessing them. 
 
@@ -181,7 +181,7 @@ tags:
 
    - [ ] Local variables can be declared as private. 
 
-   - [ ] Local variables can only by declared as public. 
+   - [ ] Local variables can only be declared as public. 
 
    You cannot apply any modifier except `final` to a local variable. i.e. you cannot make them `transient`, `volatile`, `static`, `public`, and `private`. 
 
@@ -198,7 +198,7 @@ tags:
    - [ ] True 
    - [x] False 
 
-   Abstract methods are meant to be overridden in the subclass. Abstract methods describe a behavior but do not implement it. So the subclasses have to override it to actually implement the behavior. A subclass may chose to override it, in which case, the subclass will **have to be abstract too**. 
+   Abstract methods are meant to be overridden in the subclass. Abstract methods describe behavior but do not implement it. So the subclasses have to override it to actually implement the behavior. A subclass may choose to override it, in which case, the subclass will **have to be abstract too**. 
 
     ---
 
@@ -231,12 +231,12 @@ tags:
    - [ ] It is an abstract class that has only abstract method (among other non-abstract methods) with the signature - `public abstract void test(T t);` 
    - [ ] It is an abstract class that has only on abstract method (among other non-abstract methods) with the signature - `public abstract boolean test(T t);` 
 
-   `java.util.function.Predicate` is one of the several functional interfaces that have been added to Java 8. This interface has exactly one abstract method named `test`, which takes any object as input and returns a `boolean`. This comes in very handy when you have a collection of objects and you want to go through each object of that collection and see if that object satisfies some criteria. For example, you may have a collection of `Employee` objects and, in one place of your application, you want to remove all such employees whose age is below 50, while in other place, you want to remove all such employees whose salary is above 100,000. In both the cases, you want to go through your collection of employees, and check each `Employee` object to determine if it fits the criteria. This can be implemented by writing an interface named `CheckEmployee` and having a method `check(Employee)` which would return `true` if the passed object satisfies the criteria. The following code fragments illustrate how it can be done - 
+   `java.util.function.Predicate` is one of the several functional interfaces that have been added to Java 8. This interface has exactly one abstract method named `test`, which takes any object as input and returns a `boolean`. This comes in very handy when you have a collection of objects and you want to go through each object of that collection and see if that object satisfies some criteria. For example, you may have a collection of `Employee` objects and, in one place of your application, you want to remove all such employees whose age is below 50, while in other place, you want to remove all such employees whose salary is above 100,000. In both the cases, you want to go through your collection of employees and check each `Employee` object to determine if it fits the criteria. This can be implemented by writing an interface named `CheckEmployee` and having a method `check(Employee)` which would return `true` if the passed object satisfies the criteria. The following code fragments illustrate how it can be done - 
 
    ```java
    //define the interface for creating criteria
    interface CheckEmployee {
-   	boolean check(Employee e);
+    boolean check(Employee e);
    }
     ...
    //write a method that filters Employees based on given criteria.
@@ -300,7 +300,7 @@ tags:
 
     - [ ] float native getVariance() throws Exception; 
 
-      > return type should always be on the immediate left of method name. 
+      > return type should always be on the immediate left of the method name. 
 
     - [ ] abstract private int absMethod(int param) throws Exception; 
 
@@ -326,7 +326,7 @@ tags:
 
     - [ ] An interface can implement multiple interfaces. 
 
-      > Interface cannot "implement" another interfaces. It can extend multiple interfaces. The following is a valid declaration `interface I1 extends I2, I3, I4 {}`。 **记得了，接口是不可以实现其它接口的，但是可以实现多个接口。** 
+      > Interface cannot "implement" other interfaces. It can extend multiple interfaces. The following is a valid declaration `interface I1 extends I2, I3, I4 {}`。 **记得了，接口是不可以实现其它接口的，但是可以实现多个接口。** 
 
     ---
 
@@ -346,11 +346,11 @@ tags:
 
     A break statement with no label attempts to transfer control to the innermost enclosing switch, while, do, or for statement; this statement, which is called the break target, then immediately completes normally. If no switch, while, do, or for statement encloses the break statement, a compile-time error occurs. 
 
-    A break statement with label Identifier attempts to transfer control to the enclosing labeled statement  that has the same Identifier as its label; this statement, which is called the break target, then immediately completes normally. In this case, the break target need not be a while, do, for, or switch statement. 
+    A break statement with label Identifier attempts to transfer control to the enclosing labeled statement that has the same Identifier as its label; this statement, which is called the break target, then immediately completes normally. In this case, the break target need not be a while, do, for, or switch statement. 
 
     A continue statement with no label attempts to transfer control to the innermost enclosing while, do, or for statement; this statement, which is called the continue target, then immediately ends the current iteration and begins a new one. If no while, do, or for statement encloses the continue statement, a compile-time error occurs. 
 
-    A continue statement with label Identifier attempts to transfer control to the enclosing labelled statement that has the same Identifier as its label; that statement, which is called the continue target, then immediately ends the current iteration and begins a new one. The continue target must be a while, do, or for statement or a compile-time error occurs. If no labelled statement with Identifier as its label contains the continue statement, a compile-time error occurs. 
+    A continue statement with label Identifier attempts to transfer control to the enclosing labeled statement that has the same Identifier as its label; that statement, which is called the continue target, then immediately ends the current iteration and begins a new one. The continue target must be a while, do, or for statement or a compile-time error occurs. If no labeled statement with identifier as its label contains the continue statement, a compile-time error occurs. 
 
     ---
 
@@ -382,19 +382,19 @@ tags:
 
        The `String` constructor allocates a `Boolean` object representing the value `true` if string argument is not null and is equal, ignoring case, to the string "true". Otherwise, allocate a Boolean object representing the value `false`. Examples: `new Boolean("True")` produces a `Boolean` object that represents `true`. `new Boolean("yes")` produces a `Boolean` object that represents `false`. 
 
-       The `boolean` constructor is self explanatory. 
+       The `boolean` constructor is self-explanatory. 
 
     2. `Boolean` class has two static helper methods for creating booleans - `parseBoolean` and `valueOf`. 
 
-       `Boolean.parseBoolean(String )` method returns a primitive boolean and not a `Boolean` object (Note - Same is with the case with other `parseXXX` methods such as `Integer.parseInt` - they return primitives and not objects). The boolean returned represents the value `true` if the string argument is not null and is equal, ignoring case, to the string "true". 
+       `Boolean.parseBoolean(String )` method returns a primitive boolean and not a `Boolean` object (Note - Same as with the case with other `parseXXX` methods such as `Integer.parseInt` - they return primitives and not objects). The boolean returned represents the value `true` if the string argument is not null and is equal, ignoring case, to the string "true". 
 
-       `Boolean.valueOf(String )` and its overloaded `Boolean.valueOf(boolean )` version, on the other hand, work similarly but return a reference to either `Boolean.TRUE` or `Boolean.FALSE` wrapper objects. Observe that they don't create a new Boolean object but just return the static constants `TRUE` or `FALSE` defined in `Boolean` class. 
+       `Boolean.valueOf(String )` and its overloaded `Boolean.valueOf(boolean )` version, on the other hand, work similarly but returns a reference to either `Boolean.TRUE` or `Boolean.FALSE` wrapper objects. Observe that they don't create a new Boolean object but just return the static constants `TRUE` or `FALSE` defined in `Boolean` class. 
 
     3. When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`. 
 
     ---
 
-15. **(Working with Inheritance)** A method with no access modifier defined in a class can be overridden by a method marked protected (assuming that it is not final) in the sub class. (You had to select 1 option)
+15. **(Working with Inheritance)** A method with no access modifier defined in a class can be overridden by a method marked protected (assuming that it is not final) in the subclass. (You had to select 1 option)
 
     - [x] True 
     - [ ] False 
@@ -407,7 +407,7 @@ tags:
 
     - [x] `sizeof` 
       
-      > It is a valid operator in C++ but not in java because size of everything is known at compile time and is not machine dependent. 
+      > It is a valid operator in C++ but not in java because the size of everything is known at compile time and is not machine dependent. 
     - [x] `<<<` 
       
       > For left shifts there is no difference between shifting signed and unsigned values so there is only one leftshift `'<<'` in java. 
@@ -451,7 +451,7 @@ tags:
 
     - [ ] A `super(<appropriate list of arguments>)` or `this(<appropriate list of arguments>)` call must always be provided explicitly as the first statement in the body of the constructor.
 
-      > `super();` is automatically added if the sub class constructor doesn't call any of the super class's constructors.
+      > `super();` is automatically added if the subclass constructor doesn't call any of the super class's constructors.
 
     - [x] If a subclass does not have any declared constructors, the implicit default constructor of the subclass will have a call to `super()`.
 
@@ -463,7 +463,7 @@ tags:
 
     - [x] You can either call `super(<appropriate list of arguments>)` or `this(<appropriate list of arguments>)` but not both from a constructor.
 
-    Note that calling `super();` will not always work because if the super class has defined a constructor with arguments and has not defined a no args constructor then no args constructor will not be provided by the compiler. It is provided only to the class that does not define ANY constructor explicitly.
+    Note that calling `super();` will not always work because if the superclass has defined a constructor with arguments and has not defined a no args constructor then no args constructor will not be provided by the compiler. It is provided only to the class that does not define ANY constructor explicitly.
 
     ---
 
@@ -491,8 +491,8 @@ tags:
       > ```java
       > char ch = 'x';
       > switch (ch) {
-      > 	case -1 : System.out.println("-1"); break; // This will not compile: possible loss of precision
-      > 	default:  System.out.println("default");
+      >   case -1 : System.out.println("-1"); break; // This will not compile: possible loss of precision
+      >   default:  System.out.println("default");
       > }
       > ```
 
@@ -526,11 +526,11 @@ tags:
 
     ```java
     public class Conversion {
-    	public static void main(String[] args) {
-    		int i = 1234567890;
-    		float f = i;
-    		System.out.println( i - (int)f);
-    	}
+      public static void main(String[] args) {
+        int i = 1234567890;
+        float f = i;
+        System.out.println( i - (int)f);
+      }
     }
     ```
 
@@ -542,8 +542,8 @@ tags:
     - [ ] It will throw an exception at runtime.
     - [ ] None of the above.
 
-    Actually it prints -46. This is because the information was lost during the conversion from type int to type `float` as values of type `float` are not precise to nine significant digits.
-    Note: **You are not required to know the number of significant digits that can be stored by a float for the exam. However, it is good to know about loss of precision while using float and double.**
+    Actually, it prints -46. This is because the information was lost during the conversion from type int to type `float` as values of type `float` are not precise to nine significant digits.
+    Note: **You are not required to know the number of significant digits that can be stored by a float for the exam. However, it is good to know about the loss of precision while using float and double.**
 
     ---
 
@@ -567,7 +567,7 @@ tags:
 
     - [x] A final variable can be hidden in a subclass.
 
-    If the class declares a field with a certain name, then the declaration of that field is said to hide any and all accessible declarations of fields with the same name in superclasses, and superinterfaces of the class.
+    If the class declares a field with a certain name, then the declaration of that field is said to hide any and all accessible declarations of fields with the same name in superclasses and superinterfaces of the class.
     For example,
 
     ```java
@@ -586,7 +586,7 @@ tags:
     Base b = new Sub();
     ```
 
-    `k = b.i;//assigns 10 to k` because which field is accessed depends on the class of the variable and not on the class of the actual object. Same rule applies to static methods but the opposite is true for instance methods.
+    `k = b.i;//assigns 10 to k` because which field is accessed depends on the class of the variable and not on the class of the actual object. The same rule applies to static methods but the opposite is true for instance methods.
 
     `final` keyword when applied to a class means the class cannot be subclassed, when applied to a method means the method cannot be overridden (it can be overloaded though) and when applied to a variable means that the variable is a constant.
 
@@ -651,7 +651,7 @@ tags:
            LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"));
        ```
 
-    5. Besides dates, `java.time` package also provides Period and Duration classes. Period is used for quantity or amount of time in terms of years, months and days, while Duration is used for quantity or amount of time in terms of hour, minute, and seconds.
+    5. Besides dates, `java.time` package also provides Period and Duration classes. `Period` is used for quantity or amount of time in terms of years, months and days, while `Duration` is used for quantity or amount of time in terms of hour, minute, and seconds.
 
        Durations and periods differ in their treatment of daylight savings time when added to `ZonedDateTime`. A Duration will add an exact number of seconds, thus a duration of one day is always exactly 24 hours. By contrast, a Period will add a conceptual day, trying to maintain the local time.
 
@@ -664,7 +664,7 @@ tags:
     - [x] It uses the calendar system defined in ISO-8601 as the default calendar.
       > This calendar is based on the Gregorian calendar system and is used globally as the defacto standard for representing date and time. The core classes in the Date-Time API have names such as `LocalDateTime`, `ZonedDateTime`, and `OffsetDateTime`. All of these use the ISO calendar system. 
       > 
-      > If you want to use an alternative calendar system, such as Hijrah or Thai Buddhist, the java.time.chrono package allows you to use one of the predefined calendar systems. Or you can create your own. 
+      > If you want to use an alternative calendar system, such as Hijrah or Thai Buddhist, the `java.time.chrono` package allows you to use one of the predefined calendar systems. Or you can create your own. 
     
     - [x] Most of the actual date related classes in the Date-Time API such as `LocalDate`, `LocalTime`, and `LocalDateTime` are immutable.
       > These classes do not have any setters. Once created you cannot change their contents. Even their constructors are **private**.
@@ -718,12 +718,12 @@ tags:
     2. The case constants must be assignable to switch variable. For example, if your switch variable is of class String, your case labels must use String as well. 
     3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char, then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535. 
     4. All case labels should be **COMPILE TIME CONSTANTS**. 
-    5. No two of the case constant expressions associated with a switch statement my have the same value. 
+    5. No two of the case constant expressions associated with a switch statement may have the same value. 
     6. At most one default label may be associated with the same switch statement. 
 
     --- 
 
-25. How can you declare a method someMethod() such that an instance of the class is not needed to access it and all the members of the same package have access to it. 
+25. How can you declare a method someMethod() such that an instance of the class is not needed to access it and all the members of the same package have access to it? 
 
     - [x] public static void someMethod() 
 
@@ -772,7 +772,7 @@ tags:
     - [ ] Declaration of an instance variable of class Object. 
 
     We have to explicitly initialize local variables otherwise they remain uninitialized and it will be a compile time error if such variables are accessed without getting initialized first. 
-    Instance variables and static variables receive  a default value if not explicitly initialized. All primitive types get a defaults value equivalent to 0, that is, int to 0 and float to 0.0f and so on and boolean to false. 
+    Instance variables and static variables receive a default value if not explicitly initialized. All primitive types get a default value equivalent to 0, that is, int to 0 and float to 0.0f and so on and boolean to false. 
     The type/class of a variable does not affect whether a variable is initialized or not. 
 
     --- 
@@ -789,7 +789,7 @@ tags:
 
     - [ ] throw 
 
-    A try without resources must have either a catch or a finally. It may have both as well. 
+    A try without resources must have either a `catch` or a `finally`. It may have both as well. 
     Thus, the following constructs are valid: 
 
     1. 
@@ -835,7 +835,7 @@ tags:
 
     - [x] java.time.LocalDate 
 
-    Java 8 introduces a new package java.time to deal with dates. The old classes such as java.util.Date are not recommended anymore. 
+    Java 8 introduces a new package java.time to deal with dates. The old classes such as `java.util.Date` are not recommended anymore. 
 
     Briefly: 
     java.time Package: This is the base package of new Java Date Time API. All the commonly used classes such as LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration are part of this package. All of these classes are immutable and thread safe. 
@@ -846,7 +846,7 @@ tags:
 
     java.time.zone Package: This package contains classes for supporting different time zones and their rules. 
 
-    java.time.chrono Package: This package defines generic APIs for non ISO calendar systems. We can extend AbstractChronology class to create our own calendar system. 
+    `java.time.chrono` Package: This package defines generic APIs for non ISO calendar systems. We can extend `AbstractChronology` class to create our own calendar system. 
 
     java.time.temporal Package: This package contains temporal objects and we can use it for find out specific date or time related to date/time object. For example, we can use these to find out the first or last day of the month. You can identify these methods easily because they always have format “withXXX”. 
 
@@ -890,7 +890,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
 
     As per Section 4.1 of JLS 8 - 
 
-    The integral types are byte, short, int, and long, whose values are 8-bit, 16-bit, 32-bit and 64-bit signed two's-complement integers, respectively, and char, whose values are 16-bit unsigned integers representing UTF-16 code units. 
+    The integral types are byte, short, int, and long, whose values are 8-bit, 16-bit, 32-bit, and 64-bit signed two's-complement integers, respectively, and char, whose values are 16-bit unsigned integers representing UTF-16 code units. 
 
     --- 
 
@@ -921,14 +921,14 @@ Which of the following declarations defined in a non-abstract class, is equivale
     - [x] Conversion from short to char needs a cast. 
 
     - [ ] Conversion from int to float needs a cast. 
-      > It does not need a cast because a float can hold any value of int. Note that opposite is not true because of loss of precision. 
+      > It does not need a cast because a float can hold any value of int. Note that the opposite is not true because of the loss of precision. 
 
     - [x] Conversion from byte, char, or short to int, long or float does not need a case. 
       > Because int, long, or float are bigger than byte char or short. 
 
-    Think of it as transferring contents of one bucket into another. You can always transfer the contents of a smaller bucket to a bigger one. But the opposite is not always possible. You can transfer the contents of the bigger bucket into the smaller bucket only if the actual content in the bigger bucket can fit into the smaller one. Otherwise, it will spill. 
+    Think of it as transferring the contents of one bucket into another. You can always transfer the contents of a smaller bucket to a bigger one. But the opposite is not always possible. You can transfer the contents of the bigger bucket into the smaller bucket only if the actual content in the bigger bucket can fit into the smaller one. Otherwise, it will spill. 
 
-    It is the same with integral types as well. byte is smaller than short or int. So you can assign a byte to an int (or an int to a float, or a float to a double) without any cast. But for the reverse you need to assure the compiler that the actual contents in my int will be smaller than a byte so let me assign this int to a byte. This is achieved by the cast. 
+    It is the same with integral types as well. byte is smaller than short or int. So you can assign a byte to an int (or an int to a float, or a float to a double) without any cast. But for the reverse, you need to assure the compiler that the actual contents in my int will be smaller than a byte so let me assign this int to a byte. This is achieved by the cast. 
 
     ```java
     int i = 10; 
@@ -937,7 +937,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
     b = (byte) i; //OK 
     ``` 
 
-    Further, if you have a final variable and its value fits into a smaller type, then you can assign it without a cast because compiler already knows its value and realizes that it can fit into the smaller type. This is called implicit narrowing and is allowed between byte, int, char, and, short but not for long, float, and double. 
+    Further, if you have a final variable and its value fits into a smaller type, then you can assign it without a cast because the compiler already knows its value and realizes that it can fit into the smaller type. This is called implicit narrowing and is allowed between byte, int, char, and, short but not for long, float, and double. 
 
     ```java
     final int k = 10; 
@@ -966,7 +966,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
     }
     ``` 
 
-    The purpose of this interface is to provide a method that operates on an object of class T and return a boolean. 
+    The purpose of this interface is to provide a method that operates on an object of class `T` and returns a boolean. 
 
     You could have a method that takes an instance of class that implements this interface defined like this - 
     ```java
@@ -986,11 +986,11 @@ Which of the following declarations defined in a non-abstract class, is equivale
 
       `printImportantData(al, (Data d)->d.value>1);` 
 
-    Notice the lack of curly brackets, the `return` keyword, and the semicolon. This is possible because the method returns a boolean and the expression `d.value>1` also returns a boolean. The compiler is therefore able to figure out that the value of this expression is to be returned from the method. This can be shortened even more to: 
+    Notice the lack of curly brackets, the `return` keyword, and the semicolon. This is possible because the method returns a boolean and the expression `d.value>1` also returns a boolean. The compiler is, therefore, able to figure out that the value of this expression is to be returned from the method. This can be shortened even more to: 
 
       `printImportantData(al, d->d.value>1);` 
 
-    Notice that there is no declaration of d! The compiler can figure out all information it needs because the interface has only one abstract method and that method has only one parameter. So you don't need to write all those things in your code. 
+    Notice that there is no declaration of d! The compiler can figure out all the information it needs because the interface has only one abstract method and that method has only one parameter. So you don't need to write all those things in your code. 
 
     Compare the above approach to the old style using an inner class that does the same thing - 
 
