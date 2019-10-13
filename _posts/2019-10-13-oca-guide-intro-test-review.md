@@ -41,7 +41,7 @@ tags:
    of `getTailLength()`, but since the declaration in the parent class `Puma` is invalid, it needs to implement a `public` version of the method. Since it does not, the declaration of `Cougar` is invalid, so option **D** is correct. Option **E** is correct, since `Puma` is marked `abstract` and cannot be instantiated. The overloaded method on line 11 is declared correctly, so option **F** is not correct. Finally, as the code has multiple compiler errors, options **A**, **B**, and **G** can be eliminated. 
    
 2. What is the result of the following program? 
-```java
+    ```java
    public class MathFunctions { 
        public static void addToInt(int x, int amountToAdd) { 
            x = x + amountToAdd; 
