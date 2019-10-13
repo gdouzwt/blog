@@ -62,14 +62,14 @@ tags:
    >
    > **C.** 25 
    >
-> **D.** Compiler error on line 3. 
+   > **D.** Compiler error on line 3. 
    >
-> **E.** Compiler error on line 8. 
+   > **E.** Compiler error on line 8. 
    >
-> **F.** None of the above. 
-    
-    **答案是：** **B.** The code compiles successfully, so options **D** and **E** are incorrect. The value of a cannot be changed by the `addToInt` method, no matter what the method does, because only a copy of the variable is passed into the parameter `x`. Therefore, a does not change and the output on line 9 is 15. 
-    
+   > **F.** None of the above. 
+
+   **答案是：** **B.** The code compiles successfully, so options **D** and **E** are incorrect. The value of a cannot be changed by the `addToInt` method, no matter what the method does, because only a copy of the variable is passed into the parameter `x`. Therefore, a does not change and the output on line 9 is 15. 
+
 3. What is the result of the following code? 
 
    ```java
@@ -217,7 +217,7 @@ tags:
    -  On the second iteration of the outer loop (since `i = 2`), `i` is updated to 3 and `x` to 12. As before, the inner loop is broken since `x` is still greater than 10. 
    -  On the third iteration of the outer loop, the outer loop is broken, as `i` is already not less than 3. The most recent value of `x`, 12, is output, so the answer is option **B**. 
 
-8. Assuming we have a valid, non-null HenHouse object whose value is initialized by the blank line shown here, which of the following are possible outputs of this application?(Choose all that apply) 
+8. Assuming we have a valid, non-null `HenHouse` object whose value is initialized by the blank line shown here, which of the following are possible outputs of this application?(Choose all that apply) 
 
    ```java
    class Chicken {} 
@@ -246,4 +246,71 @@ tags:
 
    **答案是：D, E, F.** The code compiles without issue, so options **A** and **B** are incorrect. If `house.getChickens()` returns an array of one element, the code will output Cluck once, so option **D** is correct. If `house.getChickens()` returns an array of multiple elements, the code will output Cluck once for each element in the array, so option **E** is correct. Alternatively, if `house.getChickens()` returns an array of zero elements, then the code will throw an `IndexOutOfBoundsException` on the call to `house.getChickens().get(0);` therefore, option **C** is not possible and option **F** is correct. The code will also throw an exception if the array returned by `house.getChickens()` is `null`, so option **F** is possible under multiple circumstances. 
 
-9. 
+9. What individual changes, if any, would allow the following code to compile? (Choose all that apply)
+
+   ```java
+    public interface Animal { public default String getName() { return null; } }
+    interface Mammal { public default String getName() { return null; } }
+    abstract class Otter implements Mammal, Animal {}
+   ```
+
+   > **A.** The code compiles without issue. 
+   >
+   > **B.** Remove the `default` method modifier and method implementation on line 1. 
+   >
+   > **C.** Remove the `default` method modifier and method implementation on line 2. 
+   >
+   > **D.** Remove the `default` method modifier and method implementation on lines 1 and 2. 
+   >
+   > **E.** Change the return value on line 1 from `null` to `"Animal"`. 
+   >
+   > **F.** Override the `getName()` method with an abstract method in the Otter class. 
+   >
+   > **G.** Override the `getName()` method with a concrete method in the Otter class. 
+   
+   **答案是：D, F, G.** The code does not compile, since a class cannot inherit two interfaces that both define default methods with the same signature, unless the class implementing the interfaces overrides it with an abstract or concrete method. Therefore, option **A** is incorrect and options **F** and **G** are correct. The alternate approach is to make the `getName()` method `abstract` in the interfaces, because a class may inherit two abstract methods with the same signature. The change must be made to both interfaces, though, so options **B** and **C** are incorrect if taken individually, and option **D** is correct since the changes are taken together.
+   
+10. Which of the following lines can be inserted at line 11 to print true? (Choose all that apply)
+
+    ```java
+    public static void main(String[] args) {
+        // INSERT CODE HERE
+    }
+    private static boolean test(Predicate<Integer> p) {
+        return p.test(5);
+    }
+    ```
+    
+    > A. System.out.println(test(i -> i == 5)); 
+    >
+    > B. System.out.println(test(i -> {i == 5;})); 
+    >
+    > C. System.out.println(test((i) -> i == 5)); 
+    >
+    > D. System.out.println(test((int i) -> i == 5); 
+    >
+    > E. System.out.println(test((int i) -> {return i == 5;})); 
+    >
+    > F. System.out.println(test((i) -> {return i == 5;})); 
+    
+    **答案是：A, C, F.** The only functional programming interface you need to memorize for the exam is `Predicate`. It takes a single parameter and returns a `boolean`. Lambda expressions with one parameter are allowed to omit the parentheses around the parameter list, making options **A** and **C** correct. The return statement is optional when a single statement is in the body, making option **F** correct. Option **B** is incorrect because a return statement must be used if braces are included around the body. Options **D** and **E** are incorrect because the type is `Integer` in the predicate and `int` in the lambda. **Autoboxing works for collections not inferring predicates.** If these two were changed to `Integer`, they would be correct.
+    
+11. Which of the following are checked exceptions? (Choose all that apply)
+
+    > **A.** `Exception` 
+    >
+    > **B.** `IllegalArgumentException` 
+    >
+    > **C.** `IOException` 
+    >
+    > **D.** `NullPointerException` 
+    >
+    > **E.** `NumberFormatException` 
+    >
+    > **F.** `StackOverflowError` 
+
+    **答案是：A, C.** Option **A** is the exception base class, which is a checked exception. Options **B, D**, and **E** extend `RuntimeException` directly or indirectly and therefore are unchecked exceptions. Option **F** is a `throwable` and not an exception, and so should not be caught or declared.
+
+
+
+
