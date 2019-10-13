@@ -57,8 +57,10 @@ markdown: kramdown
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
   syntax_highlighter_opts:
+    span:
+      line_numbers: false
     block:
-      line_numbers: true
+      line_numbers: false
       start_line: 1
 
 # 评论系统
