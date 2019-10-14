@@ -22,7 +22,7 @@ public class ReverseInt {
 	public static void main(String[] args) {
 		System.out.println("请输入一个整数：");
 		Scanner input = new Scanner(System.in);
-		String value = new String(""+input.nextInt());
+		String value = "" + input.nextBigInteger();
 		input.close();
 		String reversed = "";
 		for (int i = value.length() - 1; i >= 0; i--) {
@@ -32,9 +32,9 @@ public class ReverseInt {
 	}
 }
 ```
-当时手写代码，`for`循环的控制条件边界写错了，当时写成了`for (int i = value.length(); i > 0; i--)` 结果数组越界了。应该是`int i = value.length() - 1; i >= 0; i--` 的。
+当时手写代码，`for` 循环的控制条件边界写错了，当时写成了 `for (int i = value.length(); i > 0; i--)`  结果数组越界了。应该是 `for (int i = value.length() - 1; i >= 0; i--)` 的。
 
-【完】
+换成 `input.nextBigInteger();` 好一点。 【完】
 
 
 
