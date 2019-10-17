@@ -40,8 +40,8 @@ tags:
 ```java
 for(int i = 0; i < 9; i++) {
     for(int j = 0; j <= i; j++) {
-        if(i == j) System.out.printf("%dx%d=%d\t\n",j+1, i+1, (i+1)*(j+1));
-        else System.out.printf("%dx%d=%d\t",j+1, i+1, (i+1)*(j+1));
+        if(i == j) System.out.printf("%d\u00d7%d=%d\t\n",j+1, i+1, (i+1)*(j+1));
+        else System.out.printf("%d\u00d7%d=%d\t",j+1, i+1, (i+1)*(j+1));
     }
 }
 ```
@@ -52,9 +52,9 @@ for(int i = 0; i < 9; i++) {
 for(int i = 1; i <= 9; i++) {
     for(int j = 1; j <= i; j++) {
         if(j == i)
-            System.out.printf("%dx%d=%d\t\n", j,i,j*i);
+            System.out.printf("%d\u00d7%d=%d\t\n", j,i,j*i); // \u00d7 是 × 号
         else 
-            System.out.printf("%dx%d=%d\t", j,i,j*i);
+            System.out.printf("%d×%d=%d\t", j,i,j*i); // × 号也可以直接写
     }
 }
 ```
