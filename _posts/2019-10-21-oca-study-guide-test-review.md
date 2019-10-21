@@ -13,12 +13,13 @@ tags:
 
 > 这文章讲OCA准备过程，读过的书籍。 这本书叫 OCA Oracle Certified Associate Java SE 8 Programmer I Study Guide 以下按章节整理错题：  
 
-#### Chapter 1 Java Building Blocks (2/23😊)
+#### Chapter 1 Java Building Blocks (2/23😄)
 
 **18.**Which represent the order in which the following statements can be assembled into a program that will compile successfully? (Choose all that apply)  
 `A: class Rabbit {}`  
 `B: import java.util.*;`  
 `C: package animals;`  
+
 > **A.** A, B, C  
 > **B.** B, C, A  
 > **C.** C, B, A  
@@ -28,6 +29,7 @@ tags:
 > **G.** A, B  
 
 **22.**Which of the following are true statements? (Choose all that apply)  
+
 > **A.** Java allows operator overloading.  
 > **B.** Java code compiled on Windows can run on Linux.  
 > **C.** Java has pointers to specific locations in memory.  
@@ -35,7 +37,7 @@ tags:
 > **E.** Java is an object-oriented language.  
 > **F.** Java is a functional programming language.  
 
-#### Chapter 2 Operators and Statements (3/20😄)
+#### Chapter 2 Operators and Statements (3/20😊)
 
 **9.**How many times will the following code print "Hello World"?  
 ```java
@@ -534,18 +536,195 @@ class MySecret implements Secret {
 
 #### Chapter 5 Class Design (12/20😭)
 
-**1.**
-**2.**
-**3.**
-**4.**
-**5.**
-**8.**
-**10.**
-**11.**
-**16.**
-**18.**
-**19.**
-**20.**
+**1.**What modifiers are implicitly applied to all interface methods? (Choose all that apply)  
+> **A.** `protected`  
+> **B.** `public`  
+> **C.** `static`  
+> **D.** `void`  
+> **E.** `abstract`  
+> **F.** `default`  
+
+**2.**What is the output of the following code?  
+```java
+1:  class Mammal {
+2:    public Mammal(int age) {
+3:      System.out.print("Mammal");
+4:    }
+5:  }
+6:  public class Platypus extends Mammal {
+7:    public Platypus() {
+8:      System.out.print("Platypus");
+9:    }
+10:   public static void main(String[] args) {
+11:     new Mammal(5);
+12:   }
+13: }
+```
+> **A.** Platypus  
+> **B.** Mammal  
+> **C.** PlatypusMammal  
+> **D.** MammalPlatypus  
+> **E.** The code will not compile because of line 7.  
+> **F.** The code will not compile because of line 11.  
+**3.**Which of the following statements can be inserted in the blank line so that the code will
+compile successfully? (Choose all that apply)  
+```java
+public interface CanHop {}
+public class Frog implements CanHop {
+  public static void main(String[] args) {
+    frog = new TurtleFrog();
+  }
+}
+public class BrazilianHornedFrog extends Frog {}
+public class TurtleFrog extends Frog {}
+```
+> **A.** Frog  
+> **B.** TurtleFrog  
+> **C.** BrazilianHornedFrog  
+> **D.** CanHop  
+> **E.** Object  
+> **F.** Long  
+
+**4.**Which statement(s) are correct about the following code? (Choose all that apply)  
+```java
+public class Rodent {
+  protected static Integer chew() throws Exception {
+    System.out.println("Rodent is chewing");
+    return 1;
+  }
+}
+public class Beaver extends Rodent {
+  public Number chew() throws RuntimeException {
+    System.out.println("Beaver is chewing on wood");
+    return 2;
+  }
+}
+```
+> **A.** It will compile without issue.  
+> **B.** It fails to compile because the type of the exception the method throws is a subclass of the type of exception the parent method throws.  
+> **C.** It fails to compile because the return types are not covariant.  
+> **D.** It fails to compile because the method is protected in the parent class and public in the subclass.  
+> **E.** It fails to compile because of a static modifier mismatch between the two methods.  
+
+**5.**Which of the following may only be hidden and not overridden? (Choose all that apply)  
+> **A.** private instance methods  
+> **B.** protected instance methods  
+> **C.** public instance methods  
+> **D.** static methods  
+> **E.** public variables  
+> **F.** private variables  
+
+**8.**Choose the correct statement about the following code:  
+```java
+1: public interface Herbivore {
+2:   int amount = 10;
+3:   public static void eatGrass();
+4:   public int chew() {
+5:     return 13;
+6:   }
+7: }
+```
+> **A.** It compiles and runs without issue.  
+> **B.** The code will not compile because of line 2.  
+> **C.** The code will not compile because of line 3.  
+> **D.** The code will not compile because of line 4.  
+> **E.** The code will not compile because of lines 2 and 3.  
+> **F.** The code will not compile because of lines 3 and 4.  
+
+**10.**Which statements are true for both abstract classes and interfaces? (Choose all that apply)  
+> **A.** All methods within them are assumed to be `abstract`.  
+> **B.** Both can contain `public static final` variables.  
+> **C.** Both can be extended using the `extends` keyword.  
+> **D.** Both can contain default methods.  
+> **E.** Both can contain `static` methods.  
+> **F.** Neither can be instantiated directly.  
+> **G.** Both inherit `java.lang.Object`.  
+
+**11.**What modifiers are assumed for all interface variables? (Choose all that apply)  
+> **A.** `public`  
+> **B.** `protected`  
+> **C.** `private`  
+> **D.** `static`  
+> **E.** `final`  
+> **F.** `abstract`  
+
+**16.**What is the output of the following code?  
+```java
+1:  abstract class Reptile {
+2:    public final void layEggs() { System.out.println("Reptile laying eggs"); }
+3:    public static void main(String[] args) {
+4:      Reptile reptile = new Lizard();
+5:      reptile.layEggs();
+6:    }
+7:  }
+8:  public class Lizard extends Reptile {
+9:    public void layEggs() { System.out.println("Lizard laying eggs"); }
+10: }
+```
+> **A.** Reptile laying eggs  
+> **B.** Lizard laying eggs  
+> **C.** The code will not compile because of line 4.  
+> **D.** The code will not compile because of line 5.  
+> **E.** The code will not compile because of line 9.  
+
+**18.**What is the output of the following code? (Choose all that apply)  
+```java
+1:  interface Aquatic {
+2:    public default int getNumberOfGills(int input) { return 2; }
+3:  }
+4:  public class ClownFish implements Aquatic {
+5:    public String getNumberOfGills() { return "4"; }
+6:    public String getNumberOfGills(int input) { return "6"; }
+7:    public static void main(String[] args) {
+8:      System.out.println(new ClownFish().getNumberOfGills(-1));
+9:    }
+10: }
+```
+> **A.** 2  
+> **B.** 4  
+> **C.** 6  
+> **D.** The code will not compile because of line 5.  
+> **E.** The code will not compile because of line 6.  
+> **F.** The code will not compile because of line 8.  
+
+**19.**Which of the following statements can be inserted in the blank so that the code will compile successfully? (Choose all that apply)  
+```java
+public class Snake {}
+public class Cobra extends Snake {}
+public class GardenSnake {}
+public class SnakeHandler {
+  private Snake snake;
+  public void setSnake(Snake snake) { this.snake = snake; }
+  public static void main(String[] args) {
+    new SnakeHandler().setSnake( );
+  }
+}
+```
+> **A.** `new Cobra()`  
+> **B.** `new GardenSnake()`  
+> **C.** `new Snake()`  
+> **D.** `new Object()`  
+> **E.** `new String("Snake")`  
+> **F.** `null`  
+
+**20.**What is the result of the following code?  
+```java
+1:  public abstract class Bird {
+2:    private void fly() { System.out.println("Bird is flying"); }
+3:    public static void main(String[] args) {
+4:      Bird bird = new Pelican();
+5:      bird.fly();
+6:    }
+7:  }
+8:  class Pelican extends Bird {
+9:    protected void fly() { System.out.println("Pelican is flying"); }
+10: }
+```
+> **A.** Bird is flying  
+> **B.** Pelican is flying  
+> **C.** The code will not compile because of line 4.  
+> **D.** The code will not compile because of line 5.  
+> **E.** The code will not compile because of line 9.  
 
 #### Chapter 6 Exceptions (12/20😭)
 
