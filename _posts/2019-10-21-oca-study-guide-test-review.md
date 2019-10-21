@@ -729,16 +729,161 @@ public class SnakeHandler {
 
 #### Chapter 6 Exceptions (12/20😭)
 
-**1.**
-**2.**
-**5.**
-**7.**
-**13.**
-**14.**
-**15.**
-**16.**
-**17.**
-**18.**
-**19.**
-**20.**
+**1.**Which of the following statements are true? (Choose all that apply)  
+> **A.** Runtime exceptions are the same thing as checked exceptions.  
+> **B.** Runtime exceptions are the same thing as unchecked exceptions.  
+> **C.** You can declare only checked exceptions.  
+> **D.** You can declare only unchecked exceptions.  
+> **E.** You can handle only Exception subclasses.  
 
+**2.**Which of the following pairs fill in the blanks to make this code compile? (Choose all that apply)  
+```java
+7: public void ohNo() _____ Exception {
+8: _____________ Exception();
+9: }
+```
+> **A.** On line 7, fill in `throw`  
+> **B.** On line 7, fill in `throws`  
+> **C.** On line 8, fill in `throw`  
+> **D.** On line 8, fill in `throw new`  
+> **E.** On line 8, fill in `throws`  
+> **F.** On line 8, fill in `throws new`  
+
+**5.**Which of the following exceptions are thrown by the JVM? (Choose all that apply)  
+> **A.** `ArrayIndexOutOfBoundsException`  
+> **B.** `ExceptionInInitializerError`  
+> **C.** `java.io.IOException`  
+> **D.** `NullPointerException`  
+> **E.** `NumberFormatException`  
+
+**7.**What is printed besides the stack trace caused by the NullPointerException from line 16?  
+```java
+1:  public class DoSomething {
+2:    public void go() {
+3:      System.out.print("A");
+4:      try {
+5:        stop();
+6:      } catch (ArithmeticException e) {
+7:        System.out.print("B");
+8:      } finally {
+9:        System.out.print("C");
+10:     }
+11:     System.out.print("D");
+12:   }
+13:   public void stop() {
+14:     System.out.print("E");
+15:     Object x = null;
+16:     x.toString();
+17:     System.out.print("F");
+18:   }
+19:   public static void main(String[] args) {
+20:     new DoSomething().go();
+21:   }
+22: }
+```
+> **A.** AE  
+> **B.** AEBCD  
+> **C.** AEC  
+> **D.** AECD  
+> **E.** No output appears other than the stack trace.  
+
+**13.**Which of the following statements are true? (Choose all that apply)  
+> **A.** You can declare a method with `Exception` as the return type.  
+> **B.** You can declare any subclass of `Error` in the throws part of a method declaration.  
+> **C.** You can declare any subclass of `Exception` in the throws part of a method declaration.  
+> **D.** You can declare any subclass of `Object` in the throws part of a method declaration.  
+> **E.** You can declare any subclass of `RuntimeException` in the throws part of a method declaration.  
+
+**14.**Which of the following can be inserted on line 8 to make this code compile? (Choose all that apply)  
+```java
+7: public void ohNo() throws IOException {
+8:   // INSERT CODE HERE
+9: }
+```
+> **A.** `System.out.println("it's ok");`  
+> **B.** `throw new Exception();`  
+> **C.** `throw new IllegalArgumentException();`  
+> **D.** `throw new java.io.IOException();`  
+> **E.** `throw new RuntimeException();`  
+
+**15.**Which of the following are unchecked exceptions? (Choose all that apply)  
+> **A.** `ArrayIndexOutOfBoundsException`  
+> **B.** `IllegalArgumentException`  
+> **C.** `IOException`  
+> **D.** `NumberFormatException`  
+> **E.** `Any exception that extends RuntimeException`  
+> **F.** `Any exception that extends Exception`  
+
+**16.**Which scenario is the best use of an exception?  
+> **A.** An element is not found when searching a list.  
+> **B.** An unexpected parameter is passed into a method.  
+> **C.** The computer caught fire.  
+> **D.** You want to loop through a list.  
+> **E.** You don’t know how to code a method.  
+
+**17.**Which of the following can be inserted into Lion to make this code compile? (Choose all that apply)  
+```java
+class HasSoreThroatException extends Exception {}
+class TiredException extends RuntimeException {}
+interface Roar {
+  void roar() throws HasSoreThroatException;
+}
+class Lion implements Roar {// INSERT CODE HERE
+}
+```
+> **A.** `public void roar(){}`  
+> **B.** `public void roar() throws Exception{}`  
+> **C.** `public void roar() throws HasSoreThroatException{}`  
+> **D.** `public void roar() throws IllegalArgumentException{}`  
+> **E.** `public void roar() throws TiredException{}`  
+
+**18.**Which of the following are true? (Choose all that apply)  
+> **A.** Checked exceptions are allowed to be handled or declared.  
+> **B.** Checked exceptions are required to be handled or declared.  
+> **C.** Errors are allowed to be handled or declared.  
+> **D.** Errors are required to be handled or declared.  
+> **E.** Runtime exceptions are allowed to be handled or declared.  
+> **F.** Runtime exceptions are required to be handled or declared.  
+
+**19.**Which of the following can be inserted in the blank to make the code compile? (Choose all that apply)  
+```java
+public static void main(String[] args) {
+  try {
+    System.out.println("work real hard");
+  } catch ( ______ e) {
+  } catch (RuntimeException e) {
+  }
+}
+```
+> **A.** `Exception`  
+> **B.** `IOException`  
+> **C.** `IllegalArgumentException`  
+> **D.** `RuntimeException`  
+> **E.** `StackOverflowError`  
+> **F.** None of the above.  
+
+**20.**What does the output of the following contain? (Choose all that apply)  
+```java
+12: public static void main(String[] args) {
+13:   System.out.print("a");
+14:   try {
+15:     System.out.print("b");
+16:     throw new IllegalArgumentException();
+17:   } catch (IllegalArgumentException e) {
+18:     System.out.print("c");
+19:     throw new RuntimeException("1");
+20:   } catch (RuntimeException e) {
+21:     System.out.print("d");
+22:     throw new RuntimeException("2");
+23:   } finally {
+24:     System.out.print("e");
+25:     throw new RuntimeException("3");
+26:   }
+27: }
+```
+> **A.** abce  
+> **B.** abde  
+> **C.** An exception with the message set to "1"  
+> **D.** An exception with the message set to "2"  
+> **E.** An exception with the message set to "3"  
+> **F.** Nothing; the code does not compile.  
