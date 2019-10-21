@@ -18,26 +18,26 @@ tags:
 #### Chapter 1 Java Building Blocks (2/23😊)
 
 **18.**Which represent the order in which the following statements can be assembled into a program that will compile successfully? (Choose all that apply)
-`A: class Rabbit {}`
-`B: import java.util.*;`
-`C: package animals;`
+`A: class Rabbit {}`  
+`B: import java.util.*;`  
+`C: package animals;`  
 
-> A. A, B, C
-> B. B, C, A
-> C. C, B, A
-> D. B, A
-> E. C, A
-> F. A, C
-> G. A, B
+> **A.** A, B, C  
+> **B.** B, C, A  
+> **C.** C, B, A  
+> **D.** B, A  
+> **E.** C, A  
+> **F.** A, C  
+> **G.** A, B  
 
 **22.**Which of the following are true statements? (Choose all that apply)
 
-> A. Java allows operator overloading.
-> B. Java code compiled on Windows can run on Linux.
-> C. Java has pointers to specific locations in memory.
-> D. Java is a procedural language.
-> E. Java is an object-oriented language.
-> F. Java is a functional programming language.
+> **A.** Java allows operator overloading.  
+> **B.** Java code compiled on Windows can run on Linux.  
+> **C.** Java has pointers to specific locations in memory.  
+> **D.** Java is a procedural language.  
+> **E.** Java is an object-oriented language.  
+> **F.** Java is a functional programming language.  
 
 #### Chapter 2 Operators and Statements (3/20😄)
 
@@ -50,12 +50,12 @@ tags:
 6: }
 ```
 
-> A. 9
-> B. 10
-> C. 11
-> D. The code will not compile because of line 3.
-> E. The code will not compile because of line 5.
-> F. The code contains an infinite loop and does not terminate.
+> **A.** 9  
+> **B.** 10  
+> **C.** 11  
+> **D.** The code will not compile because of line 3.  
+> **E.** The code will not compile because of line 5.  
+> **F.** The code contains an infinite loop and does not terminate.  
 
 **16.**What is the output of the following code snippet?
 
@@ -66,11 +66,11 @@ tags:
 6: } while(y <= 10);
 ```
 
-> A. 1 2 3 4 5 6 7 8 9
-> B. 1 2 3 4 5 6 7 8 9 10
-> C. 1 2 3 4 5 6 7 8 9 10 11
-> D. The code will not compile because of line 6.
-> E. The code contains an infinite loop and does not terminate.
+> **A.** 1 2 3 4 5 6 7 8 9  
+> **B.** 1 2 3 4 5 6 7 8 9 10  
+> **C.** 1 2 3 4 5 6 7 8 9 10 11  
+> **D.** The code will not compile because of line 6.  
+> **E.** The code contains an infinite loop and does not terminate.  
 
 **17.**What is the output of the following code snippet?
 
@@ -85,12 +85,12 @@ tags:
 10: System.out.println(result);
 ```
 
-> A. 7
-> B. 9
-> C. 10
-> D. 11
-> E. 15
-> F. The code will not compile because of line 8.
+> **A.** 7  
+> **B.** 9  
+> **C.** 10  
+> **D.** 11  
+> **E.** 15  
+> **F.** The code will not compile because of line 8.  
 
 #### Chapter 3 Core Java APIs (14/33😂)
 
