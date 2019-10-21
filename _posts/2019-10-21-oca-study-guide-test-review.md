@@ -566,6 +566,7 @@ class MySecret implements Secret {
 > **D.** MammalPlatypus  
 > **E.** The code will not compile because of line 7.  
 > **F.** The code will not compile because of line 11.  
+
 **3.**Which of the following statements can be inserted in the blank line so that the code will
 compile successfully? (Choose all that apply)  
 ```java
