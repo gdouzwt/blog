@@ -16,11 +16,9 @@ tags:
 #### Chapter 1 Java Building Blocks (2/23😊)
 
 **18.**Which represent the order in which the following statements can be assembled into a program that will compile successfully? (Choose all that apply)  
-
 `A: class Rabbit {}`  
 `B: import java.util.*;`  
 `C: package animals;`  
-
 > **A.** A, B, C  
 > **B.** B, C, A  
 > **C.** C, B, A  
@@ -30,7 +28,6 @@ tags:
 > **G.** A, B  
 
 **22.**Which of the following are true statements? (Choose all that apply)  
-
 > **A.** Java allows operator overloading.  
 > **B.** Java code compiled on Windows can run on Linux.  
 > **C.** Java has pointers to specific locations in memory.  
@@ -41,14 +38,12 @@ tags:
 #### Chapter 2 Operators and Statements (3/20😄)
 
 **9.**How many times will the following code print "Hello World"?  
-
 ```java
 3: for(int i=0; i<10 ; ) {
 4: i = i++;
 5: System.out.println("Hello World");
 6: }
 ```
-
 > **A.** 9  
 > **B.** 10  
 > **C.** 11  
@@ -57,14 +52,12 @@ tags:
 > **F.** The code contains an infinite loop and does not terminate.  
 
 **16.**What is the output of the following code snippet?  
-
 ```java
 3: do {
 4: int y = 1;
 5: System.out.print(y++ + " ");
 6: } while(y <= 10);
 ```
-
 > **A.** 1 2 3 4 5 6 7 8 9  
 > **B.** 1 2 3 4 5 6 7 8 9 10  
 > **C.** 1 2 3 4 5 6 7 8 9 10 11  
@@ -72,7 +65,6 @@ tags:
 > **E.** The code contains an infinite loop and does not terminate.  
 
 **17.**What is the output of the following code snippet?  
-
 ```java
 3:  boolean keepGoing = true;
 4:  int result = 15, i = 10;
@@ -83,7 +75,6 @@ tags:
 9:  } while(keepGoing);
 10: System.out.println(result);
 ```
-
 > **A.** 7  
 > **B.** 9  
 > **C.** 10  
@@ -94,13 +85,11 @@ tags:
 #### Chapter 3 Core Java APIs (13/33😂)
 
 **4.**What is the result of the following code?  
-
 ```java
 7: StringBuilder sb = new StringBuilder();
 8: sb.append("aaa").insert(1, "bb").insert(4, "ccc");
 9: System.out.println(sb);
 ```
-
 > **A.** abbaaccc  
 > **B.** abbaccca  
 > **C.** bbaaaccc  
@@ -118,7 +107,6 @@ tags:
 6: if (s1.equals(s2))
 7: System.out.print("2");
 ```
-
 > **A.** 1  
 > **B.** 2  
 > **C.** 12  
@@ -127,7 +115,6 @@ tags:
 > **F.** The code does not compile.  
 
 **15.**Which of these array declarations is not legal? (Choose all that apply)  
-
 > **A.** `int[][] scores = new int[5][];`  
 > **B.** `Object[][][] cubbies = new Object[3][0][5];`  
 > **C.** `String beans[] = new beans[6];`  
@@ -136,12 +123,10 @@ tags:
 > **F.** `int[][] java = new int[][];`  
 
 **16.**Which of these compile when replacing line 8? (Choose all that apply)  
-
 ```java
 7: char[]c = new char[2];
 8: // INSERT CODE HERE
 ```
-
 > **A.** `int length = c.capacity;`  
 > **B.** `int length = c.capacity();`  
 > **C.** `int length = c.length;`  
@@ -151,12 +136,10 @@ tags:
 > **G.** None of the above.  
 
 **17.**Which of these compile when replacing line 8? (Choose all that apply)  
-
 ```java
 7: ArrayList l = new ArrayList();
 8: // INSERT CODE HERE
 ```
-
 > **A.** `int length = l.capacity;`  
 > **B.** `int length = l.capacity();`  
 > **C.** `int length = l.length;`  
@@ -166,7 +149,6 @@ tags:
 > **G.** None of the above.  
 
 **18.**Which of the following are true? (Choose all that apply)  
-
 > **A.** An array has a fixed size.  
 > **B.** An `ArrayList` has a fixed size.  
 > **C.** An array allows multiple dimensions.  
@@ -176,7 +158,6 @@ tags:
 > **G.** An `ArrayList` is immutable.  
 
 **19.**Which of the following are true? (Choose all that apply)  
-
 > **A.** Two arrays with the same content are equal.  
 > **B.** Two ArrayLists with the same content are equal.  
 > **C.** If you call `remove(0)` using an empty `ArrayList` object, it will compile successfully.  
@@ -184,7 +165,6 @@ tags:
 > **E.** None of the above.  
 
 **20.**What is the result of the following statements?  
-
 ```java
 6:  List<String> list = new ArrayList<String>();
 7:  list.add("one");
@@ -192,7 +172,6 @@ tags:
 9:  list.add(7);
 10: for(String s : list) System.out.print(s);
 ```
-
 > **A.** onetwo  
 > **B.** onetwo7  
 > **C.** onetwo followed by an exception  
@@ -200,14 +179,12 @@ tags:
 > **E.** Compiler error on line 10.  
 
 **24.**What is the result of the following?  
-
 ```java
 6: String [] names = {"Tom", "Dick", "Harry"};
 7: List<String> list = names.asList();
 8: list.set(0, "Sue");
 9: System.out.println(names[0]);
 ```
-
 > **A.** Sue  
 > **B.** Tom  
 > **C.** Compiler error on line 7.  
@@ -223,7 +200,6 @@ int y = Collections.binarySearch(hex, "3A");
 int z = Collections.binarySearch(hex, "4F");
 System.out.println(x + " " + y + " " + z);
 ```
-
 > **A.** 0 1 –2  
 > **B.** 0 1 –3  
 > **C.** 2 1 –2  
@@ -232,7 +208,6 @@ System.out.println(x + " " + y + " " + z);
 > **F.** The code doesn’t compile.  
 
 **26.**Which of the following are true statements about the following code? (Choose all that apply)  
-
 ```java
 4: List<Integer> ages = new ArrayList<>();
 5: ages.add(Integer.parseInt("5"));
@@ -241,7 +216,6 @@ System.out.println(x + " " + y + " " + z);
 8: ages.add(null);
 9: for (int age : ages) System.out.print(age);
 ```
-
 > **A.** The code compiles.  
 > **B.** The code throws a runtime exception.  
 > **C.** Exactly one of the add statements uses autoboxing.  
@@ -249,7 +223,6 @@ System.out.println(x + " " + y + " " + z);
 > **E.** Exactly three of the add statements use autoboxing.  
 
 **29.**Which of the following can be inserted into the blank to create a date of June 21, 2014? (Choose all that apply)  
-
 ```java
 import java.time.*;
 public class StartOfSummer {
@@ -258,7 +231,6 @@ public class StartOfSummer {
     }
 }
 ```
-
 > **A.** `new LocalDate(2014, 5, 21);`  
 > **B.** `new LocalDate(2014, 6, 21);`  
 > **C.** `LocalDate.of(2014, 5, 21);`  
@@ -267,13 +239,11 @@ public class StartOfSummer {
 > **F.** `LocalDate.of(2014, Month.JUNE, 21);`  
 
 **30.**What is the output of the following code?  
-
 ```java
 LocalDate date = LocalDate.of(2018, Month.APRIL, 40);
 System.out.println(date.getYear() + " " + date.getMonth() + " "
 + date.getDayOfMonth());
 ```
-
 > **A.** 2018 APRIL 4  
 > **B.** 2018 APRIL 30  
 > **C.** 2018 MAY 10  
@@ -283,21 +253,284 @@ System.out.println(date.getYear() + " " + date.getMonth() + " "
 
 #### Chapter 4 Methods and Encapsulation (14/29😂)
 
-**2.**
-**5.**
-**6.**
-**9.**
-**11.**
-**12.**
-**15.**
-**17.**
-**18.**
-**20.**
-**22.**
-**26.**
-**27.**
-**29.**
+**2.**Which of the following compile? (Choose all that apply)  
+> **A.** `final static void method4() { }`  
+> **B.** `public final int void method() { }`  
+> **C.** `private void int method() { }`  
+> **D.** `static final void method3() { }`  
+> **E.** `void final method() {}`  
+> **F.** `void public method() { }`  
 
+**5.**Given the following method, which of the method calls return 2? (Choose all that apply)  
+```java
+public int howMany(boolean b, boolean... b2) {
+return b2.length;
+}
+```
+> **A.** `howMany();`  
+> **B.** `howMany(true);`  
+> **C.** `howMany(true, true);`  
+> **D.** `howMany(true, true, true);`  
+> **E.** `howMany(true, {true});`  
+> **F.** `howMany(true, {true, true});`  
+> **G.** `howMany(true, new boolean[2]);`  
+
+**6.**Which of the following are true? (Choose all that apply)  
+> **A.** Package private access is more lenient than protected access.  
+> **B.** A public class that has private fields and package private methods is not visible to classes outside the package.  
+> **C.** You can use access modifiers so only some of the classes in a package see a particular package private class.  
+> **D.** You can use access modifiers to allow read access to all methods, but not any instance variables.  
+> **E.** You can use access modifiers to restrict read access to all classes that begin with the word Test.  
+
+**9.**Which are methods using JavaBeans naming conventions for accessors and mutators? (Choose all that apply)  
+> **A.** `public boolean getCanSwim() { return canSwim;}`  
+> **B.** `public boolean canSwim() { return numberWings;}`  
+> **C.** `public int getNumWings() { return numberWings;}`  
+> **D.** `public int numWings() { return numberWings;}`  
+> **E.** `public void setCanSwim(boolean b) { canSwim = b;}`  
+
+**11.**Which are true of the following code? (Choose all that apply)  
+```java
+1:  public class Rope {
+2:    public static void swing() {
+3:        System.out.print("swing ");
+4:    }
+5:    public void climb() {
+6:        System.out.println("climb ");
+7:    }
+8:    public static void play() {
+9:        swing();
+10:       climb();
+11:   }
+12:   public static void main(String[] args) {
+13:       Rope rope = new Rope();
+14:       rope.play();
+15:       Rope rope2 = null;
+16:       rope2.play();
+17:   }
+18: }
+```
+> **A.** The code compiles as is.  
+> **B.** There is exactly one compiler error in the code.  
+> **C.** There are exactly two compiler errors in the code.  
+> **D.** If the lines with compiler errors are removed, the output is climb climb .  
+> **E.** If the lines with compiler errors are removed, the output is swing swing .  
+> **F.** If the lines with compile errors are removed, the code throws a NullPointerException.  
+
+**12.**What is the output of the following code?  
+```java
+import rope.*;
+import static rope.Rope.*;
+public class RopeSwing {
+    private static Rope rope1 = new Rope();
+    private static Rope rope2 = new Rope();
+    {
+        System.out.println(rope1.length);
+    }
+    public static void main(String[] args) {
+        rope1.length = 2;
+        rope2.length = 8;
+        System.out.println(rope1.length);
+    }
+}
+package rope;
+public class Rope {
+    public static int length = 0;
+}
+```
+> **A.** 02  
+> **B.** 08  
+> **C.** 2  
+> **D.** 8  
+> **E.** The code does not compile.  
+> **F.** An exception is thrown.  
+
+**15.**What is the result of the following statements?  
+```java
+1:  public class Test {
+2:    public void print(byte x) {
+3:      System.out.print("byte");
+4:    }
+5:    public void print(int x) {
+6:      System.out.print("int");
+7:    }
+8:    public void print(float x) {
+9:      System.out.print("float");
+10:   }
+11:   public void print(Object x) {
+12:     System.out.print("Object");
+13:   }
+14:   public static void main(String[] args) {
+15:     Test t = new Test();
+16:     short s = 123;
+17:     t.print(s);
+18:     t.print(true);
+19:     t.print(6.789);
+20:   }
+21: }
+```
+> **A.** bytefloatObject  
+> **B.** intfloatObject  
+> **C.** byteObjectfloat  
+> **D.** intObjectfloat  
+> **E.** intObjectObject  
+> **F.** byteObjectObject  
+
+**17.**Which of the following are output by the following code? (Choose all that apply)  
+```java
+public class StringBuilders {
+    public static StringBuilder work(StringBuilder a,
+    StringBuilder b) {
+        a = new StringBuilder("a");
+        b.append("b");
+        return a;
+    }
+    public static void main(String[] args) {
+        StringBuilder s1 = new StringBuilder("s1");
+        StringBuilder s2 = new StringBuilder("s2");
+        StringBuilder s3 = work(s1, s2);
+        System.out.println("s1 = " + s1);
+        System.out.println("s2 = " + s2);
+        System.out.println("s3 = " + s3);
+    }
+}
+```
+> **A.** s1 = a  
+> **B.** s1 = s1  
+> **C.** s2 = s2  
+> **D.** s2 = s2b  
+> **E.** s3 = a  
+> **F.** s3 = null  
+> **G.** The code does not compile.  
+
+**18.**Which of the following are true? (Choose 2)  
+> **A.** `this()` can be called from anywhere in a constructor.  
+> **B.** `this()` can be called from any instance method in the class.  
+> **C.** `this.variableName` can be called from any instance method in the class.  
+> **D.** `this.variableName` can be called from any static method in the class.  
+> **E.** You must include a default constructor in the code if the compiler does not include one.  
+> **F.** You can call the default constructor written by the compiler using `this()`.  
+> **G.** You can access a private constructor with the `main()` method.  
+
+**20.**Which code can be inserted to have the code print 2?  
+```java
+public class BirdSeed {
+    private int numberBags;
+    boolean call;
+
+    public BirdSeed() {
+        // LINE 1
+        call = false;
+        // LINE 2
+    }
+    public BirdSeed(int numberBags) {
+        this.numberBags = numberBags;
+    }
+    public static void main(String[] args) {
+        BirdSeed seed = new BirdSeed();
+        System.out.println(seed.numberBags);
+} }
+```
+> **A.** Replace line 1 with `BirdSeed(2)`;  
+> **B.** Replace line 2 with `BirdSeed(2)`;  
+> **C.** Replace line 1 with `new BirdSeed(2)`;  
+> **D.** Replace line 2 with `new BirdSeed(2)`;  
+> **E.** Replace line 1 with `this(2)`;  
+> **F.** Replace line 2 with `this(2)`;  
+
+**22.**What is the result of the following?  
+```java
+1: public class Order {
+2:   static String result = "";
+3:   { result += "c"; }
+4:   static
+5:   { result += "u"; }
+6:   { result += "r"; }
+7: }
+
+1: public class OrderDriver {
+2:   public static void main(String[] args) {
+3:     System.out.print(Order.result + " ");
+4:     System.out.print(Order.result + " ");
+5:     new Order();
+6:     new Order();
+7:     System.out.print(Order.result + " ");
+8:   }
+9: }
+```
+> **A.** curur  
+> **B.** ucrcr  
+> **C.** u ucrcr  
+> **D.** u u curcur  
+> **E.** u u ucrcr  
+> **F.** ur ur urc  
+> **G.** The code does not compile.  
+
+**26.**What is the result of the following class?  
+```java
+1: import java.util.function.*;
+2: 
+3: public class Panda {
+4:   int age;
+5:   public static void main(String[] args) {
+6:     Panda p1 = new Panda();
+7:     p1.age = 1;
+8:     check(p1, p -> p.age < 5);
+9:   }
+10:  private static void check(Panda panda, Predicate<Panda> pred) {
+11:    String result = pred.test(panda) ? "match" : "not match";
+12:    System.out.print(result);
+13: } }
+```
+> **A.** match  
+> **B.** not match  
+> **C.** Compiler error on line 8.  
+> **D.** Compiler error on line 10.  
+> **E.** Compiler error on line 11.  
+> **F.** A runtime excep  
+
+**27.**What is the result of the following code?  
+```java
+1:  interface Climb {
+2:    boolean isTooHigh(int height, int limit);
+3:  }
+4:  
+5:  public class Climber {
+6:    public static void main(String[] args) {
+7:      check((h, l) -> h.append(l).isEmpty(), 5);
+8:    }
+9:    private static void check(Climb climb, int height) {
+10:     if (climb.isTooHigh(height, 10))
+11:       System.out.println("too high");
+12:     else
+13:       System.out.println("ok");
+14:   }
+15: }
+```
+> **A.** ok  
+> **B.** too high  
+> **C.** Compiler error on line 7.  
+> **D.** Compiler error on line 10.  
+> **E.** Compiler error on a different line.  
+> **F.** A runtime exception is thrown.  
+
+**29.**Which lambda can replace the MySecret class to return the same value? (Choose all that apply)  
+```java
+interface Secret {
+  String magic(double d);
+}
+class MySecret implements Secret {
+  public String magic(double d) {
+    return "Poof";
+  }
+}
+```
+> **A.** `caller((e) -> "Poof");`  
+> **B.** `caller((e) -> {"Poof"});`  
+> **C.** `caller((e) -> { String e = ""; "Poof" });`  
+> **D.** `caller((e) -> { String e = ""; return "Poof"; });`  
+> **E.** `caller((e) -> { String e = ""; return "Poof" });`  
+> **F.** `caller((e) -> { String f = ""; return "Poof"; });`  
 
 #### Chapter 5 Class Design (12/20😭)
 
