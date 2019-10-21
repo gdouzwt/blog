@@ -2,8 +2,8 @@
 typora-root-url: ../
 layout:     post
 title:      OCA Study Guide 练习回顾
-date:       '2019-10-21'
-subtitle:   包括全部章节的习题
+date:       '2019-10-22'
+subtitle:   全部章节的错题
 author:     招文桃
 catalog:    true
 tags:
