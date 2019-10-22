@@ -573,7 +573,7 @@ compile successfully? (Choose all that apply)
 public interface CanHop {}
 public class Frog implements CanHop {
   public static void main(String[] args) {
-    frog = new TurtleFrog();
+    ____________frog = new TurtleFrog();
   }
 }
 public class BrazilianHornedFrog extends Frog {}
