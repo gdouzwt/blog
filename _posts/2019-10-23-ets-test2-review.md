@@ -26,12 +26,13 @@ public class TestClass{
     }
 }
 ```  
+**You had to select 1 options**  
 > - [ ] It will throw `ArrayIndexOutOfBoundsException` at Runtime  
 > - [ ] Compile time Error.  
 > - [ ] It will print 10 20 30  
 > - [x] It will print 30 20 30  
 
-💭**Explanation**  
+✨**Explanation**  
 The statement `iA[i] = i = 30;` will be processed as follows:  
 `iA[i] = i = 30;` 👉 `iA[0] = i = 30;`  👉  `i = 30; iA[0] = i ;` 👉  `iA[0] = 30;`  
 
@@ -58,13 +59,14 @@ public class Test{
 ```  
 Which of the following statements are true if the above program is run with the command line :  
 `java Test closed`  
+**You had to select 1 options**  
 > - [ ] It will throw `ArrayIndexOutOfBoundsException` at runtime.  
 > - [x] It will end without exceptions and will print nothing.  
 > - [ ] It will print `Go away`  
 > - [ ] It will print `Go away` and then will throw `ArrayIndexOutOfBoundsException`.  
 > - [ ] None of the above.  
 
-💭**Explanation**  
+✨**Explanation**  
 As in C and C++, the Java `if` statement suffers from the so-called "dangling `else` problem," The problem is that both the outer `if` statement and the inner `if` statement might conceivably own the `else` clause. In this example, one might be tempted to assume that the programmer intended the `else` clause to belong to the outer `if` statement.  
 
 The Java language, like C and C++ and many languages before them, arbitrarily decree that an `else` clause belongs to the innermost `if` so as the first `if()` condition fails (`args[0]` not being "open") there is no `else` associated to execute. So, the program does nothing. The else actually is associated with the second `if`.  
@@ -72,6 +74,25 @@ So had the command line been :
 `java Test open`, it would have executed the second `if` and thrown `ArrayIndexOutOfBoundsException`.  
 If the command line had been:  
 `java Test open xyz`, it would execute the else part(which is associated with the second `if`) and would have printed "Go away xyz".
+
+---  
+
+
+**14.**Which of the following code snippets will compile without any errors?  
+(Assume that the statement `int x = 0;` exists prior to the statements below.)  
+**You had to select 3 options**  
+> - [ ]`while (false) { x=3; }`  
+> - [x]`if (false) { x=3; }`  
+> - [x]`do{ x = 3; } while(false);`  
+> - [x]`for( int i = 0; i< 0; i++) x = 3;`  
+
+✨**Explanation**  
+`while (false) { x=3; }` is a compile-time error because the statement x=3; is not reachable;  
+Similarly, `for( int i = 0; false; i++) x = 3;` is also a compile time error because x= 3 is unreachable.  
+
+In `if(false){ x=3; }`, although the body of the condition is unreachable, this is not an error because the JLS explicitly defines this as an exception to the rule. It allows this construct to support optimizations through the conditional compilation. For example,  
+`if(DEBUG){ System.out.println("beginning task 1"); }`  
+Here, the `DEBUG` variable can be set to false in the code while generating the production version of the class file, which will allow the compiler to optimize the code by removing the whole if statement entirely from the class file.  
 
 ---  
 
