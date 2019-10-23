@@ -13,6 +13,38 @@ tags:
 
 > Enthuware Test Studio Test 2 错题回顾，题目编号为测试系统的编号。  
 
+**5.**Given:  
+```java
+package loops;
+public class JustLooping {
+    private int j;
+    void showJ(){
+        while(j<=5){
+            for(int j=1; j <= 5;){
+                System.out.print(j+" ");
+                j++;
+            }
+            j++;
+        }
+    }
+    public static void main(String[] args) {
+        new JustLooping().showJ();
+    }
+}
+```  
+What is the result?  
+**You had to select 1 option**  
+> - [ ] It will not compile.  
+> - [ ] It will print 1 2 3 4 5 five times.  
+> - [ ] It will print 1 3 5 five times.  
+> - [ ] It will print 1 2 3 4 5 once.  
+> - [x] It will print 1 2 3 4 5 six times.  
+
+✨**Explanation**  
+The point to note here is that the `j` in for loop is different from the instance member `j`. Therefore, `j++` occuring in the for loop doesn't affect the `while` loop. The `for` loop prints 1 2 3 4 5.  
+The `while` loop runs for the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 is printed 6 times. Note that after the end of the `while` loop the value of j is 6.  
+
+---  
 
 **8.**What will be the result of trying to compile and execute the following program?
 ```java
@@ -76,10 +108,10 @@ If the command line had been:
 
 ---
 
-
 **14.**Which of the following code snippets will compile without any errors?  
 (Assume that the statement `int x = 0;` exists prior to the statements below.)  
 **You had to select 3 options**  
+
 > - [ ] `while (false) { x=3; }`  
 > - [x] `if (false) { x=3; }`  
 > - [x] `do{ x = 3; } while(false);`  
@@ -119,18 +151,25 @@ class TestClass{
 > - [ ] It will print 4, 4 when line 1 is replaced by `i = m++;`  
 > - [x] It will print 3, 3 when line 1 is replaced by `i = 4;`  
 
+✨**Explanation**  
 This is a simple loop. All you need to do is execute each statement in your head. For example, if line 1 is replaced by `break`:  
-① k=0, m=0  
-② iteration 1: i=0  
-   2.1 k = 1  
-   2.2 i == 2 is false  
-   2.3 m = 1  
-③ iteration 2: i = 1   
-   3.1 k=2  
-   3.2 i==2 is false  
-   3.3 m = 2  
-④ iteration 3: i = 2 
-   4.1 k=3  
-   4.2 i==2 is true  
-   4.3 break  
-⑤ print 3, 2  
+
+> ① k=0, m=0  
+> ② iteration 1: i=0  
+>    	k = 1  
+>    	i == 2 is false  
+>    	m = 1  
+> ③ iteration 2: i = 1  
+>    	k=2  
+>    	i==2 is false  
+>    	m = 2  
+> ④ iteration 3: i = 2  
+>    	k=3  
+>    	i==2 is true  
+>    	break  
+> ⑤ print 3, 2  
+
+---
+
+
+
