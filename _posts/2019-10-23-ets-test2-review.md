@@ -13,6 +13,10 @@ tags:
 
 > Enthuware Test Studio Test 2 错题回顾，题目编号为测试系统的编号。  
 
+
+**2.**
+
+
 **5.**Given:  
 ```java
 package loops;
@@ -42,7 +46,58 @@ What is the result?
 
 ✨**Explanation**  
 The point to note here is that the `j` in for loop is different from the instance member `j`. Therefore, `j++` occuring in the for loop doesn't affect the `while` loop. The `for` loop prints 1 2 3 4 5.  
-The `while` loop runs for the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 is printed 6 times. Note that after the end of the `while` loop the value of j is 6.  
+The `while` loop runs for the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 is printed 6 times. Note that after the end of the `while` loop the value of `j` is 6.  
+
+---  
+
+**6.**Given:  
+```java
+//in file Movable.java
+package p1;
+public interface Movable {
+  int location = 0;
+  void move(int by);
+  public void moveBack(int by);
+}
+
+//in file Donkey.java
+package p2;
+import p1.Movable;
+public class Donkey implements Movable{
+    int location = 200;
+    public void move(int by) {
+        location = location+by;
+    }
+    public void moveBack(int by) {
+        location = location-by;
+    }
+}
+
+//in file TestClass.java
+package px;
+import p1.Movable;
+import p2.Donkey;
+public class TestClass {
+    public static void main(String[] args) {
+        Movable m = new Donkey();
+        m.move(10);
+        m.moveBack(20);
+        System.out.println(m.location);
+    }
+}
+```  
+Identify the correct statement(s).  
+**You had to select 1 option**  
+> - [ ] Donkey.java will not compile.  
+> - [ ] TestClass.java will not compile.  
+> - [ ] Movable.java will not compile.  
+> - [ ] It will print 190 when TestClass is run.  
+> - [x] It will print 0 when TestClass is run.  
+
+✨**Explanation**  
+There is no problem with the code. All variables in an interface are implicitly `public`, `static`, and `final`. All methods in an interface are `public`.  
+There is no need to define them so explicitly. Therefore, the `location` variable in `Movable` is `public` and `static` and the `move()` method is `public`.  
+Now, when you call `m.move(10)` and `m.moveBack(20)`, the instance member `location` of `Donkey` is updated to 190 because  the reference `m` refers to a `Donkey` at run time and so `move` and `moveBack` methods of `Donkey` are invoked at runtime. However, when you print `m.location`, it is the Movable's `location` (which is never updated) that is printed.  
 
 ---  
 
@@ -169,7 +224,46 @@ This is a simple loop. All you need to do is execute each statement in your head
 >    	break  
 > ⑤ print 3, 2  
 
----
+---  
 
+**25.**Which of these statements are true?  
+✨**Explanation**  
 
+---  
+**28.**
+✨**Explanation**  
+
+---  
+**29.**
+✨**Explanation**  
+
+---  
+**33.**
+✨**Explanation**  
+
+---  
+**44.**
+✨**Explanation**  
+
+---  
+**48.**
+✨**Explanation**  
+
+---  
+**56.**
+✨**Explanation**  
+
+---  
+**58.**
+✨**Explanation**  
+
+---  
+**65.**
+✨**Explanation**  
+
+---  
+**69.**
+✨**Explanation**  
+
+---  
 
