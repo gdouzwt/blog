@@ -31,7 +31,7 @@ public class JustLooping {
         new JustLooping().showJ();
     }
 }
-```  
+```
 What is the result?  
 **You had to select 1 option**  
 > - [ ] It will not compile.  
@@ -40,11 +40,12 @@ What is the result?
 > - [ ] It will print 1 2 3 4 5 once.  
 > - [x] It will print 1 2 3 4 5 six times.  
 
-✨**Explanation**  
+##### ✨**Explanation**  2
+
 The point to note here is that the `j` in for loop is different from the instance member `j`. Therefore, `j++` occuring in the `for` loop doesn't affect the while loop. The `for` loop prints 1 2 3 4 5.  
 The while loop runs `for` the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 is printed 6 times. Note that after the end of the while loop the value of `j` is 6.  
 
----  
+---
 
 **6.**Given:  
 ```java
@@ -81,7 +82,7 @@ public class TestClass {
         System.out.println(m.location);
     }
 }
-```  
+```
 Identify the correct statement(s).  
 **You had to select 1 option**  
 > - [ ] Donkey.java will not compile.  
@@ -90,12 +91,13 @@ Identify the correct statement(s).
 > - [ ] It will print 190 when TestClass is run.  
 > - [x] It will print 0 when TestClass is run.  
 
-✨**Explanation**  
+##### ✨**Explanation**  6
+
 There is no problem with the code. All variables in an interface are implicitly `public`, `static`, and `final`. All methods in an interface are `public`.  
 There is no need to define them so explicitly. Therefore, the `location` variable in `Movable` is `public` and `static` and the `move()` method is `public`.  
 Now, when you call `m.move(10)` and `m.moveBack(20)`, the instance member `location` of `Donkey` is updated to 190 because  the reference `m` refers to a `Donkey` at run time and so `move` and `moveBack` methods of `Donkey` are invoked at runtime. However, when you print `m.location`, it is the Movable's `location` (which is never updated) that is printed.  
 
----  
+---
 
 **8.**What will be the result of trying to compile and execute the following program?
 ```java
@@ -107,14 +109,15 @@ public class TestClass{
       System.out.println(""+ iA[ 0 ] + " " + iA[ 1 ] + "  "+i) ;
     }
 }
-```  
+```
 **You had to select 1 options**  
 > - [ ] It will throw `ArrayIndexOutOfBoundsException` at Runtime  
 > - [ ] Compile time Error.  
 > - [ ] It will print 10 20 30  
 > - [x] It will print 30 20 30  
 
-✨**Explanation**  
+##### ✨**Explanation**  8
+
 The statement `iA[i] = i = 30;` will be processed as follows:  
 `iA[i] = i = 30;` 👉 `iA[0] = i = 30;`  👉  `i = 30; iA[0] = i ;` 👉  `iA[0] = 30;`  
 
@@ -148,7 +151,8 @@ Which of the following statements are true if the above program is run with the 
 > - [ ] It will print `Go away` and then will throw `ArrayIndexOutOfBoundsException`.  
 > - [ ] None of the above.  
 
-✨**Explanation**  
+##### ✨**Explanation**  11
+
 As in C and C++, the Java `if` statement suffers from the so-called "dangling `else` problem," The problem is that both the outer `if` statement and the inner `if` statement might conceivably own the `else` clause. In this example, one might be tempted to assume that the programmer intended the `else` clause to belong to the outer `if` statement.  
 
 The Java language, like C and C++ and many languages before them, arbitrarily decree that an `else` clause belongs to the innermost `if` so as the first `if()` condition fails (`args[0]` not being "open") there is no `else` associated to execute. So, the program does nothing. The else actually is associated with the second `if`.  
@@ -168,7 +172,8 @@ If the command line had been:
 > - [x] `do{ x = 3; } while(false);`  
 > - [x] `for( int i = 0; i< 0; i++) x = 3;`  
 
-✨**Explanation**  
+##### ✨**Explanation**  14
+
 `while (false) { x=3; }` is a compile-time error because the statement `x=3;` is not reachable;  
 Similarly, `for( int i = 0; false; i++) x = 3;` is also a compile time error because `x = 3;` is unreachable.  
 
@@ -202,7 +207,8 @@ class TestClass{
 > - [ ] It will print 4, 4 when line 1 is replaced by `i = m++;`  
 > - [x] It will print 3, 3 when line 1 is replaced by `i = 4;`  
 
-✨**Explanation**  
+##### ✨**Explanation**  20
+
 This is a simple loop. All you need to do is execute each statement in your head. For example, if line 1 is replaced by `break`:  
 
 > ① k=0, m=0  
@@ -220,7 +226,7 @@ This is a simple loop. All you need to do is execute each statement in your head
 >    ⇨ break  
 > ⑤ print 3, 2  
 
----  
+---
 
 **25.**Which of these statements are true?  
 **You had to select 2 options**  
@@ -231,12 +237,13 @@ This is a simple loop. All you need to do is execute each statement in your head
 > - [ ] Instance methods may access local variables of static methods.  
 > - [ ] All methods in a class are implicitly passed a 'this' parameter when called.  
 
-✨**Explanation**  
+##### ✨**Explanation**  25
+
 'this' is assigned a reference to the current object automatically by the JVM. Thus, within an instance method `foo`, calling `this.foo();` is same as calling `foo();`  
 Since there is no current object available for a static method, 'this' reference is not available in static methods and therefore it can only be used within instance methods. For the same reason, static methods cannot access non static fields or methods of that class directly i.e. without a reference to an instance of that class.  
 Note : you can't reassign 'this' like this: `this = new Object();`  
 
----  
+---
 
 **28.**Which of the following comparisons will yield false?  
 **You had to select 3 options**  
@@ -247,7 +254,8 @@ Note : you can't reassign 'this' like this: `this = new Object();`
 > - [ ] `new Boolean("true") == Boolean.TRUE`  
 > - [x] `new Boolean("no") == false;`  
 
-✨**Explanation**  
+##### ✨**Explanation**  28
+
 You need to remember the following points about `Boolean`:  
 **1.** `Boolean` class has two constructors - `Boolean(String)` and `Boolean(boolean)` The `String` constructor allocates a `Boolean` object representing the value `true` if the string argument is not `null` and is equal, ignoring case, to the string "true". Otherwise, allocate a `Boolean` object representing the value `false`. Examples: `new Boolean("True")` produces a `Boolean` object that represents `true`. `new Boolean("yes")` produces a `Boolean` object that represents `false`.
 The `boolean` constructor is self explanatory.  
@@ -255,38 +263,46 @@ The `boolean` constructor is self explanatory.
 `Boolean.valueOf(String )` and its overloaded `Boolean.valueOf(boolean )` version, on the other hand, work similarly but return a reference to either `Boolean.TRUE` or `Boolean.FALSE` wrapper objects. Observe that they dont create a new `Boolean` object but just return the static constants `TRUE` or `FALSE` defined in `Boolean` class.  
 **3.** When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is true.  
 
----  
+---
 
 **29.**
-✨**Explanation**  
 
----  
+##### ✨**Explanation**  29
+
+---
 **33.**
-✨**Explanation**  
 
----  
+##### ✨**Explanation**  33
+
+---
 **44.**
-✨**Explanation**  
 
----  
+##### ✨**Explanation**  44
+
+---
 **48.**
-✨**Explanation**  
 
----  
+##### ✨**Explanation**  48
+
+---
 **56.**
-✨**Explanation**  
 
----  
+##### ✨**Explanation**  56
+
+---
 **58.**
-✨**Explanation**  
 
----  
+##### ✨**Explanation**  58
+
+---
 **65.**
-✨**Explanation**  
 
----  
+##### ✨**Explanation**  65
+
+---
 **69.**
-✨**Explanation**  
 
----  
+##### ✨**Explanation**  69
+
+---
 
