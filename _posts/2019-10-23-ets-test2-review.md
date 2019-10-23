@@ -256,7 +256,7 @@ Note : you can't reassign 'this' like this: `this = new Object();`
 
 ##### ✨**Explanation**  28
 
-You need to remember the following points about `Boolean`:  
+**You need to remember the following points about `Boolean`:**  
 **1.** `Boolean` class has two constructors - `Boolean(String)` and `Boolean(boolean)` The `String` constructor allocates a `Boolean` object representing the value `true` if the string argument is not `null` and is equal, ignoring case, to the string "true". Otherwise, allocate a `Boolean` object representing the value `false`. Examples: `new Boolean("True")` produces a `Boolean` object that represents `true`. `new Boolean("yes")` produces a `Boolean` object that represents `false`.
 The `boolean` constructor is self explanatory.  
 **2.** `Boolean` class has two static helper methods for creating booleans - `parseBoolean` and `valueOf`. `Boolean.parseBoolean(String )` method returns a primitive `boolean` and not a `Boolean` object (Note - Same is with the case with other parseXXX methods such as `Integer.parseInt` - they return primitives and not objects). The `boolean` returned represents the value `true` if the string argument is not null and is equal, ignoring case, to the string "true".  
@@ -265,11 +265,31 @@ The `boolean` constructor is self explanatory.
 
 ---
 
-**29.**
+**29.**Identify the valid for loop constructs assuming the following declarations:  
+```java
+Object o = null;
+Collection c = //valid collection object.
+int[][] ia = //valid array
+```   
+**You had to select 2 options**  
+ - [ ] `for(o : c){ }`  
+    > Cannot use an existing/predefined variable in the variable declaration part.  
+ - [x] `for(final Object o2 :c){ }`  
+    > final is the only modifier (excluding annotations) that is allowed here.  
+ - [ ] `for(int i : ia) { }`  
+    > Each element of ia is itself an array. Thus, they cannot be assigned to an `int`.  
+ - [ ] `for(Iterator it : c.iterator()){ }`  
+    > `c.iterator()` does not return any Collection. Note that the following would have been valid:  
+    > `Collection<Iterator> c` = //some collection that contains Iterator objects  
+    > `for(Iterator it : c){ }`  
+ - [x] `for(int i : ia[0]){ }`  
+    > Since `ia[0]` is an array of ints, this is valid. (It may throw a `NullPointerException` or `ArrayIndexOutOfBoundsException` at runtime if `ia` is not appropriately initialized.)  
 
 ##### ✨**Explanation**  29
+see above 👆
 
----
+---  
+
 **33.**
 
 ##### ✨**Explanation**  33
