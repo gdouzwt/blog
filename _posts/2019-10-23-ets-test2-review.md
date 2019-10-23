@@ -46,39 +46,6 @@ The while loop runs `for` the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 i
 
 ---  
 
-**5.**Given:  
-```java
-package loops;
-public class JustLooping {
-    private int j;
-    void showJ(){
-        while(j<=5){
-            for(int j=1; j <= 5;){
-                System.out.print(j+" ");
-                j++;
-            }
-            j++;
-        }
-    }
-    public static void main(String[] args) {
-        new JustLooping().showJ();
-    }
-}
-```  
-What is the result?  
-**You had to select 1 option**  
-> - [ ] It will not compile.  
-> - [ ] It will print 1 2 3 4 5 five times.  
-> - [ ] It will print 1 3 5 five times.  
-> - [ ] It will print 1 2 3 4 5 once.  
-> - [x] It will print 1 2 3 4 5 six times.  
-
-✨**Explanation**  
-The point to note here is that the `j` in for loop is different from the instance member `j`. Therefore, `j++` occuring in the for loop doesn't affect the `while` loop. The `for` loop prints 1 2 3 4 5.  
-The `while` loop runs for the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 is printed 6 times. Note that after the end of the `while` loop the value of `j` is 6.  
-
----  
-
 **6.**Given:  
 ```java
 //in file Movable.java
@@ -267,7 +234,7 @@ This is a simple loop. All you need to do is execute each statement in your head
 ✨**Explanation**  
 'this' is assigned a reference to the current object automatically by the JVM. Thus, within an instance method `foo`, calling `this.foo();` is same as calling `foo();`  
 Since there is no current object available for a static method, 'this' reference is not available in static methods and therefore it can only be used within instance methods. For the same reason, static methods cannot access non static fields or methods of that class directly i.e. without a reference to an instance of that class.  
-Note : you can't reassign 'this' like this: this = new Object();  
+Note : you can't reassign 'this' like this: `this = new Object();`  
 
 ---  
 
