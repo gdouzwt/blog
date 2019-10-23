@@ -240,10 +240,11 @@ Note : you can't reassign 'this' like this: `this = new Object();`
 
 **28.**Which of the following comparisons will yield false?  
 **You had to select 3 options**  
-> - [x] `Boolean.parseBoolean("true") == true`  
+> - [ ] `Boolean.parseBoolean("true") == true`  
 > - [x] `Boolean.parseBoolean("TrUe") == new Boolean(null);`  
-> - [x] `new Boolean() == false;`  
-> - [x] `new Boolean("true") == Boolean.TRUE`  
+> - [x] `new Boolean("TrUe") == new Boolean(true);`  
+> - [ ] `new Boolean() == false;`  
+> - [ ] `new Boolean("true") == Boolean.TRUE`  
 > - [x] `new Boolean("no") == false;`  
 
 ✨**Explanation**  
