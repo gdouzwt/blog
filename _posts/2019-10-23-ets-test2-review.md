@@ -270,44 +270,148 @@ The `boolean` constructor is self explanatory.
 Object o = null;
 Collection c = //valid collection object.
 int[][] ia = //valid array
-```   
+```
 **You had to select 2 options**
  - [ ] `for(o : c){ }`  
+    
     > Cannot use an existing/predefined variable in the variable declaration part.  
  - [x] `for(final Object o2 :c){ }`  
+    
     > final is the only modifier (excluding annotations) that is allowed here.  
  - [ ] `for(int i : ia) { }`  
+    
     > Each element of ia is itself an array. Thus, they cannot be assigned to an `int`.  
  - [ ] `for(Iterator it : c.iterator()){ }`  
     > `c.iterator()` does not return any Collection. Note that the following would have been valid:  
     > `Collection<Iterator> c` = //some collection that contains Iterator objects  
     > `for(Iterator it : c){ }`  
  - [x] `for(int i : ia[0]){ }`  
+    
     > Since `ia[0]` is an array of ints, this is valid. (It may throw a `NullPointerException` or `ArrayIndexOutOfBoundsException` at runtime if `ia` is not appropriately initialized.)  
 
 ##### ✨**Explanation**  29
 see above 👆
 
----  
+---
 
-**33.**
+**33.**Which of these assignments are valid?  
+**You had to select 3 options**
+- [x] `short s = 12;`  
+    
+    > This is valid since 12 can fit into a short and an implicit narrowing conversion can occur.  
+- [x] `long g = 012;`  
+    
+    > 012 is a valid octal number.  
+- [ ] `int i = (int) false;`  
+    
+    > Values of type boolean cannot be converted to any other types.  
+- [x] `float f = -123;`  
+    
+    > Implicit widening conversion will occur in this case.  
+- [ ] `float d = 0 * 1.5;`  
+    
+    > double cannot be implicitly narrowed to a float even though the value is representable by a float.  
 
 ##### ✨**Explanation**  33
+Note that  
+`float d = 0 * 1.5f;` and `float d = 0 * (float)1.5;` are OK  
+An implicit narrowing primitive conversion may be used if all of the following conditions are satisfied:  
+**1.** The expression is a compile time constant expression of type `byte`, `char`, `short`, or `int`.  
+**2.** The type of the variable is `byte`, `short`, or `char`.  
+**3.** The value of the expression (which is known at compile time, because it is a constant expression) is representable in the type of the variable.  
+Note that implicit narrowing conversion does not apply to `long` or `double`. So, `char ch = 30L;` will fail even though 30 is representable in `char`.  
 
----
-**44.**
+---   
+
+**44.**What will the following code print?  
+```java
+public class TestClass{
+        int x = 5;
+        int getX(){ return x; }
+
+        public static void main(String args[]) throws Exception{
+            TestClass tc = new TestClass();
+            tc.looper();
+            System.out.println(tc.x);
+        }
+        
+        public void looper(){
+            int x = 0;
+            while( (x = getX()) != 0 ){
+                for(int m = 10; m>=0; m--){
+                    x = m;
+                }
+            }
+            
+       }     
+}
+```  
+**You had to select 1 option**
+- [ ] It will not compile.  
+- [ ] It will throw an exception at runtime.  
+- [ ] It will print 0.  
+- [ ] It will print 5.  
+- [x] None of these.  
+    > This program will compile and run but will never terminate.  
 
 ##### ✨**Explanation**  44
+Note that `looper()` declares an automatic variable `x`, which **shadows** the instance variable `x`. So when `x = m;` is executed, it is the local variable `x` that is changed not the instance field `x`. So `getX()` never returns 0. If you remove `int x = 0;` from `looper()`, it will print 0 and end.  
 
 ---
-**48.**
+**48.**What will the following program print?  
+```java
+class Test{
+   public static void main(String args[]){
+      int var = 20, i=0;
+      do{
+         while(true){
+         if( i++ > var) break;
+         }
+      }while(i<var--);
+      System.out.println(var);
+   }
+}
+```  
+**You had to select 1 option**  
+- [x] 19  
+- [ ] 20  
+- [ ] 21  
+- [ ] 22  
+- [ ] It will enter an infinite loop.  
 
 ##### ✨**Explanation**  48
+When the first iteration of outer do-while loop starts, `var` is 20. Now, the inner loop executes till `i` becomes 21.
+Now, the condition for outer do-while is checked, `while( 22 < 20 )`, [`i` is 22 because of the last `i++>var` check], thereby making `var` 19. And as the condition is `false`, the outer loop also ends.
+So, 19 is printed.  
 
 ---
-**56.**
+**56.**Consider the following code:  
+```java
+class A{
+   A() {  print();   }
+   void print() { System.out.println("A"); }
+}
+class B extends A{
+   int i =   4;
+   public static void main(String[] args){
+      A a = new B();
+      a.print();
+   }
+   void print() { System.out.println(i); }
+}
+```  
+What will be the output when class B is run ?  
+**You had to select 1 option**
+- [ ] It will print A, 4  
+- [ ] It will print A, A  
+- [x] It will print 0, 4  
+- [ ] It will print 4, 4  
+- [ ] None of the above.  
 
 ##### ✨**Explanation**  56
+Note that method `print()` is overridden in class `B`. Due to polymorphism, the method to be executed is selected depending on the class of the actual object.  
+Here, when an object of class `B` is created, first `B`'s default constructor (which is not visible in the code but is automatically provided by the compiler because `B` does not define any constructor explicitly) is called. The first line of this constructor is a call to `super()`, which invokes `A`'s constructor. `A`'s constructor in turn calls `print()`. Now, print is a non-private instance method and is therefore polymorphic, which means, the selection of the method to be executed depends on the class of actual object on which it is invoked. Here, since the class of actual object is `B`, `B`'s print is selected instead of `A`'s print. At this point of time, variable `i` has not been initialized (because we are still in the middle of initializing `A`), so its default value i.e. 0 is printed.  
+Finally, 4 is printed.  
 
 ---
 **58.**
