@@ -13,7 +13,6 @@ tags:
 
 > Enthuware Test Studio Test 2 错题回顾，题目编号为测试系统的编号。  
 
-
 **2.**Given:  
 ```java
 package loops;
@@ -46,7 +45,6 @@ The point to note here is that the `j` in for loop is different from the instanc
 The while loop runs `for` the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 is printed 6 times. Note that after the end of the while loop the value of `j` is 6.  
 
 ---  
-
 
 **5.**Given:  
 ```java
@@ -142,7 +140,7 @@ public class TestClass{
       System.out.println(""+ iA[ 0 ] + " " + iA[ 1 ] + "  "+i) ;
     }
 }
-```
+```  
 **You had to select 1 options**  
 > - [ ] It will throw `ArrayIndexOutOfBoundsException` at Runtime  
 > - [ ] Compile time Error.  
@@ -242,25 +240,37 @@ This is a simple loop. All you need to do is execute each statement in your head
 
 > ① k=0, m=0  
 > ② iteration 1: i=0  
->    	k = 1  
->    	i == 2 is false  
->    	m = 1  
+>    ⇨ k = 1  
+>    ⇨ i == 2 is false  
+>    ⇨ m = 1  
 > ③ iteration 2: i = 1  
->    	k=2  
->    	i==2 is false  
->    	m = 2  
+>    ⇨ k=2  
+>    ⇨ i==2 is false  
+>    ⇨ m = 2  
 > ④ iteration 3: i = 2  
->    	k=3  
->    	i==2 is true  
->    	break  
+>    ⇨ k=3  
+>    ⇨ i==2 is true  
+>    ⇨ break  
 > ⑤ print 3, 2  
 
 ---  
 
 **25.**Which of these statements are true?  
+**You had to select 2 options**  
+> - [ ] A static method can call other non-static methods in the same class by using the 'this' keyword.  
+> - [x] A calss may contain both static and non-static variables and both static and non-static methods.  
+> - [x] Each object of a class has its own copy of each non-static member variable.  
+> - [ ] Instance methods of a class has it own copy of each non-static member variable.  
+> - [ ] Instance methods may access local variables of static methods.  
+> - [ ] All methods in a class are implicitly passed a 'this' parameter when called.  
+
 ✨**Explanation**  
+'this' is assigned a reference to the current object automatically by the JVM. Thus, within an instance method `foo`, calling `this.foo();` is same as calling `foo();`  
+Since there is no current object available for a static method, 'this' reference is not available in static methods and therefore it can only be used within instance methods. For the same reason, static methods cannot access non static fields or methods of that class directly i.e. without a reference to an instance of that class.  
+Note : you can't reassign 'this' like this: this = new Object();  
 
 ---  
+
 **28.**
 ✨**Explanation**  
 
