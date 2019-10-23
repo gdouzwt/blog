@@ -45,7 +45,7 @@ What is the result?
 The point to note here is that the `j` in for loop is different from the instance member `j`. Therefore, `j++` occuring in the `for` loop doesn't affect the while loop. The `for` loop prints 1 2 3 4 5.  
 The while loop runs `for` the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 is printed 6 times. Note that after the end of the while loop the value of `j` is 6.  
 
----
+---  
 
 **6.**Given:  
 ```java
@@ -97,7 +97,7 @@ There is no problem with the code. All variables in an interface are implicitly 
 There is no need to define them so explicitly. Therefore, the `location` variable in `Movable` is `public` and `static` and the `move()` method is `public`.  
 Now, when you call `m.move(10)` and `m.moveBack(20)`, the instance member `location` of `Donkey` is updated to 190 because  the reference `m` refers to a `Donkey` at run time and so `move` and `moveBack` methods of `Donkey` are invoked at runtime. However, when you print `m.location`, it is the Movable's `location` (which is never updated) that is printed.  
 
----
+---  
 
 **8.**What will be the result of trying to compile and execute the following program?
 ```java
@@ -129,7 +129,7 @@ Here is what JLS says on this:
 
 For Arrays: First, the dimension expressions are evaluated, left-to-right. If any of the expression evaluations completes abruptly, the expressions to the right of it are not evaluated.  
 
----
+---  
 
 **11.**Consider the following class :  
 ```java
@@ -161,7 +161,7 @@ So had the command line been :
 If the command line had been:  
 `java Test open xyz`, it would execute the else part(which is associated with the second `if`) and would have printed "Go away xyz".
 
----
+---  
 
 **14.**Which of the following code snippets will compile without any errors?  
 (Assume that the statement `int x = 0;` exists prior to the statements below.)  
@@ -181,7 +181,7 @@ In `if(false){ x=3; }`, although the body of the condition is unreachable, this 
 `if(DEBUG){ System.out.println("beginning task 1"); }`  
 Here, the `DEBUG` variable can be set to false in the code while generating the production version of the class file, which will allow the compiler to optimize the code by removing the whole if statement entirely from the class file.  
 
----
+---  
 
 **20.**Given the following code, which of these statements are true?  
 ```java
@@ -226,7 +226,7 @@ This is a simple loop. All you need to do is execute each statement in your head
 >    ⇨ break  
 > ⑤ print 3, 2  
 
----
+---  
 
 **25.**Which of these statements are true?  
 **You had to select 2 options**
@@ -243,7 +243,7 @@ This is a simple loop. All you need to do is execute each statement in your head
 Since there is no current object available for a static method, 'this' reference is not available in static methods and therefore it can only be used within instance methods. For the same reason, static methods cannot access non static fields or methods of that class directly i.e. without a reference to an instance of that class.  
 Note : you can't reassign 'this' like this: `this = new Object();`  
 
----
+---  
 
 **28.**Which of the following comparisons will yield false?  
 **You had to select 3 options**
@@ -263,7 +263,7 @@ The `boolean` constructor is self explanatory.
 `Boolean.valueOf(String )` and its overloaded `Boolean.valueOf(boolean )` version, on the other hand, work similarly but return a reference to either `Boolean.TRUE` or `Boolean.FALSE` wrapper objects. Observe that they dont create a new `Boolean` object but just return the static constants `TRUE` or `FALSE` defined in `Boolean` class.  
 **3.** When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is true.  
 
----
+---  
 
 **29.**Identify the valid for loop constructs assuming the following declarations:  
 ```java
@@ -292,7 +292,7 @@ int[][] ia = //valid array
 ##### ✨**Explanation**  29
 see above 👆
 
----
+---  
 
 **33.**Which of these assignments are valid?  
 **You had to select 3 options**
@@ -321,7 +321,7 @@ An implicit narrowing primitive conversion may be used if all of the following c
 **3.** The value of the expression (which is known at compile time, because it is a constant expression) is representable in the type of the variable.  
 Note that implicit narrowing conversion does not apply to `long` or `double`. So, `char ch = 30L;` will fail even though 30 is representable in `char`.  
 
----   
+---  
 
 **44.**What will the following code print?  
 ```java
@@ -357,7 +357,8 @@ public class TestClass{
 ##### ✨**Explanation**  44
 Note that `looper()` declares an automatic variable `x`, which **shadows** the instance variable `x`. So when `x = m;` is executed, it is the local variable `x` that is changed not the instance field `x`. So `getX()` never returns 0. If you remove `int x = 0;` from `looper()`, it will print 0 and end.  
 
----
+---  
+
 **48.**What will the following program print?  
 ```java
 class Test{
@@ -384,7 +385,8 @@ When the first iteration of outer do-while loop starts, `var` is 20. Now, the in
 Now, the condition for outer do-while is checked, `while( 22 < 20 )`, [`i` is 22 because of the last `i++>var` check], thereby making `var` 19. And as the condition is `false`, the outer loop also ends.
 So, 19 is printed.  
 
----
+---  
+
 **56.**Consider the following code:  
 ```java
 class A{
@@ -466,7 +468,7 @@ What type can 'm' be of so that the above code compiles and runs as expected ?
 **You had to select 3 options**
 - [x] `int m;`  
     > `m` can hold all the case values.  
-- [x] `long m;`  
+- [ ] `long m;`  
     > long, `float`, `double`, and `boolean` can never be used as a `switch` variable.  
 - [x] `char m;`  
     > `m` can hold all the case values.  
