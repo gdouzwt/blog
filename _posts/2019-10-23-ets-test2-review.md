@@ -11,8 +11,7 @@ tags:
     - oca
 ---
 
-> Enthuware Test Studio Test 2 错题回顾：  
-> 题目编号为测试系统的编号。  
+> Enthuware Test Studio Test 2 错题回顾，题目编号为测试系统的编号。  
 
 
 **8.**What will be the result of trying to compile and execute the following program?
@@ -81,10 +80,10 @@ If the command line had been:
 **14.**Which of the following code snippets will compile without any errors?  
 (Assume that the statement `int x = 0;` exists prior to the statements below.)  
 **You had to select 3 options**  
-> - [ ]`while (false) { x=3; }`  
-> - [x]`if (false) { x=3; }`  
-> - [x]`do{ x = 3; } while(false);`  
-> - [x]`for( int i = 0; i< 0; i++) x = 3;`  
+> - [ ] `while (false) { x=3; }`  
+> - [x] `if (false) { x=3; }`  
+> - [x] `do{ x = 3; } while(false);`  
+> - [x] `for( int i = 0; i< 0; i++) x = 3;`  
 
 ✨**Explanation**  
 `while (false) { x=3; }` is a compile-time error because the statement x=3; is not reachable;  
