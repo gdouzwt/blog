@@ -34,11 +34,11 @@ public class JustLooping {
 ```
 What is the result?  
 **You had to select 1 option**  
-> - [ ] It will not compile.  
-> - [ ] It will print 1 2 3 4 5 five times.  
-> - [ ] It will print 1 3 5 five times.  
-> - [ ] It will print 1 2 3 4 5 once.  
-> - [x] It will print 1 2 3 4 5 six times.  
+- [ ] It will not compile.  
+- [ ] It will print 1 2 3 4 5 five times.  
+- [ ] It will print 1 3 5 five times.  
+- [ ] It will print 1 2 3 4 5 once.  
+- [x] It will print 1 2 3 4 5 six times.  
 
 ##### ✨**Explanation**  2
 
@@ -85,11 +85,11 @@ public class TestClass {
 ```
 Identify the correct statement(s).  
 **You had to select 1 option**  
-> - [ ] Donkey.java will not compile.  
-> - [ ] TestClass.java will not compile.  
-> - [ ] Movable.java will not compile.  
-> - [ ] It will print 190 when TestClass is run.  
-> - [x] It will print 0 when TestClass is run.  
+- [ ] Donkey.java will not compile.  
+- [ ] TestClass.java will not compile.  
+- [ ] Movable.java will not compile.  
+- [ ] It will print 190 when TestClass is run.  
+- [x] It will print 0 when TestClass is run.  
 
 ##### ✨**Explanation**  6
 
@@ -111,10 +111,10 @@ public class TestClass{
 }
 ```
 **You had to select 1 options**  
-> - [ ] It will throw `ArrayIndexOutOfBoundsException` at Runtime  
-> - [ ] Compile time Error.  
-> - [ ] It will print 10 20 30  
-> - [x] It will print 30 20 30  
+- [ ] It will throw `ArrayIndexOutOfBoundsException` at Runtime  
+- [ ] Compile time Error.  
+- [ ] It will print 10 20 30  
+- [x] It will print 30 20 30  
 
 ##### ✨**Explanation**  8
 
@@ -145,11 +145,11 @@ public class Test{
 Which of the following statements are true if the above program is run with the command line :  
 `java Test closed`  
 **You had to select 1 options**  
-> - [ ] It will throw `ArrayIndexOutOfBoundsException` at runtime.  
-> - [x] It will end without exceptions and will print nothing.  
-> - [ ] It will print `Go away`  
-> - [ ] It will print `Go away` and then will throw `ArrayIndexOutOfBoundsException`.  
-> - [ ] None of the above.  
+- [ ] It will throw `ArrayIndexOutOfBoundsException` at runtime.  
+- [x] It will end without exceptions and will print nothing.  
+- [ ] It will print `Go away`  
+- [ ] It will print `Go away` and then will throw `ArrayIndexOutOfBoundsException`.  
+- [ ] None of the above.  
 
 ##### ✨**Explanation**  11
 
@@ -167,10 +167,10 @@ If the command line had been:
 (Assume that the statement `int x = 0;` exists prior to the statements below.)  
 **You had to select 3 options**  
 
-> - [ ] `while (false) { x=3; }`  
-> - [x] `if (false) { x=3; }`  
-> - [x] `do{ x = 3; } while(false);`  
-> - [x] `for( int i = 0; i< 0; i++) x = 3;`  
+- [ ] `while (false) { x=3; }`  
+- [x] `if (false) { x=3; }`  
+- [x] `do{ x = 3; } while(false);`  
+- [x] `for( int i = 0; i< 0; i++) x = 3;`  
 
 ##### ✨**Explanation**  14
 
@@ -201,11 +201,11 @@ class TestClass{
 }
 ```
 **You had to select 3 options**  
-> - [x] It will print 3, 2 when line 1 is replaced by `break;`  
-> - [ ] It will print 3, 2 when line 1 is replaced by `continue`.  
-> - [x] It will print 4, 3 when line 1 is replaced by `continue`.  
-> - [ ] It will print 4, 4 when line 1 is replaced by `i = m++;`  
-> - [x] It will print 3, 3 when line 1 is replaced by `i = 4;`  
+- [x] It will print 3, 2 when line 1 is replaced by `break;`  
+- [ ] It will print 3, 2 when line 1 is replaced by `continue`.  
+- [x] It will print 4, 3 when line 1 is replaced by `continue`.  
+- [ ] It will print 4, 4 when line 1 is replaced by `i = m++;`  
+- [x] It will print 3, 3 when line 1 is replaced by `i = 4;`  
 
 ##### ✨**Explanation**  20
 
@@ -230,12 +230,12 @@ This is a simple loop. All you need to do is execute each statement in your head
 
 **25.**Which of these statements are true?  
 **You had to select 2 options**  
-> - [ ] A static method can call other non-static methods in the same class by using the 'this' keyword.  
-> - [x] A calss may contain both static and non-static variables and both static and non-static methods.  
-> - [x] Each object of a class has its own copy of each non-static member variable.  
-> - [ ] Instance methods of a class has it own copy of each non-static member variable.  
-> - [ ] Instance methods may access local variables of static methods.  
-> - [ ] All methods in a class are implicitly passed a 'this' parameter when called.  
+- [ ] A static method can call other non-static methods in the same class by using the 'this' keyword.  
+- [x] A calss may contain both static and non-static variables and both static and non-static methods.  
+- [x] Each object of a class has its own copy of each non-static member variable.  
+- [ ] Instance methods of a class has it own copy of each non-static member variable.  
+- [ ] Instance methods may access local variables of static methods.  
+- [ ] All methods in a class are implicitly passed a 'this' parameter when called.  
 
 ##### ✨**Explanation**  25
 
@@ -247,12 +247,12 @@ Note : you can't reassign 'this' like this: `this = new Object();`
 
 **28.**Which of the following comparisons will yield false?  
 **You had to select 3 options**  
-> - [ ] `Boolean.parseBoolean("true") == true`  
-> - [x] `Boolean.parseBoolean("TrUe") == new Boolean(null);`  
-> - [x] `new Boolean("TrUe") == new Boolean(true);`  
-> - [ ] `new Boolean() == false;`  
-> - [ ] `new Boolean("true") == Boolean.TRUE`  
-> - [x] `new Boolean("no") == false;`  
+- [ ] `Boolean.parseBoolean("true") == true`  
+- [x] `Boolean.parseBoolean("TrUe") == new Boolean(null);`  
+- [x] `new Boolean("TrUe") == new Boolean(true);`  
+- [ ] `new Boolean() == false;`  
+- [ ] `new Boolean("true") == Boolean.TRUE`  
+- [x] `new Boolean("no") == false;`  
 
 ##### ✨**Explanation**  28
 
