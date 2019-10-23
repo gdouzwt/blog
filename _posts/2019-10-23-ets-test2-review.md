@@ -413,20 +413,117 @@ Note that method `print()` is overridden in class `B`. Due to polymorphism, the 
 Here, when an object of class `B` is created, first `B`'s default constructor (which is not visible in the code but is automatically provided by the compiler because `B` does not define any constructor explicitly) is called. The first line of this constructor is a call to `super()`, which invokes `A`'s constructor. `A`'s constructor in turn calls `print()`. Now, print is a non-private instance method and is therefore polymorphic, which means, the selection of the method to be executed depends on the class of actual object on which it is invoked. Here, since the class of actual object is `B`, `B`'s print is selected instead of `A`'s print. At this point of time, variable `i` has not been initialized (because we are still in the middle of initializing `A`), so its default value i.e. 0 is printed.  
 Finally, 4 is printed.  
 
----
-**58.**
+---  
+
+**58.**What will be the result of attempting to compile and run the following program?  
+```java
+class TestClass{
+   public static void main(String args[]){
+      int i = 0;
+      loop :         // 1
+      {
+         System.out.println("Loop Lable line");
+         try{
+            for (  ;  true ;  i++ ){
+               if( i >5) break loop;       // 2
+            }
+         }
+         catch(Exception e){
+            System.out.println("Exception in loop.");
+         }
+         finally{
+            System.out.println("In Finally");      // 3
+         }
+      }
+   }
+}
+```  
+**You had to select 1 option**
+- [ ] Compilation error at line 1 as this is an invalid syntax for defining a label.  
+    > You can apply a label to any code block or a block level statement (such as a for statement) but **not** to declarations. For example: `loopX : int i = 10;`  
+- [ ] Compilation error at line 2 as 'loop' is not visible here.  
+- [x] No compilation error and line 3 will be executed.  
+    > Even if the `break` takes the control out of the block, the `finally` clause will be executed.  
+- [ ] No compilation error and line 3 will NOT be executed.  
+- [ ] Only the line with the label loop will be printed.  
 
 ##### ✨**Explanation**  58
+A `break` without a label breaks the current loop (i.e. no iterations any more) and a `break` with a label tries to pass the control to the given label. 'Tries to' means that if the `break` is in a `try` block and the `try` block has a `finally` clause associated with it then it will be executed.  
 
----
-**65.**
+---  
+
+**65.**Consider the following code snippet:  
+```java
+XXXX m ;
+//other code
+  switch( m ){
+     case 32  : System.out.println("32");   break;
+     case 64  : System.out.println("64");   break;
+     case 128 : System.out.println("128");  break;
+  }
+```  
+What type can 'm' be of so that the above code compiles and runs as expected ?  
+**You had to select 3 options**
+- [x] `int m;`  
+    > `m` can hold all the case values.  
+- [x] `long m;`  
+    > long, `float`, `double`, and `boolean` can never be used as a `switch` variable.  
+- [x] `char m;`  
+    > `m` can hold all the case values.  
+- [ ] `byte m;`  
+    > `m` will not be able to hold 128. a `byte`'s range is -128 to 127.  
+- [x] `short m;`  
+    > `m` can hold all the case values.  
 
 ##### ✨**Explanation**  65
+**Here are the rules for a switch statement:**  
+**1.** Only `String`, `byte`, `char`, `short`, `int`, (and their wrapper classes `Byte`, `Character`, `Short`, and `Integer`), and *enums* can be used as types of a `switch` variable. (`String` is allowed only since Java 7).  
+**2.** The case constants must be assignable to the `switch` variable. For example, if your `switch` variable is of class `String`, your case labels must use Strings as well.  
+**3.** The `switch` variable must be **big enough** to hold all the case constants. For example, if the `switch` variable is of type `char`, then none of the case constants can be greater than 65535 because a `char`'s range is from 0 to 65535.  
+**4.**  All case labels should be **COMPILE TIME CONSTANTS**.  
+**5.** No two of the case constant expressions associated with a `switch` statement may have the same value.  
+**6.** At most one `default` label may be associated with the same `switch` statement.  
 
 ---
-**69.**
+**69.**Consider the following code:  
+```java
+interface Flyer{ String getName(); }
+
+class Bird implements Flyer{
+    public String name;
+    public Bird(String name){
+        this.name = name;
+    }
+    public String getName(){ return name; }
+}
+
+class Eagle extends Bird {
+    public Eagle(String name){
+        super(name);
+    }
+}
+
+public class TestClass {
+    public static void main(String[] args) throws Exception {
+        Flyer f = new Eagle("American Bald Eagle");
+        //PRINT NAME HERE
+   }
+}
+```  
+Which of the following lines of code will print the name of the Eagle object?  
+**You had to select 3 options**
+- [ ] `System.out.println(f.name);`  
+- [x] `System.out.println(f.getName());`  
+- [x] `System.out.println(((Eagle)f).name);`  
+- [x] `System.out.println(((Bird)f).getName());`  
+- [ ] `System.out.println(Eagle.name);`  
+    > `name` is not a `static` field in class `Eagle`.  
+- [ ] `System.out.println(Eagle.getName(f));`  
+    > This option doesn't make any sense.  
 
 ##### ✨**Explanation**  69
+While accessing a method or variable, the compiler will only allow you to access a method or variable that is visible through the class of the reference.  
+When you try to use `f.name`, the class of the reference `f` is `Flyer` and `Flyer` has no field named "`name`", thus, it will not compile. But when you cast `f` to `Bird` (or `Eagle`), the compiler sees that the class `Bird` (or `Eagle`, because `Eagle` inherits from `Bird`) does have a field named "`name`" so `((Eagle)f).name` or `((Bird)f).name` will work fine.  
+`f.getName()` will work because `Flyer` does have a `getName()` method.  
 
----
-
+🔚
