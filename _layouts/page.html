@@ -202,10 +202,12 @@ layout: default
                 {% endif %}
 
                 <hr>
+                {% if site.sidebar-avatar %}
                 <h5>资格认证</h5>
                 <div>
                     <img src="{{site.sidebar-cert}}" style="cursor: none"/>
                 </div>
+                {% endif %}
     		</div>
         {% endif %}
 	</div>
