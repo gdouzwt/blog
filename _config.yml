@@ -14,7 +14,7 @@ logo: /img/brand-logo.png
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "堅持信念"
 sidebar-avatar: /img/large.png      # use absolute URL, seeing it's used in both `/` and `/about/`
-
+sibebar-cert: /img/O_Java-SE-8-OCA-clr.gif
 
 
 # SNS settings
