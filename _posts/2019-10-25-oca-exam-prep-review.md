@@ -1,9 +1,9 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      OCA 备考参考书籍
+title:      OCA 回顾与评价
 date:       '2019-10-25'
-subtitle:   回顾与评价，还有考试体验
+subtitle:   备考参考书籍、软件，还有考试体验
 author:     招文桃
 catalog:    true
 tags:
@@ -11,7 +11,65 @@ tags:
     - oca
 ---
 
+#### 开始
+
+背景，大学学的是软件工程专业。语言学习路径，大一专业课先学C语言，接着是C语言的数据结构。大二分方向，C++ 和 Java两个方向。C++ 作为我入门面向对象编程的语言，学完大学的C++ 课程，主要实践就是用Qt 写了个简单的数据库课程设计，之后就没有怎么用了，荒废掉了。 C 语言还因为学习微机原理（51 单片机）重新拾起来了一段时间。之后因为那段时间喜欢折腾一些硬件所以也开始玩树莓派，树莓派用 Python 比较多，所以又稍微接触了一下 Python 的基础。到后来因为组队参加比赛，开始接触Android 编程，那时候 Android 还未开始用 Kotlin, 就开始学习，边学边开发。后来学校的课程也有 Java Web，和 Android 。在做课程设计的过程就开始使用Spring Boot + AngularJS(那时候用的是 1.x)，写一下后端 REST API，之后觉得 Java Web 后端开发是我想做的方向。可以因为之前学得比较杂，还因为 C/C++ 硬件背景，让我在情感上有点不重视 Java，所以学习投入程度不够。后果就是有时候看代码，写代码的时候觉得很吃力，一种似懂非懂的状态，模糊不清晰，好像大概知道这是做什么功能，但是要清晰地表达出来就有困难了。 要摆脱这种状况，所以多看书，多写代码。参加 Oracle Java 认证考试的作用就是可以驱动学习，有了这个目标，就会认真深入学习。这才是考试的意义。
+
+
+
+#### 备考
+
+过程其实很简单
+
+注册帐号，报名，交钱，预约考试，学习，练习，考试，获得认证。
+
+选择合适的科目，报考。将问题简单化，基本就 1Z0-808   1Z0-809   然后 1Z0-817 
+
+中文，英文
+
+1Z0-815  费用 1107
+
+1Z0-816  费用 1107
+
+1Z0-817  费用 1107
+
+
+
+Fire
+
+
+
+Spring Boot
+
+
+
+小马哥
+
+
+
+波音飞机 软件缺陷
+
+
+
+
+
+避免技术痴迷，减少引入复杂性。反省，如何摒弃不正确的思想。
+
+
+
+
+
+
+
+Python 折腾树莓派，Java 写 Android，Java 写 Spring Boot
+
 这文章讲OCA准备过程，读过的书籍。 这本书叫 OCA Oracle Certified Associate Java SE 8 Programmer I Study Guide. 是针对 Exam 1Z0-808 的。考的内容是 Java 8 版本。 长期支持版。 还有一个高级别的 OCP Oracle Certified Professional Java SE 8 Programmer II，那个难度大一点，stream，concurrency，generic，涉及模式，但是如果是有工作经验的，应该也不难通过，但是这个认证的意义我认为就是通过学习达到可以通过考试的水平，然后招聘者可以知道到了什么水平吧。我觉得正确率达到80以上才好玩吧。下一个针对 Java 11 的认证，觉得难度就更大了，因为又是有很多更新的，引入了模块化系统，本地变量 var 之类的。 对于已经通过 OCP 8 的人，可以选择升级考试，不知道有没有折扣。 JShell 是很不错的东西。 态度，Java，未来。 Enthuware，刷题，没有官方题库，因为Oracle 会调整题目数量和考试时长。
+
+这文章讲OCA准备过程，读过的书籍。 这本书叫 OCA Oracle Certified Associate Java SE 8 Programmer I Study Guide. 是针对 Exam 1Z0-808 的。考的内容是 Java 8 版本。 长期支持版。 还有一个高级别的 OCP Oracle Certified Professional Java SE 8 Programmer II，那个难度大一点，stream，concurrency，generic，涉及模式，但是如果是有工作经验的，应该也不难通过，但是这个认证的意义我认为就是通过学习达到可以通过考试的水平，然后招聘者可以知道到了什么水平吧。我觉得正确率达到80以上才好玩吧。下一个针对 Java 11 的认证，觉得难度就更大了，因为又是有很多更新的，引入了模块化系统，本地变量 var 之类的。 对于已经通过 OCP 8 的人，可以选择升级考试，不知道有没有折扣。 JShell 是很不错的东西。 态度，Java，未来。 Enthuware，刷题，没有官方题库，因为Oracle 会调整题目数量和考试时长。
+
+
+
+
 
 #### 书籍信息
 
@@ -25,9 +83,31 @@ infoq 中文文章对这本书的介绍 ：  https://www.infoq.cn/article/OCP-Ja
 
 
 
-#### 出现的生僻英语单词（对我而言）
+#### 模拟考试软件 (Enthuware)
 
-1. prepetually 常常；永远；没完没了地
+价格，介绍，
+
+
+
+#### 后续
+
+
+
+
+
+
+
+#### 总结：
+
+
+
+
+
+
+
+#### 附录：出现的生僻英语单词（对我而言）
+
+1. perpetually 常常；永远；没完没了地
 2. inquire 询问；打听；调查；〈古〉质问
 3. cougar 【动】美洲狮
 4. puma 美洲狮
@@ -69,6 +149,23 @@ infoq 中文文章对这本书的介绍 ：  https://www.infoq.cn/article/OCP-Ja
 40. jotting   noun. a brief note. "a few jottings on an envelope" 简短的笔记， 随笔
 41. allot v. 分配；分派（任务等）give or apportion (something) to someone.
 42. sparingly adverb. in a restricted or infrequent manner; in small quantities.
+
+
+
+#### 最近在做
+
+|              活动               | 可能产出                                            |      |
+| :-----------------------------: | --------------------------------------------------- | ---- |
+|        回顾 OCA 考证过程        | 博客文章，总结知识点，经验，模拟测试整理，视频简介  |      |
+|       做 OCP 考证学习计划       | Trello 安排，可能打印纸质日程表，过程阶段性学习总结 |      |
+| 加强 Spring 框架学习/实践找工作 | 博客文章，学习总结                                  |      |
+|        RSocket, Reactive        | RSocket 协议中文版？                                |      |
+| OCP 11, openJDK, JLS, JVMS, J-- | J-- non-trivial compiler                            |      |
+
+
+
+- 回顾 OCA 考证过程，总结知识点，经验。
+- 做 OCP 考证学习计划，
 
 
 
