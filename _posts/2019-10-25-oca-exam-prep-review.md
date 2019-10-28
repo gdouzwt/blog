@@ -21,13 +21,27 @@ tags:
 
 选择哪个考试？
 
-Java 1995年5月23日 首次发布，到现在过去了24年，5月，5天（8924天），Java 版本经历了很多变化，Java 考试也经历了很多变化。  从最初的 Sun 公司的 SCJP(Sun Certified Java Programmer) 和 SCJA(Sun Certified Java Associate)。 后来 Oracle 收购了 Sun 公司，相应的考试名称更改了，变成
-
-OCJP 和 OCJA。 后来从Java 7 版本开始，Oracle 决定不再更新 OCJA考试。 并将更多内容移入到程序员考试，更名为 Oracle Certified Associate Java Programmer (OCAJP)，也称为 Java Programmer I，或者叫 OCA， 考完 OCA 接着就应该参加 Oracle Certified Professional Java Programmer（OCPJP）考试，或称 OCP，又名 Java Programmer II。
+Java 1995年5月23日 首次发布，到现在过去了24年，5月，5天（8924天），Java 版本经历了很多变化，Java 考试也经历了很多变化。  从最初的 Sun 公司的 SCJP(Sun Certified Java Programmer) 和 SCJA(Sun Certified Java Associate)。 后来 Oracle 收购了 Sun 公司，相应的考试名称更改了，变成OCJP 和 OCJA。 后来从Java 7 版本开始，Oracle 决定不再更新 OCJA考试。 并将更多内容移入到程序员考试，更名为 Oracle Certified Associate Java Programmer (OCAJP)，也称为 Java Programmer I，或者叫 OCA， 考完 OCA 接着就应该参加 Oracle Certified Professional Java Programmer（OCPJP）考试，或称 OCP，又名 Java Programmer II。
 
 
 
+![Oracle-java-exam](/img/image-20191029053541378.png)
 
+
+
+现在只需要关注的考试：
+
+
+
+1Z0-808
+
+1Z0-809
+
+1Z0-815
+
+1Z0-816
+
+1Z0-817
 
 
 
