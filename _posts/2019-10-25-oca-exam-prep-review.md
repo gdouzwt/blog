@@ -21,35 +21,27 @@ tags:
 
 #### 历史
 
-Java 1995年5月23日 首次发布，到现在过去了24年，5月，5天（8924天），Java 版本经历了很多变化，Java 考试也经历了很多变化。  从最初的 Sun 公司的 SCJP(Sun Certified Java Programmer) 和 SCJA(Sun Certified Java Associate)。 后来 Oracle 收购了 Sun 公司，相应的考试名称更改了，变成OCJP 和 OCJA。 后来从Java 7 版本开始，Oracle 决定不再更新 OCJA考试。 并将更多内容移入到程序员考试，更名为 Oracle Certified Associate Java Programmer (OCAJP)，也称为 Java Programmer I，或者叫 OCA， 考完 OCA 接着就应该参加 Oracle Certified Professional Java Programmer（OCPJP）考试，或称 OCP，又名 Java Programmer II。
+Java 1995年5月23日 首次发布，到现在过去了24年，Java 版本经历了很多变化，Java 考试也经历了很多变化。  从最初的 Sun 公司的 SCJP(Sun Certified Java Programmer) 和 SCJA(Sun Certified Java Associate)。 后来 Oracle 收购了 Sun 公司，相应的考试名称更改了，变成OCJP 和 OCJA。 后来从Java 7 版本开始，Oracle 决定不再更新 OCJA考试。 并将更多内容移入到程序员考试，更名为 Oracle Certified Associate Java Programmer (OCAJP)，也称为 Java Programmer I，或者叫 OCA。 考完 OCA 接着就应该参加 Oracle Certified Professional Java Programmer（OCPJP）考试，或称 OCP，又名 Java Programmer II。
 
 ![Oracle-java-exam](/img/image-20191029053541378.png)
 
 #### 现在只需要关注的考试：
 
-1Z0-808
-
-1Z0-809
-
-1Z0-815
-
-1Z0-816
-
-1Z0-817
+1Z0-808（Java SE 8 助理程序员），1Z0-809（Java SE 8 专业程序员），1Z0-817（Java SE 6,7,8 专业程序员升级到 Java SE 11 开发者），1Z0-815（Java SE 11 程序员第一部分），1Z0-816（Java SE 11 程序员第二部分，考过即为 Java SE 11开发者）
 
 #### 报考
 
-##### 注册帐号
+##### 创建帐户
+
+在 Oracle 大学网站  https://education.oracle.com/home 创建帐户，然后购买考试券。
+
+在[这个页面]( https://education.oracle.com/java-se-8-programmer-i/pexam_1Z0-808 )可以看到关于 OCA 考试的介绍，关于认证路径的更详细内容在[另一个页面]( https://education.oracle.com/oracle-certified-associate-java-se-8-programmer/trackp_333 )。 这两个页面都包含了可以购买用于 Pearson VUE 考试的考试券。在 Oracle 大学购买考试券可以支持国内银行卡汇款的支付方式，直接在Pearson VUE 注册并付款就只支持国外信用卡和考试券的方式。 我没有Visa / Master 之类的信用卡，所以就用国内银行汇款的方式了，考试券1077元。实际上加上增值税一共花费1142元，发票数据是 1107.36 + 63.64 税。当然没有国外信用卡的也可以找人代付，据网友分享，淘宝代付1131元。 我倾向于银行汇款的方式。
+
+![image-20191029225254769](/img/image-20191029225254769.png)
 
 ##### 报名
 
-##### 交钱
-
-##### 预约考试
-
-##### 学习
-
-##### 练习
+在 [Pearson VUE]( https://wsr.pearsonvue.com/testtaker/registration/Dashboard/ORACLE ) 的网站找到 Oracle 的这个 1Z0-808 考试按提示一步步报名就可以了。
 
 ##### 考试
 
@@ -57,17 +49,11 @@ Java 1995年5月23日 首次发布，到现在过去了24年，5月，5天（892
 
 ##### 获得认证
 
-考试结束后，考试结果会在两小时内收到邮件，就可以查看到成绩报告了，报告包括题目正确率和结果是否通过。然后在48小时后会发放电子证书和数字徽章，电子证书就是一个pdf文件，就是证书的模样，因为推崇环保就默认不方法纸质证书了。 然后电子徽章是基于 open badge标准的，发布于 Pearson 旗下的 Acclaim，数字徽章可以发布到区块链供查询认证，也支持分享到一些社交网络，嵌入到 web 页面，例如这个：
+考试结束后，考试结果会在两小时内收到邮件，就可以查看到成绩报告了，报告包括题目正确率和结果是否通过。然后在48小时后会发放电子证书和数字徽章，电子证书就是一个pdf文件，就是证书的模样，因为推崇环保就默认不方法纸质证书了。 然后电子徽章是基于 open badge标准的，发布于 Pearson 旗下的 Acclaim，数字徽章可以发布到区块链供查询认证，也支持分享到一些社交网络，嵌入到 web 页面。可以在这里看到我的数字徽章：
 
-<div data-iframe-width="219" data-iframe-height="270" data-share-badge-id="dee74bd5-6ec6-455a-b28b-c125291b7232"></div><script type="text/javascript" async src="//cdn.youracclaim.com/assets/utilities/embed.js"></script>
+https://www.youracclaim.com/badges/dee74bd5-6ec6-455a-b28b-c125291b7232
 
-eCertificate & open badge  Acclaim
-
-open badge
-
-
-
-### 考试大纲
+### OCA考试大纲
 
 #### Java Basics 基础
 
@@ -163,6 +149,8 @@ open badge
 - **Descriptive comments:** Take descriptive comments, such as "setter and getters go here," at face value. Assume that correct code exists, compiles, and runs successfully to create the described effect.
 
   **描述性注释：**将描述性注释，例如“setter 和 getters 在这里” 按字面意思理解。假设正确的代码存在，编译、运行成功产生所描述的效果。
+  
+  
 
 ### 书籍信息
 
@@ -170,9 +158,7 @@ open badge
 
 > OCA Oracle Certified Associate Java SE 8 Programmer I Study Guide
 
-是针对 Exam 1Z0-808 的。考的内容是 Java 8 版本。 长期支持版。 还有一个高级别的 OCP Oracle Certified Professional Java SE 8 Programmer II，那个难度大一点，stream，concurrency，generic，设计模式，但是如果是有工作经验的，应该也不难通过。但是这个认证的意义我认为就是通过学习达到可以通过考试的水平，然后招聘者可以知道到了什么水平吧。我觉得正确率达到80以上才好玩吧。正文 367 页，6章，覆盖了官方的全部的考试考点。
-
-
+是针对 Exam 1Z0-808 ，考的内容是 Java 8 版本，属于长期支持版。 还有一个专业级别的 OCP考试： Oracle Certified Professional Java SE 8 Programmer II，那个难度大一点。
 
 **书的目录内容：**
 
@@ -188,14 +174,6 @@ Chapter 5 Class Design
 
 Chapter 6 Exceptions
 
-
-
-下一个针对 Java 11 的认证，觉得难度就更大了，因为又是有很多更新的，引入了模块化系统，本地变量 var 之类的。 对于已经通过 OCP 8 的人，可以选择升级考试，不知道有没有折扣。 JShell 是很不错的东西。 
-
-态度，Java，未来。 Enthuware，刷题，没有官方题库，因为Oracle 会调整题目数量和考试时长。
-
-
-
 Infoq 有人翻译了一篇介绍这本书的文章 ：
 
  https://www.infoq.cn/article/OCP-Java-SE-8-Programmer-Study-Guide-Book-Review 
@@ -208,67 +186,23 @@ Infoq 有人翻译了一篇介绍这本书的文章 ：
 
 ![image-20191029055503022](/img/image-20191029055503022.png)
 
-
+在软件的欢迎界面看到介绍包含了超过 600 个问题，7个模拟考试，还有关于官方考试的一些细节介绍。其实这就足够应付考试了，实际上这并不是所谓的题库。根本不存在题库，然后买个题库相当于背题考试就完了。这些只是模拟题目，OCA 考试的题目是会不断变化的。
 
 ![image-20191029055925453](/img/image-20191029055925453.png)
 
-
-
-Java 11 之后，也不分什么OCA OCP了，只有 Java SE 11 Programmer Part 1 & Part 2
-
-
-
-### 学习Tips
-
-Flash Card Anki Mock Exam
-
-
-
 ## 后续
 
-计划考
+计划今年考完
 
 ![image-20191029060400482](/img/image-20191029060400482.png)
 
-考 Java SE 8 Programmer 升级到 Java SE 11 Programmer
+接着考 Java SE 8 Programmer 升级到 Java SE 11 Developer
 
 ![image-20191029060558042](/img/image-20191029060558042.png)
 
-这是专业级别。
-
-数据结构与算法
-
-集合框架（容器）
-
-RoadMap
-
-Fire
-
-Kotlin
-
-Spring Boot
-
-小马哥
-
-TDD
-
-SonarQube
-
-RSocket
-
-波音飞机 软件缺陷
-
-避免技术痴迷，减少引入复杂性。反省，如何摒弃不正确的思想。
-
-Python 折腾树莓派，Java 写 Android，Java 写 Spring Boot
 
 
-
-## 总结：
-
-
-
-
+Java 11 之后，也不分什么OCA OCP了，只有 Java SE 11 Programmer Part 1 & Part 2.
 
 
 
@@ -318,18 +252,6 @@ Python 折腾树莓派，Java 写 Android，Java 写 Spring Boot
 42. jotting   noun. a brief note. "a few jottings on an envelope" 简短的笔记， 随笔
 43. allot v. 分配；分派（任务等）give or apportion (something) to someone.
 44. sparingly adverb. in a restricted or infrequent manner; in small quantities.
-
-
-
-## 最近在做
-
-|               活动                | 可能产出                                            |
-| :-------------------------------: | --------------------------------------------------- |
-|         回顾 OCA 考证过程         | 博客文章，总结知识点，经验，模拟测试整理，视频简介  |
-|        做 OCP 考证学习计划        | Trello 安排，可能打印纸质日程表，过程阶段性学习总结 |
-|  加强 Spring 框架学习/实践找工作  | 博客文章，学习总结                                  |
-|         RSocket, Reactive         | RSocket 协议中文版？                                |
-| OCP 11, openJDK, JLS, JVMS, `J--` | `J--` non-trivial compiler                          |
 
 
 
