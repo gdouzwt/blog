@@ -133,7 +133,7 @@ eCertificate & open badge  Acclaim
 #### Assume the following: 默认以下情况：
 
 - **Missing package and import statements:** If sample code do not include package or import statements, and the question does not explicitly refer to these missing statements, then assume that all sample code is in the same package, or import statements exist to support them. 
-缺失的包和导入语句：如果示例代码没有包含包或导入语句，并且问题没有明示这些缺失的语句，那么认为所有的示例代码是在同一个包，或者存在导入它们的导入语句。
+**缺失的包和导入语句：**如果示例代码没有包含包或导入语句，并且问题没有明示这些缺失的语句，那么认为所有的示例代码是在同一个包，或者存在导入它们的导入语句。
 
 - No file or directory path names for classes:
   类没有文件名或者目录路径名：
@@ -146,9 +146,15 @@ eCertificate & open badge  Acclaim
 
 - **Unintended line breaks:** Sample code might have unintended line breaks. If you see a line of code that looks like it has wrapped, and this creates a situation where the wrapping is significant (for example, a quoted String literal has wrapped), assume that the wrapping is an extension of the same line, and the line does not contain a hard carriage return that would cause a compilation failure.
 
+  **意外的换行：**示例代码可能由非预期的换行。如果你看到一行代码看起来软换行了，并且它造成了一个情形，换行的影响是重要的（例如，一个双引号括起来的字符串常量换行了），假设那个换行是同一行的延申，且该行不包含导致编译失败的硬回车换行。
+
 - **Code fragments:** A code fragment is a small section of source code that is presented without its context. Assume that all necessary supporting code exists and that the supporting environment fully supports the correct compilation and execution of the code shown and its omitted environment.
 
+  **代码片段：**一个代码片段是不带有上下文出现的一小节代码片段。假设所有必要的支持代码存在并且支持的环境能保证呈现的代码片段及其省略的部分能够正确执行。
+
 - **Descriptive comments:** Take descriptive comments, such as "setter and getters go here," at face value. Assume that correct code exists, compiles, and runs successfully to create the described effect.
+
+  **描述性注释：**将描述性注释，例如“setter 和 getters 在这里” 按字面意思理解。假设正确的代码存在，编译、运行成功产生所描述的效果。
 
 ### 书籍信息
 
