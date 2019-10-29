@@ -53,9 +53,17 @@ Java 1995年5月23日 首次发布，到现在过去了24年，5月，5天（892
 
 ##### 考试
 
+我在广州嘉为考试中心考的试，不同考试中心肯定是不同的。在嘉为考试中心，只提供了A4 纸长一点的 Pearson VUE 可擦除手写板，和一支白板笔。那其实就是是一张白纸过塑了，就像集体照那种，不过它正面是白色给写画，背面是一些考生规则介绍。连个擦除白板字迹的白板擦或者一块布或纸巾都没有提供，当时我做题的时候在版上思考写画，直接用手擦除了，不太好擦，因为版本笔质量比较好，笔迹清晰。按规定中途可以要求在更换白板的，不过我嫌浪费时间就用手擦算了。考试的系统，看起来像是基于浏览器系统，考试过程那个屏幕分辨率低，看起来文字显示粗糙，不过这也不意外。有点像考驾照的文明驾驶科目的那种。但是有时候还要反应慢，估计是直连海外Pearson的服务器传输的题目数据，而不是缓存到本地机器的。中间差点以为链接断开了，点下一题的按钮挺久无响应的。有时候突然想起前一题可能做错了，想快速回头检查一下，也会有点卡顿，估计网络延迟比较严重。那个考试系统提供了标记题目的功能，还有鼠标右键划线排除某个选项的功能，最后还可以回顾，检查，这些功能在模拟测试软件都有的。这些功能如果有刷过牛客网，或者做过其他在线笔试的话，可能也不陌生标记题目等功能。觉得还是做题速度和节奏比较重要，如果做得够快，就会有比较多的时间回头检查，double check，但是题目比较多，基本上比较难做得到double check，mark 就很重要了，标记出有疑问的，到最后剩得二三十分钟可以再检查一遍有标记的题目，然后基本就这样的过程了。
+
 ##### 获得认证
 
+考试结束后，考试结果会在两小时内收到邮件，就可以查看到成绩报告了，报告包括题目正确率和结果是否通过。然后在48小时后会发放电子证书和数字徽章，电子证书就是一个pdf文件，就是证书的模样，因为推崇环保就默认不方法纸质证书了。 然后电子徽章是基于 open badge标准的，发布于 Pearson 旗下的 Acclaim，数字徽章可以发布到区块链供查询认证，也支持分享到一些社交网络，嵌入到 web 页面，例如这个：
+
+<div data-iframe-width="219" data-iframe-height="270" data-share-badge-id="dee74bd5-6ec6-455a-b28b-c125291b7232"></div><script type="text/javascript" async src="//cdn.youracclaim.com/assets/utilities/embed.js"></script>
+
 eCertificate & open badge  Acclaim
+
+open badge
 
 
 
@@ -96,8 +104,8 @@ eCertificate & open badge  Acclaim
 
 - Manipulate data using the `StringBuilder` class and its methods 使用 StringBuilder 类及其方法去操作数据
 - Create and manipulate Strings 创建并操作字符串
-- Create and manipulate calendar data using classes from `java.time.LocalDateTime`,  `java.time.LocalDate`, `java.time.LocalTime`,`java.time.format.DateTimeFormatter`, `java.time.Period` 创建并操纵日历数据，使用这些类：java.time.LocalDateTime, java.time.LocalDate, java.time.LocalTime,java.time.format.DateTimeFormatter, java.time.Period
-- Declare and use an `ArrayList` of a given type 声明并使用某个类型的 ArrayList
+- Create and manipulate calendar data using classes from `java.time.LocalDateTime`,  `java.time.LocalDate`, `java.time.LocalTime`,`java.time.format.DateTimeFormatter`, `java.time.Period` 创建并操纵日历数据，使用这些类：`java.time.LocalDateTime`, `java.time.LocalDate`, `java.time.LocalTime`,`java.time.format.DateTimeFormatter`, `java.time.Period`
+- Declare and use an `ArrayList` of a given type 声明并使用某个类型的 `ArrayList`
 - Write a simple Lambda expression that consumes a Lambda Predicate expression 编写一个简单的 Lambda 表达式，要求一个 Lambda Predicate 表达式
 
 #### Working With Java Data Types 使用 Java 数据类型
@@ -162,29 +170,35 @@ eCertificate & open badge  Acclaim
 
 > OCA Oracle Certified Associate Java SE 8 Programmer I Study Guide
 
-是针对 Exam 1Z0-808 的。考的内容是 Java 8 版本。 长期支持版。 还有一个高级别的 OCP Oracle Certified Professional Java SE 8 Programmer II，那个难度大一点，stream，concurrency，generic，设计模式，但是如果是有工作经验的，应该也不难通过。但是这个认证的意义我认为就是通过学习达到可以通过考试的水平，然后招聘者可以知道到了什么水平吧。我觉得正确率达到80以上才好玩吧。
+是针对 Exam 1Z0-808 的。考的内容是 Java 8 版本。 长期支持版。 还有一个高级别的 OCP Oracle Certified Professional Java SE 8 Programmer II，那个难度大一点，stream，concurrency，generic，设计模式，但是如果是有工作经验的，应该也不难通过。但是这个认证的意义我认为就是通过学习达到可以通过考试的水平，然后招聘者可以知道到了什么水平吧。我觉得正确率达到80以上才好玩吧。正文 367 页，6章，覆盖了官方的全部的考试考点。
 
-下一个针对 Java 11 的认证，觉得难度就更大了，因为又是有很多更新的，引入了模块化系统，本地变量 var 之类的。 
 
-对于已经通过 OCP 8 的人，可以选择升级考试，不知道有没有折扣。 JShell 是很不错的东西。 
+
+**书的目录内容：**
+
+Chapter 1 Java Building Blocks
+
+Chapter 2 Operators and Statements
+
+Chapter 3 Core Java API
+
+Chapter 4 Methods and Encapsulation
+
+Chapter 5 Class Design
+
+Chapter 6 Exceptions
+
+
+
+下一个针对 Java 11 的认证，觉得难度就更大了，因为又是有很多更新的，引入了模块化系统，本地变量 var 之类的。 对于已经通过 OCP 8 的人，可以选择升级考试，不知道有没有折扣。 JShell 是很不错的东西。 
 
 态度，Java，未来。 Enthuware，刷题，没有官方题库，因为Oracle 会调整题目数量和考试时长。
-
-
-
-正文 367 页
-
-6章，覆盖了官方的全部的考试考点。
 
 
 
 Infoq 有人翻译了一篇介绍这本书的文章 ：
 
  https://www.infoq.cn/article/OCP-Java-SE-8-Programmer-Study-Guide-Book-Review 
-
-
-
-
 
 
 
@@ -206,6 +220,8 @@ Java 11 之后，也不分什么OCA OCP了，只有 Java SE 11 Programmer Part 1
 
 ### 学习Tips
 
+Flash Card Anki Mock Exam
+
 
 
 ## 后续
@@ -220,35 +236,29 @@ Java 11 之后，也不分什么OCA OCP了，只有 Java SE 11 Programmer Part 1
 
 这是专业级别。
 
+数据结构与算法
 
+集合框架（容器）
 
-
+RoadMap
 
 Fire
 
-
+Kotlin
 
 Spring Boot
 
-
-
 小马哥
 
+TDD
 
+SonarQube
+
+RSocket
 
 波音飞机 软件缺陷
 
-
-
-
-
 避免技术痴迷，减少引入复杂性。反省，如何摒弃不正确的思想。
-
-
-
-
-
-
 
 Python 折腾树莓派，Java 写 Android，Java 写 Spring Boot
 
