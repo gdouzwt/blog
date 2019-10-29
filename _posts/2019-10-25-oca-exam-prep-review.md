@@ -61,7 +61,94 @@ eCertificate & open badge  Acclaim
 
 ### 考试大纲
 
+#### Java Basics 基础
 
+- Define the scope of variables 定义变量的作用范围
+- Define the structure of a Java class 定义一个 Java 类的结构
+- Create executable Java applications with a main method; run a Java program from the command line; produce console output 创建包含一个 main 方法的可执行 Java 应用程序；从命令行运行一个 Java 程序；产生控制台输出
+- Import other Java packages to make them accessible in your code 导入其他 Java 包使其可在你的代码中使用
+- Compare and contrast the features and components of Java such as: platform independence, object orientation, encapsulation, etc. 比较和对比 Java 的特性和组件，例如：平台独立性，面向对象，封装等
+
+#### Using Operators and Decision Constructs 使用操作符和条件判断结构
+
+- Use Java operators; use parentheses to override operator precedence 使用操作符；使用括号覆盖操作符优先级
+- Test equality between Strings and other objects using `==` and `equals ()` 使用 `==` 和 `equals()` 检查字符串和其他对象之间的相等性
+- Create if and if/else and ternary constructs 创建 if 和 if/else 已经三元（条件）结构
+- Use a switch statement 使用 switch 语句
+
+#### Using Loop Constructs 使用循环结构
+
+- Create and use `while` loops 创建并使用 while 循环
+- Create and use `for` loops including the enhanced for loop 创建并使用 for 循环，包括增强版 for 循环
+- Create and use do/while loops 创建并使用do/while 循环
+- Compare loop constructs 比较循环结构
+- Use `break` and `continue` 使用 break 和 continue
+
+#### Working with Inheritance 使用继承
+
+- Describe inheritance and its benefits 描述继承及其好处
+- Develop code that makes use of polymorphism; develop code that overrides methods;  differentiate between the type of a reference and the type of an object 开发应用到了多态的代码；开发重写方法的代码；区分引用的类型和对象的类型
+- Determine when casting is necessary 确定何时类型转换时必要的
+- Use `super` and `this` to access objects and constructors 使用 super 和 this 访问对象和构造方法
+- Use abstract classes and interfaces 使用抽象类和接口
+
+#### Working with Selected classes from the Java API 使用从 Java API 中选择的类
+
+- Manipulate data using the `StringBuilder` class and its methods 使用 StringBuilder 类及其方法去操作数据
+- Create and manipulate Strings 创建并操作字符串
+- Create and manipulate calendar data using classes from `java.time.LocalDateTime`,  `java.time.LocalDate`, `java.time.LocalTime`,`java.time.format.DateTimeFormatter`, `java.time.Period` 创建并操纵日历数据，使用这些类：java.time.LocalDateTime, java.time.LocalDate, java.time.LocalTime,java.time.format.DateTimeFormatter, java.time.Period
+- Declare and use an `ArrayList` of a given type 声明并使用某个类型的 ArrayList
+- Write a simple Lambda expression that consumes a Lambda Predicate expression 编写一个简单的 Lambda 表达式，要求一个 Lambda Predicate 表达式
+
+#### Working With Java Data Types 使用 Java 数据类型
+
+- Declare and initialize variables (including casting of primitive data types) 声明并初始化变量（包括原始数据类型的转换）
+- Differentiate between object reference variables and primitive variables 区分对象引用变量和原始变量
+- Know how to read or write to object fields 知道如何读或写对象字段
+- Explain an Object's Lifecycle (creation, "dereference by reassignment" and garbage collection) 解释一个对象的生命周期（创建，“重新赋值解引用” 和垃圾回收）
+- Develop code that uses wrapper classes such as `Boolean`, `Double`, and `Integer` 开发使用封装类的代码，例如 Boolean, Double 和 Integer
+
+#### Creating and Using Arrays 创建并使用数组
+
+- Declare, instantiate, initialize and use a one-dimensional array 声明，实例化，初始化以及使用一维数组
+- Declare, instantiate, initialize and use multi-dimensional arrays 声明，实例化，初始化以及使用多维数组
+
+#### Working with Methods and Encapsulation 使用方法和封装
+
+- Create methods with arguments and return values; including overloaded methods 创建带参数和返回值的方法
+- Apply the `static` keyword to methods and fields 在方法和字段应用 static 关键字
+- Create and overload constructors; differentiate between default and user defined constructors 创建并重载构造方法；区分默认和用户定义构造方法
+- Apply access modifiers 应用访问修饰符
+- Apply encapsulation principles to a class 对类应用封装原则
+- Determine the effect upon object references and primitive values when they are passed  into methods that change the values 确定对象引用和原始变量传递到会改变值的方法时的效果 （考察引用传递还是值传递）
+
+#### Handling Exceptions 处理异常
+
+- Differentiate among checked exceptions, unchecked exceptions, and Errors 区分检查异常，非检查异常以及错误
+- Create a try-catch block and determine how exceptions alter normal program flow 创建一个 try-catch 语句块并确定异常时如何改变正常的程序控制流的
+- Describe the advantages of Exception handling 描述异常处理的优点
+- Create and invoke a method that throws an exception 创建并调用一个会抛出异常的方法
+- Recognize common exception classes (such as `NullPointerException`, `ArithmeticException`, `ArrayIndexOutOfBoundsException`, `ClassCastException`) 识别常见的异常类（例如 空指针异常，算术异常，数组越界异常，类型转换异常）
+
+#### Assume the following: 默认以下情况：
+
+- **Missing package and import statements:** If sample code do not include package or import statements, and the question does not explicitly refer to these missing statements, then assume that all sample code is in the same package, or import statements exist to support them. 
+缺失的包和导入语句：如果示例代码没有包含包或导入语句，并且问题没有明示这些缺失的语句，那么认为所有的示例代码是在同一个包，或者存在导入它们的导入语句。
+
+- No file or directory path names for classes:
+  类没有文件名或者目录路径名：
+   If a question does not state the file names or directory locations of classes, then assume one of the following, whichever will enable the code to compile and run:
+   如果问题没有提及到类的文件名或者目录位置，那么假设以下几点，能让代码编译并运行即可：
+
+  - All classes are in one file 所有类是在同一个文件
+  - Each class is contained in a separate file, and all files are in one directory
+    每个类分别存在与不同的文件，并且所有文件都在同一个目录
+
+- **Unintended line breaks:** Sample code might have unintended line breaks. If you see a line of code that looks like it has wrapped, and this creates a situation where the wrapping is significant (for example, a quoted String literal has wrapped), assume that the wrapping is an extension of the same line, and the line does not contain a hard carriage return that would cause a compilation failure.
+
+- **Code fragments:** A code fragment is a small section of source code that is presented without its context. Assume that all necessary supporting code exists and that the supporting environment fully supports the correct compilation and execution of the code shown and its omitted environment.
+
+- **Descriptive comments:** Take descriptive comments, such as "setter and getters go here," at face value. Assume that correct code exists, compiles, and runs successfully to create the described effect.
 
 ### 书籍信息
 
