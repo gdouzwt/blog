@@ -41,7 +41,7 @@ Java 1995年5月23日 首次发布，到现在过去了24年，Java 版本经历
 
 ##### 报名
 
-在 [Pearson VUE]( https://wsr.pearsonvue.com/testtaker/registration/Dashboard/ORACLE ) 的网站找到 Oracle 的这个 1Z0-808 考试按提示一步步报名就可以了。
+在 [Pearson VUE](  https://home.pearsonvue.com/  ) 的网站找到 Oracle 的这个 1Z0-808 考试按提示一步步报名就可以了。
 
 ##### 考试
 
