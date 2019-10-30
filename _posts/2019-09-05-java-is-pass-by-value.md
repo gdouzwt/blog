@@ -7,7 +7,7 @@ author:     招文桃
 header-img: img/java-pass-by-value-not-reference.jpg
 catalog: true
 tags:
-    - Java拾遗
+    - Java
 ---
 
 # Java是值传递
