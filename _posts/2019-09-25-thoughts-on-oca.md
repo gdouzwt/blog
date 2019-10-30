@@ -7,6 +7,7 @@ author:     招文桃
 catalog:    true
 tags:
     - 考试
+	- OCA
 ---
 
 ### 为什么考OCA
@@ -42,3 +43,8 @@ On the contrary, even the most experienced Java developers often claim that havi
 - 重做所有 Self Tests.
 - 完成所有练习。
 - 写很多很多 Java 代码。（不要用 IDE）
+
+
+
+可是后来我选择了 Scott 和 Jeanne 的书，后面的[文章]( https://zwt.io/2019/10/25/oca-exam-prep-review/ )有提到。
+
