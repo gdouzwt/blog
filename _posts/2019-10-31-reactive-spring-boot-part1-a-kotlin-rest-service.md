@@ -21,29 +21,21 @@ tags:
 >
 > 原文由 Trisha Gee 在当地时间2019年10月28日发布在 [INTELLIJ IDEA BLOG]( https://blog.jetbrains.com/idea/2019/10/tutorial-reactive-spring-boot-a-kotlin-rest-service/ )
 
-这个月（2019年10月）我在 SpringOne Platform（大会）做了一个现在代码演示，展示了如何构建一个 Spring Boot 应用，用来显示实时（股票）价格，用到了 Spring（很明显），Kotlin 还有 JavaFX。这个代码演示有录像，是一个时长 70 分钟的视频，不过我觉得作为一系列更简短的视频配以博客文章会更加容易消化，可以更慢、更详细地介绍每一步。
-
-
+这个月（2019年10月）我在 SpringOne Platform（大会）做了一个现在代码演示，展示了如何构建一个 Spring Boot 应用，用来显示实时（股票）价格，用到了 Spring（很明显），Kotlin 还有 JavaFX。这个代码演示有录像，[是一个时长 70 分钟的视频，](https://blog.jetbrains.com/idea/2019/10/fully-reactive-spring-kotlin-and-javafx-playing-together/)不过我觉得作为一系列更简短的视频配以博客文章会更加容易消化，可以更慢、更详细地介绍每一步。
 
 这是第一步：使用 Kotlin 创建一个响应式 Spring Boot 服务。
 
-
-
 这篇博文包含一个视频演示一步步操作过程和一个文字版的操作过程（从视频的讲稿演变而来）给那些更偏好文字版的人。
 
-![image-20191031022526120](/img/image-20191031022526120.png)
+这个教程是我们构建一个完整的使用 [Kotlin](https://kotlinlang.org/) 写的 Spring Boot 应用作后端， [Java](https://jdk.java.net/13/) 写客户端以及一个  JavaFX 写的用户界面。
 
-这个教程是我们构建一个完整的使用 Kotlin 写的 Spring Boot 应用作后端， Java 写客户端以及一个  JavaFX 写的用户界面。
-
-教程的第一步是创建一个 Kotlin 版的 Spring Boot 应用，作为应用程序的后端。我们将会创建一个 REST 服务，可在后面的教程中接入。
-
-
+教程的第一步是创建一个 [Kotlin 版的 Spring Boot 应用](https://spring.io/guides/tutorials/spring-boot-kotlin/)，作为应用程序的后端。我们将会创建一个 [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) 服务，可在后面的教程中接入。
 
 #### 创建一个 Spring Boot 服务
 
-让我们为我们的 Spring Boot 服务创建一个新项目吧。
+让我们[为我们的 Spring Boot 服务创建一个新项目](https://www.jetbrains.com/help/idea/spring-boot.html#create-spring-boot-project)。
 
-1. 选择 New Project，可从 IntelliJ IDEA 的菜单开始或在开始屏幕开始。
+1. 选择 [New Project](https://www.jetbrains.com/help/idea/new-project-wizard.html)，可从 IntelliJ IDEA 的菜单开始或在开始屏幕开始。
 2. 选择 New Project 窗口左边的 Spring Initializr 。
 3. 我们使用 Java 13 作为这个教程的 SDK，尽管我们没有用到 Java 13 的任何特性（你可以在[这里下载 JDK 13.0.1]( http://jdk.java.net/13/ )，然后为其[指定一个新的 IntelliJ IDEA SDK]( https://www.jetbrains.com/help/idea/sdk.html#define-sdk )）。
 4. 给项目填入 group 名称，然后我们使用 stock-server 作为名称。
@@ -125,15 +117,95 @@ data class StockPrice(val symbol: String,
 
 
 
+#### 生成并返回股票价格
+
+现在我们要定义 `prices` 方法要返回什么。这个方法将会创建一个会每秒发出随机生成的股票价格的 Flux。我们可以通过让它的 interval（时间间隔）设为 1 秒的 Duration （持续时长）。
+
+```kotlin
+fun prices(symbol: String): Flux<StockPrice> {
+    return Flux.interval(Duration.ofSeconds(1))
+}
+```
+
+（注意：以上代码尚未能通过编译）
+
+然后我们为这些逐秒时间创建一个新的 `StockPrice`  对象。注意在 Kotlin 我们不需要 `new` 关键字。`StockPrice` 对象需要 `symbol`（股票代号），`price`（股票价格），在这个教程中只是随机生成的值，然后还有 time（时间，或说时刻更准确点），是当下时刻。
+
+```kotlin
+fun prices(symbol: String): Flux<StockPrice> {
+    return Flux
+    		.interval(Duration.ofSeconds(1))
+    		.map { StockPrice(symbol, randomStockPrice(), LocalDateTime.now())}
+}
+```
+
+（注意：以上代码尚未能通过编译）
+
+创建这个 `randomStockPrice` 函数（我们可以使用 Alt + Enter 自动创建它）。一种创建任意 `Double` 对象的的方式是使用 `ThreadLocalRandom` 和它的 `nextDouble` 方法。
+
+让我们生成一个在 0 到 100 之间的数。
+
+```kotlin
+@RestController
+class RestController() {
+    @GetMapping(value = ["/stocks/{symbol}"],
+               produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
+    fun prices(@PathVariable symbol: String): Flux<StockPrice> {
+        return Flux
+        		.interval(Duration.ofSeconds(1))
+        		.map { StockPrice(symbo, randomStockPrice(), LocalDateTime.now())}
+    }
+    
+    private fun randomStockPrice(): Double {
+        return ThreadLocalRandom.current().nextDouble(100.0)
+    }
+}
+```
 
 
 
+#### 运行应用
+
+运行应用看是否能正确启动。打开浏览器并访问 http://localhost:8080/stocks/DEMO，你应该可以看到每秒有一个事件发生，并看到股票价格以 JSON 字符串的形式呈现。
+
+```json
+data:{"symbol":"DEMO","price":89.06318870033823,"time":"2019-10-17T17:00:25.506109"}
+```
 
 
 
+#### 总结
 
+我们创建了一个使用了 Reative Steams 每秒发出随机生成的股票价格的简单 Kotlin Spring Boot 应用程序。
 
+```kotlin
+// StockServiceApplication.kt
+@SpringBootApplication
+class StockServiceApplication
+ 
+fun main(args: Array<String>) {
+    runApplication<StockServiceApplication>(*args)
+}
+ 
+@RestController
+class RestController() {
+    @GetMapping(value = ["/stocks/{symbol}"], produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
+    fun prices(@PathVariable symbol: String): Flux<StockPrice> {
+        return Flux.interval(Duration.ofSeconds(1))
+                   .map { StockPrice(symbol, randomStockPrice(), LocalDateTime.now()) }
+    }
+ 
+    private fun randomStockPrice(): Double {
+        return ThreadLocalRandom.current().nextDouble(100.0)
+    }
+}
+ 
+data class StockPrice(val symbol: String, val price: Double, val time: LocalDateTime)
+```
 
+在接下来的教程里，我们将会展示如何连接到这个服务器获取股票价格，还有如何创建一个图表实时显示股票价格更新。
+
+[全部代码都在GitHub。](https://github.com/trishagee/s1p-stocks-service)
 
 
 
