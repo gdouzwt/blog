@@ -8,7 +8,7 @@ author:     招文桃
 catalog:    true
 tags:
     - Java
-    - oca
+    - OCA
 ---
 
 > 这文章讲OCA准备过程，读过的书籍。 这本书叫 OCA Oracle Certified Associate Java SE 8 Programmer I Study Guide 以下按章节整理错题：  
