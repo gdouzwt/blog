@@ -21,7 +21,7 @@ tags:
 >
 > 原文由 Trisha Gee 在当地时间2019年10月28日发布在 [INTELLIJ IDEA BLOG]( https://blog.jetbrains.com/idea/2019/10/tutorial-reactive-spring-boot-a-kotlin-rest-service/ )
 
-这个月（2019年10月）我在 SpringOne Platform（大会）做了一个现在代码演示，展示了如何构建一个 Spring Boot 应用，用来显示实时（股票）价格，用到了 Spring（很明显），Kotlin 还有 JavaFX。这个代码演示有录像，[是一个时长 70 分钟的视频，](https://blog.jetbrains.com/idea/2019/10/fully-reactive-spring-kotlin-and-javafx-playing-together/)不过我觉得作为一系列更简短的视频配以博客文章会更加容易消化，可以更慢、更详细地介绍每一步。
+这个月（2019年10月）我在 SpringOne Platform（大会）做了一个现场代码演示，展示了如何构建一个 Spring Boot 应用，用来显示实时（股票）价格，用到了 Spring（很明显），Kotlin 还有 JavaFX。这个代码演示有录像，[是一个时长 70 分钟的视频，](https://blog.jetbrains.com/idea/2019/10/fully-reactive-spring-kotlin-and-javafx-playing-together/)不过我觉得作为一系列更简短的视频配以博客文章会更加容易消化，可以更慢、更详细地介绍每一步。
 
 这是第一步：使用 Kotlin 创建一个响应式 Spring Boot 服务。
 
