@@ -33,7 +33,7 @@ Java 1995年5月23日 首次发布，到现在过去了24年，Java 版本经历
 
 ##### 创建帐户
 
-在 Oracle 大学网站  https://education.oracle.com/home 创建帐户，然后购买考试券。
+在 [Oracle 大学网站](https://education.oracle.com/home)创建帐户，然后购买考试券。
 
 在[这个页面]( https://education.oracle.com/java-se-8-programmer-i/pexam_1Z0-808 )可以看到关于 OCA 考试的介绍，关于认证路径的更详细内容在[另一个页面]( https://education.oracle.com/oracle-certified-associate-java-se-8-programmer/trackp_333 )。 这两个页面都包含了可以购买用于 Pearson VUE 考试的考试券。在 Oracle 大学购买考试券可以支持国内银行卡汇款的支付方式，直接在Pearson VUE 注册并付款就只支持国外信用卡和考试券的方式。 我没有Visa / Master 之类的信用卡，所以就用国内银行汇款的方式了，考试券1077元。实际上加上增值税一共花费1142元，发票数据是 1107.36 + 63.64 税。当然没有国外信用卡的也可以找人代付，据网友分享，淘宝代付1131元。 我倾向于银行汇款的方式。
 
@@ -49,9 +49,7 @@ Java 1995年5月23日 首次发布，到现在过去了24年，Java 版本经历
 
 ##### 获得认证
 
-考试结束后，考试结果会在两小时内收到邮件，就可以查看到成绩报告了，报告包括题目正确率和结果是否通过。然后在48小时后会发放电子证书和数字徽章，电子证书就是一个pdf文件，就是证书的模样，因为推崇环保就默认不方法纸质证书了。 然后电子徽章是基于 open badge标准的，发布于 Pearson 旗下的 Acclaim，数字徽章可以发布到区块链供查询认证，也支持分享到一些社交网络，嵌入到 web 页面。可以在这里看到我的数字徽章：
-
-https://www.youracclaim.com/badges/dee74bd5-6ec6-455a-b28b-c125291b7232
+考试结束后，考试结果会在两小时内收到邮件，就可以查看到成绩报告了，报告包括题目正确率和结果是否通过。然后在48小时后会发放电子证书和数字徽章，电子证书就是一个pdf文件，就是证书的模样，因为推崇环保就默认不方法纸质证书了。 然后电子徽章是基于 open badge标准的，发布于 Pearson 旗下的 Acclaim，数字徽章可以发布到区块链供查询认证，也支持分享到一些社交网络，嵌入到 web 页面。我的数字徽章在[这里](https://www.youracclaim.com/badges/dee74bd5-6ec6-455a-b28b-c125291b7232)
 
 ### OCA考试大纲
 
@@ -174,9 +172,7 @@ Chapter 5 Class Design
 
 Chapter 6 Exceptions
 
-Infoq 有人翻译了一篇介绍这本书的文章 ：
-
- https://www.infoq.cn/article/OCP-Java-SE-8-Programmer-Study-Guide-Book-Review 
+Infoq 有人翻译了一篇介绍这本书的[文章]( https://www.infoq.cn/article/OCP-Java-SE-8-Programmer-Study-Guide-Book-Review )
 
 
 
