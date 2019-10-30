@@ -9,10 +9,10 @@ catalog:    true
 tags:
     - Kotlin
     - Tutorial
-	- Spring Boot
-	- Reactive
-	- 教程
-	- 翻译
+    - Spring Boot
+    - Reactive
+    - 教程
+    - 翻译
 ---
 
 ## 响应式 Spring Boot 第 1 部分 - 一个 Kotlin REST Service
