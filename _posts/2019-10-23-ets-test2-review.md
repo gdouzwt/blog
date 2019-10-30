@@ -8,7 +8,7 @@ author:     招文桃
 catalog:    true
 tags:
     - Java
-    - oca
+    - OCA
 ---
 
 > Enthuware Test Studio Test 2 错题回顾，题目编号为测试系统的编号。  
