@@ -2,7 +2,7 @@
 typora-root-url: ../
 layout:     post
 title:      回顾 Maven 的一些基本操作
-date:       '2019-10-31'
+date:       '2019-10-31T23:00'
 subtitle:   记录一下方便以后查看
 author:     招文桃
 catalog:    true
