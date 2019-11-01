@@ -2,7 +2,7 @@
 typora-root-url: ../
 layout:     post
 title:      Reactive Spring Boot 系列教程 - Part 2
-date:       '2019-11-02:07:00'
+date:       '2019-11-02T07:00'
 subtitle:   未等到 Trisha Gee 更新，就自己整理了一个版本
 author:     招文桃
 catalog:    true
