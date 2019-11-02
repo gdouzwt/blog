@@ -3,7 +3,7 @@ typora-root-url: ../
 layout:     post
 title:      回顾 protected 访问修饰符
 date:       '2019-11-02T07:00'
-subtitle:   重读一下 OCA Guide 访问控制符与继承相关内容
+subtitle:   重读一下 OCA Guide 访问控制符内容
 author:     招文桃
 catalog:    true
 tags:
@@ -48,7 +48,7 @@ public class Gosling extends Bird {		// 创建子类
 }
 ```
 
-运行以上代码，会打印 *floating* 两次，一次因为调用 `floatInWater()` 另一次因为 `swim()` 里面的 `println()`。 因为 `Gosling` 是 `Bird` 的子类，它可以访问这些成员，即使不在同一个包。 记住 `protected` 允许所有默认访问权限所允许的。(Remember `protected` also gives us access to everything that default access does.) 意味着与 Bird 在同一个包的类可以访问它的 `protected` 成员。
+运行以上代码，会打印 *floating* 两次，一次因为调用 `floatInWater()` 另一次因为 `swim()` 里面的 `println()`。 因为 `Gosling` 是 `Bird` 的子类，它可以访问这些成员，即使不在同一个包。 记住 `protected` 允许所有默认访问权限所允许的。(Remember `protected` also gives us access to everything that default access does.) 意味着与 `Bird` 在同一个包的类可以访问它的 `protected` 成员。
 
 ```java
 package pond.shore;			// 与 Bird 在同一个包
