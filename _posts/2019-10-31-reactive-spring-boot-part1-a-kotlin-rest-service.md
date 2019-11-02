@@ -3,7 +3,7 @@ typora-root-url: ../
 layout:     post
 title:      Reactive Spring Boot 系列教程 - Part 1
 date:       '2019-10-31T04:00'
-subtitle:   Trisha Gee在IntelliJ IDEA 博客写的教程
+subtitle:   Trisha Gee 在IntelliJ IDEA 博客写的教程
 author:     招文桃
 catalog:    true
 tags:
