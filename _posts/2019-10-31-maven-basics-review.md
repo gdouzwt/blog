@@ -53,11 +53,17 @@ my-app
 
 `mvn test`
 
-太基础了，那本参考书的内容又太旧了，以后还是直接搜索吧。
+#### 移除安装到本地仓库的项目
 
-【完】
+```xml
+mvn build-helper:remove-project-artifact
+```
+
+在当前项目目录运行，仅移除当前项目。
 
 
+
+To be continued...
 
 
 
