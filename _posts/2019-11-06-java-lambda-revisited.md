@@ -13,8 +13,6 @@ tags:
 
 ## Lambda Expressions
 
-[TOC]
-
 #### Introducing Lambda Expressions
 
 ##### Lambda Expression 基础
