@@ -1,13 +1,12 @@
 ---
 layout:     post
 title:      关于OCA的一些想法
-date:       '2019-09-25 23:40:36'
+date:       '2019-09-25T23:40:36'
 subtitle:   为什么要考OCA
 author:     招文桃
 catalog:    true
 tags:
-    - 考试
-	- OCA
+    - OCA
 ---
 
 ### 为什么考OCA
