@@ -174,6 +174,10 @@ class SampleDataInitializer {
 
 [![image-20191209093846979](/img/image-20191209093846979.png)](/img/image-20191209093846979.png)
 
+---
+
+<a href="/img/image-20191209093846979.png" data-toggle="lightbox"><img src="/img/image-20191209093846979.png" class="img-fluid"></a>
+
 日志显式格式，不同的系统可能不一样，但内容应该差不多。
 
 在 Mongo shell 输入 `db.reservation.find( { } );` 可以看到结果已经写入数据库。
