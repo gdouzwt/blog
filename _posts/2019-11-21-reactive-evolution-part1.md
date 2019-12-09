@@ -57,7 +57,7 @@ tags:
 
 ​		额，我们现在有。一个全新的项目 Spring Boot 项目。最新最好的 Java 版本，我要注释掉一些我现在还不需要的东西。我去掉这些，我不需要这些，我要注释掉。R2DBC 的依赖，并注释掉 R2DBC 本身。
 
-```xml
+```
 <!--
 <dependency>
     <groupId>org.springframework.boot.experimental</groupId>
@@ -207,7 +207,7 @@ class SampleDataInitializer {
 
 然后我要注释掉 MongoDB OK? 这会添加依赖，就这样。
 
-```xml
+```
 <!--
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -256,6 +256,7 @@ spring.r2dbc.password= [你的密码]
 
 
 
+```
 orders=# \d reservation
                                数据表 "public.reservation"
  栏位 |       类型        | 校对规则 |  可空的  |                  预设
@@ -264,6 +265,7 @@ orders=# \d reservation
  name | character varying |          | not null |
 索引：
     "reservation_pk" PRIMARY KEY, btree (id)
+```
 
 
 
