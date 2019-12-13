@@ -15,16 +15,16 @@ module.exports = function(grunt) {
                     paths: ["css"]
                 },
                 files: {
-                    "css/hux-blog.css": "less/hux-blog.less"
+                    "css/<%= pkg.name %>.css": "less/<%= pkg.name %>.less"
                 }
             },
             minified: {
                 options: {
                     paths: ["css"],
-                    cleancss: true
+                    compress: true
                 },
                 files: {
-                    "css/hux-blog.min.css": "less/hux-blog.less"
+                    "css/<%= pkg.name %>.min.css": "less/<%= pkg.name %>.less"
                 }
             }
         },
@@ -52,8 +52,8 @@ module.exports = function(grunt) {
                 },
             },
             less: {
-                files: ['less/*.less'],
-                tasks: ['less'],
+                files: ['less/*.less', 'scss/*.scss'],
+                tasks: ['less', 'sass'],
                 options: {
                     spawn: false,
                 }
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                     noSourceMap: 'on'
                 },
                 files: {
-                    "css/hux-blog.css": "scss/hux-blog.scss"
+                    "css/<%= pkg.name %>.css": "scss/<%= pkg.name %>.scss"
                 }
             },
             minified: {
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                     noSourceMap: 'on'
                 },
                 files: {
-                    "css/hux-blog.min.css": "scss/hux-blog.scss"
+                    "css/<%= pkg.name %>.min.css": "scss/<%= pkg.name %>.scss"
                 }
             }
         },
