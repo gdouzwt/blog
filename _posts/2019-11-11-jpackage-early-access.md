@@ -13,10 +13,8 @@ tags:
 
 ### 在 Windows 测试
 
-```sql
-jpackage --package-type exe --name StockClientUI --description "Demo of jpackage" --vendor "Zhao Wentao" --app-version 1.0.1 --input input --dest output --main-jar ui-0.0.1-SNAPSHOT.jar --win-shortcut --win-menu
+```
+jpackage --type exe --name javafx-library --description "Demo of jpackage" --vendor "Zhao Wentao" --app-version 0.0.1 --input input --dest output --main-jar app.jar --win-shortcut --win-menu
 ```
 
 需要 Wix Toolsets
-
-#### 
