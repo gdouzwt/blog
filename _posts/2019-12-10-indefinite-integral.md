@@ -16,7 +16,7 @@ tags:
 
 一、填空  7题 x 3分 = 21分
 
-1 若函数 $f(x) =\begin{cases}e^x, x<0\\a + x, x \geq 0\end{cases}$ 在 $x = 0$ 点连续，则 $a=$ ___
+1 若函数 $f(x) =\begin{cases}e^x, x<0\\ a + x, x \geq 0\end{cases}$ 在 $x = 0$ 点连续，则 $a=$ ___
 
 2 函数 $y = a\sin x+\frac{1}{3}\sin 3x $ 在 $x = \frac{\pi}{3}$ 处取得极值，则 $a=$ ___
 
