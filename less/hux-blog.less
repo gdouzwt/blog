@@ -128,9 +128,9 @@ hr.small {
 pre,.table-responsive{
 	// sometimes you should use vendor-feature.
 	-webkit-overflow-scrolling: touch;
+	&:extend(.line-numbers all);
 }
 pre code{
-	&:extend(.line-numbers all);
 	display: block;
 	width: auto;
 	white-space: pre;	// save it but no-wrap;
