@@ -16,11 +16,11 @@ tags:
 
 一、填空  7题 x 3分 = 21分
 
-1 若函数 $$f(x) =\begin{cases}e^x, x<0 \\ a + x, x \geq 0 \end{cases}$$ 在 $x = 0$ 点连续，则 $a=$ ___
+1 若函数 $f(x) =\begin{cases}e^x, x<0 \\ a + x, x \geq 0 \end{cases}$ 在 $x = 0$ 点连续，则 $a=$ ___
 
 2 函数 $y = a\sin x+\frac{1}{3}\sin 3x $ 在 $x = \frac{\pi}{3}$ 处取得极值，则 $a=$ ___
 
-3 若 $f'(0)$ 存在，且 $f(0)=0$， 则 $\lim_{x\to 0}\frac{f(x)}{x}$
+3 若 $f'(0)$ 存在，且 $f(0)=0$， 则 $\displaystyle\lim_{x\to 0}\frac{f(x)}{x}$
 
 二、计算题 5题 x 5分 = 25分
 
