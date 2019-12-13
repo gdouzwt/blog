@@ -1,3 +1,8 @@
+/*!
+ * TAO v1.7.0 (https://zwt.io)
+ * Copyright 2019 Tao <zhao@wen-tao.com>
+ */
+
 @charset "UTF-8";
 @media (min-width: 1200px) {
   .post-container, .sidebar-container {
@@ -729,14 +734,14 @@ pre code {
     line-height: 20px;
   }
   .navbar-custom .navbar-brand:hover, .navbar-custom .navbar-brand:focus {
-    color: fade(white, 80%);
+    color: rgba(255, 255, 255, 0.8);
   }
   .navbar-custom .nav li a {
     color: white;
     padding: 20px;
   }
   .navbar-custom .nav li a:hover, .navbar-custom .nav li a:focus {
-    color: fade(white, 80%);
+    color: rgba(255, 255, 255, 0.8);
   }
   .navbar-custom .nav li a:active {
     background: none;
@@ -760,7 +765,7 @@ pre code {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
     top: -61px;
-    background-color: #1a1a1a;
+    background-color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid #f2f2f2;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
