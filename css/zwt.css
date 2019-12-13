@@ -1,11 +1,6 @@
-/*!
- * TAO v1.7.0 (https://zwt.io)
- * Copyright 2019 Tao <zhao@wen-tao.com>
- */
-
-@charset "UTF-8";
 @media (min-width: 1200px) {
-  .post-container, .sidebar-container {
+  .post-container,
+  .sidebar-container {
     padding-right: 5%;
   }
 }
@@ -19,23 +14,25 @@
   font-size: 14px;
 }
 .sidebar-container h5 {
-  color: gray;
+  color: #808080;
   padding-bottom: 1em;
 }
 .sidebar-container h5 a {
-  color: gray !important;
+  color: #808080 !important;
   text-decoration: none;
 }
 .sidebar-container a {
   color: #bfbfbf !important;
 }
-.sidebar-container a:hover, .sidebar-container a:active {
+.sidebar-container a:hover,
+.sidebar-container a:active {
   color: #0085A1 !important;
 }
 .sidebar-container .tags a {
   border-color: #bfbfbf;
 }
-.sidebar-container .tags a:hover, .sidebar-container .tags a:active {
+.sidebar-container .tags a:hover,
+.sidebar-container .tags a:active {
   border-color: #0085A1;
 }
 .sidebar-container .short-about img {
@@ -51,11 +48,9 @@
 .sidebar-container .short-about .list-inline > li {
   padding-left: 0px;
 }
-
 .catalog-container {
   padding: 0px;
 }
-
 .side-catalog {
   display: block;
   overflow: auto;
@@ -104,16 +99,22 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.side-catalog .catalog-body .h1_nav, .side-catalog .catalog-body .h2_nav, .side-catalog .catalog-body .h3_nav {
+.side-catalog .catalog-body .h1_nav,
+.side-catalog .catalog-body .h2_nav,
+.side-catalog .catalog-body .h3_nav {
   margin-left: 0;
   font-size: 13px;
   font-weight: bold;
 }
-.side-catalog .catalog-body .h4_nav, .side-catalog .catalog-body .h5_nav, .side-catalog .catalog-body .h6_nav {
+.side-catalog .catalog-body .h4_nav,
+.side-catalog .catalog-body .h5_nav,
+.side-catalog .catalog-body .h6_nav {
   margin-left: 10px;
   font-size: 12px;
 }
-.side-catalog .catalog-body .h4_nav a, .side-catalog .catalog-body .h5_nav a, .side-catalog .catalog-body .h6_nav a {
+.side-catalog .catalog-body .h4_nav a,
+.side-catalog .catalog-body .h5_nav a,
+.side-catalog .catalog-body .h6_nav a {
   max-width: 170px;
 }
 .side-catalog .catalog-body .active {
@@ -123,7 +124,6 @@
 .side-catalog .catalog-body .active a {
   color: #0085a1 !important;
 }
-
 @media (max-width: 1200px) {
   .side-catalog {
     display: none;
@@ -136,12 +136,12 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
-code[class*=language-],
-pre[class*=language-] {
+code[class*="language-"],
+pre[class*="language-"] {
   color: #f8f8f2;
   background: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 1em;
   text-align: left;
   white-space: pre;
@@ -157,42 +157,35 @@ pre[class*=language-] {
   -ms-hyphens: none;
   hyphens: none;
 }
-
 /* Code blocks */
-pre[class*=language-] {
+pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
   border-radius: 0.3em;
 }
-
-:not(pre) > code[class*=language-],
-pre[class*=language-] {
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
   background: #272822;
 }
-
 /* Inline code */
-:not(pre) > code[class*=language-] {
+:not(pre) > code[class*="language-"] {
   padding: 0.1em;
   border-radius: 0.3em;
   white-space: normal;
 }
-
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
   color: slategray;
 }
-
 .token.punctuation {
   color: #f8f8f2;
 }
-
 .namespace {
   opacity: 0.7;
 }
-
 .token.property,
 .token.tag,
 .token.constant,
@@ -200,12 +193,10 @@ pre[class*=language-] {
 .token.deleted {
   color: #f92672;
 }
-
 .token.boolean,
 .token.number {
   color: #ae81ff;
 }
-
 .token.selector,
 .token.attr-name,
 .token.string,
@@ -214,7 +205,6 @@ pre[class*=language-] {
 .token.inserted {
   color: #a6e22e;
 }
-
 .token.operator,
 .token.entity,
 .token.url,
@@ -223,41 +213,33 @@ pre[class*=language-] {
 .token.variable {
   color: #f8f8f2;
 }
-
 .token.atrule,
 .token.attr-value,
 .token.function,
 .token.class-name {
   color: #e6db74;
 }
-
 .token.keyword {
   color: #66d9ef;
 }
-
 .token.regex,
 .token.important {
   color: #fd971f;
 }
-
 .token.important,
 .token.bold {
   font-weight: bold;
 }
-
 .token.italic {
   font-style: italic;
 }
-
 .token.entity {
   cursor: help;
 }
-
 pre[data-line] {
   position: relative;
   padding: 1em 0 1em 3em;
 }
-
 .line-highlight {
   position: absolute;
   left: 0;
@@ -271,7 +253,6 @@ pre[data-line] {
   line-height: inherit;
   white-space: pre;
 }
-
 .line-highlight:before,
 .line-highlight[data-end]:after {
   content: attr(data-start);
@@ -289,29 +270,24 @@ pre[data-line] {
   text-shadow: none;
   box-shadow: 0 1px white;
 }
-
 .line-highlight[data-end]:after {
   content: attr(data-end);
   top: auto;
   bottom: 0.4em;
 }
-
 .line-numbers .line-highlight:before,
 .line-numbers .line-highlight:after {
   content: none;
 }
-
-pre[class*=language-].line-numbers {
+pre[class*="language-"].line-numbers {
   position: relative;
   padding-left: 3.8em;
   counter-reset: linenumber;
 }
-
-pre[class*=language-].line-numbers > code {
+pre[class*="language-"].line-numbers > code {
   position: relative;
   white-space: inherit;
 }
-
 .line-numbers .line-numbers-rows {
   position: absolute;
   pointer-events: none;
@@ -327,13 +303,11 @@ pre[class*=language-].line-numbers > code {
   -ms-user-select: none;
   user-select: none;
 }
-
 .line-numbers-rows > span {
   pointer-events: none;
   display: block;
   counter-increment: linenumber;
 }
-
 .line-numbers-rows > span:before {
   content: counter(linenumber);
   color: #999;
@@ -341,11 +315,9 @@ pre[class*=language-].line-numbers > code {
   padding-right: 0.8em;
   text-align: right;
 }
-
 div.code-toolbar {
   position: relative;
 }
-
 div.code-toolbar > .toolbar {
   position: absolute;
   top: 0.3em;
@@ -353,25 +325,20 @@ div.code-toolbar > .toolbar {
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
 }
-
 div.code-toolbar:hover > .toolbar {
   opacity: 1;
 }
-
 /* Separate line b/c rules are thrown out if selector is invalid.
    IE11 and old Edge versions don't support :focus-within. */
 div.code-toolbar:focus-within > .toolbar {
   opacity: 1;
 }
-
 div.code-toolbar > .toolbar .toolbar-item {
   display: inline-block;
 }
-
 div.code-toolbar > .toolbar a {
   cursor: pointer;
 }
-
 div.code-toolbar > .toolbar button {
   background: none;
   border: 0;
@@ -385,7 +352,6 @@ div.code-toolbar > .toolbar button {
   -moz-user-select: none;
   -ms-user-select: none;
 }
-
 div.code-toolbar > .toolbar a,
 div.code-toolbar > .toolbar button,
 div.code-toolbar > .toolbar span {
@@ -397,7 +363,6 @@ div.code-toolbar > .toolbar span {
   box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
 }
-
 div.code-toolbar > .toolbar a:hover,
 div.code-toolbar > .toolbar a:focus,
 div.code-toolbar > .toolbar button:hover,
@@ -407,23 +372,20 @@ div.code-toolbar > .toolbar span:focus {
   color: inherit;
   text-decoration: none;
 }
-
 body {
   /* Hux learn from
-      *     TypeIsBeautiful,
-      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-      */
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 16px;
   color: #404040;
   overflow-x: hidden;
 }
-
 p {
   margin: 30px 0;
 }
-
 h1,
 h2,
 h3,
@@ -431,36 +393,33 @@ h4,
 h5,
 h6 {
   /* Hux learn from
-      *     TypeIsBeautiful,
-      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-      */
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   line-height: 1.1;
   font-weight: bold;
 }
-
 h4 {
   font-size: 21px;
 }
-
 a {
   color: #404040;
 }
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: #0085A1;
 }
-
-a img:hover, a img:focus {
+a img:hover,
+a img:focus {
   cursor: pointer;
 }
-
 article {
   overflow-x: hidden;
 }
-
 blockquote {
-  color: gray;
+  color: #808080;
   font-style: normal;
   font-size: 0.95em;
   margin: 5px 0 5px;
@@ -468,21 +427,17 @@ blockquote {
 blockquote p {
   margin: 0;
 }
-
 small.img-hint {
   display: block;
   margin-top: -20px;
   text-align: center;
 }
-
 br + small.img-hint {
   margin-top: -40px;
 }
-
 img.shadow {
   box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
 }
-
 ul.task-list {
   list-style-type: none;
   padding: 0;
@@ -490,7 +445,6 @@ ul.task-list {
 ul.task-list li.task-list-item {
   list-style-type: none;
 }
-
 input.task-list-item-checkbox {
   margin-right: 5px;
 }
@@ -500,7 +454,6 @@ input.task-list-item-checkbox:checked {
   outline-style: solid;
   outline-offset: -7px;
 }
-
 select {
   -webkit-appearance: none;
   margin-top: 15px;
@@ -513,38 +466,35 @@ select.sel-lang {
   min-height: 28px;
   font-size: 14px;
 }
-
-.table th, .table td {
+.table th,
+.table td {
   border: 1px solid #eee !important;
 }
-
 hr.small {
   max-width: 100px;
   margin: 15px auto;
   border-width: 4px;
   border-color: white;
 }
-
-pre, .table-responsive {
+pre,
+.table-responsive {
   -webkit-overflow-scrolling: touch;
 }
-
 pre code {
   display: block;
   width: auto;
   white-space: pre;
   word-wrap: normal;
 }
-
 .postlist-container {
   margin-bottom: 15px;
 }
-
 .post-container a {
   color: #339ef9;
   word-break: break-all;
 }
-.post-container a:hover, .post-container a:focus {
+.post-container a:hover,
+.post-container a:focus {
   color: #0085A1;
 }
 .post-container h1,
@@ -571,27 +521,38 @@ pre code {
 .post-container h6 + p {
   margin-top: 5px;
 }
-.post-container ul, .post-container ol {
+.post-container ul,
+.post-container ol {
   margin-bottom: 40px;
 }
 @media screen and (max-width: 768px) {
-  .post-container ul, .post-container ol {
+  .post-container ul,
+  .post-container ol {
     padding-left: 30px;
   }
 }
 @media screen and (max-width: 500px) {
-  .post-container ul, .post-container ol {
+  .post-container ul,
+  .post-container ol {
     padding-left: 20px;
   }
 }
-.post-container ol ol, .post-container ol ul, .post-container ul ol, .post-container ul ul {
+.post-container ol ol,
+.post-container ol ul,
+.post-container ul ol,
+.post-container ul ul {
   margin-bottom: 5px;
 }
 .post-container li p {
   margin: 0;
   margin-bottom: 5px;
 }
-.post-container li h1, .post-container li h2, .post-container li h3, .post-container li h4, .post-container li h5, .post-container li h6 {
+.post-container li h1,
+.post-container li h2,
+.post-container li h3,
+.post-container li h4,
+.post-container li h5,
+.post-container li h6 {
   line-height: 2;
   margin-top: 20px;
 }
@@ -608,17 +569,16 @@ pre code {
   width: 100%;
 }
 .post-container .pager li > a > span {
-  color: gray;
+  color: #808080;
   font-weight: normal;
   letter-spacing: 0.5px;
 }
-
 @media only screen and (max-width: 767px) {
   /**
-   * Layout
-   * Since V1.6 we use absolute positioning to prevent to expand container-fluid
-   * which would cover tags. A absolute positioning make a new layer.
-   */
+	 * Layout
+	 * Since V1.6 we use absolute positioning to prevent to expand container-fluid
+	 * which would cover tags. A absolute positioning make a new layer.
+	 */
   .navbar-default .navbar-collapse {
     position: absolute;
     right: 0;
@@ -629,15 +589,14 @@ pre code {
     border-radius: 2px;
     width: 170px;
   }
-
   /**
-   * Animation
-   * HuxBlog-Navbar using genuine Material Design Animation
-   */
+	 * Animation
+	 * HuxBlog-Navbar using genuine Material Design Animation
+	 */
   #huxblog_navbar {
     /**
-     * Sharable code and 'out' function
-     */
+		 * Sharable code and 'out' function
+		 */
     opacity: 0;
     transform: scaleX(0);
     transform-origin: top right;
@@ -646,8 +605,8 @@ pre code {
     -webkit-transform-origin: top right;
     -webkit-transition: all 200ms cubic-bezier(0.47, 0, 0.4, 0.99) 0ms;
     /**
-     *'In' Animation
-     */
+		 *'In' Animation
+		 */
   }
   #huxblog_navbar a {
     font-size: 13px;
@@ -695,9 +654,9 @@ pre code {
   width: 100%;
   z-index: 3;
   /* Hux learn from
-      *     TypeIsBeautiful,
-      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-      */
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
 }
@@ -722,7 +681,7 @@ pre code {
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom {
-    background: 0 0;
+    background: transparent;
     border-bottom: 1px solid transparent;
   }
   .navbar-custom body {
@@ -733,15 +692,17 @@ pre code {
     padding: 20px;
     line-height: 20px;
   }
-  .navbar-custom .navbar-brand:hover, .navbar-custom .navbar-brand:focus {
-    color: fade(white, 80%);
+  .navbar-custom .navbar-brand:hover,
+  .navbar-custom .navbar-brand:focus {
+    color: rgba(255, 255, 255, 0.8);
   }
   .navbar-custom .nav li a {
     color: white;
     padding: 20px;
   }
-  .navbar-custom .nav li a:hover, .navbar-custom .nav li a:focus {
-    color: fade(white, 80%);
+  .navbar-custom .nav li a:hover,
+  .navbar-custom .nav li a:focus {
+    color: rgba(255, 255, 255, 0.8);
   }
   .navbar-custom .nav li a:active {
     background: none;
@@ -765,7 +726,7 @@ pre code {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
     top: -61px;
-    background-color: fade(white, 90%);
+    background-color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid #f2f2f2;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
@@ -774,13 +735,15 @@ pre code {
   .navbar-custom.is-fixed .navbar-brand {
     color: #404040;
   }
-  .navbar-custom.is-fixed .navbar-brand:hover, .navbar-custom.is-fixed .navbar-brand:focus {
+  .navbar-custom.is-fixed .navbar-brand:hover,
+  .navbar-custom.is-fixed .navbar-brand:focus {
     color: #0085A1;
   }
   .navbar-custom.is-fixed .nav li a {
     color: #404040;
   }
-  .navbar-custom.is-fixed .nav li a:hover, .navbar-custom.is-fixed .nav li a:focus {
+  .navbar-custom.is-fixed .nav li a:hover,
+  .navbar-custom.is-fixed .nav li a:focus {
     color: #0085A1;
   }
   .navbar-custom.is-visible {
@@ -792,10 +755,9 @@ pre code {
     transform: translate3d(0, 100%, 0);
   }
 }
-
 .intro-header {
   background: no-repeat center center;
-  background-color: gray;
+  background-color: #808080;
   background-attachment: scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -818,8 +780,8 @@ pre code {
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading,
-.intro-header .post-heading,
-.intro-header .page-heading {
+  .intro-header .post-heading,
+  .intro-header .page-heading {
     padding: 150px 0;
   }
 }
@@ -843,9 +805,9 @@ pre code {
 .intro-header .site-heading .subheading,
 .intro-header .page-heading .subheading {
   /* Hux learn from
-      *     TypeIsBeautiful,
-      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-      */
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 18px;
@@ -856,7 +818,7 @@ pre code {
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading h1,
-.intro-header .page-heading h1 {
+  .intro-header .page-heading h1 {
     font-size: 80px;
   }
 }
@@ -871,9 +833,9 @@ pre code {
 }
 .intro-header .post-heading .subheading {
   /* Hux learn from
-      *     TypeIsBeautiful,
-      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-      */
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 17px;
@@ -883,7 +845,7 @@ pre code {
   margin-top: -5px;
 }
 .intro-header .post-heading .meta {
-  font-family: "Lora", "Times New Roman", serif;
+  font-family: 'Lora', 'Times New Roman', serif;
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
@@ -902,11 +864,11 @@ pre code {
     font-size: 20px;
   }
 }
-
 .post-preview > a {
   color: #404040;
 }
-.post-preview > a:hover, .post-preview > a:focus {
+.post-preview > a:hover,
+.post-preview > a:focus {
   text-decoration: none;
   color: #0085A1;
 }
@@ -924,8 +886,8 @@ pre code {
   margin-bottom: 10px;
 }
 .post-preview > .post-meta {
-  font-family: "Lora", "Times New Roman", serif;
-  color: gray;
+  font-family: 'Lora', 'Times New Roman', serif;
+  color: #808080;
   font-size: 16px;
   font-style: normal;
   margin-top: 0;
@@ -934,7 +896,8 @@ pre code {
   text-decoration: none;
   color: #404040;
 }
-.post-preview > .post-meta > a:hover, .post-preview > .post-meta > a:focus {
+.post-preview > .post-meta > a:hover,
+.post-preview > .post-meta > a:focus {
   color: #0085A1;
   text-decoration: underline;
 }
@@ -951,7 +914,6 @@ pre code {
     font-size: 18px;
   }
 }
-
 .post-content-preview {
   font-size: 13px;
   font-style: normal;
@@ -965,13 +927,11 @@ pre code {
     font-size: 14px;
   }
 }
-
 .section-heading {
   font-size: 36px;
   margin-top: 60px;
   font-weight: 700;
 }
-
 .caption {
   text-align: center;
   font-size: 14px;
@@ -982,7 +942,6 @@ pre code {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-
 footer {
   font-size: 20px;
   padding: 50px 0 65px;
@@ -999,10 +958,10 @@ footer .copyright {
 footer .copyright a {
   color: #337ab7;
 }
-footer .copyright a:hover, footer .copyright a:focus {
+footer .copyright a:hover,
+footer .copyright a:focus {
   color: #0085A1;
 }
-
 .floating-label-form-group {
   font-size: 14px;
   position: relative;
@@ -1030,7 +989,7 @@ footer .copyright a:hover, footer .copyright a:focus {
   top: 2em;
   margin: 0;
   font-size: 0.85em;
-  line-height: 1.764705882em;
+  line-height: 1.76470588em;
   vertical-align: middle;
   vertical-align: baseline;
   opacity: 0;
@@ -1043,25 +1002,21 @@ footer .copyright a:hover, footer .copyright a:focus {
   padding-left: 14px;
   border-left: 1px solid #eee;
 }
-
 .floating-label-form-group-with-value label {
   top: 0;
   opacity: 1;
 }
-
 .floating-label-form-group-with-focus label {
   color: #0085A1;
 }
-
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eee;
 }
-
 .btn {
   /* Hux learn from
-      *     TypeIsBeautiful,
-      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-      */
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   text-transform: uppercase;
@@ -1071,18 +1026,16 @@ form .row:first-child .floating-label-form-group {
   border-radius: 0;
   padding: 15px 25px;
 }
-
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;
 }
-
-.btn-default:hover, .btn-default:focus {
+.btn-default:hover,
+.btn-default:focus {
   background-color: #0085A1;
   border: 1px solid #0085A1;
   color: white;
 }
-
 .pager {
   margin: 20px 0 0 !important;
   padding: 0px !important;
@@ -1090,9 +1043,9 @@ form .row:first-child .floating-label-form-group {
 .pager li > a,
 .pager li > span {
   /* Hux learn from
-      *     TypeIsBeautiful,
-      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-      */
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   text-transform: uppercase;
@@ -1105,7 +1058,7 @@ form .row:first-child .floating-label-form-group {
 }
 @media only screen and (min-width: 768px) {
   .pager li > a,
-.pager li > span {
+  .pager li > span {
     font-size: 14px;
     padding: 15px 25px;
   }
@@ -1127,61 +1080,60 @@ form .row:first-child .floating-label-form-group {
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-  color: gray;
+  color: #808080;
   background-color: #404040;
   cursor: not-allowed;
 }
-
 ::-moz-selection {
   color: white;
   text-shadow: none;
   background: #0085A1;
 }
-
 ::selection {
   color: white;
   text-shadow: none;
   background: #0085A1;
 }
-
 img::selection {
   color: white;
   background: transparent;
 }
-
 img::-moz-selection {
   color: white;
   background: transparent;
 }
-
 /* Hux add tags support */
 .tags {
   margin-bottom: -5px;
 }
-.tags a, .tags .tag {
+.tags a,
+.tags .tag {
   display: inline-block;
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 999em;
   padding: 0 10px;
-  color: white;
+  color: #ffffff;
   line-height: 24px;
   font-size: 12px;
   text-decoration: none;
   margin: 0 1px;
   margin-bottom: 6px;
 }
-.tags a:hover, .tags a:active, .tags .tag:hover, .tags .tag:active {
+.tags a:hover,
+.tags .tag:hover,
+.tags a:active,
+.tags .tag:active {
   color: white;
   border-color: white;
   background-color: rgba(255, 255, 255, 0.4);
   text-decoration: none;
 }
 @media only screen and (min-width: 768px) {
-  .tags a, .tags .tag {
+  .tags a,
+  .tags .tag {
     margin-right: 5px;
   }
 }
-
 #tag-heading {
   padding: 70px 0 60px;
 }
@@ -1190,11 +1142,11 @@ img::-moz-selection {
     padding: 55px 0;
   }
 }
-
 #tag_cloud {
   margin: 20px 0 15px 0;
 }
-#tag_cloud a, #tag_cloud .tag {
+#tag_cloud a,
+#tag_cloud .tag {
   font-size: 14px;
   border: none;
   line-height: 28px;
@@ -1202,7 +1154,10 @@ img::-moz-selection {
   margin-bottom: 8px;
   background: #D6D6D6;
 }
-#tag_cloud a:hover, #tag_cloud a:active, #tag_cloud .tag:hover, #tag_cloud .tag:active {
+#tag_cloud a:hover,
+#tag_cloud .tag:hover,
+#tag_cloud a:active,
+#tag_cloud .tag:active {
   background-color: #0085a1 !important;
 }
 @media only screen and (min-width: 768px) {
@@ -1210,7 +1165,6 @@ img::-moz-selection {
     margin-bottom: 25px;
   }
 }
-
 .tag-comments {
   font-size: 12px;
 }
@@ -1219,7 +1173,6 @@ img::-moz-selection {
     font-size: 14px;
   }
 }
-
 .t:first-child {
   margin-top: 0px;
 }
@@ -1236,13 +1189,12 @@ img::-moz-selection {
     line-height: 2 !important;
   }
 }
-
 .one-tag-list .tag-text {
   font-weight: 200;
   /* Hux learn from
-      *     TypeIsBeautiful,
-      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-      */
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
 }
@@ -1280,7 +1232,6 @@ img::-moz-selection {
     font-size: 18px;
   }
 }
-
 /* Tags support End*/
 /* Hux make all img responsible in post-container */
 .post-container img {
@@ -1289,15 +1240,14 @@ img::-moz-selection {
   height: auto;
   margin: 1.5em auto 1.6em auto;
 }
-
 /* Hux Optimize UserExperience */
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
   background-color: inherit;
 }
 .navbar-default .navbar-toggle:active {
   background-color: rgba(255, 255, 255, 0.25);
 }
-
 /* Hux customize Style for navBar button */
 .navbar-default .navbar-toggle {
   border-color: transparent;
@@ -1315,7 +1265,6 @@ img::-moz-selection {
 .navbar-default .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 3px;
 }
-
 /* Hux customize Style for Duoshuo */
 .comment {
   margin-top: 20px;
@@ -1353,11 +1302,9 @@ img::-moz-selection {
 .comment #ds-thread #ds-reset .ds-post-button:hover {
   background: #eee;
 }
-
 #ds-smilies-tooltip ul.ds-smilies-tabs li a {
   background: white !important;
 }
-
 .page-fullscreen .intro-header {
   position: fixed;
   left: 0;
@@ -1365,7 +1312,6 @@ img::-moz-selection {
   width: 100%;
   height: 100%;
 }
-
 .page-fullscreen #tag-heading {
   position: fixed;
   left: 0;
@@ -1386,7 +1332,6 @@ img::-moz-selection {
   justify-content: center;
   flex-direction: column;
 }
-
 .page-fullscreen footer {
   position: absolute;
   width: 100%;
@@ -1395,15 +1340,12 @@ img::-moz-selection {
   opacity: 0.6;
   color: #fff;
 }
-
 .page-fullscreen footer .copyright {
   color: #fff;
 }
-
 .page-fullscreen footer .copyright a {
   color: #fff;
 }
-
 .page-fullscreen footer .copyright a:hover {
   color: #ddd;
 }
