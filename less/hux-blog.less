@@ -2,6 +2,7 @@
 @import "mixins.less";
 @import "sidebar.less";
 @import "side-catalog.less";
+@import "../css/prism.css";
 
 // Global Components
 
@@ -129,6 +130,7 @@ pre,.table-responsive{
 	-webkit-overflow-scrolling: touch;
 }
 pre code{
+	&:extend(.line-numbers all);
 	display: block;
 	width: auto;
 	white-space: pre;	// save it but no-wrap;

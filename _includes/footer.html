@@ -105,6 +105,7 @@
             </div>
         </div>
     </div>
+    <!-- highlight -->
 </footer>
 
 <!-- jQuery -->
@@ -115,12 +116,10 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
-<!-- highlight -->
-<script src="{{ "/js/prism.js " | prepend: site.baseurl }}"></script>
+
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-
-
 
 <!-- Service Worker -->
 {% if site.service-worker %}
@@ -322,3 +321,5 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
     });
 </script>
 {% endif %}
+
+<script src="{{ "/js/prism.js " | prepend: site.baseurl }}"></script>
