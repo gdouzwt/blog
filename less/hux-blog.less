@@ -2,7 +2,7 @@
 @import "mixins.less";
 @import "sidebar.less";
 @import "side-catalog.less";
-@import "../css/prism.css";
+@import (less) "../css/prism.css";
 
 // Global Components
 
@@ -124,11 +124,15 @@ hr.small {
 	border-width: 4px;
 	border-color: white;
 }
+
+pre {
+	&:extend(.line-numbers all);
+}
+
 // add by Hux
 pre,.table-responsive{
 	// sometimes you should use vendor-feature.
 	-webkit-overflow-scrolling: touch;
-	&:extend(.line-numbers all);
 }
 pre code{
 	display: block;
