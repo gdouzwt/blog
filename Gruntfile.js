@@ -39,7 +39,7 @@ module.exports = function(grunt) {
                     banner: '<%= banner %>'
                 },
                 files: {
-                    src: ['css/<%= pkg.name %>.css', 'css/<%= pkg.name %>.min.css', 'js/<%= pkg.name %>.min.js']
+                    src: ['css/<%= pkg.name %>.css']
                 }
             }
         },
@@ -89,6 +89,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'less', 'usebanner', 'sass']);
+    grunt.registerTask('default', ['uglify', 'sass', 'usebanner']);
 
 };
