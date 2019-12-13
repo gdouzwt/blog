@@ -276,24 +276,19 @@ pre[data-line] {
   bottom: 0.4em;
 }
 .line-numbers .line-highlight:before,
-.line-numbers .line-highlight:after,
-pre .line-highlight:before,
-pre .line-highlight:after {
+.line-numbers .line-highlight:after {
   content: none;
 }
-pre[class*="language-"].line-numbers,
-pre[class*="language-"]pre {
+pre[class*="language-"].line-numbers {
   position: relative;
   padding-left: 3.8em;
   counter-reset: linenumber;
 }
-pre[class*="language-"].line-numbers > code,
-pre[class*="language-"]pre > code {
+pre[class*="language-"].line-numbers > code {
   position: relative;
   white-space: inherit;
 }
-.line-numbers .line-numbers-rows,
-pre .line-numbers-rows {
+.line-numbers .line-numbers-rows {
   position: absolute;
   pointer-events: none;
   top: 0;
