@@ -3,6 +3,7 @@
     "title": "TAO",
     "author": "Tao <zhao@wen-tao.com>",
     "version": "1.7.0",
+    "license": "MIT",
     "homepage": "https://zwt.io",
     "repository": {
         "type": "git",
@@ -11,10 +12,13 @@
     "bugs": "https://github.com/gdouzwt/gdouzwt.github.io/issues",
     "devDependencies": {
         "grunt": "latest",
-        "grunt-contrib-less": "latest",
-        "grunt-contrib-watch": "latest",
         "grunt-banner": "latest",
-        "grunt-contrib-uglify": "latest"
+        "grunt-contrib-less": "latest",
+        "grunt-contrib-sass": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-sass": "^3.1.0",
+        "node-sass": "^4.13.0"
     },
     "scripts": {
         "preview": "cd _site; python -m SimpleHTTPServer 8020",

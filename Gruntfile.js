@@ -59,15 +59,36 @@ module.exports = function(grunt) {
                 }
             },
         },
+        sass: {
+            expanded: {
+                options: {
+                    style: 'expanded',
+                    noSourceMap: 'on'
+                },
+                files: {
+                    "css/hux-blog.css": "scss/hux-blog.scss"
+                }
+            },
+            minified: {
+                options: {
+                    style: 'compressed',
+                    noSourceMap: 'on'
+                },
+                files: {
+                    "css/hux-blog.min.css": "scss/hux-blog.scss"
+                }
+            }
+        },
     });
 
     // Load the plugins.
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'less', 'usebanner']);
+    grunt.registerTask('default', ['uglify', 'less', 'usebanner', 'sass']);
 
 };
