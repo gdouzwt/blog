@@ -6,6 +6,7 @@ date:       '2019-12-10T08:08'
 subtitle:   不定积分
 author:     招文桃
 catalog:    true
+excerpt:    能显示吗？
 tags:
     - Calculus
 ---
