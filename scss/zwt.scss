@@ -566,13 +566,16 @@ pre code{
 .post-content-preview{
     font-size: 13px;
     font-style: normal;
-    color:#a3a3a3;
+	color:$gray;
     // &:hover{
     //     color: $brand-primary;
     // }
     @media only screen and (min-width: 768px) {
         font-size:14px;
-    }
+	}
+	a {
+		color: $brand-primary;
+	}
 }
 
 // Sections
