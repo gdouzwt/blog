@@ -19,7 +19,7 @@ tags:
 
 ![foundation-test](/img/foundation-test.png)
 
-按照考试的主题（或者说考点）来看的话，Java Basics 正确率 6/7。然后，OO Concepts 过关的，Java Data Types 部分就只对了 3 题，有点危险。基础测试没有涉及到垃圾回收的内容，但是真正考试应该会有的，而且现在工作要求也肯定会问，需要了解的。关于操作符和条件判断结构居然也只有对了 6 个题，看起来真的有点 tricky。接下来的数组、循环结构和构造方法这些考点感觉还过得去的样子。 关于方法的使用居然有点不稳，要搞清楚了，可能需要翻译 Coderanch 的文章加深一下理解。这次没有涉及方法重载的题目，然而关于继承的理解，可能还不够深，要看看编程思想了。`instanceof`在继承相关主题没有考到，但在操作符题目里出现了，异常处理方面需要加强。最基本的 `String`， 以及相关的类要烂熟了，至少 API 文档过一遍。最后 Java 8 新的时间日期 API 还没有了解，这一次就新的旧的都看一遍吧，所以今天是要看完错题，找出对应的知识点，考点，然后读 API 文档。 
+按照考试的主题（或者说考点）来看的话，Java Basics 正确率 6/7。然后，OO Concepts 过关的，Java Data Types 部分就只对了 3 题，有点危险。基础测试没有涉及到垃圾回收的内容，但是真正考试应该会有的，而且现在工作要求也肯定会问，需要了解的。关于操作符和条件判断结构居然也只有对了 6 个题，看起来真的有点 tricky。接下来的数组、循环结构和构造方法这些考点感觉还过得去的样子。 关于方法的使用居然有点不稳，要搞清楚了，可能需要翻译 Coderanch 的文章加深一下理解。这次没有涉及方法重载的题目，然而关于继承的理解，可能还不够深，要看看编程思想了。`instanceof`在继承相关主题没有考到，但在操作符题目里出现了，异常处理方面需要加强。最基本的 `String`， 以及相关的类要烂熟了，至少 API 文档过一遍。最后 Java 8 新的时间日期 API 还没有了解，这一次就新的旧的都看一遍吧，所以今天是要看完错题，找出对应的知识点，考点，然后读 API 文档。 <!--more-->
 
 ### 接下来做什么 
 
@@ -45,7 +45,7 @@ tags:
 
      > 当时选择了这个选项，因为看起来好像很有道理，而且描述全面。但现在仔细看看，说的是，在同一个包内，访问权限比 `protected` 更受限，这已经错了，同一个包内两个一样的。后面部分就不用看了，当时就没多想，这次知道了，下次就不会错了。 
 
-    --- 
+   ---
 
 2. What can be the type of a `catch` argument? (Select the best option.) **(Handling Exceptions)**
 
@@ -61,7 +61,7 @@ tags:
 
    - [ ] Any class that extends `Error` 
 
-    --- 
+   ---
 
 3. 记录一个关于重写的： An overriding method must have the same parameter list and the same return type as that of the overridden method. 翻译成中文就是，重写方法必须与被重写方法具有相同的参数列表和返回类型。 
 
@@ -75,7 +75,7 @@ tags:
      >
      > 所以主要看返回值类型，重写必须参数列表相同才算重写，不然就是重载了。而在 Java 1.5 之前，重写方法的返回值必须与被重写方法返回值一致。不过从 Java 1.5 开始，重写方法的返回值类型可以是被重写方法返回值的任意子类，也称为 covariant return type（好像中文译为“**协变返回类型**”） 
 
-    --- 
+   ---
 
 4. Which of the following statements are true?**(Working with Inheritance)** 选择两个正确的，当时选错了。 
 
@@ -113,7 +113,7 @@ tags:
 
    这部分这有点意思，之前没有了解到。关于方法重写和重载，还有静态成员的知识。对于静态方法，子类中具有与父类相同方法签名的静态方法，不叫重写，叫隐藏，因为多态的概念不适用于静态成员。 
 
-    --- 
+   ---
 
 5. Given: **(Working with Methods)** 
 
@@ -136,7 +136,7 @@ tags:
            AccessTest ref = new AccessTest(); 
        } 
    } 
-   ``` 
+   ```
 
    Identify the correct statements - 
 
@@ -158,12 +158,12 @@ tags:
    ```java
    SubAccessTester ref = new SubAccessTester(); 
    ref.c();   // this is valid 
-   ``` 
+   ```
 
    Where `SubAccessTester` is a subclass of `AccessTester` - 
    `class SubAccessTester extends AccessTester {}` 
 
-    --- 
+   ---
 
 6. Which of these statements concerning the use of modifiers are true? **(Java Basics)** 
 
@@ -193,7 +193,7 @@ tags:
 
    这些很经典的基础，关键词的运用，必须熟记。 
 
-    --- 
+   ---
 
 7. An abstract method cannot be overridden. **(Working with inheritance)** 
 
@@ -202,7 +202,7 @@ tags:
 
    Abstract methods are meant to be overridden in the subclass. Abstract methods describe behavior but do not implement it. So the subclasses have to override it to actually implement the behavior. A subclass may choose to override it, in which case, the subclass will **have to be abstract too**. 
 
-    --- 
+   ---
 
 8. What is the correct declaration for an abstract method 'add' in a class that is accessible to any class, takes no arguments and returns nothing? (You had to select 1 option) 
 
@@ -224,7 +224,7 @@ tags:
 
    - [x] `abstract public void add() throws Exception;` 
 
-    --- 
+   ---
 
 9. Which of the following are correct about `java.util.function.Predicate`? 
 
@@ -260,7 +260,7 @@ tags:
    ... 
    //use the filter method with the specific criteria to filter the collection. 
    filterEmployees(employeeList, new MyCheckEmployee()); 
-   ``` 
+   ```
 
    This is a very common requirement across applications. The purpose of `Predicate` interface (and other standard functional interfaces) is to eliminate the need for every application to write a customized interface. For example, you can do the same thing with the `Predicate` interface as follows 
 
@@ -282,7 +282,7 @@ tags:
    } 
    ... 
    filterEmployees(employeeList, p); 
-   ``` 
+   ```
 
    Note that both the interfaces (`CheckEmployee` and `Predicate`) can be used with lambda expressions in exactly the same way. Instead of creating an anonymous inner class that implements the `CheckEmployee` or `Predicate` interface, you could just do - 
 
@@ -290,7 +290,7 @@ tags:
 
    The benefit with `Predicate` is that you don't have to write it, It is already there in the standard java library. 
 
-    --- 
+   ---
 
 10. Which of the following are valid declarations in a class? (You had to select 1 option) **(Working with Inheritance)** 
 
@@ -308,7 +308,7 @@ tags:
 
       > `private` method cannot be `abstract`. A `private` method is not inherited so how can a subclass implement it? 
 
-    --- 
+    ---
 
 11. Which of the following statements is/are true? (You had to select 1 option) 
 
@@ -330,7 +330,7 @@ tags:
 
       > Interface cannot "implement" other interfaces. It can extend multiple interfaces. The following is a valid declaration `interface I1 extends I2, I3, I4 {}`。 **记得了，接口是不可以实现其它接口的，但是可以实现多个接口。** 
 
-    --- 
+    ---
 
 12. Which of the following statements regarding 'break' and 'continue' are true? (You had to select 1 option) **(Using Loop Constructs)** 这题选错了，注意。 
 
@@ -354,7 +354,7 @@ tags:
 
     A `continue` statement with label identifier attempts to transfer control to the enclosing labeled statement that has the same identifier as its label; that statement, which is called the continue target, then immediately ends the current iteration and begins a new one. The continue target must be a `while`, `do`, or `for` statement or a compile-time error occurs. If no labeled statement with identifier as its label contains the `continue` statement, a compile-time error occurs. 
 
-    --- 
+    ---
 
 13. What class of objects can be declared by the throws clause? **(Handling Exceptions)** 
 
@@ -366,7 +366,7 @@ tags:
 
     You can declare anything that is a `Throwable` or a subclass of `Throwable`, in the `throws` clause. 
 
-    --- 
+    ---
 
 14. Identify the valid members of `Boolean` class. 
 
@@ -374,8 +374,10 @@ tags:
     - [x] `valueOf(boolean)` 
     - [ ] `parseBoolean(boolean)` 
     - [x] `FALSE`       
+      
       > `TRUE` and `FALSE` are valid static members of `Boolean` class. 
     - [ ] `Boolean(Boolean)`       
+      
       > There is no constructor that takes a `Boolean`. 
 
     **You need to remember the following points about Boolean:** 
@@ -394,7 +396,7 @@ tags:
 
     3. When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is `true`. 
 
-    --- 
+    ---
 
 15. **(Working with Inheritance)** A method with no access modifier defined in a class can be overridden by a method marked protected (assuming that it is not final) in the subclass. (You had to select 1 option) 
 
@@ -403,7 +405,7 @@ tags:
 
     An overriding method is allowed to make the overridden method more accessible, and since protected is more accessible than default (package), this is allowed. Note that protected access will allow access to the subclass even if the subclass is in a different package but package access will not. 
 
-    --- 
+    ---
 
 16. Which of the following are **NOT** valid operators in Java? **(Using Operators and Decision Constructs)** 
 
@@ -423,7 +425,7 @@ tags:
       
       > `boolean equals(Object o)` is a method in `java.lang.Object.` It is not an operator. 
 
-    --- 
+    ---
 
 17. Which of these statements are true? 
 
@@ -447,7 +449,7 @@ tags:
 
     Constructors need not initialize **all** the member variables of the class. A non-final member(i.e. an instance) variable will be assigned a default value if not explicitly initialized. 
 
-    --- 
+    ---
 
 18. Which of these statements are true? (You had to select 2 option(s)) **(Working with Inheritance)** 
 
@@ -467,7 +469,7 @@ tags:
 
     Note that calling `super();` will not always work because if the superclass has defined a constructor with arguments and has not defined a no args constructor then no args constructor will not be provided by the compiler. It is provided only to the class that does not define ANY constructor explicitly. 
 
-    --- 
+    ---
 
 19. Which of these combinations of switch expression types and case label value types are legal within a switch statement? (You had to select 1 option(s)) **(Using Operators and Decision Constructs)** 
 
@@ -480,7 +482,7 @@ tags:
       > switch(x) { 
       > case 'a' : System.out.println("a"); 
       > } 
-      > ``` 
+      > ```
 
     - [ ] switch expression of type `float` and case label value of type `int`. 
 
@@ -496,7 +498,7 @@ tags:
       >   case -1 : System.out.println("-1"); break; // This will not compile: possible loss of precision 
       >   default:  System.out.println("default"); 
       > } 
-      > ``` 
+      > ```
 
     - [ ] switch expression of type boolean and case label value of type boolean. 
 
@@ -514,7 +516,7 @@ tags:
               case 200 :  //some code; 
               case 300 :  //some code; 
           } 
-          ``` 
+          ```
 
     4. All case labels should be **COMPILE TIME CONSTANTS**. 
 
@@ -522,7 +524,7 @@ tags:
 
     6. At most one default label may be associated with the same switch statement. 
 
-    --- 
+    ---
 
 20. Consider the following code: 
 
@@ -534,7 +536,7 @@ tags:
         System.out.println( i - (int)f); 
       } 
     } 
-    ``` 
+    ```
 
     What will it print when run? 
 
@@ -547,7 +549,7 @@ tags:
     Actually, it prints -46. This is because the information was lost during the conversion from type int to type `float` as values of type `float` are not precise to nine significant digits. 
     Note: **You are not required to know the number of significant digits that can be stored by a float for the exam. However, it is good to know about the loss of precision while using float and double.** 
 
-    --- 
+    ---
 
 21. Which of the following statements are true? (You had to select 2 option(s)) 
 
@@ -586,13 +588,13 @@ tags:
     k = ((Base)s).i;//assigns 10 to k. The cast is used to show the Base's i. 
     
     Base b = new Sub(); 
-    ``` 
+    ```
 
     `k = b.i;//assigns 10 to k` because which field is accessed depends on the class of the variable and not on the class of the actual object. The same rule applies to static methods but the opposite is true for instance methods. 
 
     `final` keyword when applied to a class means the class cannot be subclassed, when applied to a method means the method cannot be overridden (it can be overloaded though) and when applied to a variable means that the variable is a constant. 
 
-    --- 
+    ---
 
 22. **(Working with Java API - Time and Date)** Identify the correct statements. 
 
@@ -613,40 +615,40 @@ tags:
 
        ```java
        LocalDate ld = LocalDate.of(2015, Month.JANUARY, 1); 
-       ``` 
+       ```
         or 
        ```java
        LocalDate ld = LocalDate.from(anotherDate); 
-       ``` 
+       ```
        or 
        ```java 
        LocalDateTime ldt = LocalDateTime.of(2015, Month.JANUARY, 1, 21, 10); //9.10 PM 
-       ``` 
+       ```
        Since you can't modify them once created, if you want to create new object with some changes to the original, you can use the instance method named with(...). For example, 
 
        ```java
        LocalDate sunday = ld.with(java.time.temporal.TemporalAdjusters.next(DayOfWeek.SUNDAY)); 
-       ``` 
+       ```
 
     4. Formatting of date objects into String and parsing of Strings into date objects is done by `java.time.format.DateTimeFormatter` class. This class provides public static references to readymade `DateTimeFormatter` objects through the fields named `ISO_DATE`, `ISO_LOCAL_DATE`, `ISO_LOCAL_DATE_TIME`, etc.  For example 
 
        ```java
        LocalDate d1 = LocalDate.parse("2015-01-01", DateTimeFormatter.ISO_LOCAL_DATE); 
-       ``` 
+       ```
 
        The parameter type and return type of the methods of `DateTimeFormatter` class is the base interface `TemporalAccessor` instead of concrete classes such as `LocalDate` or `LocalDateTime`. So you shouldn't directly cast the returned values to concrete classes like this - 
 
        ```java
        LocalDate d2 = (LocalDate) DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01"); 
        //will compile but may or may not throw a ClassCastException at runtime. 
-       ``` 
+       ```
 
        You should do like this - 
 
        ```java
        LocalDate d2 = 
            LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse("2015-01-01")); 
-       ``` 
+       ```
 
     5. Besides dates, `java.time` package also provides `Period` and `Duration` classes. `Period` is used for quantity or amount of time in terms of years, months and days, while `Duration` is used for quantity or amount of time in terms of hour, minute, and seconds. 
 
@@ -654,7 +656,7 @@ tags:
 
        For example, consider adding a period of one day and a duration of one day to 18:00 on the evening before a daylight savings gap. The Period will add the conceptual day and result in a `ZonedDateTime` at 18:00 the following day. By contrast, the `Duration` will add exactly 24 hours, resulting in a `ZonedDateTime` at 19:00 the following day (assuming a one hour DST gap). 
 
-    --- 
+    ---
 
 23. **(Q 40 of 69 Working with Java API - Time and Date)** Which of the following are true regarding the new Date-Time API of Java 8? (You had to select 2 option(s)) 
 
@@ -662,10 +664,11 @@ tags:
       > This calendar is based on the Gregorian calendar system and is used globally as the defacto standard for representing date and time. The core classes in the Date-Time API have names such as `LocalDateTime`, `ZonedDateTime`, and `OffsetDateTime`. All of these use the ISO calendar system. 
       > 
       > If you want to use an alternative calendar system, such as Hijrah or Thai Buddhist, the `java.time.chrono` package allows you to use one of the predefined calendar systems. Or you can create your own. 
-    
-    - [x] Most of the actual date related classes in the Date-Time API such as `LocalDate`, `LocalTime`, and `LocalDateTime` are immutable. 
-      > These classes do not have any setters. Once created you cannot change their contents. Even their constructors are **private**. 
 
+    - [x] Most of the actual date related classes in the Date-Time API such as `LocalDate`, `LocalTime`, and `LocalDateTime` are immutable. 
+      
+    > These classes do not have any setters. Once created you cannot change their contents. Even their constructors are **private**. 
+      
     - [ ] `LocalDateTime` includes time zone information but `LocalDate` does not. 
       > None of `LocalDate`, `LocalDateTime`, or `LocalTime` store zone information. 
       > 
@@ -693,21 +696,24 @@ tags:
       > //Note that this will throw a java.time.format.DateTimeParseException if the input string contains the Date component. 
       > ```
 
-    --- 
+    ---
 
 24. Which of the following statements concerning the switch construct are true? (You had to select 3 option(s)) 
 
     - [x] A character literal can be used as a value for a case label. 
-      > `boolean`, `long`, `float` and `double` cannot be used. 
-
+      
+    > `boolean`, `long`, `float` and `double` cannot be used. 
+      
     - [x] A 'long' cannot be used as a switch variable. 
-      > `boolean`, `long`, `float` and `double` cannot be used. 
-
+      
+    > `boolean`, `long`, `float` and `double` cannot be used. 
+      
     - [x] An empty switch block is a valid construct. 
 
     - [ ] A switch block must have a `default` label. 
 
     - [ ] If present, the default label must be the last of all the labels. 
+      
       > Any order is valid. 
 
     Here are the rules for a switch statement: 
@@ -718,7 +724,7 @@ tags:
     5. No two of the case constant expressions associated with a switch statement may have the same value. 
     6. At most one `default` label may be associated with the same switch statement. 
 
-    --- 
+    ---
 
 25. How can you declare a method `someMethod()` such that an instance of the class is not needed to access it and all the members of the same package have access to it? 
 
@@ -733,12 +739,13 @@ tags:
     - [ ] `protected void someMethod()` 
 
     - [ ] `public abstract static void someMethod()` 
+      
       > static methods can't be abstract. 
 
     Since the question says, "...an instance of the class is not needed...", the method has to be static. 
     Also, as the question does not say that other packages should not have access to the method so public or protected is also correct. 
 
-    --- 
+    ---
 
 26. Objects of which of the following classes can be thrown using a throw statement? **(Handling Exceptions)** 
 
@@ -754,7 +761,7 @@ tags:
 
     You can only throw a `Throwable` using a `throws` clause. Exception and Error are two main subclasses of `Throwable`. 
 
-    --- 
+    ---
 
 27. In which of these variable declarations, will the variable remain uninitialized unless explicitly initialized? (You had to select 1 option(s)) 
 
@@ -772,7 +779,7 @@ tags:
     Instance variables and static variables receive a default value if not explicitly initialized. All primitive types get a default value equivalent to 0, that is, int to 0 and float to 0.0f and so on and boolean to false. 
     The type/class of a variable does not affect whether a variable is initialized or not. 
 
-    --- 
+    ---
 
 28. A try statement must always have a ... associated with it. 
 
@@ -794,14 +801,14 @@ tags:
     try{ 
     } 
     catch(Exception e){  }  // no finally 
-    ``` 
+    ```
 
     2. 
     ```java
     try{ 
     } 
     finally{  }  // no catch 
-    ``` 
+    ```
 
     3. 
     ```java
@@ -809,18 +816,18 @@ tags:
     } 
     catch(Exception e) {  } 
     finally{  } 
-    ``` 
+    ```
 
     4. A catch can catch multiple exceptions: 
     ```java
     try{ 
     } 
     catch(Exception1 | Exception2 | Exception3 e) {  } 
-    ``` 
+    ```
 
     Note: try with resources (which is not on this exam) may omit catch as well as finally blocks. 
 
-    --- 
+    ---
 
 29. Which of the following classes should you use to represent just a date without any time or zone information? **(Working with Java API - Time and Date)** 
 
@@ -847,10 +854,10 @@ tags:
 
     `java.time.temporal` Package: This package contains temporal objects and we can use it for find out specific date or time related to date/time object. For example, we can use these to find out the first or last day of the month. You can identify these methods easily because they always have format “withXXX”. 
 
-    --- 
+    ---
 
 30. Consider the following variable declaration within the definition of an interface: 
-  `int i = 10;` 
+    `int i = 10;` 
 Which of the following declarations defined in a non-abstract class, is equivalent to the above? (You had to select 1 option(s)) 
 
     - [ ] `public static int i = 10;` 
@@ -865,21 +872,24 @@ Which of the following declarations defined in a non-abstract class, is equivale
 
     Fields in an interface are implicitly `public`, `static` and `final`. Although you can put these words in the interface definition but it is not a good practice to do so. 
 
-    --- 
+    ---
 
 31. Which of the following statements are true? (You had to select 2 option(s)) 
 
     - [ ] The modulus operator `%` can only be used with integer operands. 
-      > It can be used on floating points operands also. For example, `5.5 % 3 = 2.5` 
-
+      
+    > It can be used on floating points operands also. For example, `5.5 % 3 = 2.5` 
+      
     - [x] `&` can have integral as well as boolean operands. 
 
     - [x] The arithmetic operators `*`, `/` and `%` have the same level of precedence. 
 
     - [ ] `&&` can have integer as well as boolean operands. 
-      > `!`, `&&` and `||` operate only on booleans. 
-
+      
+    > `!`, `&&` and `||` operate only on booleans. 
+      
     - [ ] `~` can have integer as well as boolean operands. 
+      
       > `~` Operates only on integral types. 
 
     **Note :** 
@@ -889,7 +899,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
 
     The integral types are `byte`, `short`, `int`, and `long`, whose values are 8-bit, 16-bit, 32-bit, and 64-bit signed two's-complement integers, respectively, and `char`, whose values are 16-bit unsigned integers representing UTF-16 code units. 
 
-    --- 
+    ---
 
 32. Which of the following statements are correct? (You had to select 3 option(s)) 
 
@@ -900,14 +910,16 @@ Which of the following declarations defined in a non-abstract class, is equivale
     - [x] An interface can be extended by another interface. 
 
     - [ ] An interface can be extended by an abstract class. 
-      > A class "implements" an interface. It does not "extend" an interface. 
-
+      
+    > A class "implements" an interface. It does not "extend" an interface. 
+      
     - [ ] An interface can be extended by a concrete class. 
 
     - [ ] An abstract class cannot implement an interface. 
+      
       > Any class, whether abstract or concrete, can implement any interface. 
 
-    --- 
+    ---
 
 33. Which statements concerning conversion are true? (You had to select 4 option(s)) 
 
@@ -918,9 +930,11 @@ Which of the following declarations defined in a non-abstract class, is equivale
     - [x] Conversion from short to `char` needs a cast. 
 
     - [ ] Conversion from `int` to `float` needs a cast. 
-      > It does not need a cast because a `float` can hold any value of `int`. Note that the opposite is not true because of the loss of precision. 
-
+      
+    > It does not need a cast because a `float` can hold any value of `int`. Note that the opposite is not true because of the loss of precision. 
+      
     - [x] Conversion from `byte`, `char`, or `short` to `int`, `long` or `float` does not need a case. 
+      
       > Because `int`, `long`, or `float` are bigger than `byte` `char` or `short`. 
 
     Think of it as transferring the contents of one bucket into another. You can always transfer the contents of a smaller bucket to a bigger one. But the opposite is not always possible. You can transfer the contents of the bigger bucket into the smaller bucket only if the actual content in the bigger bucket can fit into the smaller one. Otherwise, it will spill. 
@@ -932,7 +946,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
     byte b = 20; 
     b = i;//will not compile because byte is smaller than int 
     b = (byte) i; //OK 
-    ``` 
+    ```
 
     Further, if you have a final variable and its value fits into a smaller type, then you can assign it without a cast because the compiler already knows its value and realizes that it can fit into the smaller type. This is called implicit narrowing and is allowed between `byte`, `int`, `char`, and, `short` but not for `long`, `float`, and `double`. 
 
@@ -941,9 +955,9 @@ Which of the following declarations defined in a non-abstract class, is equivale
     b = k; //Okay because k is final and 10 fits into a byte 
     final float f = 10.0;//will not compile because 10.0 is a double even though the value 10.0 fits into a float 
     i = f;//will not compile. 
-    ``` 
+    ```
 
-    --- 
+    ---
 
 34. Which of the following statements are correct regarding a functional interface? **(Lambda Expressions)** 
 
@@ -961,7 +975,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
     interface Predicate<T> { 
       boolean test(T t); 
     } 
-    ``` 
+    ```
 
     The purpose of this interface is to provide a method that operates on an object of class `T` and returns a boolean. 
 
@@ -972,7 +986,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
         if(p.test(d)) System.out.println(d); 
       } 
     } 
-    ``` 
+    ```
 
     where Data class could be as simple as `public class Data { public int value;}` 
 
@@ -998,7 +1012,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
         return d.value > 1; 
       } 
     }); 
-    ``` 
+    ```
     The `Predicate` interface described above can be used anywhere there is a need to "do something with an object and return a boolean" and is actually provided by the standard java library in `java.util.function` package. This package provides a few other useful functional interfaces. 
 
     `Predicate<T>` Represents a predicate (boolean-valued function) of one argument of type `T`. 

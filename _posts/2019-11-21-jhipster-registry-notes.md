@@ -18,4 +18,4 @@ tags:
 
 是一个运维管理服务器，有仪表板，监控，管理应用程序。
 
-所以这东西是整合了 Eureka server 和 Spring Cloud Config server ?
+所以这东西是整合了 Eureka server 和 Spring Cloud Config server ?<!--more-->

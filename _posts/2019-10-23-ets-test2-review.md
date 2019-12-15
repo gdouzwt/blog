@@ -33,7 +33,8 @@ public class JustLooping {
 }
 ```
 What is the result?  
-**You had to select 1 option**
+**You had to select 1 option** <!--more-->
+
 - [ ] It will not compile.  
 - [ ] It will print 1 2 3 4 5 five times.  
 - [ ] It will print 1 3 5 five times.  
@@ -45,7 +46,7 @@ What is the result?
 The point to note here is that the `j` in for loop is different from the instance member `j`. Therefore, `j++` occuring in the `for` loop doesn't affect the while loop. The `for` loop prints 1 2 3 4 5.  
 The while loop runs `for` the values 0 to 5 i.e. 6 iterations. Thus, 1 2 3 4 5 is printed 6 times. Note that after the end of the while loop the value of `j` is 6.  
 
----  
+---
 
 **6.**Given:  
 ```java
@@ -97,7 +98,7 @@ There is no problem with the code. All variables in an interface are implicitly 
 There is no need to define them so explicitly. Therefore, the `location` variable in `Movable` is `public` and `static` and the `move()` method is `public`.  
 Now, when you call `m.move(10)` and `m.moveBack(20)`, the instance member `location` of `Donkey` is updated to 190 because  the reference `m` refers to a `Donkey` at run time and so `move` and `moveBack` methods of `Donkey` are invoked at runtime. However, when you print `m.location`, it is the Movable's `location` (which is never updated) that is printed.  
 
----  
+---
 
 **8.**What will be the result of trying to compile and execute the following program?
 ```java
@@ -129,7 +130,7 @@ Here is what JLS says on this:
 
 For Arrays: First, the dimension expressions are evaluated, left-to-right. If any of the expression evaluations completes abruptly, the expressions to the right of it are not evaluated.  
 
----  
+---
 
 **11.**Consider the following class :  
 ```java
@@ -161,7 +162,7 @@ So had the command line been :
 If the command line had been:  
 `java Test open xyz`, it would execute the else part(which is associated with the second `if`) and would have printed "Go away xyz".
 
----  
+---
 
 **14.**Which of the following code snippets will compile without any errors?  
 (Assume that the statement `int x = 0;` exists prior to the statements below.)  
@@ -181,7 +182,7 @@ In `if(false){ x=3; }`, although the body of the condition is unreachable, this 
 `if(DEBUG){ System.out.println("beginning task 1"); }`  
 Here, the `DEBUG` variable can be set to false in the code while generating the production version of the class file, which will allow the compiler to optimize the code by removing the whole if statement entirely from the class file.  
 
----  
+---
 
 **20.**Given the following code, which of these statements are true?  
 ```java
@@ -226,7 +227,7 @@ This is a simple loop. All you need to do is execute each statement in your head
 >    ⇨ break  
 > ⑤ print 3, 2  
 
----  
+---
 
 **25.**Which of these statements are true?  
 **You had to select 2 options**
@@ -243,7 +244,7 @@ This is a simple loop. All you need to do is execute each statement in your head
 Since there is no current object available for a static method, 'this' reference is not available in static methods and therefore it can only be used within instance methods. For the same reason, static methods cannot access non static fields or methods of that class directly i.e. without a reference to an instance of that class.  
 Note : you can't reassign 'this' like this: `this = new Object();`  
 
----  
+---
 
 **28.**Which of the following comparisons will yield false?  
 **You had to select 3 options**
@@ -263,7 +264,7 @@ The `boolean` constructor is self explanatory.
 `Boolean.valueOf(String )` and its overloaded `Boolean.valueOf(boolean )` version, on the other hand, work similarly but return a reference to either `Boolean.TRUE` or `Boolean.FALSE` wrapper objects. Observe that they dont create a new `Boolean` object but just return the static constants `TRUE` or `FALSE` defined in `Boolean` class.  
 **3.** When you use the equality operator ( `==` ) with booleans, if exactly one of the operands is a `Boolean` wrapper, it is first unboxed into a `boolean` primitive and then the two are compared (JLS 15.21.2). If both are `Boolean` wrappers, then their references are compared just like in the case of other objects. Thus, `new Boolean("true") == new Boolean("true")` is `false`, but `new Boolean("true") == Boolean.parseBoolean("true")` is true.  
 
----  
+---
 
 **29.**Identify the valid for loop constructs assuming the following declarations:  
 ```java
@@ -273,43 +274,43 @@ int[][] ia = //valid array
 ```
 **You had to select 2 options**
  - [ ] `for(o : c){ }`  
-    
+   
     > Cannot use an existing/predefined variable in the variable declaration part.  
  - [x] `for(final Object o2 :c){ }`  
-    
+   
     > final is the only modifier (excluding annotations) that is allowed here.  
  - [ ] `for(int i : ia) { }`  
-    
+   
     > Each element of ia is itself an array. Thus, they cannot be assigned to an `int`.  
  - [ ] `for(Iterator it : c.iterator()){ }`  
     > `c.iterator()` does not return any Collection. Note that the following would have been valid:  
     > `Collection<Iterator> c` = //some collection that contains Iterator objects  
     > `for(Iterator it : c){ }`  
  - [x] `for(int i : ia[0]){ }`  
-    
+   
     > Since `ia[0]` is an array of ints, this is valid. (It may throw a `NullPointerException` or `ArrayIndexOutOfBoundsException` at runtime if `ia` is not appropriately initialized.)  
 
 ##### ✨**Explanation**  29
 see above 👆
 
----  
+---
 
 **33.**Which of these assignments are valid?  
 **You had to select 3 options**
 - [x] `short s = 12;`  
-    
+  
     > This is valid since 12 can fit into a short and an implicit narrowing conversion can occur.  
 - [x] `long g = 012;`  
-    
+  
     > 012 is a valid octal number.  
 - [ ] `int i = (int) false;`  
-    
+  
     > Values of type boolean cannot be converted to any other types.  
 - [x] `float f = -123;`  
-    
+  
     > Implicit widening conversion will occur in this case.  
 - [ ] `float d = 0 * 1.5;`  
-    
+  
     > double cannot be implicitly narrowed to a float even though the value is representable by a float.  
 
 ##### ✨**Explanation**  33
@@ -321,7 +322,7 @@ An implicit narrowing primitive conversion may be used if all of the following c
 **3.** The value of the expression (which is known at compile time, because it is a constant expression) is representable in the type of the variable.  
 Note that implicit narrowing conversion does not apply to `long` or `double`. So, `char ch = 30L;` will fail even though 30 is representable in `char`.  
 
----  
+---
 
 **44.**What will the following code print?  
 ```java
@@ -345,19 +346,20 @@ public class TestClass{
             
        }     
 }
-```  
+```
 **You had to select 1 option**
 - [ ] It will not compile.  
 - [ ] It will throw an exception at runtime.  
 - [ ] It will print 0.  
 - [ ] It will print 5.  
 - [x] None of these.  
+    
     > This program will compile and run but will never terminate.  
 
 ##### ✨**Explanation**  44
 Note that `looper()` declares an automatic variable `x`, which **shadows** the instance variable `x`. So when `x = m;` is executed, it is the local variable `x` that is changed not the instance field `x`. So `getX()` never returns 0. If you remove `int x = 0;` from `looper()`, it will print 0 and end.  
 
----  
+---
 
 **48.**What will the following program print?  
 ```java
@@ -372,7 +374,7 @@ class Test{
       System.out.println(var);
    }
 }
-```  
+```
 **You had to select 1 option**  
 - [x] 19  
 - [ ] 20  
@@ -385,7 +387,7 @@ When the first iteration of outer do-while loop starts, `var` is 20. Now, the in
 Now, the condition for outer do-while is checked, `while( 22 < 20 )`, [`i` is 22 because of the last `i++>var` check], thereby making `var` 19. And as the condition is `false`, the outer loop also ends.
 So, 19 is printed.  
 
----  
+---
 
 **56.**Consider the following code:  
 ```java
@@ -401,7 +403,7 @@ class B extends A{
    }
    void print() { System.out.println(i); }
 }
-```  
+```
 What will be the output when class B is run ?  
 **You had to select 1 option**
 - [ ] It will print A, 4  
@@ -415,7 +417,7 @@ Note that method `print()` is overridden in class `B`. Due to polymorphism, the 
 Here, when an object of class `B` is created, first `B`'s default constructor (which is not visible in the code but is automatically provided by the compiler because `B` does not define any constructor explicitly) is called. The first line of this constructor is a call to `super()`, which invokes `A`'s constructor. `A`'s constructor in turn calls `print()`. Now, print is a non-private instance method and is therefore polymorphic, which means, the selection of the method to be executed depends on the class of actual object on which it is invoked. Here, since the class of actual object is `B`, `B`'s print is selected instead of `A`'s print. At this point of time, variable `i` has not been initialized (because we are still in the middle of initializing `A`), so its default value i.e. 0 is printed.  
 Finally, 4 is printed.  
 
----  
+---
 
 **58.**What will be the result of attempting to compile and run the following program?  
 ```java
@@ -439,12 +441,14 @@ class TestClass{
       }
    }
 }
-```  
+```
 **You had to select 1 option**
 - [ ] Compilation error at line 1 as this is an invalid syntax for defining a label.  
+    
     > You can apply a label to any code block or a block level statement (such as a for statement) but **not** to declarations. For example: `loopX : int i = 10;`  
 - [ ] Compilation error at line 2 as 'loop' is not visible here.  
 - [x] No compilation error and line 3 will be executed.  
+    
     > Even if the `break` takes the control out of the block, the `finally` clause will be executed.  
 - [ ] No compilation error and line 3 will NOT be executed.  
 - [ ] Only the line with the label loop will be printed.  
@@ -452,7 +456,7 @@ class TestClass{
 ##### ✨**Explanation**  58
 A `break` without a label breaks the current loop (i.e. no iterations any more) and a `break` with a label tries to pass the control to the given label. 'Tries to' means that if the `break` is in a `try` block and the `try` block has a `finally` clause associated with it then it will be executed.  
 
----  
+---
 
 **65.**Consider the following code snippet:  
 ```java
@@ -463,18 +467,23 @@ XXXX m ;
      case 64  : System.out.println("64");   break;
      case 128 : System.out.println("128");  break;
   }
-```  
+```
 What type can 'm' be of so that the above code compiles and runs as expected ?  
 **You had to select 3 options**
 - [x] `int m;`  
+    
     > `m` can hold all the case values.  
 - [ ] `long m;`  
+    
     > long, `float`, `double`, and `boolean` can never be used as a `switch` variable.  
 - [x] `char m;`  
+    
     > `m` can hold all the case values.  
 - [ ] `byte m;`  
+    
     > `m` will not be able to hold 128. a `byte`'s range is -128 to 127.  
 - [x] `short m;`  
+    
     > `m` can hold all the case values.  
 
 ##### ✨**Explanation**  65
@@ -511,7 +520,7 @@ public class TestClass {
         //PRINT NAME HERE
    }
 }
-```  
+```
 Which of the following lines of code will print the name of the Eagle object?  
 **You had to select 3 options**
 - [ ] `System.out.println(f.name);`  
@@ -519,8 +528,10 @@ Which of the following lines of code will print the name of the Eagle object?
 - [x] `System.out.println(((Eagle)f).name);`  
 - [x] `System.out.println(((Bird)f).getName());`  
 - [ ] `System.out.println(Eagle.name);`  
+    
     > `name` is not a `static` field in class `Eagle`.  
 - [ ] `System.out.println(Eagle.getName(f));`  
+    
     > This option doesn't make any sense.  
 
 ##### ✨**Explanation**  69

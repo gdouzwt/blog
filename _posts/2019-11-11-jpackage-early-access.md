@@ -17,4 +17,4 @@ tags:
 jpackage --type exe --name javafx-library --description "Demo of jpackage" --vendor "Zhao Wentao" --app-version 0.0.1 --input input --dest output --main-jar app.jar --win-shortcut --win-menu
 ```
 
-需要 Wix Toolsets
+需要 Wix Toolsets<!--more-->

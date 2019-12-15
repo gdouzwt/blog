@@ -16,7 +16,7 @@ tags:
 
 ##### 1.1 MyBatis简介 2
 
-与其他的ORM不同，MyBatis没有将Java对象与数据库表关联起来，而是将Java方法与SQL语句关联。SQL语句可以被动态生成。
+与其他的ORM不同，MyBatis没有将Java对象与数据库表关联起来，而是将Java方法与SQL语句关联。SQL语句可以被动态生成。<!--more-->
 
 ##### 1.2 创建Maven项目 3
 
@@ -169,7 +169,7 @@ log4j.logger.io.zwt.simple.mapper=TRACE
 log4j.appender.stdout=org.apache.log4j.ConsoleAppender 
 log4j.appender.stdout.layout=org.apache.log4j.PatternLayout 
 log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n 
-``` 
+```
 
  - 1.3.5 编写测试代码让MyBatis跑起来 12
 

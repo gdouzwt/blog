@@ -13,7 +13,7 @@ tags:
 
 ## ITEM 1: Consider static factory methods instead of constructors
 
-属于 “创建和销毁对象” 那章。静态工厂方法跟“四人帮”设计模式里面的*工厂方法*模式是不同的。
+属于 “创建和销毁对象” 那章。静态工厂方法跟“四人帮”设计模式里面的*工厂方法*模式是不同的。<!--more-->
 
 ### 静态工厂方法的好处
 

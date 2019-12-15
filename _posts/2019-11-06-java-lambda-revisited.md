@@ -31,7 +31,7 @@ interface MyNumber {
 }
 ```
 
-使用 Lambda 表达式 
+使用 Lambda 表达式 <!--more-->
 
 ```java
 class LambdaDemo { 

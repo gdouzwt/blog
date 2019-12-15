@@ -22,7 +22,7 @@ tags:
 - Implement polymorphism
 - Override `hashCode`, `equals`, and `toString` methods from `Object` class
 - Create and use singleton classes and immutable classes
-- Develop code that uses `static` keyword on initialize blocks, variables, methods, and classes
+- Develop code that uses `static` keyword on initialize blocks, variables, methods, and classes<!--more-->
 
 #### Advanced Java Class Design
 

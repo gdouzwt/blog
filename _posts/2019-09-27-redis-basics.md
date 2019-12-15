@@ -29,7 +29,7 @@ tags:
 
 取出键值对：
 
-`get myKey`
+`get myKey`<!--more-->
 
 ### Redis 数据类型
 

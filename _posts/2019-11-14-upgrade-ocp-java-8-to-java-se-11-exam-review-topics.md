@@ -17,7 +17,7 @@ tags:
 
 - Describe the Modular JDK
 - Declare modules and enable access between modules
-- Describe how a modular project is compiled and run
+- Describe how a modular project is compiled and run<!--more-->
 
 #### Migration to a Modular Application
 

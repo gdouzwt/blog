@@ -11,7 +11,7 @@ tags:
     - OCA
 ---
 
-> 这文章讲OCA准备过程，读过的书籍。 这本书叫 OCA Oracle Certified Associate Java SE 8 Programmer I Study Guide 以下按章节整理错题：  
+> 这文章讲OCA准备过程，读过的书籍。 这本书叫 OCA Oracle Certified Associate Java SE 8 Programmer I Study Guide 以下按章节整理错题：  <!--more-->
 
 #### Chapter 1 Java Building Blocks (2/23😄)
 

@@ -34,7 +34,7 @@ public class Test {
 A. good and abc  
 B. good and gbc  
 C. test ok and abc  
-D. test ok and gbc  
+D. test ok and gbc  <!--more-->
 > 答案是 **B**
 
 这个题目主要考察Java语言中传参方式以及不可变类的知识。  

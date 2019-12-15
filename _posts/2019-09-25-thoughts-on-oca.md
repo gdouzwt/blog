@@ -22,7 +22,7 @@ On the contrary, even the most experienced Java developers often claim that havi
 
 
 
-不管怎么说，已经预约好考试了，一个月之后拿下考试，目标是 100% 的正确率。
+不管怎么说，已经预约好考试了，一个月之后拿下考试，目标是 100% 的正确率。<!--more-->
 
 ### 参考书的内容目录
 

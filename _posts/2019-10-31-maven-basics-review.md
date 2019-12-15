@@ -19,7 +19,7 @@ tags:
 mvn archetype:generate -DgroupId=io.zwt.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 ```
 
-可以看到结果生成了一个目录为 my-app 的项目：
+可以看到结果生成了一个目录为 my-app 的项目：<!--more-->
 
 ![image-20191031231003895](/img/image-20191031231003895.png)
 

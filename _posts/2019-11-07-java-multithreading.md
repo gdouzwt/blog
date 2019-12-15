@@ -21,7 +21,7 @@ tags:
 
 ##### 线程的消息机制
 
-##### Thread 类 和 Runnable 接口
+##### Thread 类 和 Runnable 接口<!--more-->
 
 #### 主线程
 

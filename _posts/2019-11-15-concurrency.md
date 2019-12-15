@@ -48,7 +48,7 @@ public class SheepManager {
 }
 ```
 
-使用 Monitor 或称为 Lock，使用 synchronized 的时候，注意🔒的对象是那个。保证同步，就要去要锁同一个对象。
+使用 Monitor 或称为 Lock，使用 synchronized 的时候，注意🔒的对象是那个。保证同步，就要去要锁同一个对象。<!--more-->
 
 
 

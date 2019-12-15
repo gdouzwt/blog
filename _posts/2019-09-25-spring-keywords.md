@@ -17,7 +17,7 @@ tags:
 4. Rest Template Rest 客户端
 5. @PathVariable
 6. AOP AspectJ Pointcut
-7. @Aspect LoggingAspect
+7. @Aspect LoggingAspect<!--more-->
 8. Proceeding JointPoint
 9. javax.servlet.Filter
 10. Auto Config

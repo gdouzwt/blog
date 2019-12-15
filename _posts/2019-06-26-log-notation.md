@@ -19,5 +19,5 @@ The shorthand notation  $x = \log y$  is sometimes used when the base $b$ remain
   - $x = \log y$  often means  $x = \lg y$  in **science and engineering** texts.
 
   - $x = \log y$  often means  $x = \log_{2} y$  in **computer science** texts.
-  
-Be careful when reading or using  $x = \log y$ .
+
+Be careful when reading or using  $x = \log y$ .<!--more-->

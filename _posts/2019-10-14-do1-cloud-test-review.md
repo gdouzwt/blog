@@ -36,7 +36,7 @@ public class ReverseInt {
 ```
 当时手写代码，`for` 循环的控制条件边界写错了，当时写成了 `for (int i = value.length(); i > 0; i--)`  结果数组越界了。应该是 `for (int i = value.length() - 1; i >= 0; i--)` 的。
 
-换成 `input.nextBigInteger();` 好一点。 
+换成 `input.nextBigInteger();` 好一点。 <!--more-->
 
 ##### 后来
 
