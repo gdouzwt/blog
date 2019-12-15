@@ -6,7 +6,6 @@ date:       '2019-12-10T08:08'
 subtitle:   不定积分
 author:     招文桃
 catalog:    true
-excerpt:    能显示吗？
 tags:
     - Calculus
 ---
@@ -15,7 +14,7 @@ tags:
 
 **1.**  若函数 $$f(x) =\begin{cases}e^x, x<0 \\ a + x, x \geq 0 \end{cases}$$ 在 $x = 0$ 点连续，则 $a=$ ____ 
 
-
+<!--more-->
 
 **2.**  函数 $y = a\sin x+\frac{1}{3}\sin 3x $ 在 $x = \frac{\pi}{3}$ 处取得极值，则 $a=$ ____ 
 

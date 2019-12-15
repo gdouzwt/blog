@@ -22,11 +22,11 @@ layout: default
 	<div class="row">
         {% if site.sidebar == false %}
 <!-- NO SIDEBAR -->
-    <!-- PostList Container -->
+            <!-- PostList Container -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container">
                 {{ content | remove_first:post.excerpt }}
             </div>
-    <!-- Sidebar Container -->
+            <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
@@ -60,7 +60,7 @@ layout: default
                 </ul>
                 {% endif %}
             </div>
-        {% else %}
+    {% else %}
 
 <!-- USE SIDEBAR -->
     <!-- PostList Container -->

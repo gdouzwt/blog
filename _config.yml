@@ -9,6 +9,7 @@ url: "https://zwt.io"       # your host, for absolute URL
 baseurl: "/"      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/gdouzwt/gdouzwt.github.io.git"
 logo: /img/brand-logo.png
+excerpt_separator: <!--more-->
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
