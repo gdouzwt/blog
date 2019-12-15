@@ -3,7 +3,7 @@ title: 记录
 SEOTitle: 招文桃 | 记录
 header-img: img/city.jpg
 email: zhao@wen-tao.com
-description: "Somebody find me somebody to love."
+description: ""
 keyword: "ZWT, Blog, zhaowentao, 招文桃, Spring Boot, gdouzwt"
 url: "https://zwt.io"       # your host, for absolute URL
 baseurl: "/"      # for example, '/blog' if your blog hosted on 'host/blog'
@@ -14,7 +14,6 @@ logo: /img/brand-logo.png
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "堅持信念"
 sidebar-avatar: /img/large.png      # use absolute URL, seeing it's used in both `/` and `/about/`
-sibebar-cert: /img/O_Java-SE-8-OCA-clr.gif
 
 
 # SNS settings
@@ -25,6 +24,7 @@ github_username: gdouzwt
 # facebook_username:  gdouzwt
 jianshu_username:   4f528075fae8
 twitter_username:   gdouzwt
+bilibili_username:  86621709
 
 
 
