@@ -105,9 +105,17 @@ service-worker: true
 friends: [
     {
         title: "LY Blog",
-        href: "https://yingiul.com"
+        href: "https://yingiul.com/"
     },{
         title: "简书·招文桃",
-        href: "https://www.jianshu.com/u/4f528075fae8"
+        href: "https://www.jianshu.com/u/4f528075fae8/"
+    },
+    {
+        title: "学习 JHipster",
+        href: "https://learnjhipster.cn/"
+    },
+    {
+        title: "Linux 训练场",
+        href: "https://linuxfield.com/"
     }
 ]
