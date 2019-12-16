@@ -398,11 +398,6 @@ div.code-toolbar > .toolbar span:focus {
   text-decoration: none;
 }
 
-#badge > a > img {
-  width: 240;
-  height: 240;
-}
-
 body {
   /* Hux learn from
       *     TypeIsBeautiful,
@@ -448,6 +443,11 @@ a:hover, a:focus {
 
 a img:hover, a img:focus {
   cursor: pointer;
+}
+
+#badge a img {
+  width: 240;
+  height: 240;
 }
 
 article {

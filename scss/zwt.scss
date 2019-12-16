@@ -6,11 +6,7 @@
 
 // Global Components
 
-// badge style
-#badge > a > img {
-	width: 240;
-	height: 240;
-}
+
 body {
 	@include sans-serif;
 	font-size: 16px;
@@ -55,6 +51,16 @@ a img {
 	&:hover,
 	&:focus {
 		cursor: pointer;
+	}
+}
+
+// badge style
+#badge{
+	a {
+		img {
+			width: 240;
+			height: 240;
+		}
 	}
 }
 
