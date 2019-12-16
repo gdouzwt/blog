@@ -15,7 +15,7 @@ excerpt_separator: <!--more-->
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "堅持信念"
 sidebar-avatar: /img/large.png      # use absolute URL, seeing it's used in both `/` and `/about/`
-
+badge: /img/badge.png
 
 # SNS settings
 RSS: false
