@@ -29,7 +29,7 @@
   border-color: #0085A1;
 }
 .sidebar-container .short-about img {
-  width: 80%;
+  width: 240px;
   display: block;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -443,11 +443,6 @@ a:hover, a:focus {
 
 a img:hover, a img:focus {
   cursor: pointer;
-}
-
-#badge a img {
-  width: 240;
-  height: 240;
 }
 
 article {
