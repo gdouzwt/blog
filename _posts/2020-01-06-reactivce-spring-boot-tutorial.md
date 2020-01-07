@@ -31,9 +31,9 @@ tags:
 
 
 
-视频在哔哩哔哩的频道：https://space.bilibili.com/86621709/channel/detail?cid=94646
+视频在哔哩哔哩的频道：[https://space.bilibili.com/86621709/channel/detail?cid=94646](https://space.bilibili.com/86621709/channel/detail?cid=94646)
 
 
 
-代码在 GitHub：https://github.com/zwt-io/rsb
+代码在 GitHub：[https://github.com/zwt-io/rsb](https://github.com/zwt-io/rsb)
 
