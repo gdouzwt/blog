@@ -255,10 +255,10 @@ public class WebClientStockClient {
 
 ### 运行集成测试
 
-Going back to WebClientStockClientIntegrationTest, we will see there are some things we need to fix.
+回到 `WebClientStockClientIntegrationTest`，可以看到有些需要修复的东西。
 
-1. We now need to give our client a WebClient. Create a WebClient field in the test.
-2. (Tip: Using [Smart Completion](https://www.jetbrains.com/help/idea/auto-completing-code.html#smart_completion), Ctrl+Shift+Space, IntelliJ IDEA will even suggest the full call to the builder that can create a WebClient instance.)
+1. 我们现在需要给客户端一个 `WebClient`， 在测试中将其创建为字段。
+2. （使用智能补全 `Ctrl+Shift+空格`， IntelliJ IDEA 甚至可以建议创建 `WebClient` 实例的完整语句）
 
 
 
@@ -270,19 +270,21 @@ class WebClientStockClientIntegrationTest {
     void shouldRetrieveStockPricesFromTheService() {
         WebClientStockClient webClientStockClient = new WebClientStockClient(webClient);
  
-// ...rest of the class
+// ...其余代码
 ```
 
 
 
-1. In order to run the integration test the REST service must be running. Go back to StockServiceApplication from the first tutorial and run it.
-2. Run WebClientStockClientIntegrationTest. You can use the gutter icons or Ctrl+Shift+F10 for Windows or Linux (⌃⇧R for macOS) from inside the test class file, or double-press Ctrl (“run anything”) and type the test name.
+1. 为了进行集成测试，REST 服务必须要运行。回到上一个期创建的 `StockServiceApplication` 并运行起来。
+2. 运行 `WebClientStockClientIntegrationTest`。 你可以用边栏上的图标或使用快捷键 `Ctrl+Shift+F10` (macOS 快捷键是 ⌃⇧R ) ，或者双击 `Ctrl` (“run anything”) 然后输入测试的名称。
 
-We should see the test go green at this point. If we look at the output, we can see we’re decoding StockPrice objects with the symbol that we used in the test, random prices and a time.
+现在我们应该可以看到测试为绿色通过。如果我们看一下输出，可以看到我们正在解码带有符号的StockPrice对象，随机价格和时间。
+
+
 
 ### 更多关于在集成测试中使用断言
 
-This is not the most thorough test, so let’s add a bit more detail to our assertions to make sure the client really is doing what we expect. Let’s change the assertion to require five prices when we take five prices, and let’s make sure that the symbol of one of the stock prices is what we expect.
+这不是最彻底的测试，所以让我们为的断言添加更多细节，以确保客户端符合我们预期。让我们更改断言为要获取五个价格时要求有五个价格，并确保某股票价格的代号是我们所期望的。
 
 ```java
 import org.junit.jupiter.api.Assertions;
@@ -314,9 +316,9 @@ class WebClientStockClientIntegrationTest {
 
 ### 总结
 
-Testing reactive applications is a skill in its own right, and there are [much better ways to do it](https://www.baeldung.com/reactive-streams-step-verifier-test-publisher) than we’ve shown in this simple example. However we have successfully used an integration test to drive the API and functionality of our stock prices client. This client connects to an endpoint that emits [server-sent events](https://en.wikipedia.org/wiki/Server-sent_events) and returns a Flux of StockPrice objects that could be consumed by another service. We’ll show how to do this in later videos in this tutorial.
+测试响应式应用程序是一项技能，而且还有比我们所展示的更好的方法。但是，我们已经成功地使用了集成测试来驱动股票价格客户端的API和功能，该客户端连接到发出服务器发送事件，并返回`Flux<StockPrice>`对象可被其他服务消费的端点。在本教程的后续视频中，我们将展示如何执行此操作。
 
-[Full code is available on GitHub](https://github.com/trishagee/jb-stock-client/tree/master/stock-client).
+[全部代码在 GitHub](https://github.com/zwt-io/rsb/).
 
 
 
