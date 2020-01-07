@@ -205,7 +205,7 @@ data class StockPrice(val symbol: String, val price: Double, val time: LocalDate
 
 在接下来的教程里，我们将会展示如何连接到这个服务器获取股票价格，还有如何创建一个图表实时显示股票价格更新。
 
-[全部代码都在GitHub。](https://github.com/trishagee/s1p-stocks-service)
+代码在 GitHub：[https://github.com/zwt-io/rsb](https://github.com/zwt-io/rsb)
 
 
 
