@@ -23,15 +23,11 @@ tags:
 
 
 
-这是第二步，演示如何创建一个 Java 客户端连接到一个发送一系列服务端发送事件的流。我们将使用测试驱动开发来进行开发客户端并进行测试。
+这是第二步，演示如何创建一个 Java 客户端连接到一个发送一系列服务端发送事件的流。我们将使用测试驱动开发来进行开发客户端并进行测试。[视频在 B 站](https://www.bilibili.com/video/av81233693)
 
 
 
-[视频在 B 站](https://www.bilibili.com/video/av81233693)
-
-
-
-本教程是一系列视频，概述了构建完整的Spring Boot的许多步骤，具有Kotlin服务后端，Java客户端和JavaFX用户界面的应用程序。
+本教程是一系列视频，概述了构建完整的Spring Boot的许多步骤，具有 Kotlin 服务后端，Java 客户端和 JavaFX 用户界面的应用程序。
 
 第二个视频将展示如何创建。一个响应式Spring Java客户端，连接到每秒流式传输股票价格的REST服务。
 
@@ -78,12 +74,12 @@ public class WebClientStockClient {
 
 驱动客户端需求并验证可行性的方法之一是，是以测试驱动的方式进行开发。
 
-1. Windows 或 Linux 使用 Ctrl+Shift+T (macOS 使用⇧⌘T ) 我们可以导航到某个类的测试。 在 `WebClientStockClient` 这个类还没有测试 所以让我们创建一个
-2. 选择 JUnit 5 作为测试框架
-3. This is actually going to be an end-to-end test so enter WebClientStockClientIntegrationTest as the class name
-4. Generate a test method using Alt+Insert (⌘N) and selecting “Test Method” from the generate menu.
-5. This is not going to be a perfect example of test driven development, as we’re going to just create a single test which looks at only the best case, sometimes called the [happy path](https://en.wikipedia.org/wiki/Happy_path). Call the test something like shouldRetrieveStockPricesFromTheService.
-6. Create an instance of WebClientStockClient in order to test it.
+1. Windows 或 Linux 使用 Ctrl+Shift+T (macOS 使用⇧⌘T ) 我们可以导航到某个类的测试。 在 `WebClientStockClient` 这个类还没有测试 所以让我们创建一个。
+2. 选择 JUnit 5 作为测试框架。
+3. 这实际上会是一个端到端测试，所以填入 `WebClientStockClientIntegrationTest` 作为类名。
+4. 用快捷键 Alt+Insert (⌘N) 生成测试的方法，在生成菜单中选择 “Test Method” 。
+5. 这不会是测试驱动开发的完美示例，因为我们只是创建一个只测试最佳情况的测试，有时称为快乐路径测试。将测试命名为像 `shouldRetrieveStockPricesFromTheService`
+6. 为测试创建一个 `WebClientStockClient` 实例
 
 
 
@@ -96,9 +92,9 @@ class WebClientStockClientIntegrationTest {
 }
 ```
 
-One of the things we can do with test driven development is to code against the API we want, instead of testing something we’ve already created. IntelliJ IDEA makes this easier because we can create the test to look the way we want, and then generate the correct code from that, usually using Alt+Enter.
+我们可以通过测试驱动来做的其中之一，是按照我们想要的API进行编码，而不是测试我们已经创建的东西。IntelliJ IDEA 使得这样的操作更加容易，因为我们可以创建我们想要的测试，并为其生成代码，通常是使用 Alt + Enter
 
-1. In the test, call a method pricesFor on WebClientStockClient. This method takes a String that represents the symbol of the stock we want the prices for.
+1. 在测试代码中，在 WebClientStockClient 上调用 pricesFor 方法。 这个方法需要一个 String 类型的参数表示想要了解其价格股票的代码。
 
 ```java
 void shouldRetrieveStockPricesFromTheService() {
@@ -107,13 +103,13 @@ void shouldRetrieveStockPricesFromTheService() {
 }
 ```
 
-(note: this code will not compile yet)
+（注意：此代码当前未能通过编译）
 
 ### 在客户端中创建一个基本的价格方法
 
-1. (Tip: press Alt+Enter on the red pricesFor method to get IntelliJ IDEA to create this method on WebClientStockClient, with the expected signature.)
-2. Change the method on WebClientStockClient to return a [Flux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html) of StockPrice objects.
-3. The simplest way to create a method that compiles so we can run our test against it, is to get this method to return an empty Flux:
+1. （提示：在红色的 pricesFor 方法上按下 Alt + Enter 去让 IntelliJ IDEA 在 `WebClientStockClient` 里边创建这个方法，并有符合预期的签名。）
+2. 将 WebClientStockClient 里的方法返回值类改成 `Flux<StockPrice>`  [Flux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html) 
+3. 最简单地创建可编译、测试的方法是，让此方法返回空的Flux：
 
 ```java
 public class WebClientStockClient {
@@ -123,19 +119,22 @@ public class WebClientStockClient {
 }
 ```
 
-(note: this code will not compile yet)
+（注意：此代码当前未能通过编译）
 
 ### 创建一个类保存股票价格
 
-1. (Tip: It’s easiest to get IntelliJ IDEA to create the StockPrice class using Alt+Enter on the red StockPrice text.)
-2. Create StockPrice in the same package as WebClientStockClient
+1. （提示：最简单的方法是使用Alt + Enter让IntelliJ IDEA创建类）
+2. 在与 WebClientStockClient 的包里创建 StockPrice
 
-Here’s where we’re going to use [Lombok](https://projectlombok.org/). Using Lombok’s [@Data](https://projectlombok.org/features/Data) annotation, we can create a data class similar to our [Kotlin data class](https://kotlinlang.org/docs/reference/data-classes.html) in the first step of this tutorial. Using this, we only need to define the properties of this class using fields, the getters, setters, equals, hashCode, and toString methods are all provided by Lombok.
+这就是我们要使用Lombok的地方，使用Lombok的@Data注解，我们可以创建类似于第一个视频中的Kotlin数据类。通过使用@Data注解，我们只需要使用字段定义该类的属性，getters,setters,equals,hashCode，以及toString方法均由Lombok提供。
 
-Use the [Lombok IntelliJ IDEA plugin](https://projectlombok.org/setup/intellij) to get code completion and other useful features when working with Lombok.
+使用Lombok IntelliJ IDEA插件获得代码补全和其他有用的功能。
 
-1. Add a String symbol, a Double price and a LocalDateTime time to the StockPrice class.
-2. Add an [@AllArgsConstructor and a @NoArgsConstructor via Lombok](https://projectlombok.org/features/constructor), these are needed for our code and for JSON serialisation.
+1. 添加 String symbol，Double price 以及 LocalDateTime time 到 StockPrice 类。
+
+2. 通过Lombok添加@AllArgsConstructor和@NoArgsConstructor，这对于我们的代码是必需的
+
+   并用于JSON序列化。
 
 
 
@@ -154,11 +153,11 @@ public class StockPrice {
 
 ### 为测试添加断言
 
-We’ll go back to WebClientStockClientIntegrationTest and add some assertions, we need to check our returned Flux of prices meets our expectations.
+我们回到 WebClientStockClientIntegrationTest 并添加一些断言， 我们需要检查`Flux<StockPrice>`是否符合预期。
 
-1. Store the returned Flux in a prices local variable.
-2. Add an assertion that this is not null.
-3. Add an assertion that if we take five prices from the flux, we have more than one price.
+1. 将返回的 Flux 保存到 prices 局部变量。
+2. 添加此为非空的断言。
+3. 添加一个断言，如果如果我们从Flux中取出五个价格，我们不止得到一个价格。
 
 
 
@@ -177,13 +176,13 @@ void shouldRetrieveStockPricesFromTheService() {
 }
 ```
 
-When we run this test we see that it fails. It fails because the Flux has zero elements in it, because that’s what we hard-coded into the client.
+当我们运行此测试时，我们看到它失败了，它失败是因为Flux中包含零个元素，因为这是我们硬编码的内容。
 
 ### 将客户端连接到真实的服务
 
-Let’s go back to WebClientStockClient and fill in the implementation.
+让我们回到 WebClientStockClient 并写入实现。
 
-1. We want to use a WebClient to connect to the service. Create this as a field, and add a constructor parameter so that Spring automatically wires this in for us.
+1. 我们要使用WebClient去连接服务。我们将其创建为一个字段，并添加为构造函数参数，以便Spring自动注入。
 
 ```java
 public class WebClientStockClient {
@@ -197,13 +196,13 @@ public class WebClientStockClient {
 
 
 
-Now we want to [use WebClient to call our REST service](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-webclient) inside our pricesFor method.
+现在我们想要使用 WebClient 在我们的方法中调用 REST 服务。
 
-1. Remove the stub code from prices for (i.e. delete `return Flux.fromArray(new StockPrice[0]);`)
-2. We’re going to use the web client to make a GET request ([get()](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/reactive/function/client/WebClient.html#get--)).
-3. Give it the URI of our service (http://localhost:8080/stocks/{symbol}) and pass in the symbol.
-4. Call [retrieve()](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/reactive/function/client/WebClient.RequestHeadersSpec.html#retrieve--).
-5. We need to say how to turn the response of this call into a Flux of some type, so we use [bodyToFlux()](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/reactive/function/client/ClientResponse.html#bodyToFlux-java.lang.Class-) and give it our data class, StockPrice.class.
+1. 移除来自priceFor方法中的桩代码（即删除 `return Flux.fromArray(new StockPrice[0]);`）
+2. 我们使用WebClient发出 GET 请求 ([get()](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/reactive/function/client/WebClient.html#get--)).
+3. 传入服务的 URI (http://localhost:8080/stocks/{symbol}) 并传入股票代码（symbol）
+4. 调用 [retrieve()](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/reactive/function/client/WebClient.RequestHeadersSpec.html#retrieve--).
+5. 我们要指定如何将这个调用的响应转换为某种类型的 Flux，使用bodyToFlux并将数据类 StockPrice.class 作为参数。
 
 ```java
 public Flux<StockPrice> pricesFor(String symbol) {
@@ -214,11 +213,11 @@ public Flux<StockPrice> pricesFor(String symbol) {
 }
 ```
 
-These are the very basic requirements to get a reactive stream from a GET call, but we can also define things like the retry and back off strategy, remember that understanding the flow of data from publisher to consumer is an important part of creating a successful reactive application.
+这些是要获得来自GET调用的响应流的最基本的要求，但我们还可以定义诸如retry和backoff策略，请记住了解从发布者到消费者的数据流，是创建成功的响应式应用程序的重要部分。
 
-We can also define what to do when specific Exceptions are thrown. As an example, we can say that when we see an IOException we want to log it. We can use the [@Log4j2 annotation from Lombok](https://projectlombok.org/api/lombok/extern/log4j/Log4j2.html) to give us access to the log, and log an error.
+我们还可以定义抛出特定异常时的处理方式。例如，我们可以说 当我们看到IOException时 我们想记录它。 我们将使用Lombok的Log4j2注解，使我们能够访问日志并记录错误。
 
-This is not the most robust way to handle errors, this simply shows that we can consider Exceptions as a first class concern in our reactive streams.
+这不是处理错误的最可靠的方式，这只是表明我们可以认为异常在响应流中是数据。
 
 ```java
 import lombok.extern.log4j.Log4j2;
