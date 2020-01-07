@@ -23,50 +23,46 @@ tags:
 
 
 
-This second step shows how to create a Java client that will connect to an endpoint that emits a stream of server-sent events. We’ll be using a TDD-inspired process to create the client and test it.
-
 这是第二步，演示如何创建一个 Java 客户端连接到一个发送一系列服务端发送事件的流。我们将使用测试驱动开发来进行开发客户端并进行测试。
 
 
 
-This is the second part in our tutorial showing how to build a Reactive application using Spring Boot, Kotlin, Java and JavaFX. The original inspiration was a [70 minute live demo,](https://blog.jetbrains.com/idea/2019/10/fully-reactive-spring-kotlin-and-javafx-playing-together/) which I have split into a series of shorter videos with an accompanying blog post, explaining each of the steps more slowly and in more detail.
+[视频在 B 站](https://www.bilibili.com/video/av81233693)
 
 
 
-This blog post contains a video showing the process step-by-step and a textual walk-through (adapted from the transcript of the video) for those who prefer a written format.
+本教程是一系列视频，概述了构建完整的Spring Boot的许多步骤，具有Kotlin服务后端，Java客户端和JavaFX用户界面的应用程序。
+
+第二个视频将展示如何创建。一个响应式Spring Java客户端，连接到每秒流式传输股票价格的REST服务。
 
 
-
-[This tutorial is a series of steps](https://blog.jetbrains.com/idea/tag/tutorial-reactive-spring/) during which we will build a full [Spring Boot](https://spring.io/projects/spring-boot) application featuring a [Kotlin](https://kotlinlang.org/) back end, a [Java](https://jdk.java.net/13/) client and a [JavaFX](https://openjfx.io/) user interface.
-
-This second step creates a [Reactive Spring Java client](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html) that connects to a REST service that’s streaming stock prices once a second. This client will be used in later sections of the tutorial.
 
 ### 创建客户端工程
 
-We’re going to create a [new project](https://www.jetbrains.com/help/idea/new-project-wizard.html) for this client, we want to keep the client and server code completely separate as they should run completely independently.
+我们将为这客户端创建一个新工程，我们希望将客户端和服务器代码完全分开，因为它们应该完全独立运行的。
 
-1. This project will have multiple modules in, so start by selecting empty project from the choices on the left of the [New Project Wizard](https://www.jetbrains.com/help/idea/new-project-wizard.html).
-2. Call the project stock-client and press Finish.
-3. By default IntelliJ IDEA shows the modules section of the Project Structure dialog when a new empty project is created. [Add a new module](https://www.jetbrains.com/help/idea/creating-and-managing-modules.html#add-new-module) here, this will be a Spring Boot module so [choose Spring Initializr on the left](https://www.jetbrains.com/help/idea/spring-boot.html#create-spring-boot-project).
-4. We’re using Java 13 as the SDK for this tutorial, although we’re not using any of the Java 13 features (you can [download JDK 13.0.1](http://jdk.java.net/13/) here, then [define a new IntelliJ IDEA SDK](https://www.jetbrains.com/help/idea/sdk.html#define-sdk) for it).
-5. Enter the group name for the project, and we’ll use stock-client as the name.
-6. Enter a useful description for the module so it’s clear what the purpose of this code is.
-7. Keep the defaults of creating a Maven project with Java as the language.
-8. We’ll select Java 11 as the Java version as this is the [most recent Long Term Support](https://blog.jetbrains.com/idea/2018/09/using-java-11-in-production-important-things-to-know/) version for Java, but for the purposes of this project it makes no difference.
-9. We can optionally change the default package structure if we wish.
+1. 这个工程包含多个模块，所以开始的时候选择创建空工程。
+2. 将工程命名为 stock-client 按 Finish
+3. 默认情况下，当创建一个新的空 Project 时，IntelliJ IDEA显示 Project Structure 对话框的，Modules 部分。我们将在此处添加一个新模块，这将是一个 Spring Boot模块，因此我们选择左边的 Spring Initializr。
+4. SDK我们使用 Java 13，但没有使用新的特性。
+5. 输入组和工件的详细信息，我们称此模块为stock-client。
+6. 我们将为模块填入一个有用的描述，以便清楚了解此代码的用途。
+7. 我们将保留默认使用Java创建Maven项目
+8. 选择Java 11作为版本，因为这是当前的长期支持版本。
+9. 我们可以选择更改默认的包结构。
 
-Next we’ll select the [Spring Boot Starters](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-starters) that we need.
+接下来选择所选的 Spring Boot Starter
 
-1. Use Spring Boot 2.2.0 RC1 because we’ll need some features from this version in later videos of this tutorial.
-2. Select the Spring Reactive Web starter and Lombok too.
-3. The defaults for module name and location are fine so we’ll keep them as they are.
+1. 使用Spring Boot 2.2.0 RC1
+2. 选择Spring Reactive Web Starter，然后也选择Lombok。
+3. 默认模块名称和位置没问题, 保留不变。
 
-IntelliJ IDEA will use Spring Initializr to create the project and then import it correctly into the IDE. If given the option, [enable auto-import on Maven](https://www.jetbrains.com/help/idea/maven-importing.html#auto_import) so when we make changes to the pom.xml file the project dependencies will automatically be refreshed.
+IntelliJ IDEA 从 Spring Initializr 获取工程，并适当地设置IDE。选择 enable auto-import 
 
 ### 创建客户端类
 
-1. Delete the StockClientApplication that Spring Initializr has created for the project, we don’t need this for this module, as this module is going to be a library that other applications use not an application in its own right.
-2. Create a Java class WebClientStockClient, this is going to use Spring’s [WebClient](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-webclient) to connect to the stock prices service.
+1. 删除Spring Initializr为我们创建的`StockClientApplication`，在这个模块我们不需要它，因为该模块将成为其他模块的库。
+2. 创建一个类WebClientStockClient。它将使用Spring的WebClient来，连接到股票价格服务。
 
 
 
@@ -80,10 +76,10 @@ public class WebClientStockClient {
 
 ### 创建客户端的测试
 
-One way to drive out the requirements for our client, and to see if it actually works, is to develop it in a test driven way.
+驱动客户端需求并验证可行性的方法之一是，是以测试驱动的方式进行开发。
 
-1. Using Ctrl+Shift+T for Windows or Linux (⇧⌘T on macOS) we can navigate to the test for a class. If we do this from WebClientStockClient we see we don’t have one yet for this class. Choose the “Create New Test” option, which will show the [Create Test dialog](https://www.jetbrains.com/help/idea/create-test.html).
-2. Choose [JUnit5](https://junit.org/junit5/docs/current/user-guide/) as the testing framework (note that IntelliJ IDEA offers a range of testing frameworks to choose from).
+1. Windows 或 Linux 使用 Ctrl+Shift+T (macOS 使用⇧⌘T ) 我们可以导航到某个类的测试。 在 `WebClientStockClient` 这个类还没有测试 所以让我们创建一个
+2. 选择 JUnit 5 作为测试框架
 3. This is actually going to be an end-to-end test so enter WebClientStockClientIntegrationTest as the class name
 4. Generate a test method using Alt+Insert (⌘N) and selecting “Test Method” from the generate menu.
 5. This is not going to be a perfect example of test driven development, as we’re going to just create a single test which looks at only the best case, sometimes called the [happy path](https://en.wikipedia.org/wiki/Happy_path). Call the test something like shouldRetrieveStockPricesFromTheService.
