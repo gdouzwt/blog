@@ -273,7 +273,7 @@ class WebClientStockClientIntegrationTest {
 1. 为了进行集成测试，REST 服务必须要运行。回到上一个期创建的 `StockServiceApplication` 并运行起来。
 2. 运行 `WebClientStockClientIntegrationTest`。 你可以用边栏上的图标或使用快捷键 `Ctrl+Shift+F10` (macOS 快捷键是 ⌃⇧R ) ，或者双击 `Ctrl` (“run anything”) 然后输入测试的名称。
 
-现在我们应该可以看到测试为绿色通过。如果我们看一下输出，可以看到我们正在解码带有符号的StockPrice对象，随机价格和时间。
+现在我们应该可以看到测试为绿色通过。如果我们看一下输出，可以看到我们正在解码带有符号的 `StockPrice` 对象，随机价格和时间。
 
 
 
@@ -313,7 +313,7 @@ class WebClientStockClientIntegrationTest {
 
 测试响应式应用程序是一项技能，而且还有比我们所展示的更好的方法。但是，我们已经成功地使用了集成测试来驱动股票价格客户端的API和功能，该客户端连接到发出服务器发送事件，并返回`Flux<StockPrice>`对象可被其他服务消费的端点。在本教程的后续视频中，我们将展示如何执行此操作。
 
-[全部代码在 GitHub](https://github.com/zwt-io/rsb/).
+[全部代码在 GitHub](https://github.com/zwt-io/rsb/)
 
 
 
