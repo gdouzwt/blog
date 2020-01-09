@@ -15,8 +15,6 @@ tags:
     - 翻译
 ---
 
-## 响应式 Spring Boot 第 6 部分 - 显示响应式数据
-
 > Posted on November 29, 2019 by Trisha Gee
 >
 > 原文由 Trisha Gee 在当地时间2019年11月29日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-displaying-reactive-data/)

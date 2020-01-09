@@ -15,8 +15,6 @@ tags:
     - 翻译
 ---
 
-## 响应式 Spring Boot 第 4 部分 - JavaFX 折线图
-
 > Posted on November 18, 2019 by Trisha Gee
 >
 > 原文由 Trisha Gee 在当地时间2019年11月18日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-a-javafx-line-chart/)

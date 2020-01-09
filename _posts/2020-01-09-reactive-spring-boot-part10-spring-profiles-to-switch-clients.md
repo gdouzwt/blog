@@ -15,8 +15,6 @@ tags:
     - 翻译
 ---
 
-## 响应式 Spring Boot 第 10 部分 - 用 Spring Profiles 切换客户端
-
 > Posted on December 16, 2019 by Trisha Gee
 >
 > 原文由 Trisha Gee 在当地时间2019年12月16日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-kotlin-rsocket-server/)

@@ -15,8 +15,6 @@ tags:
     - 翻译
 ---
 
-## 响应式 Spring Boot 第 2 部分 - 响应式数据流的 REST 客户端
-
 > Posted on November 4, 2019 by Trisha Gee
 >
 > 原文由 Trisha Gee 在当地时间2019年11月4日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-a-rest-client-for-reactive-streams/ )
@@ -29,7 +27,9 @@ tags:
 
 本教程是一系列视频，概述了构建完整的Spring Boot的许多步骤，具有 Kotlin 服务后端，Java 客户端和 JavaFX 用户界面的应用程序。
 
-第二个视频将展示如何创建。一个响应式Spring Java客户端，连接到每秒流式传输股票价格的REST服务。<!--more-->
+第二个视频将展示如何创建。一个响应式Spring Java客户端，连接到每秒流式传输股票价格的REST服务。
+
+<!--more-->
 
 
 

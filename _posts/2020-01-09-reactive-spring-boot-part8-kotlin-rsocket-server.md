@@ -15,8 +15,6 @@ tags:
     - 翻译
 ---
 
-## 响应式 Spring Boot 第 8 部分 - kotlin rsocket 服务器
-
 > Posted on December 9, 2019 by Trisha Gee
 >
 > 原文由 Trisha Gee 在当地时间2019年12月9日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-kotlin-rsocket-server/)
