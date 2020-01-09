@@ -15,8 +15,6 @@ tags:
     - 翻译
 ---
 
-## 响应式 Spring Boot 第 1 部分 - 一个 Kotlin REST Service
-
 > Posted on October 28, 2019 by Trisha Gee
 >
 > 原文由 Trisha Gee 在当地时间2019年10月28日发布在 [INTELLIJ IDEA BLOG]( https://blog.jetbrains.com/idea/2019/10/tutorial-reactive-spring-boot-a-kotlin-rest-service/ )
