@@ -1,14 +1,14 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 8
+title:      响应式Spring Boot系列教程8
 date:       '2020-01-09T09:49'
-subtitle:   kotlin rsocket 服务器
+subtitle:   Kotlin RSocket服务器
 author:     招文桃
 catalog:    true
 tags:
-    - JavaFX
-    - Tutorial
+    - RSocket
+    - Kotlin
     - Spring Boot
     - Reactive
     - 教程

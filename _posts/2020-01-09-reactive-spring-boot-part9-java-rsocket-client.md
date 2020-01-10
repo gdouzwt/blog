@@ -1,16 +1,15 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 9
+title:      响应式Spring Boot系列教程9
 date:       '2020-01-09T10:10'
-subtitle:   java rsocket 客户端
+subtitle:   Java RSocket客户端
 author:     招文桃
 catalog:    true
 tags:
     - JavaFX
-    - Tutorial
     - Spring Boot
-    - Reactive
+    - RSocket
     - 教程
     - 翻译
 ---

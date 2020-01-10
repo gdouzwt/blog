@@ -1,9 +1,9 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 1
+title:      响应式Spring Boot系列教程1
 date:       '2019-10-31T04:00'
-subtitle:   Trisha Gee 在IntelliJ IDEA 博客写的教程
+subtitle:   Kotlin REST服务端
 author:     招文桃
 catalog:    true
 tags:
@@ -23,11 +23,13 @@ tags:
 
 这是第一步：使用 Kotlin 创建一个响应式 Spring Boot 服务。
 
-这篇博文包含一个视频演示一步步操作过程和一个文字版的操作过程（从视频的讲稿演变而来）给那些更偏好文字版的人。<!--more-->
+这篇博文包含一个视频演示一步步操作过程和一个文字版的操作过程（从视频的讲稿演变而来）给那些更偏好文字版的人。
 
 这个教程是我们构建一个完整的使用 [Kotlin](https://kotlinlang.org/) 写的 Spring Boot 应用作后端， [Java](https://jdk.java.net/13/) 写客户端以及一个  JavaFX 写的用户界面的其中一些步骤。
 
 教程的第一步是创建一个 [Kotlin 版的 Spring Boot 应用](https://spring.io/guides/tutorials/spring-boot-kotlin/)，作为应用程序的后端。我们将会创建一个 [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) 服务，可在后面的教程中接入。
+
+<!--more-->
 
 #### 创建一个 Spring Boot 服务
 

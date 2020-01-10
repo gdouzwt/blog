@@ -1,9 +1,9 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 10
+title:      响应式Spring Boot系列教程10
 date:       '2020-01-09T11:12'
-subtitle:   用 Spring Profiles 切换客户端
+subtitle:   用Spring Profiles切换客户端
 author:     招文桃
 catalog:    true
 tags:

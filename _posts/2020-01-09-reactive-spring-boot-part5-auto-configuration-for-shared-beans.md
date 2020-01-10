@@ -1,9 +1,9 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 5
+title:      响应式Spring Boot系列教程5
 date:       '2020-01-09T09:28'
-subtitle:   共享 Bean 的自动装配
+subtitle:   共享Bean的自动装配
 author:     招文桃
 catalog:    true
 tags:

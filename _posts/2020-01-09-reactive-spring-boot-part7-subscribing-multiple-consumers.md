@@ -1,7 +1,7 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 7
+title:      响应式Spring Boot系列教程7
 date:       '2020-01-09T09:49'
 subtitle:   订阅多个消费者
 author:     招文桃

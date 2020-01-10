@@ -1,9 +1,9 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 3
+title:      响应式Spring Boot系列教程3
 date:       '2020-01-09T08:15'
-subtitle:   JavaFX Spring Boot 应用程序
+subtitle:   JavaFX Spring Boot应用程序
 author:     招文桃
 catalog:    true
 tags:

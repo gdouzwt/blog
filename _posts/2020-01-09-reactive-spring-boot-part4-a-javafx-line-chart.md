@@ -1,9 +1,9 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 4
+title:      响应式Spring Boot系列教程4
 date:       '2020-01-09T09:15'
-subtitle:   JavaFX 折线图
+subtitle:   JavaFX折线图
 author:     招文桃
 catalog:    true
 tags:

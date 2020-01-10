@@ -1,14 +1,12 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Reactive Spring Boot 系列教程 - Part 2
+title:      响应式Spring Boot系列教程2
 date:       '2020-01-07T09:18'
-subtitle:   Trisha Gee 在IntelliJ IDEA 博客写的教程
+subtitle:   Java REST客户端
 author:     招文桃
 catalog:    true
 tags:
-    - Kotlin
-    - Tutorial
     - Spring Boot
     - Reactive
     - 教程
