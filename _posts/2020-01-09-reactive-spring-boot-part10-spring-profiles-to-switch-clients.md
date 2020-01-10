@@ -15,15 +15,17 @@ tags:
     - 翻译
 ---
 
-> Posted on December 16, 2019 by Trisha Gee
->
 > 原文由 Trisha Gee 在当地时间2019年12月16日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-kotlin-rsocket-server/)
 
 
 
 In this lesson we use Spring Profiles to enable an application to determine which of our two clients ([server-sent events via WebClient](https://www.baeldung.com/spring-server-sent-events), or [RSocket](http://rsocket.io/)) to use to connect to our Kotlin Spring Boot price service.
 
+这这一节，我们使用 Spring Profiles去让应用程序决定使用哪个客户端（使用服务端发送事件的 WebClient，或 RSocket）连接到 Kotlin Spring Boot 股票价格服务。
+
 This is the final part of our tutorial showing how to build a Reactive application using Spring Boot, Kotlin, Java and [JavaFX](https://openjfx.io/). The original inspiration was a [70 minute live demo.](https://blog.jetbrains.com/idea/2019/10/fully-reactive-spring-kotlin-and-javafx-playing-together/)
+
+
 
 This blog post contains a video showing the process step-by-step and a textual walk-through (adapted from the transcript of the video) for those who prefer a written format.
 
@@ -33,18 +35,28 @@ This blog post contains a video showing the process step-by-step and a textual w
 
 Now we have an [RSocket client that lets us connect to our RSocket server](https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-java-rsocket-client/), we want to use this from [our JavaFX application](https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-displaying-reactive-data/).
 
+现在我们有了一个RSocket客户端，可以让我们连接到我们的RSocket服务器，我们想在我们的JavaFX应用程序中使用它。
+
 ### 创建 RSocketStockClient Bean
 
 We intentionally have two implementations of our StockClient, one for connecting via RSocket and one via WebClient. Our ClientConfiguration only exposes one of these, the WebClientStockClient, [as a bean](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-definition). If we want applications to be able to use the Rsocket client we need to add an RSocket client bean as well.
 
-1. Create a new [@Bean](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Bean.html) method on ClientConfiguration in the stock-client module, called rSocketStockClient, which returns a StockClient.
-2. The body of this method needs to return a new RSocketStockClient, which will need to take an rSocketRequester as a constructor argument.
-3. Add an [RSocketRequester](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/messaging/rsocket/RSocketRequester.html) as a method parameter to this rSocketStockClient method.
-4. (Tip: we can get IntelliJ IDEA to add the correct method parameter if we pass an unknown variable rSocketRequester into the RSocketStockClient constructor, [press Alt+Enter](https://www.jetbrains.com/help/idea/migrating-from-eclipse-to-intellij-idea.html#273a3d24) on the unknown variable and select “Create parameter”.)
-5. (Tip: IntelliJ IDEA Ultimate will warn you that this parameter can’t be autowired because no beans match this type.)
-6. Create another @Bean method called rSocketRequester that returns an RSocketRequester.
-7. Declare an [RSocketRequester.Builder](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/messaging/rsocket/RSocketRequester.Builder.html) parameter `builder` for the method. This should be wired in automatically by Spring.
-8. Use the builder’s [connectTcp](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/messaging/rsocket/RSocketRequester.Builder.html#connectTcp-java.lang.String-int-) method and give it “localhost” and port 7000 (that’s where our Spring Boot RSocket server is running). Call block() to complete this connection.
+我们特意创建两种 StockClient 实现，一个通过 RSocket连接，然后另一个是用 WebClient。我们的ClientConfiguration仅将其中一个Bean暴露，即WebClientStockClient，如果我们希望应用程序能够使用RSocket客户端，则也需要添加一个RSocketClient Bean。
+
+1. 在stock-client模块的ClientConfiguration创建一个新的 @Bean 方法，命名为rSocketStockClient，其返回值类型为 StockClient。
+
+
+
+1. 这个方法体需要返回一个新的 RSocketStockClient，所以需要一个 rSocketRequester 作为构造函数参数。
+
+
+
+1. 给rSocketStockClient方法添加一个RSocketRequester作为参数。
+2. (Tip: we can get IntelliJ IDEA to add the correct method parameter if we pass an unknown variable rSocketRequester into the RSocketStockClient constructor, [press Alt+Enter](https://www.jetbrains.com/help/idea/migrating-from-eclipse-to-intellij-idea.html#273a3d24) on the unknown variable and select “Create parameter”.)（提示：我们可以让IntelliJ IDEA添加适当的方法参数，如果我们传入一个未知变量rSocketRequester到RSocketStockClient的构造器，在未知变量按下 Alt+Enter并选择“Create parameter"）
+3. (Tip: IntelliJ IDEA Ultimate will warn you that this parameter can’t be autowired because no beans match this type.)（提示：IntelliJ IDEA Ultimate会警告你说这个参数不能自动注入，因为没有类型匹配的 Beans）
+4. Create another @Bean method called rSocketRequester that returns an RSocketRequester.
+5. Declare an [RSocketRequester.Builder](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/messaging/rsocket/RSocketRequester.Builder.html) parameter `builder` for the method. This should be wired in automatically by Spring.
+6. Use the builder’s [connectTcp](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/messaging/rsocket/RSocketRequester.Builder.html#connectTcp-java.lang.String-int-) method and give it “localhost” and port 7000 (that’s where our Spring Boot RSocket server is running). Call block() to complete this connection.
 
 ```java
 @Configuration
