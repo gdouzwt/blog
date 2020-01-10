@@ -8,60 +8,43 @@ author:     招文桃
 catalog:    true
 tags:
     - JavaFX
-    - Tutorial
     - Spring Boot
     - Reactive
     - 教程
-    - 翻译
 ---
 
 > 原文由 Trisha Gee 在当地时间2019年12月16日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-kotlin-rsocket-server/)
 
-
-
-In this lesson we use Spring Profiles to enable an application to determine which of our two clients ([server-sent events via WebClient](https://www.baeldung.com/spring-server-sent-events), or [RSocket](http://rsocket.io/)) to use to connect to our Kotlin Spring Boot price service.
-
-这这一节，我们使用 Spring Profiles去让应用程序决定使用哪个客户端（使用服务端发送事件的 WebClient，或 RSocket）连接到 Kotlin Spring Boot 股票价格服务。
-
-This is the final part of our tutorial showing how to build a Reactive application using Spring Boot, Kotlin, Java and [JavaFX](https://openjfx.io/). The original inspiration was a [70 minute live demo.](https://blog.jetbrains.com/idea/2019/10/fully-reactive-spring-kotlin-and-javafx-playing-together/)
-
-
-
-This blog post contains a video showing the process step-by-step and a textual walk-through (adapted from the transcript of the video) for those who prefer a written format.
-
-<!--more-->
-
-[This tutorial is a series of steps](https://blog.jetbrains.com/idea/tag/tutorial-reactive-spring/) during which we will build a full [Spring Boot](https://spring.io/projects/spring-boot) application featuring a [Kotlin](https://kotlinlang.org/) back end, a [Java](https://jdk.java.net/13/) client and a [JavaFX](https://openjfx.io/) user interface.
-
-Now we have an [RSocket client that lets us connect to our RSocket server](https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-java-rsocket-client/), we want to use this from [our JavaFX application](https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-displaying-reactive-data/).
+在这一节，我们使用 Spring Profiles让应用程序决定使用哪个客户端（使用服务端发送事件的 WebClient，或 RSocket）连接到 Kotlin Spring Boot 股票价格服务。
 
 现在我们有了一个RSocket客户端，可以让我们连接到我们的RSocket服务器，我们想在我们的JavaFX应用程序中使用它。
 
-### 创建 RSocketStockClient Bean
+<!--more-->
 
-We intentionally have two implementations of our StockClient, one for connecting via RSocket and one via WebClient. Our ClientConfiguration only exposes one of these, the WebClientStockClient, [as a bean](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-definition). If we want applications to be able to use the Rsocket client we need to add an RSocket client bean as well.
+### 创建 RSocketStockClient Bean
 
 我们特意创建两种 StockClient 实现，一个通过 RSocket连接，然后另一个是用 WebClient。我们的ClientConfiguration仅将其中一个Bean暴露，即WebClientStockClient，如果我们希望应用程序能够使用RSocket客户端，则也需要添加一个RSocketClient Bean。
 
 1. 在stock-client模块的ClientConfiguration创建一个新的 @Bean 方法，命名为rSocketStockClient，其返回值类型为 StockClient。
 
-
-
 1. 这个方法体需要返回一个新的 RSocketStockClient，所以需要一个 rSocketRequester 作为构造函数参数。
 
+2. 给rSocketStockClient方法添加一个RSocketRequester作为参数。
 
+3. 提示：我们可以让IntelliJ IDEA添加适当的方法参数，如果我们传入一个未知变量rSocketRequester到RSocketStockClient的构造器，在未知变量按下 Alt+Enter并选择“Create parameter"）
 
-1. 给rSocketStockClient方法添加一个RSocketRequester作为参数。
-2. (Tip: we can get IntelliJ IDEA to add the correct method parameter if we pass an unknown variable rSocketRequester into the RSocketStockClient constructor, [press Alt+Enter](https://www.jetbrains.com/help/idea/migrating-from-eclipse-to-intellij-idea.html#273a3d24) on the unknown variable and select “Create parameter”.)（提示：我们可以让IntelliJ IDEA添加适当的方法参数，如果我们传入一个未知变量rSocketRequester到RSocketStockClient的构造器，在未知变量按下 Alt+Enter并选择“Create parameter"）
-3. (Tip: IntelliJ IDEA Ultimate will warn you that this parameter can’t be autowired because no beans match this type.)（提示：IntelliJ IDEA Ultimate会警告你说这个参数不能自动注入，因为没有类型匹配的 Beans）
-4. Create another @Bean method called rSocketRequester that returns an RSocketRequester.
-5. Declare an [RSocketRequester.Builder](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/messaging/rsocket/RSocketRequester.Builder.html) parameter `builder` for the method. This should be wired in automatically by Spring.
-6. Use the builder’s [connectTcp](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/messaging/rsocket/RSocketRequester.Builder.html#connectTcp-java.lang.String-int-) method and give it “localhost” and port 7000 (that’s where our Spring Boot RSocket server is running). Call block() to complete this connection.
+4. 提示：IntelliJ IDEA Ultimate会警告你说这个参数不能自动注入，因为没有类型匹配的 Beans）
+
+5. 创建另一个名为 rSocketRequester的 @Bean方法，返回RSocketRequester。
+
+6. 给方法声明一个类型为 RSocketRequester.Builder 的参数`builder` 这应该会被Spring 自动注入。
+
+7. 使用 builder 的 connectTcp 方法，并给它 "localhost" 和端口 7000(这是Spring Boot的RSocket运行地址)。调用 block() 方法完成这次连接。
 
 ```java
 @Configuration
 public class ClientConfiguration {
-    // WebClientStockClient bean method...
+    // WebClientStockClient bean 方法...
  
     @Bean
     public StockClient rSocketStockClient(RSocketRequester rSocketRequester) {
@@ -73,7 +56,7 @@ public class ClientConfiguration {
         return builder.connectTcp("localhost", 7000).block();
     }
  
-    // WebClient bean method...
+    // WebClient bean 方法...
 }
 ```
 
@@ -81,10 +64,10 @@ public class ClientConfiguration {
 
 ### 选择使用哪个 Bean
 
-If we go to our JavaFX ChartController (in the stock-ui module), this is the class that uses the StockClient to connect to the price service and display prices on the chart. IntelliJ IDEA Ultimate shows a warning in this class that there’s more than one Bean that matches the StockClient type, our RSocket stock client and our WebClient stock client. We need to figure out a way to specify which client we really want to use. One way to do this is with [Spring profiles](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-definition-profiles-java).
+如果我们回到 JavaFX 的 ChartController（在stock-ui 模块），这个类就是用了 StockClient 去连接到价格服务，并在图表上显示价格的。IntelliJ IDEA 旗舰版在这个类显示警告，说这里边有多于一个Bean符合 StockClient 类型，也就是我们的 rSocketStockClient 和 webClientStockClient。我们需要配置一种方式，指定我们实际想要使用哪个客户端。一种做法是使用 Spring profiles.
 
-1. Add a [@Profile](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Profile.html) annotation to the webClientStockClient method, passing in a value of `sse` (Server-Sent Events).
-2. Give the RSocketStockClient a [@Profile](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Profile.html) of “rsocket”.
+1. 添加一个 @Profile 注解到 webClientStockClient方法，传入一个值 `sse`（表示 Server-Sent Events)。
+2. 给 rSocketStockClient添加一个 @Profile注解，值为`rsocket`
 
 ```java
 @Bean
@@ -104,85 +87,59 @@ public StockClient rSocketStockClient(RSocketRequester rSocketRequester) {
 
 ### 选择激活的配置
 
-If we’re using IntelliJ IDEA Ultimate, when we go to the ChartController we can see the error has gone away now. But we still [need to say which profile we want to use](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-definition-profiles-enable).
+如果我们使用的是IntelliJ IDEA旗舰版，当我们在 ChartController里面，我们可以看到错误已经消失了。但我们还是需要指定想要使用哪个配置(profile)。
 
-1. Go to application.properties in the stock-ui module.
-2. Set the spring.profiles.active property to `sse`. This should give us the same bean and the same functionality that we had before.
+1. 去到stock-ui模块的application.properties文件
+2. 设置 spring.profiles.active属性的值为`sse` 这应该会给我们同样的 Bean和之前同样的功能。
 
 ```properties
 # web-application and application title properties here...
 spring.profiles.active=sse
 ```
 
-3. Re-run the application, the application should start up as expected and the chart should show two sets of prices as before.
-4. Note in the run window that the JavaFX application has started up with the *sse* profile.
+3.  重新运行应用程序，程序应该按预期启动，并像之前那样显示两组价格数据。
+4. 注意到在运行窗口，JavaFX应用程序已经以 *sse* 配置启动。
 
 
 
 ### 调试日志
 
-If we want to be extra sure that we’re using the bean we think we’re using, we could go back to the clients and add some logging.
+如果我们想更加确认我们所使用的Bean，我们可以回到客户端并添加一些日志功能。
 
-1. In the pricesFor method of WebClientStockClient add an info-level log message to state that this is the WebClient stock client.
+1. 在WebClientStockClient里面的pricesFor方法添加一个info等级的日志信息表示当前使用的是 WebClient stock client
 
 ```java
 public Flux<StockPrice> pricesFor(String symbol) {
     log.info("WebClient stock client");
-    return // create Flux here...
+    return // 在这里创建Flux
 }
 ```
 
-2. Do something similar for the RSocketStockClient.
+2. 在RSocketStockClient也做类似的操作
 
 ```java
 public Flux<StockPrice> pricesFor(String symbol) {
     log.info("RSocket stock client");
-    return // create Flux here...
+    return // 在这里创建Flux
 }
 ```
 
-3. Re-run the application, we should see two log messages that we’re using the WebClient stock client.
+3. 重新运行应用程序，我们应该看到两个日志消息，表示我们当前使用的是 WebClient stock client
+
+
 
 ### 通过 RSocket 获取价格
 
-Let’s finally use RSocket to get prices to display on our JavaFX line chart.
+最后让我们使用 RSocket去获取股票价格并显示到 JavaFX的折线图上吧。
 
-1. Go back to the application.properties file in stock-ui and change the active profile to `rsocket`.
-2. Re-run the application, everything should still works the way we expect. This time we’re using the *rsocket* profile and connecting to the RSocket price server via the RSocketStockClient.
+1. 回到stock-ui的application.properties 文件，并将活动的配置改为 `rsocket`。
+2. 重新运行应用程序，所有东西应该按预期运行。这次我们使用的是 *rsocket* 配置，并通过 RSocketStockClient连接到 RSocket 价格服务器。
 
 ```properties
-# web-application and application title properties here...
+#这里是 web-application 和 application title 的属性...
 spring.profiles.active=rsocket
 ```
 
-So there we have it. A full end-to-end application with a JavaFX line chart that subscribes to a reactive stream of prices from a Kotlin Spring Boot application, and can be configured to get those prices either via server sent events or via the new RSocket protocol.
-
-Full code is available on GitHub:
-
-- [Client project](https://github.com/trishagee/jb-stock-client) (stock-client and stock-ui modules).
-- [Server project](https://github.com/trishagee/jb-stock-service) (Kotlin Spring Boot application)
+所以就是这样子。一个完整的带有JavaFX折线图，并订阅到一个Kotlin Spring Boot应用程序的响应式数据流的价格数据的端到端应用程序。而且我们能够配置通过服务端发送事件或新的RSocket协议获取这些股票价格。
 
 [全部代码在 GitHub](https://github.com/zwt-io/rsb/)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
