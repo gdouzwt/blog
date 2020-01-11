@@ -87,10 +87,10 @@ public class ChartController implements Consumer<StockPrice> {
 
 We need to decide what do with a StockPrice when we receive one. We need to add the right values from the stock price to the chart’s seriesData. 我们要决定当获取到 StockPrice的时候要做什么。我们从股票价格数据里面添加适当的值到图表的系列数据上。
 
-1. Inside `accept`, call `seriesData.add` with a new instance of [Data](https://openjfx.io/javadoc/11/javafx.controls/javafx/scene/chart/XYChart.Data.html).
-2. For the y value of Data, we can get the time from the stock price and get the value of “second”. This is an int, and needs to be a String, so wrap it in a [String.valueOf](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#valueOf(int)) call.
-3. (Tip: we can use the [postfix](https://www.jetbrains.com/help/idea/settings-postfix-completion.html) completion “arg” to automatically wrap an expression in a method call to simplify calling String.valueOf when we’ve already typed the expression)
-4. For the x value, we use the price value from stock price.
+1. Inside `accept`, call `seriesData.add` with a new instance of [Data](https://openjfx.io/javadoc/11/javafx.controls/javafx/scene/chart/XYChart.Data.html). 在 accept内，已新的 Data 实例调用seriesData.add
+2. For the y value of Data, we can get the time from the stock price and get the value of “second”. This is an int, and needs to be a String, so wrap it in a [String.valueOf](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#valueOf(int)) call. 对于Data的y值，我们可以从股票价格的时间获取，然后取其中的“秒”值。这是 int 类型，它需要转换为 String，因此放在一个 String.valueOf调用里。
+3. (Tip: we can use the [postfix](https://www.jetbrains.com/help/idea/settings-postfix-completion.html) completion “arg” to automatically wrap an expression in a method call to simplify calling String.valueOf when we’ve already typed the expression) （提示：我们可以用后缀补全参数去将一个表达式包含在一个方法调用里以简化对String.valueOf的调用，当我们已经输入了表达式）
+4. For the x value, we use the price value from stock price. 对于 x 值，我们使用来自股票价格的price值
 
 ```java
 public void accept(StockPrice stockPrice) {
@@ -101,7 +101,9 @@ public void accept(StockPrice stockPrice) {
 
 This seems fine as it is, but there’s another thing to consider with this programming model. Changing the series data will be reflected by an update in the user interface, which will be drawn by the UI thread. This `accept` method is running on a different thread, listening to events from the back-end service. So we need to tell the UI thread to run this piece of code when it gets a chance.
 
-Call [Platform.runLater](https://openjfx.io/javadoc/12/javafx.graphics/javafx/application/Platform.html#runLater(java.lang.Runnable)), passing in a lambda expression of the code to run on the UI thread.
+这看起来不错，但是这个编程模型还有一样东西需要考虑。修改系列数据会反映在对用户界面的更新，会被UI线程绘制。这个 accept 方法是运行在不同的线程的，监听着来自后端服务的事件。我们要告知UI线程，当有机会时运行这段代码。
+
+Call [Platform.runLater](https://openjfx.io/javadoc/12/javafx.graphics/javafx/application/Platform.html#runLater(java.lang.Runnable)), passing in a lambda expression of the code to run on the UI thread. 调用 Platform.runLater，并在UI线程传入一个 lambda 表达式。
 
 ```java
 public void accept(StockPrice stockPrice) {
@@ -116,15 +118,15 @@ public void accept(StockPrice stockPrice) {
 
 ### 运行 chart 应用程序
 
-1. Make sure the back-end Kotlin Spring Boot service (StockServiceApplication) is running.
-2. Go back to the UI module and run our JavaFX application, StockUiApplication.
-3. You should see a JavaFX line chart that updates automatically from the prices (see [3:20 into the video](https://youtu.be/OMuqIykUh5w?t=201) for an example).
+1. Make sure the back-end Kotlin Spring Boot service (StockServiceApplication) is running.   确保后端的 Kotlin Spring Boot 服务正在运行（StockSeriviceApplication）
+2. Go back to the UI module and run our JavaFX application, StockUiApplication. 回到UI模块并运行我们的JavaFX应用程序，StockUiApplication
+3. You should see a JavaFX line chart that updates automatically from the prices (see [3:20 into the video](https://youtu.be/OMuqIykUh5w?t=201) for an example). 你应该能看到一个JavaFX折线图根据价格数据自动地更新。（见视频里 3:20的例子）
 
 ### 显示股票代码名称
 
-1. Extract the hard-coded symbol into a local variable, we want to use it in more than one place.
-2. (Tip: we can use IntelliJ IDEA’s Extract Variable ([documentation](https://www.jetbrains.com/help/idea/extract-variable.html)) ([video overview](https://youtu.be/W_IiuORF16E)) to easily do this)
-3. We can give the series a label by passing the symbol in to the [Series](https://openjfx.io/javadoc/12/javafx.controls/javafx/scene/chart/XYChart.Series.html#(java.lang.String,javafx.collections.ObservableList)) constructor.
+1. Extract the hard-coded symbol into a local variable, we want to use it in more than one place. 将硬编码的股票代码提取到一个局部变量，我们想在不止一个地方用到它。
+2. (Tip: we can use IntelliJ IDEA’s Extract Variable ([documentation](https://www.jetbrains.com/help/idea/extract-variable.html)) ([video overview](https://youtu.be/W_IiuORF16E)) to easily do this) （提示：我们可以使用 IntelliJ IDEA 的 Extract Variable([文档](https://www.jetbrains.com/help/idea/extract-variable.html)) ([视频](https://youtu.be/W_IiuORF16E)) 轻松完成此操作。）
+3. We can give the series a label by passing the symbol in to the [Series](https://openjfx.io/javadoc/12/javafx.controls/javafx/scene/chart/XYChart.Series.html#(java.lang.String,javafx.collections.ObservableList)) constructor. 我们可以给系列一个标签，通过在Series的构造器传入股票代码作为参数。
 
 ```java
 public void initialize() {
@@ -137,16 +139,18 @@ public void initialize() {
 }
 ```
 
-Now when we re-run the application, we see the symbol’s name on the label for the series.
+Now when we re-run the application, we see the symbol’s name on the label for the series. 现在当我们重新运行应用程序，我们可以看到股票代码出现在系列的标签上。
 
 ### 代码清理
 
 This code is a little bit unwieldy with all the type information, so let’s simplify. We can use Alt+Enter on many of the class names mentioned here to have IntelliJ IDEA suggest making this changes automatically.
 
-1. Import [Series](https://openjfx.io/javadoc/12/javafx.controls/javafx/scene/chart/XYChart.Series.html) itself to remove the unnecessary [XYChart](https://openjfx.io/javadoc/12/javafx.controls/javafx/scene/chart/XYChart.html) prefix.
-2. Add a static import for [observableArrayList](https://openjfx.io/javadoc/12/javafx.base/javafx/collections/FXCollections.html#observableArrayList(E...)), so we don’t need to repeat [FXCollections](https://openjfx.io/javadoc/12/javafx.base/javafx/collections/FXCollections.html) everywhere.
-3. Add an import for [valueOf](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#valueOf-int-), to make the line that sets the chart data a little shorter
-4. Import the [Data](https://openjfx.io/javadoc/12/javafx.controls/javafx/scene/chart/XYChart.Data.html) class to remove another repetition of XYChart.
+这些代码太多类型信息有点笨拙，让我们简化一下。我们可以在这里提到的很多类的名称上按下 Alt+Enter去让IntelliJ IDEA建议自动执行这些更改。
+
+1. Import [Series](https://openjfx.io/javadoc/12/javafx.controls/javafx/scene/chart/XYChart.Series.html) itself to remove the unnecessary [XYChart](https://openjfx.io/javadoc/12/javafx.controls/javafx/scene/chart/XYChart.html) prefix. 导入Series本身以移除不必要的 XYChart 前缀。
+2. Add a static import for [observableArrayList](https://openjfx.io/javadoc/12/javafx.base/javafx/collections/FXCollections.html#observableArrayList(E...)), so we don’t need to repeat [FXCollections](https://openjfx.io/javadoc/12/javafx.base/javafx/collections/FXCollections.html) everywhere. 为 observableArrayList添加一个静态导入，这样我们就不用到处重复FXCollections
+3. Add an import for [valueOf](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#valueOf-int-), to make the line that sets the chart data a little shorter 添加一个valueOf导入，使得设置图表数据那行更简短一些。
+4. Import the [Data](https://openjfx.io/javadoc/12/javafx.controls/javafx/scene/chart/XYChart.Data.html) class to remove another repetition of XYChart. 导入 Data 类以移除其它重复的 XYChart
 
 ```java
 @Component
@@ -182,9 +186,13 @@ public class ChartController implements Consumer<StockPrice> {
 
 This refactoring shouldn’t have changed the behaviour of the code, so when we re-run we’ll see everything working the same way as before.
 
+这次重构并不会改变代码的行为，所以我们重新运行看到一切都跟之前一样可用。
+
 ### 总结
 
 With these very few lines of code, we’ve created a JavaFX application that uses Spring’s WebClient to connect to a Spring Boot service, subscribes to the reactive stream of prices and draws the prices on a line chart in real time.
+
+用这几行代码，我们创建了一个JavaFX应用程序使用了Spring 的WebClient去连接到 Spring Boot 服务，订阅到价格数据流并实时将股票价格数据绘制在折线图上。
 
 [全部代码在 GitHub](https://github.com/zwt-io/rsb/)
 
