@@ -140,15 +140,17 @@ public class StockUiApplication {
 
 The reason we need two separate application classes for our application is because of [JavaFX and Java Modules](http://mail.openjdk.java.net/pipermail/openjfx-dev/2018-June/021977.html), it’s beyond the scope of this tutorial to go into the details. If we want to use JavaFX and Spring together but aren’t going to use [Java Modules](https://www.oracle.com/corporate/features/understanding-java-9-modules.html) from Java 9, this is one way to get it to work.
 
-
+我们要分离出两个应用程序类的原因跟 JavaFX以及Java的模块化机制有关，这些细节已经超出了本教程的讨论范围。如果我们想要整合Spring 和 JavaFX但不使用Java 9 的模块，这是一种做法。
 
 ### 通过应用程序上下文发布事件
 
 Let’s go back to our JavaFX application class, ChartApplication.
 
-1. Create a field applicationContext, this will be a [ConfigurableApplicationContext](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ConfigurableApplicationContext.html).
-2. Our start method, which is a standard JavaFX method, is called with a [Stage](https://openjfx.io/javadoc/13/javafx.graphics/javafx/stage/Stage.html) object when the stage is ready to be used. We can use the Spring pattern of [publishing events via the application context](https://www.baeldung.com/spring-events) to signal when this Stage is ready. Inside start(), call applicationContext.[publishEvent](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationEventPublisher.html#publishEvent-org.springframework.context.ApplicationEvent-)() with a new StageReadyEvent.
-3. Pass the stage into the event constructor.
+让我们回到我们的JavaFX应用程序类，ChartApplication
+
+1. Create a field applicationContext, this will be a [ConfigurableApplicationContext](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ConfigurableApplicationContext.html). 创建一个字段 applicationContext，这会是ConfigurableApplicationContext 类型。
+2. Our start method, which is a standard JavaFX method, is called with a [Stage](https://openjfx.io/javadoc/13/javafx.graphics/javafx/stage/Stage.html) object when the stage is ready to be used. We can use the Spring pattern of [publishing events via the application context](https://www.baeldung.com/spring-events) to signal when this Stage is ready. Inside start(), call applicationContext.[publishEvent](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationEventPublisher.html#publishEvent-org.springframework.context.ApplicationEvent-)() with a new StageReadyEvent. 我们的 start 方法是一个标准的 JavaFX方法，它以 Stage作为参数，但stage就绪时调用。我们可以使用Spring的通过应用程序上下文发布事件的模式去告诉何时 Stage就绪。在 start() 方法内，以一个新的 StageReadyEvent作为参数去调用 applicationContext.publishEvent()
+3. Pass the stage into the event constructor. 将 stage 传入到事件的构造函数
 
 
 
@@ -165,10 +167,12 @@ public class ChartApplication extends Application {
 
 Now we need to create our StageReadyEvent.
 
-1. Create it as an inner class in ChartApplication for simplicity. It can always be refactored out at a later date.
-2. (Tip: pressing Alt+Enter on the red StageReadyEvent offers the option to “Create inner class StageReadyEvent).
-3. In the StageReadyEvent constructor, pass the stage parameter into the super constructor.
-4. Make this inner class static and package visible, other classes will be listening for this event.
+现在我们需要创建我们的 StageReadyEvent
+
+1. Create it as an inner class in ChartApplication for simplicity. It can always be refactored out at a later date. 简单起见将它创建为ChartApplication的一个内部类。以后总能再重构出来的。
+2. (Tip: pressing Alt+Enter on the red StageReadyEvent offers the option to “Create inner class StageReadyEvent). （提示：在红色的 StageReadyEvent按下Alt+Enter会有个选项"Create inner class StageReadyEvent"）
+3. In the StageReadyEvent constructor, pass the stage parameter into the super constructor. 在StageReadyEvent的构造函数，传入stage参数到 super构造函数。
+4. Make this inner class static and package visible, other classes will be listening for this event. 将这个内部类改为 static 且是 包内可见，其它类将会监听这个事件。
 
 ```java
 static class StageReadyEvent extends ApplicationEvent {
@@ -184,10 +188,12 @@ static class StageReadyEvent extends ApplicationEvent {
 
 There are some other useful methods in Application that we can override and make use of.
 
-1. Override the [init](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html#init())() method. This is where we need to initialise our application context.
-2. (Tip: you can use Ctrl+O within a class to [select superclass methods to override](https://www.jetbrains.com/help/idea/overriding-methods-of-a-superclass.html#Overriding_Methods_of_a_Superclass.xml)).
-3. Create a new [SpringApplicationBuilder](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/builder/SpringApplicationBuilder.html), and give it our Spring Boot application class, which is StockUiApplication.
-4. Call [run](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/builder/SpringApplicationBuilder.html#run-java.lang.String...-)() to get the application context and assign it to the applicationContext field.
+在Application类里面有些其它有用的方法我们可以重写利用一下。
+
+1. Override the [init](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html#init())() method. This is where we need to initialise our application context. 重写 init() 方法。这是我们需要初始化应用程序上下文的地方。
+2. (Tip: you can use Ctrl+O within a class to [select superclass methods to override](https://www.jetbrains.com/help/idea/overriding-methods-of-a-superclass.html#Overriding_Methods_of_a_Superclass.xml)). （提示：你可以在一个类当中使用 Ctrl+O选择要重写的超类方法）
+3. Create a new [SpringApplicationBuilder](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/builder/SpringApplicationBuilder.html), and give it our Spring Boot application class, which is StockUiApplication. 创建一个新的 SpringApplicationBuilder，并传入一个我们的 Spring Boot 应用程序类，也就是 StockUiApplication
+4. Call [run](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/builder/SpringApplicationBuilder.html#run-java.lang.String...-)() to get the application context and assign it to the applicationContext field. 运行 run() 已获取应用程序上下文，并赋值到 applicationContext 字段
 
 ```java
 @Override
@@ -202,9 +208,11 @@ public void init() {
 
 Since we have an init() method, we should probably have some sort of tear down or cleanup too.
 
-1. Override Application’s [stop](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html#stop()) method.
-2. Inside stop(), call applicationContext.[close](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ConfigurableApplicationContext.html#close--)().
-3. Also call [Platform.exit()](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Platform.html#exit()) to end the JavaFX program.
+因为我们有一个 init() 方法，我们也应该有一些适当的拆卸或清理步骤。
+
+1. Override Application’s [stop](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html#stop()) method. 重写 Application类的 stop 方法
+2. Inside stop(), call applicationContext.[close](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ConfigurableApplicationContext.html#close--)(). 在 stop 方法内，调用applicationContext.close()方法
+3. Also call [Platform.exit()](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Platform.html#exit()) to end the JavaFX program. 同时也在 JavaFX程序结束处调用 Platform.exit()
 
 ```java
 @Override
@@ -215,6 +223,8 @@ public void stop() {
 ```
 
 Now we have our SpringBoot application class which launches our JavaFX Application class, ChartApplication:
+
+现在我们有了 Spring Boot application 类用来启动 JavaFX Application 类，即ChartApplication
 
 ```java
 import javafx.application.Application;
@@ -257,12 +267,14 @@ public class ChartApplication extends Application {
 
 We need something which is going to listen to the StageReadyEvent that we created.
 
-1. Create a new class, StageInitializer. This will set up our JavaFX Stage when it’s ready.
-2. This class should be annotated as a Spring [@Component](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Component.html).
-3. This class needs to implement [ApplicationListener](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationListener.html), listening for our StageReadyEvent.
-4. We need to implement the method on this interface, [onApplicationEvent](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationListener.html#onApplicationEvent-E-).
-5. (Tip: IntelliJ IDEA can do this for us, press Alt+Enter on the red error and select “[Implement methods](https://www.jetbrains.com/help/idea/implementing-methods-of-an-interface.html#Implementing_Methods_of_an_Interface.xml)“).
-6. The onApplicationEvent takes a StageReadyEvent. Call getStage on the event and assign the result to a [Stage](https://openjfx.io/javadoc/13/javafx.graphics/javafx/stage/Stage.html) local variable.
+我们需要一些东西去监听我们所创建的 StageReadyEvent 
+
+1. Create a new class, StageInitializer. This will set up our JavaFX Stage when it’s ready. 创建一个新的类，StageInitializer。这个会设置好我们的 JavaFX Stage 当它就绪时。
+2. This class should be annotated as a Spring [@Component](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Component.html). 这个类应该用 Spring 的 @Component 注解
+3. This class needs to implement [ApplicationListener](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationListener.html), listening for our StageReadyEvent. 这个类需要实现 ApplicationListener接口，去监听我们的 StageReadyEvent 事件。
+4. We need to implement the method on this interface, [onApplicationEvent](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationListener.html#onApplicationEvent-E-). 我们需要实现这个接口上的方法，即 onApplicationEvent
+5. (Tip: IntelliJ IDEA can do this for us, press Alt+Enter on the red error and select “[Implement methods](https://www.jetbrains.com/help/idea/implementing-methods-of-an-interface.html#Implementing_Methods_of_an_Interface.xml)“). （提示：在红色错误上按下Alt+Enter并选择"Implement methods"可以让IntelliJ IDEA为我们做这件事）
+6. The onApplicationEvent takes a StageReadyEvent. Call getStage on the event and assign the result to a [Stage](https://openjfx.io/javadoc/13/javafx.graphics/javafx/stage/Stage.html) local variable. onApplicationEvent方法需要一个 StageReadyEvent。 事件触发 getStage 被调用并将结果赋值到一个类型为 Stage 的局部变量。
 
 ```java
 import com.mechanitis.demo.stockui.ChartApplication.StageReadyEvent;
@@ -281,10 +293,14 @@ public class StageInitializer implements ApplicationListener<StageReadyEvent> {
 
 (note: this code will not compile yet)
 
+（注意：这些代码当前未能通过编译）
+
 This method doesn’t exist, so we need to create it on StageReadyEvent.
 
-1. (Tip: we can get IntelliJ IDEA to create this for us by pressing Alt+Enter on the red getStage method name in StageInitializer and selecting “Create method getStage”).
-2. The superclass has a method that does what we want, [getSource](https://docs.oracle.com/javase/8/docs/api/java/util/EventObject.html?is-external=true#getSource--). This returns an object, so call it and cast the returned value to a Stage.
+这个方法不存在，所以我们需要创建这个 StageReadyEvent
+
+1. (Tip: we can get IntelliJ IDEA to create this for us by pressing Alt+Enter on the red getStage method name in StageInitializer and selecting “Create method getStage”). （提示：我们可以在StageInitializer里面红色的getStage方法上按下Alt+Enter并选择"Create method getStage" 去让IntelliJ IDEA帮我们生成这个。
+2. The superclass has a method that does what we want, [getSource](https://docs.oracle.com/javase/8/docs/api/java/util/EventObject.html?is-external=true#getSource--). This returns an object, so call it and cast the returned value to a Stage. 父类里面有个我们想要的方法，getSource 这会返回一个对象，所以调用这个方法并将返回值
 
 ```java
 static class StageReadyEvent extends ApplicationEvent {
@@ -300,9 +316,15 @@ static class StageReadyEvent extends ApplicationEvent {
 
 We know the source is a Stage because when we passed our stage constructor parameter into the super constructor, this became the source.
 
+我们知道source就是 Stage类型，因为当我们将stage的构造函数参数传入到父类的构造函数时，它就变成了 source
+
 ### 最后步骤
 
 The Stage is ready for us to set up our user interface. We can run our StockUIApplication, and see it successfully start up as a SpringBoot application. It does also launch a Java process which would show a UI if we had created one. For now, we have successfully created a JavaFX application which is launched and managed with Spring, and allows us to use the convenient features of any Spring application.
+
+这个 Stage 已经准备就是可用于我们的用户界面。我们可以运行我们的 StockUiApplication，然后看到它成功地作为一个 Spring Boot 应用程序启动了。同时它也启动了一个Java进程显示一个UI如果我们有创建的话。目前位置，我们已经成功地创建了一个由Spring管理并启动的JavaFX应用程序，并且允许我们方便地使用Spring应用程序的特性。
+
+
 
 [全部代码在 GitHub](https://github.com/zwt-io/rsb/)
 
