@@ -17,38 +17,32 @@ tags:
 
 > 原文由 Trisha Gee 在当地时间2019年11月11日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-a-javafx-spring-boot-application/)
 
-这是第三步，演示如何创建一个 响应式应用程序，使用 Spring Boot, Kotlin，Java 和 JavaFX。
+这是第三步，演示如何创建一个 响应式应用程序，使用Spring Boot, Kotlin，Java和JavaFX。
 
-这个第三步演示如何创建一个由 Spring Boot 启动并管理的 JavaFX 应用程序，因此我们可以在 JavaFX 应用程序中使用 Spring 的特性，例如控制反转。本文也有配套的[视频](https://www.bilibili.com/video/av82672621)。
+这个第三步演示如何创建一个由Spring Boot启动并管理的JavaFX应用程序，因此我们可以在JavaFX应用程序中使用Spring的特性，例如控制反转。本文也有配套的[视频](https://www.bilibili.com/video/av82672621)。
 
 <!--more-->
 
 ### 设置好模块
 
-In the video we re-use the client project we created for the previous step, and add a new module to it. But if we wanted to create this as a standalone project we could create this as a new project rather than a new module, the steps would be very similar (replacing “new module” with “new project”).
+在这一节，我重用前面步骤创建的客户端，并为它添加一个新模块。但是如果我们想将这个作为一个独立的工程，我们可以创建一个新的工程而不是新模块，步骤是非常相似的（替换new module为new project)。
 
-在这一节，我重用前面步骤创建的客户端，并为它添加一个新模块。但是如果我们想将这个作为一个独立的工程，我们可以创建一个新的工程而不是新模块，步骤是非常相似的（替换 new module 为 new project)
+1. 打开前面步骤创建的`stock-client`工程后，创建一个新的模块。
+2. 这会是一个Spring Boot应用程序，所以在左边选择Spring Initializr。
+3. 在本教程我们使用Java 13作为SDK，虽然我们并没有后使用任何Java 13特有的特性。
+4. 为工程填入groupId，和artifact名为`stock-ui`。
+5. 保持Maven工程默认的Java和jar打包选项。
+6. 我们选择Java 11作为Java版本，因为这是最近的长期支持版，但是对于本工程而已，这没有区别。
+7. 为模块输入一个有用的描述，这是我们的第三个模块，这有助于我们清楚每个模块的作用。
+8. 如有需要也可以改变默认的包结构。
+9. 在这个模块，我们不需要选择任何Spring Boot Starter。
+10. 保持默认的模块名和位置。
 
-1. With the stock-client project from the previous step open in IntelliJ IDEA, [create a new module](https://www.jetbrains.com/help/idea/creating-and-managing-modules.html#add-new-module). 打开了前面步骤创建的 stock-client 工程后，创建一个新的模块
-2. This is a Spring Boot application so [choose Spring Initializr from the options on the left](https://www.jetbrains.com/help/idea/spring-boot.html#create-spring-boot-project). 这将会是一个 Spring Boot 应用程序，所以在左边选择 Spring Initializr
-3. We’re using Java 13 as the SDK for this tutorial, although we’re not using any of the Java 13 features (you can [download JDK 13.0.1](http://jdk.java.net/13/) here, then [define a new IntelliJ IDEA SDK](https://www.jetbrains.com/help/idea/sdk.html#define-sdk) for it). 在本教程我们使用 Java 13 作为 SDK，虽然我们并没有后使用任何 Java 13 特有的特性（你可以在这里下载 JDK 13.0.1，然后在IntelliJ IDEA定义一个新的SDK）
-4. Enter the group name for the project, and call the artifact stock-ui. 为工程填入 groupId，和 artifact 名为 stock-ui
-5. Keep the defaults of a Maven Project with Java and Jar packaging.  保持Maven 工程默认的 Java 和 jar打包选项。
-6. We’ll select Java 11 as the Java version as this is the [most recent Long Term Support](https://blog.jetbrains.com/idea/2018/09/using-java-11-in-production-important-things-to-know/) version for Java, but for the purposes of this project it makes no difference. 我们选择 Java 11 作为 Java 版本，因为这是最近的长期支持版，但是对于本工程而已，这没有区别。
-7. Enter a helpful description for the module, this is our third module so it helps us to keep clear in our mind what each module is responsible for. 为模块输入一个有用的描述，这是我们的第三个模块，这有助于我们清楚每个模块的作用。
-8. We can optionally change the default package structure if we wish.  如有需要也可以改变默认的包结构
-9. We don’t need to select any Spring Boot Starters for this module. 在这个模块，我们不需要选择任何 Spring Boot Starter
-10. Keep the default module name and location. 保持默认的模块名和位置
+IntelliJ IDEA从Spring Initializr下载工程并将IDE设置好。如果有提示选择 "show run configuration in services" 我们可以选择它。 那个services窗口对于查看正在运行的服务和管理微服务应用比较有用。
 
-IntelliJ IDEA downloads the created project from Spring Initializr and sets up the IDE correctly. If we’re given the option to “show run configurations in services”, we can select this. The [services window](https://www.jetbrains.com/help/idea/services-tool-window.html#Services_Tool_Window.xml) is a slightly nicer and more useful way to see our running services and can help us to manage microservice applications.
+### Spring Boot应用程序类
 
-IntelliJ IDEA从 Spring Initializr 下载工程并将IDE设置好。如果有提示选择 "show run configuration in services" 我们可以选择它。 那个 services 窗口对于查看正在运行的服务和管理微服务应用比较有用。
-
-### Spring Boot 应用程序类
-
-As usual, Spring Boot generated a default application class for us. We will need to change this in order to launch a JavaFX application but for now we’ll just leave this as it is.
-
-跟往常一样，Spring Boot 为我们生成默认的应用程序类。我们需要更改一下以便启动一个 JavaFX 应用程序，但现在我们先留着它这样子。
+跟往常一样，Spring Boot为我们生成默认的应用程序类。我们需要更改一下以便启动一个JavaFX应用程序，但现在我们先留着它这样子。
 
 ```java
 import org.springframework.boot.SpringApplication;
@@ -64,13 +58,11 @@ public class StockUiApplication {
 
 
 
-### 更新 Spring Boot 设置
+### 更新Spring Boot设置
 
-Since this is a JavaFX application and not a web application, add this to the application.properties file of this module:
+因为这是一个JavaFX应用程序，不是一个Web应用程序。所以在这个模块的application.properties里添加：
 
-因为这是一个JavaFX应用程序，不是一个 Web 应用程序。所以在这个模块的application.properties里添加：
-
-```java
+```properties
 spring.main.web-application-type=none
 ```
 
@@ -78,16 +70,14 @@ spring.main.web-application-type=none
 
 ### 创建一个 JavaFX 应用程序类
 
-1. Create a new Java class in the same package as the Spring application class and call it ChartApplication.在与Spring 应用程序类同一个包里创建一个新的Java 类，命名为 ChartApplicaion
-2. (Tip: you can use Alt+Insert for Windows/Linux (⌘N on macOS) in the [project window](https://www.jetbrains.com/help/idea/project-tool-window.html#Project_Tool_Window.xml) to create a new file or directory). （提示：在 project 窗口，Windows/Linux用户可以使用 Alt+Insert（macOS用户是⌘N) 创建一个新文件或目录）
-3. Have it extend [javafx.application.Application](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html). 让它继承于 javafx.application.Application
+1. 在与Spring应用程序类同一个包里创建一个新的Java类，命名为`ChartApplicaion`。
+2. （提示：在project窗口，Windows/Linux用户可以使用Alt+Insert（macOS用户是⌘N) 创建一个新文件或目录）。
+3. 让它继承于`javafx.application.Application`。
 
-This is not currently on the classpath since we haven’t added JavaFX to our dependencies yet, so we need to add it to our pom.xml file.
+这个类目前不在类路径上，因为我们还未添加JavaFX到依赖里，所以我们需要将它添加到pom.xml 文件。
 
-这个类目前不在类路径上，因为我们还未添加 JavaFX到依赖里，所以我们需要将它添加到 pom.xml 文件。
-
-1. (Tip: pressing Alt+Enter on the red Application text in the editor gives the option to “[Add Maven Dependency](https://www.jetbrains.com/help/idea/work-with-maven-dependencies.html#generate_maven_dependency)“.) （提示：在红色的 Application 文字上按下 Alt+Enter 会有"Add Maven Dependency"选项
-2. Add [org.openjfx:javafx-graphics](https://mvnrepository.com/artifact/org.openjfx/javafx-graphics/13.0.1) as a dependency, version 13. 将 org.openjfx:javafx-graphics 添加为依赖，版本是 13
+1. （提示：在红色的`Application` 文字上按下Alt+Enter 会有"Add Maven Dependency"选项。
+2. 将`org.openjfx:javafx-graphics`添加为依赖，版本是 13。
 
 ```xml
 <dependency>
@@ -97,10 +87,10 @@ This is not currently on the classpath since we haven’t added JavaFX to our de
 </dependency>
 ```
 
-1. Now import [javafx.application.Application](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html) in ChartApplication. 现在可以在 ChartApplication 导入 javafx.application.Application
-2. Application is an abstract class, so we need to override a method. Application 是一个抽象类，所以我们需要重写一个方法。
-3. (Tip: we can get IntelliJ IDEA to implement these methods by pressing Alt+Enter on the red error, selecting [Implement methods](https://www.jetbrains.com/help/idea/implementing-methods-of-an-interface.html#Implementing_Methods_of_an_Interface.xml), and choosing the methods to implement.) （提示：在红色的错误上按下 Alt+Enter并选择"Implement methods"，选择要实现的方法，可以让InteliJ IDEA去帮我们实现这些方法。）
-4. We only have one method we need to implement, [start](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html#start(javafx.stage.Stage)). 只有一个方法是必须实现的 start
+1. 现在可以在`ChartApplication`导入`javafx.application.Application`。
+2. `Application`是一个抽象类，所以我们需要重写一个方法。
+3. （提示：在红色的错误上按下Alt+Enter并选择"Implement methods"，选择要实现的方法，可以让InteliJ IDEA去帮我们实现这些方法。）。
+4. 只有一个start方法是必须实现的。
 
 ```java
 import javafx.application.Application;
@@ -118,13 +108,9 @@ public class ChartApplication extends Application {
 
 ### 设置好 Spring Boot 应用程序类
 
-Now we have a JavaFX application, we need to launch it from the Spring Boot application. 
+现在我们有了一个 JavaFX 应用程序，我们需要从Spring Boot应用程序里面启动它。
 
-现在我们有了一个 JavaFX 应用程序，我们需要从 Spring Boot 应用程序里面启动它
-
-Instead of using SpringApplication to run the application, we’ll use the JavaFX Application class, and call launch with the class that is our JavaFX class, ChartApplication, and the application arguments.
-
-不用 SpringApplication启动应用，我们将使用 JavaFX 的 Application 类，并以我们的 JavaFX 类作为参数调用launch方法。
+不使用`SpringApplication`启动应用，我们将使用JavaFX的`Application`类，并以我们的JavaFX类作为参数调用`launch`方法。
 
 ```java
 import javafx.application.Application;
@@ -138,21 +124,15 @@ public class StockUiApplication {
 }
 ```
 
-The reason we need two separate application classes for our application is because of [JavaFX and Java Modules](http://mail.openjdk.java.net/pipermail/openjfx-dev/2018-June/021977.html), it’s beyond the scope of this tutorial to go into the details. If we want to use JavaFX and Spring together but aren’t going to use [Java Modules](https://www.oracle.com/corporate/features/understanding-java-9-modules.html) from Java 9, this is one way to get it to work.
-
-我们要分离出两个应用程序类的原因跟 JavaFX以及Java的模块化机制有关，这些细节已经超出了本教程的讨论范围。如果我们想要整合Spring 和 JavaFX但不使用Java 9 的模块，这是一种做法。
+我们要分离出两个应用程序类的原因跟JavaFX以及Java的模块化机制有关，这些细节已经超出了本教程的讨论范围。如果我们想要整合Spring和JavaFX但不使用Java 9的模块，这是一种做法。
 
 ### 通过应用程序上下文发布事件
 
-Let’s go back to our JavaFX application class, ChartApplication.
+让我们回到我们的JavaFX应用程序类，`ChartApplication`。
 
-让我们回到我们的JavaFX应用程序类，ChartApplication
-
-1. Create a field applicationContext, this will be a [ConfigurableApplicationContext](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ConfigurableApplicationContext.html). 创建一个字段 applicationContext，这会是ConfigurableApplicationContext 类型。
-2. Our start method, which is a standard JavaFX method, is called with a [Stage](https://openjfx.io/javadoc/13/javafx.graphics/javafx/stage/Stage.html) object when the stage is ready to be used. We can use the Spring pattern of [publishing events via the application context](https://www.baeldung.com/spring-events) to signal when this Stage is ready. Inside start(), call applicationContext.[publishEvent](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationEventPublisher.html#publishEvent-org.springframework.context.ApplicationEvent-)() with a new StageReadyEvent. 我们的 start 方法是一个标准的 JavaFX方法，它以 Stage作为参数，但stage就绪时调用。我们可以使用Spring的通过应用程序上下文发布事件的模式去告诉何时 Stage就绪。在 start() 方法内，以一个新的 StageReadyEvent作为参数去调用 applicationContext.publishEvent()
-3. Pass the stage into the event constructor. 将 stage 传入到事件的构造函数
-
-
+1. 创建一个字段`applicationContext`，这会是ConfigurableApplicationContext 类型。
+2. 我们的`start`方法是一个标准的JavaFX方法，它以`Stage`作为参数，但`stage`就绪时调用。我们可以使用Spring的通过应用程序上下文发布事件的模式去告诉何时`Stage`就绪。在`start()`方法内，以一个新的 `StageReadyEvent`作为参数去调用`applicationContext.publishEvent()`。
+3. 将stage传入到事件的构造函数。
 
 ```java
 public class ChartApplication extends Application {
@@ -165,14 +145,12 @@ public class ChartApplication extends Application {
 }
 ```
 
-Now we need to create our StageReadyEvent.
+现在我们需要创建我们的`StageReadyEvent`。
 
-现在我们需要创建我们的 StageReadyEvent
-
-1. Create it as an inner class in ChartApplication for simplicity. It can always be refactored out at a later date. 简单起见将它创建为ChartApplication的一个内部类。以后总能再重构出来的。
-2. (Tip: pressing Alt+Enter on the red StageReadyEvent offers the option to “Create inner class StageReadyEvent). （提示：在红色的 StageReadyEvent按下Alt+Enter会有个选项"Create inner class StageReadyEvent"）
-3. In the StageReadyEvent constructor, pass the stage parameter into the super constructor. 在StageReadyEvent的构造函数，传入stage参数到 super构造函数。
-4. Make this inner class static and package visible, other classes will be listening for this event. 将这个内部类改为 static 且是 包内可见，其它类将会监听这个事件。
+1. 简单起见将它创建为`ChartApplication`的一个内部类。以后总能再重构出来的。
+2. （提示：在红色的`StageReadyEvent`按下Alt+Enter会有个选项"Create inner class StageReadyEvent"）。
+3. 在`StageReadyEvent`的构造函数，传入`stage`参数到`super`构造函数。
+4. 将这个内部类改为`static`且是包内可见，其它类将会监听这个事件。
 
 ```java
 static class StageReadyEvent extends ApplicationEvent {
@@ -186,14 +164,12 @@ static class StageReadyEvent extends ApplicationEvent {
 
 ### 创建应用程序上下文
 
-There are some other useful methods in Application that we can override and make use of.
+在`Application`类里面有些其它有用的方法我们可以重写利用一下。
 
-在Application类里面有些其它有用的方法我们可以重写利用一下。
-
-1. Override the [init](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html#init())() method. This is where we need to initialise our application context. 重写 init() 方法。这是我们需要初始化应用程序上下文的地方。
-2. (Tip: you can use Ctrl+O within a class to [select superclass methods to override](https://www.jetbrains.com/help/idea/overriding-methods-of-a-superclass.html#Overriding_Methods_of_a_Superclass.xml)). （提示：你可以在一个类当中使用 Ctrl+O选择要重写的超类方法）
-3. Create a new [SpringApplicationBuilder](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/builder/SpringApplicationBuilder.html), and give it our Spring Boot application class, which is StockUiApplication. 创建一个新的 SpringApplicationBuilder，并传入一个我们的 Spring Boot 应用程序类，也就是 StockUiApplication
-4. Call [run](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/builder/SpringApplicationBuilder.html#run-java.lang.String...-)() to get the application context and assign it to the applicationContext field. 运行 run() 已获取应用程序上下文，并赋值到 applicationContext 字段
+1. 重写`init()`方法。这是我们需要初始化应用程序上下文的地方。
+2. （提示：你可以在一个类当中使用Ctrl+O选择要重写的超类方法）。
+3. 创建一个新的`SpringApplicationBuilder`，并传入一个我们的Spring Boot应用程序类，也就是 `StockUiApplication`。
+4. 运行`run()`以获取应用程序上下文，并赋值到`applicationContext`字段。
 
 ```java
 @Override
@@ -206,13 +182,11 @@ public void init() {
 
 ### 关闭应用程序上下文
 
-Since we have an init() method, we should probably have some sort of tear down or cleanup too.
+因为我们有一个`init()`方法，我们也应该有一些适当的拆卸或清理步骤。
 
-因为我们有一个 init() 方法，我们也应该有一些适当的拆卸或清理步骤。
-
-1. Override Application’s [stop](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Application.html#stop()) method. 重写 Application类的 stop 方法
-2. Inside stop(), call applicationContext.[close](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ConfigurableApplicationContext.html#close--)(). 在 stop 方法内，调用applicationContext.close()方法
-3. Also call [Platform.exit()](https://openjfx.io/javadoc/13/javafx.graphics/javafx/application/Platform.html#exit()) to end the JavaFX program. 同时也在 JavaFX程序结束处调用 Platform.exit()
+1. 重写`Application`类的`stop`方法。
+2. 在`stop`方法内，调用`applicationContext.close()`方法。
+3. 同时也在JavaFX程序结束处调用`Platform.exit()`。
 
 ```java
 @Override
@@ -222,9 +196,7 @@ public void stop() {
 }
 ```
 
-Now we have our SpringBoot application class which launches our JavaFX Application class, ChartApplication:
-
-现在我们有了 Spring Boot application 类用来启动 JavaFX Application 类，即ChartApplication
+现在我们有了Spring Boot应用程序类用来启动 JavaFX的`Application`类，即`ChartApplication`：
 
 ```java
 import javafx.application.Application;
@@ -265,16 +237,13 @@ public class ChartApplication extends Application {
 
 ### 监听应用程序事件
 
-We need something which is going to listen to the StageReadyEvent that we created.
+我们需要一些东西去监听我们所创建的`StageReadyEvent`。
 
-我们需要一些东西去监听我们所创建的 StageReadyEvent 
-
-1. Create a new class, StageInitializer. This will set up our JavaFX Stage when it’s ready. 创建一个新的类，StageInitializer。这个会设置好我们的 JavaFX Stage 当它就绪时。
-2. This class should be annotated as a Spring [@Component](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Component.html). 这个类应该用 Spring 的 @Component 注解
-3. This class needs to implement [ApplicationListener](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationListener.html), listening for our StageReadyEvent. 这个类需要实现 ApplicationListener接口，去监听我们的 StageReadyEvent 事件。
-4. We need to implement the method on this interface, [onApplicationEvent](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationListener.html#onApplicationEvent-E-). 我们需要实现这个接口上的方法，即 onApplicationEvent
-5. (Tip: IntelliJ IDEA can do this for us, press Alt+Enter on the red error and select “[Implement methods](https://www.jetbrains.com/help/idea/implementing-methods-of-an-interface.html#Implementing_Methods_of_an_Interface.xml)“). （提示：在红色错误上按下Alt+Enter并选择"Implement methods"可以让IntelliJ IDEA为我们做这件事）
-6. The onApplicationEvent takes a StageReadyEvent. Call getStage on the event and assign the result to a [Stage](https://openjfx.io/javadoc/13/javafx.graphics/javafx/stage/Stage.html) local variable. onApplicationEvent方法需要一个 StageReadyEvent。 事件触发 getStage 被调用并将结果赋值到一个类型为 Stage 的局部变量。
+1. 当它就绪时这个会设置好我们的JavaFX Stage。
+2. 这个类应该用Spring的`@Component`注解。
+3. 这个类需要实现`ApplicationListener`接口，去监听我们的`StageReadyEvent`事件。
+4. 我们需要实现这个接口上的方法，即`onApplicationEvent`。
+5. `onApplicationEvent`方法需要一个`StageReadyEvent`。 事件触发`getStage`被调用并将结果赋值到一个类型为`Stage`的局部变量。
 
 ```java
 import com.mechanitis.demo.stockui.ChartApplication.StageReadyEvent;
@@ -291,16 +260,12 @@ public class StageInitializer implements ApplicationListener<StageReadyEvent> {
 }
 ```
 
-(note: this code will not compile yet)
-
 （注意：这些代码当前未能通过编译）
 
-This method doesn’t exist, so we need to create it on StageReadyEvent.
+这个方法不存在，所以我们需要创建这个`StageReadyEvent`。
 
-这个方法不存在，所以我们需要创建这个 StageReadyEvent
-
-1. (Tip: we can get IntelliJ IDEA to create this for us by pressing Alt+Enter on the red getStage method name in StageInitializer and selecting “Create method getStage”). （提示：我们可以在StageInitializer里面红色的getStage方法上按下Alt+Enter并选择"Create method getStage" 去让IntelliJ IDEA帮我们生成这个。
-2. The superclass has a method that does what we want, [getSource](https://docs.oracle.com/javase/8/docs/api/java/util/EventObject.html?is-external=true#getSource--). This returns an object, so call it and cast the returned value to a Stage. 父类里面有个我们想要的方法，getSource 这会返回一个对象，所以调用这个方法并将返回值
+1. （提示：我们可以在`StageInitialize`r里面红色的`getStage`方法上按下Alt+Enter并选择"Create method getStage" 去让IntelliJ IDEA帮我们生成这个。
+2. 父类里面有个我们想要的方法，`getSource`这会返回一个对象，所以调用这个方法并将返回值。
 
 ```java
 static class StageReadyEvent extends ApplicationEvent {
@@ -314,15 +279,11 @@ static class StageReadyEvent extends ApplicationEvent {
 }
 ```
 
-We know the source is a Stage because when we passed our stage constructor parameter into the super constructor, this became the source.
-
-我们知道source就是 Stage类型，因为当我们将stage的构造函数参数传入到父类的构造函数时，它就变成了 source
+我们知道source就是`Stage`类型，因为当我们将stage的构造函数参数传入到父类的构造函数时，它就变成了 source。
 
 ### 最后步骤
 
-The Stage is ready for us to set up our user interface. We can run our StockUIApplication, and see it successfully start up as a SpringBoot application. It does also launch a Java process which would show a UI if we had created one. For now, we have successfully created a JavaFX application which is launched and managed with Spring, and allows us to use the convenient features of any Spring application.
-
-这个 Stage 已经准备就是可用于我们的用户界面。我们可以运行我们的 StockUiApplication，然后看到它成功地作为一个 Spring Boot 应用程序启动了。同时它也启动了一个Java进程显示一个UI如果我们有创建的话。目前位置，我们已经成功地创建了一个由Spring管理并启动的JavaFX应用程序，并且允许我们方便地使用Spring应用程序的特性。
+这个`Stage`已经准备就是可用于我们的用户界面。我们可以运行我们的`StockUiApplication`，然后看到它成功地作为一个Spring Boot应用程序启动了。同时它也启动了一个Java进程显示一个UI如果我们有创建的话。目前位置，我们已经成功地创建了一个由Spring管理并启动的JavaFX应用程序，并且允许我们方便地使用Spring应用程序的特性。
 
 
 

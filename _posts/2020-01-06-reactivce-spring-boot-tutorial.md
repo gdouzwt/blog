@@ -19,6 +19,14 @@ tags:
 
 
 
+![image-20200112205309462](/img/image-20200112205309462.png)
+
+
+
+![JavaFX_LineChart](/img/JavaFX_LineChart.gif)
+
+
+
 教程分成 10个部分，并配有讲解视频，链接如下：
 
 - [Kotlin REST服务](https://www.bilibili.com/video/av80335114) ✔ <!--more-->

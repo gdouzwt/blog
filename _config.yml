@@ -109,13 +109,5 @@ friends: [
     },{
         title: "简书·招文桃",
         href: "https://www.jianshu.com/u/4f528075fae8/"
-    },
-    {
-        title: "学习 JHipster",
-        href: "https://learnjhipster.cn/"
-    },
-    {
-        title: "Linux 训练场",
-        href: "https://linuxfield.com/"
     }
 ]
