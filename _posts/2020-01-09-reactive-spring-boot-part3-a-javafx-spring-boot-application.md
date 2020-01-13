@@ -130,7 +130,7 @@ public class StockUiApplication {
 
 让我们回到我们的JavaFX应用程序类，`ChartApplication`。
 
-1. 创建一个字段`applicationContext`，这会是ConfigurableApplicationContext 类型。
+1. 创建一个字段`applicationContext`，这会是`ConfigurableApplicationContext`类型。
 2. 我们的`start`方法是一个标准的JavaFX方法，它以`Stage`作为参数，但`stage`就绪时调用。我们可以使用Spring的通过应用程序上下文发布事件的模式去告诉何时`Stage`就绪。在`start()`方法内，以一个新的 `StageReadyEvent`作为参数去调用`applicationContext.publishEvent()`。
 3. 将stage传入到事件的构造函数。
 
