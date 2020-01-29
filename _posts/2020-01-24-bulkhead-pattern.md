@@ -34,7 +34,7 @@ tags:
 
 下面的图展示围绕调用独立服务的连接池构造的水密舱壁。如果服务A（Service A）出故障或者其它毛病，它的连接池已经隔开了，所以只有使用了指派给服务A的线程池的工作负荷（workload）会受到影响。而使用服务B和C的工作负荷没受影响，能够继续不间断运行。
 
-![First diagram of the Bulkhead pattern](../img/bulkhead-1.png)
+![First diagram of the Bulkhead pattern](/img/bulkhead-1.png)
 
 
 
@@ -42,7 +42,7 @@ tags:
 
 
 
-![First diagram of the Bulkhead pattern](../img/bulkhead-2.png)
+![First diagram of the Bulkhead pattern](/img/bulkhead-2.png)
 
 ## Issues and considerations 问题与思考
 
