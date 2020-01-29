@@ -37,6 +37,7 @@ The method must not be static. (If they are, the method is hidden and not overri
 instanceof 不能比较没有任何继承关系的类。 而接口可以，因为接口可以被实现。
 
 然后入正题:
+<!--more-->
 
 ### Understanding Virtual Method Invocation
 
