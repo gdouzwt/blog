@@ -36,11 +36,7 @@ The method must not be static. (If they are, the method is hidden and not overri
 
 instanceof 不能比较没有任何继承关系的类。 而接口可以，因为接口可以被实现。
 
-
-
-然后入正题
-
-
+然后入正题:
 
 ### Understanding Virtual Method Invocation
 
@@ -107,7 +103,23 @@ public class PlayWithAnimal {
 
 ​	Aside from the formal sounding name, there isn't anything new here. Let's try one more example to make sure that the exam can't trick you. What does the following print?
 
+```java
+abstract class Animal {
+    public void careFor() {
+        play();
+    }
+    public void play() {
+        System.out.println("pet animal");
+    }}
+class Lion extends Animal {
+    public void play() {
+        System.out.println("toss in meat");
+    }}
+public class PalyWithAnimal {
+    public static void main(String[] args) {
+        Animal animal = new Lion();
+        animal.careFor();
+    }}
 ```
 
-```
-
+​	This correct answer is *toss in meat*. The main method creates a new Lion and calls careFor. Since only the Animal superclass has a careFor method, it executes. That method calls play. Java looks for overridden methods, and it sees that Lion implements play. Even though the call is from the Animal class, Java still looks at subclasses, which is good because you don't want to pet a Lion!
