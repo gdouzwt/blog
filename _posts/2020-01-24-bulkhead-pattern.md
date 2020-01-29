@@ -1,6 +1,20 @@
-# 水密舱壁模式（Bulkhead pattern ）
+---
+typora-root-url: ../
+layout:     post
+title:        水密舱壁模式
+date:       '2020-01-29T08:46'
+subtitle:   云原生微服务模式系列
+author:     招文桃
+catalog:    true
+tags:
+    - 模式
+    - 微服务
+---
+
 
 水密舱壁模式是一类容错的应用程序设计。在水密舱壁模式架构中，应用程序的个组成元素被分隔到隔舱中，这样一旦其中一个出故障，其它部分仍能够运行。这是命名来自船体当中的分隔区域（水密舱壁）。如果一艘船的水密隔舱坏了，那么只是受损部位会进水（其它部分被隔开了），这样能够防止沉船。
+
+![水密壁舱](/img/Compartments_and_watertight_subdivision_of_a_ship's_hull_(Seaman's_Pocket-Book,_1943).jpg)
 
 ## 场景与问题
 
