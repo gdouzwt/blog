@@ -34,13 +34,15 @@ If your needs are simpler, consider using the static convenience methods in Spri
 
 (org.springframework.boot:spring-boot:2.2.4.RELEASE)
 
-这里就是builder模式，顺便记录一下，先上图：
+这里就是Builder模式，顺便记录一下，先上图：
 
 ![builder-pattern](/img/builder-pattern.png)
 
 GoF 对 **Builder Pattern** 的定义如下：
 
 > Separate the construction of a complex object from its representation so that the same construction processes can create different representations.
+>
+> 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同表示。（中文版书里的翻译，另外注意，在书中 Builder 译作“生成器”）
 
 上图中，`Product` 是我们想要构建的复杂对象，`ConcreteBuilder` 通过实现抽象的 `Builder` 接口去构造和组合一个 product 的部件。具体的构造者，`ConcreteBuilder` 负责构建 product 的内部表现，和创造过程及组合机制。 `Builder` 也可以提供方法使得被创建的对象可以被使用。 Director 负责使用 Builder 取创建最终的 Product，也就是说 Director 是 Builder 的使用者。 构造者(Builders) 可以保持对所构造的对象(products)的引用，以便可以再次使用。
 
