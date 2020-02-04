@@ -1,9 +1,9 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      Builder pattern
+title:      Builder Pattern
 date:       '2020-02-02T18:42'
-subtitle:   学习笔记
+subtitle:   生成器模式
 author:     招文桃
 catalog:    true
 tags:
@@ -11,9 +11,7 @@ tags:
     - 设计模式
 ---
 
-## 常见类的用途
-
-### SpringApplicationBuilder 
+## 深入生成器设计模式
 
 ### Builder Pattern
 
@@ -25,6 +23,6 @@ tags:
 
 
 
-Builder 在《设计模式》的中文版里边翻译为“生成器”，那我就按这个译法吧。
+Builder 在《设计模式》的中文版里边翻译为“生成器”，那我就按这个译法吧。UML 类图如下：
 
 ![Builder](/img/builder-pattern.png)
