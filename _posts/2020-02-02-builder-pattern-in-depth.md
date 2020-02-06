@@ -27,7 +27,7 @@ Builder 在《设计模式》的中文版里边翻译为“生成器”，那我
 
 ### 具体简单例子
 
-在这个例子里会有这些参与者：Builder, Car, MotorCycle, Product, 以及 Director。其中，Car, MotorCycle 是实现了 Builder 接口的具体类。Builder 是用于构建 Product 对象的各部分，Product 则是要创建的负责对象（也就是小车或者摩托车）。因为 Car 和 MotorCycle 都实现了 Builder 接口，所以需要实现接口中的方法，即 `startUpOperations()`, `buildBody()`, `insertWheels()`, `addHeadLights()`, `endOperations()`, 和 `getVehicle()` 方法。前五个方法好理解，就是对应载具的构建过程，开始，构建车身，装轮子，装头灯，收尾。而 `getVehicle()` 方法，就是返回已构建好的载具。 然后还有 Director，它调用同一个 `construct()` 方法去构建不同类型的载具。这个具体例子的类图如下：
+在这个例子里会有这些参与者：Builder, Car, MotorCycle, Product, 以及 Director。其中，Car, MotorCycle 是实现了 Builder 接口的具体类。Builder 用于构建 Product 对象的各部分，Product 则是要被创建的复杂对象（小车或摩托车）。因为 Car 和 MotorCycle 都实现了 Builder 接口，所以需要实现接口中的方法，即 `startUpOperations()`, `buildBody()`, `insertWheels()`, `addHeadLights()`, `endOperations()`, 和 `getVehicle()` 方法。前五个方法好理解，对应载具的构建过程，开始，构建车身，装轮子，装头灯，收尾。而 `getVehicle()` 方法，就是返回已构建好的载具。 然后还有 Director，它调用同一个 `construct()` 方法去构建不同类型的载具。这个具体例子的类图如下：
 
 ![builder-pattern-vehicles](/img/builder-pattern-vehicles.png)
 
@@ -379,9 +379,12 @@ final class ProductClass {
 	 */
 	@Override
 	public String toString() {
-		return "Product Completed as:\n startUpMessage=" + startUpMessage + "\n bodyType=" + bodyType + "\n noOfWheels="
-				+ noOfWheels + "\n noOfHeadLights=" + noOfHeadLights + "\n endOperationsMessage="
-				+ endOperationsMessage;
+		return "Product Completed as:\n startUpMessage=" + 
+            startUpMessage + "\n bodyType=" + 
+            bodyType + "\n noOfWheels=" + 
+            noOfWheels + "\n noOfHeadLights=" + 
+            noOfHeadLights + "\n endOperationsMessage=" + 
+            endOperationsMessage;
 	}
 
 }
@@ -397,8 +400,11 @@ public class BuilderPatternModifiedExample {
 		 * Step2:Setter like methods are used.They will set the optional fields also. 
 		 * Step3:Invoke the constructCar() method to get the final car.
 		 */
-		final ProductClass customCar1 = new CarBuilder().addHeadlights(5).insertWheels(5).buildBody("Plastic")
-				.constructCar();
+		final ProductClass customCar1 = new CarBuilder()
+            .addHeadlights(5)
+            .insertWheels(5)
+            .buildBody("Plastic")
+			.constructCar();
 		System.out.println(customCar1);
 		System.out.println("--------------");
 		/*
@@ -406,8 +412,11 @@ public class BuilderPatternModifiedExample {
 		 * steps.
 		 */
 		ModifiedBuilder carBuilder2 = new CarBuilder();
-		final ProductClass customCar2 = carBuilder2.insertWheels(7).addHeadlights(6)
-				.startUpOperations("I am making my own car").constructCar();
+		final ProductClass customCar2 = carBuilder2
+            .insertWheels(7)
+            .addHeadlights(6)
+            .startUpOperations("I am making my own car")
+            .constructCar();
 		System.out.println(customCar2);
 		System.out.println("--------------");
 
