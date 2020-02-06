@@ -19,13 +19,13 @@ tags:
 >
 > 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同表示。（中文版书里的翻译）
 
-Builder 在《设计模式》的中文版里边翻译为“生成器”，那我就按这个译法吧。生成器模式属于创建型模式（Creational patterns），它关注如何创建对象。当需要构建的对象比较复杂，由多个部分组成，也就说它的构造方法会有很多参数。生成器模式认为对象的构建机制应该独立于它的组成部分（也就是属性），对象的**构建过程**不关注对象的**组成部分**。所以同一个构建过程可以构建出不同表示（属性）的对象。在 GoF 书中的生成器模式 UML 类图如下：
+Builder 在《设计模式》的中文版里边翻译为“生成器”，那我就按这个译法吧。生成器模式属于创建型模式（Creational patterns），它关注如何创建对象。当需要构建的对象比较复杂，由多个部分组成，也就说它的构造方法会有很多参数，就可以考虑使用这种模式。生成器模式认为对象的构建机制应该独立于它的组成部分（也就是属性），对象的**构建过程**不关注对象的**组成部分**。所以同一个构建过程可以构建出不同表示（属性）的对象（通过**改变构建步骤**）。在 GoF 书中的生成器模式 UML 类图如下：
 
 ![Builder](/img/builder-pattern.png)
 
 上图中，Product 是所要创建的复杂对象，ConcreteBuilder 类表示具体的生成器，它实现了 Builder 接口，负责组装构成最终对象的各部分。ConcreteBuilder 定义了**构建过程**和**对象组装机制**，就是如何用各部分、按照怎样的步骤去构造一个 Product 对象。ConcreteBuilder 还定义了 getResult() 方法，用于返回构建好的 Product 对象。然后 Director 则是负责通过使用 Builder 接口去构建最终所需的 Product 对象，就是做指挥的。
 
-以上是经典的
+以上是对经典的 GoF 生成器模式的解读，下面结合具体的例子加深理解。
 
 ### 具体简单例子
 
@@ -208,13 +208,21 @@ public class BuilderPatternExample {
 ### Q & A 
 
 1. 使用生成器模式有什么好处?
+   - 你可以用生成器模式逐步构建复杂对象，并且可以改变构建步骤。通过隐藏构建复杂对象的细节（构建每部分的细节），加强了封装性。 Director 可以从 Builder 获取最终构建完成的 Product，在表面看了就好像只有一个方法（construct()）用于构建最终产品，其他的内部方法只是涉及构建具体的部分。
+   - 使用这种模式，同样的构建过程，可以产生不同的产品。
+   - 因为你可以改变构造步骤，所以你可以改变产品的内部表示。
 2. 生成器模式的坏处？
+   - 不适用于处理可变对象（mutable object），即创建后可被修改的对象。
+   - 可能需要写些重复代码，例如不同的具体生成器有些代码类似或重复，某些情况下可能会有不好的影响，并可能成为*[反模式](https://blog.csdn.net/jiangpingjiangping/article/details/78067595)*。
+   - 一个具体的生成器专用于产生某类产品，所以要生产另一类产品，就需要编写一个用于该类产品的具体生成器。
+   - 生成器模式只有在构建比较复杂的对象时用才有优势。
 3. 在上面例子中我可以使用抽象类而不是接口吗？
+   - 可以的。你可以使用抽象类，而不是用接口。
 4. 如何确定应该使用抽象类还是接口？
 5. 上面例子中，在 Car 里，brand name 在第一步添加了，而在 MotorCycle 里， brand name 在最后一步添加，这是故意的吗？
 6. 为什么使用单独一个类作为 Director？应该可以使用客户端代码（client code）充当 Director 的角色啊。
 7. 客户端代码（client code）是什么意思？
-8. 前面多次提到改变构建步骤。能否演示一下通过改变构建步骤产生不同的最终产品？
+8. 前面提到改变构建步骤。能否演示一下通过改变构建步骤产生不同的最终产品？
 
 ### 改进版例子
 
@@ -228,4 +236,5 @@ public class BuilderPatternExample {
 - Sarcar, Vaskaran. *Design Patterns in Java, Second Edition.* Apress, 2019
 - [Springframework guru: Builder Pattern](https://springframework.guru/gang-of-four-design-patterns/builder-pattern/)
 - Joshua Block. *Effective Java, Third Edition.* Addison-Wesley, 2018
+- [设计模式杂谈——模式与反模式之争](https://blog.csdn.net/jiangpingjiangping/article/details/78067595)
 
