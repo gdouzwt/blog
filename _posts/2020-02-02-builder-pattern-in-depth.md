@@ -268,7 +268,7 @@ public class BuilderPatternExample {
   - 车轮数量（noOfWheels）
   - 车头灯数量（noOfHeadLights）
 - 客户端代码同时充当了 Director 的角色。
-- 生成器的接口被重命名为 ModifiedBuilder， 除 constructCar() 和 getConstructedCar() 方法外，接口中的其他方法的返回类型都是 ModifiedBuilder，这样可以实现链式调用（method chaining）。
+- 生成器的接口被重命名为 ModifiedBuilder， 除 constructCar() 和 getConstructedCar() 方法外，接口中的其他方法的返回类型都是 ModifiedBuilder，这样可以实现方法链（method chaining）。
 
 #### 代码实现
 
