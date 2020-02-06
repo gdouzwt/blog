@@ -189,19 +189,23 @@ public class BuilderPatternExample {
 
 **输出结果：**
 
-> \*\*\*Builder Pattern Demo\*\*\*
->
-> Product completed as below :
-> Car model is :Ford
-> This is a body of a Car
-> 4 wheels are added
-> 2 Headlights are added
->
-> Product completed as below :
-> This is a body of a Motorcycle
-> 2 wheels are added
-> 1 Headlights are added
-> Motorcycle model is :Honda
+```console
+***Builder Pattern Demo***
+
+Product completed as below :
+Car model is :Ford
+This is a body of a Car
+4 wheels are added
+2 Headlights are added
+
+Product completed as below :
+This is a body of a Motorcycle
+2 wheels are added
+1 Headlights are added
+Motorcycle model is :Honda
+```
+
+
 
 ### Q & A 
 
@@ -424,27 +428,31 @@ public class BuilderPatternModifiedExample {
 
 **输出结果：**
 
-> ***Modified Builder Pattern Demo\*\*\*
-> Product Completed as:
->  startUpMessage=Start building the product
->  bodyType=Plastic
->  noOfWheels=5
->  noOfHeadLights=5
->  endOperationsMessage=Product creation completed
-> \--------------
-> Product Completed as:
->  startUpMessage=I am making my own car
->  bodyType=Steel
->  noOfWheels=7
->  noOfHeadLights=6
->  endOperationsMessage=Product creation completed
-> \--------------
-> Product Completed as:
->  startUpMessage=I am making my own car
->  bodyType=Steel
->  noOfWheels=7
->  noOfHeadLights=6
->  endOperationsMessage=Product creation completed
+```console
+***Modified Builder Pattern Demo***
+Product Completed as:
+startUpMessage=Start building the product
+bodyType=Plastic
+noOfWheels=5
+noOfHeadLights=5
+endOperationsMessage=Product creation completed
+--------------
+Product Completed as:
+startUpMessage=I am making my own car
+bodyType=Steel
+noOfWheels=7
+noOfHeadLights=6
+endOperationsMessage=Product creation completed
+--------------
+Product Completed as:
+startUpMessage=I am making my own car
+bodyType=Steel
+noOfWheels=7
+noOfHeadLights=6
+endOperationsMessage=Product creation completed
+```
+
+
 
 ### 结论
 
