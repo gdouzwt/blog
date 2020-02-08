@@ -477,7 +477,7 @@ pre code {
   display: block;
   width: auto;
   white-space: pre;
-  word-wrap: normal;
+  word-wrap: break-word;
 }
 
 .postlist-container {
@@ -904,12 +904,6 @@ pre code {
 @media only screen and (min-width: 768px) {
   .post-content-preview {
     font-size: 14px;
-  }
-  .post-content-preview img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 1.5em auto 1.6em auto;
   }
 }
 .post-content-preview a {
