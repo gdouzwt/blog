@@ -1,3 +1,8 @@
+/*!
+ * TAO v1.7.0 (https://zwt.io)
+ * Copyright 2020 Tao <zhao@wen-tao.com>
+ */
+
 @charset "UTF-8";
 @media (min-width: 1200px) {
   .post-container, .sidebar-container {
@@ -403,6 +408,10 @@ article {
   overflow-x: hidden;
 }
 
+section {
+  overflow-x: hidden;
+}
+
 blockquote {
   color: gray;
   font-style: normal;
@@ -477,6 +486,10 @@ pre code {
   display: block;
   width: auto;
   white-space: pre;
+  word-wrap: break-word;
+}
+
+code {
   word-wrap: break-word;
 }
 

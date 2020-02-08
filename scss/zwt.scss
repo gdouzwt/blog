@@ -57,6 +57,9 @@ a img {
 article{
 	overflow-x : hidden;
 }
+section {
+	overflow-x: hidden;
+}
 blockquote {
 	color: $gray;
 	font-style: normal;
@@ -136,6 +139,10 @@ pre code{
 	width: auto;
 	white-space: pre;	// save it but no-wrap;
 	word-wrap: break-word;	// no-wrap  // 估计是这里控制了。
+}
+
+code {
+	word-wrap: break-word;
 }
 
 // In the list of posts
