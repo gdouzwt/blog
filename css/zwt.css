@@ -905,6 +905,12 @@ pre code {
   .post-content-preview {
     font-size: 14px;
   }
+  .post-content-preview img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5em auto 1.6em auto;
+  }
 }
 .post-content-preview a {
   color: #0085A1;
