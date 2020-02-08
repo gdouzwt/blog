@@ -1,9 +1,14 @@
-/*!
- * TAO v1.7.0 (https://zwt.io)
- * Copyright 2020 Tao <zhao@wen-tao.com>
- */
-
 @charset "UTF-8";
+@media (min-width: 1200px) {
+  .post-container, .sidebar-container {
+    padding-right: 5%;
+  }
+}
+@media (min-width: 768px) {
+  .post-container {
+    padding-right: 5%;
+  }
+}
 .sidebar-container {
   color: #bfbfbf;
   font-size: 14px;
