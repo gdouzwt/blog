@@ -15,14 +15,11 @@ tags:
 
 ### SpringApplicationBuilder 
 
-`java.lang.Object`
-
+`java.lang.Object`  
 ​	`org.springframework.boot.builder.SpringApplicationBuilder`
 
-Builder for `SpringApplication` and `ApplicationContext` instances with convenient fluent API and context hierarchy support. Simple example of a context hierarchy:
-
-`new SpringApplicationBuider(ParentConfig.class).child(ChildConfig.class).run(args);`
-
+Builder for `SpringApplication` and `ApplicationContext` instances with convenient fluent API and context hierarchy support. Simple example of a context hierarchy:  
+`new SpringApplicationBuider(ParentConfig.class).child(ChildConfig.class).run(args);`  
 Another common use case is setting active profiles and default properties to set up the environment for an application:
 
 ```java
@@ -48,8 +45,7 @@ GoF 对 **Builder Pattern** 的定义如下：
 
 ### SpringApplication
 
-`java.lang.Object`
-
+`java.lang.Object`  
 ​	`org.springframework.boot.SpringApplication`
 
 Class that can be used to bootstrap and launch a Spring application from a Java main method. By default class will perform the following steps to bootstrap your application:
@@ -92,8 +88,7 @@ public static void main(String[] args) {
 
 Configuration properties are also bound to the SpringApplication. This makes it possible to set SpringApplication properties dynamically, like additional sources ("spring.main.sources" - a CSV list) the flag to indicate a web environment ("spring.main.web-application-type=none") or the flag to switch off the banner ("spring.main.banner-mode=off").
 
-`org.springframework.boot.SpringApplication`
-
+`org.springframework.boot.SpringApplication`  
 ```java
 public static org.springframework.context.ConfigurableApplicationContext run(Class <?> primarySource, String ... args)
 ```

@@ -17,7 +17,7 @@ pre[class*="language-"] {
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
-	word-wrap: break-word;
+	word-wrap: normal;
 	line-height: 1.5;
 
 	-moz-tab-size: 4;
@@ -54,6 +54,9 @@ pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
+	@media screen and (max-width: 768px){
+		font-size: 12px;
+	}
 }
 
 :not(pre) > code[class*="language-"],
@@ -66,6 +69,7 @@ pre[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
 	white-space: normal;
+	word-wrap: break-word;
 }
 
 .token.comment,

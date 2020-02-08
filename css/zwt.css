@@ -137,7 +137,7 @@ pre[class*=language-] {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  word-wrap: break-word;
+  word-wrap: normal;
   line-height: 1.5;
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -172,6 +172,11 @@ pre[class*=language-] {
   margin: 0.5em 0;
   overflow: auto;
 }
+@media screen and (max-width: 768px) {
+  pre[class*=language-] {
+    font-size: 12px;
+  }
+}
 
 :not(pre) > code[class*=language-],
 pre[class*=language-] {
@@ -183,6 +188,7 @@ pre[class*=language-] {
   padding: 0.1em;
   border-radius: 0.3em;
   white-space: normal;
+  word-wrap: break-word;
 }
 
 .token.comment,
