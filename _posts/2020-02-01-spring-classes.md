@@ -32,7 +32,7 @@ new SpringApplicationBuilder(Application.class).profiles("server")
 
 If your needs are simpler, consider using the static convenience methods in SpringApplication instead.
 
-(org.springframework.boot:spring-boot:2.2.4.RELEASE)
+(org.springframework.boot:spring-boot:2.2.4.RELEASE)<!--more-->
 
 这里就是Builder模式，顺便记录一下，先上图：
 
