@@ -572,13 +572,7 @@ pre code{
     //     color: $brand-primary;
     // }
     @media only screen and (min-width: 768px) {
-		font-size:14px;
-		img{
-			display: block;
-			max-width: 100%;
-			height: auto;
-			margin: 1.5em auto 1.6em auto;
-		}
+        font-size:14px;
 	}
 	a {
 		color: $brand-primary;

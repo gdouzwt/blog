@@ -3,6 +3,7 @@ layout: page
 description: "正在加载古诗词……"
 ---
 
+<section>
 {% for post in paginator.posts %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
@@ -21,7 +22,7 @@ description: "正在加载古诗词……"
 </div>
 <hr>
 {% endfor %}
-
+</section>
 
 <!-- Pager -->
 {% if paginator.total_pages > 1 %}
