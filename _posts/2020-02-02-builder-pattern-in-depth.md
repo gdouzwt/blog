@@ -461,9 +461,23 @@ noOfHeadLights=6
 endOperationsMessage=Product creation completed
 ```
 
+在改进版例子中，第 124 行，构建 `customCar1`，逐步调用了 `addHeadLights()`, `insertWheels()`, `buildBody()` 方法。 然后当构建 `customCar2` 时，方法的调用顺序不同了，而没调用的方法，会取默认值。
 
+### Q & A
 
-### 结论
+9. 改进版例子中客户端代码用到 `final` 关键字，但是 `ProductClass` 的属性却没有用 `final` 关键字，为什么？
+
+   在客户端代码使用 `final` 关键字是为了提高不可修改性（immutability），但是在 `ProductClass` 属性已经是私有且那个类没有 setter 方法，所以已经是不可修改了，不需要使用 `final` 关键字。
+
+10. 不可修改的对象有什么好处？
+
+    这样的对象一旦构建完成，就可以安全地共享，更重要的是它们是线程安全的（thread-safe），所以在多线程环境中省去了很多同步操作。
+
+11. 何时应该考虑使用生成器模式？
+
+    
+
+### 总结
 
 ### 参考
 
