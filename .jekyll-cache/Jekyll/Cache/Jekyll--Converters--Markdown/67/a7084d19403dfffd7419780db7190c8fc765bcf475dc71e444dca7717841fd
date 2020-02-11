@@ -1,0 +1,82 @@
+I"�<h3 id="inner-class">Inner Class</h3>
+
+<p>A class can also be declared within another class. This type of class is called an <em>inner</em> class. If the class declared within another class is explicitly or implicitly declared static, it is called a nested class, not an inner class. The class that contains the inner class is called an <em>enclosing</em> class or an <em>outer</em> class. Consider the following declaration of the <code class="highlighter-rouge">Outer</code> and <code class="highlighter-rouge">Inner</code> classes:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Outer.java</span>
+<span class="n">pakcage</span> <span class="n">com</span><span class="o">.</span><span class="na">jdojo</span><span class="o">.</span><span class="na">innerclasses</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Outer</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Inner</span> <span class="o">{</span>
+		<span class="c1">// Members of the Inner class go here</span>
+	<span class="o">}</span>
+	<span class="c1">// Other members of the Outer class go here</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>An instance of an inner class can only exist within an instance of its enclosing class. That is, you must have an instance of the enclosing class before you can create an instance of an inner class. This is useful in enforcing the rule that one object cannot exist without the other.</p>
+
+<p>An inner class has full access to all the members, including private members, of its enclosing class.<!--more--></p>
+
+<h3 id="advantages-of-using-inner-classes">Advantages of Using Inner Classes</h3>
+
+<ul>
+  <li>They let you define classes near other classes that will use them. For example, a computer will use a processor, so it is better to define a <code class="highlighter-rouge">Processor</code> class as an inner class of the <code class="highlighter-rouge">Computer</code> class.</li>
+  <li>They provide an additional namespace to manage class structures. For example, before the introduction of inner classes, a class can only be a member of a package. With the introduction of inner classes, top-level classes, which can contain inner classes, provide an additional namespace.</li>
+  <li>Some design patterns are easier to implement using inner classes. For example, the adapter pattern, enumeration pattern, and state pattern can be easily implemented using inner classes.</li>
+  <li>Implementing a callback mechanism is elegant and convenient using inner classes. Lambda expressions in Java 8 offer a better and more concise way of implementing callbacks in Java.</li>
+  <li>It helps implement closures in Java.</li>
+  <li>You can have a flavor of multiple inheritance of classes using inner classes. An inner class can inherit another class. Thus, the inner class has access to its enclosing class members as well as members of its superclass. Note that accessing members of two or more classes is one of the aims of multiple inheritance, which can be achieved using inner classes. However, just having access to members of two classes is not multiple inheritance in a true sense.</li>
+</ul>
+
+<h3 id="types-of-inner-classes">Types of Inner Classes</h3>
+
+<p>You can define an inner class anywhere inside a class where you can write a Java statement. There are three types of inner classes. The type of an inner class depends on the location of its declaration and the way it is declared.</p>
+
+<ul>
+  <li>Member inner class</li>
+  <li>Local inner class</li>
+  <li>Anonymous inner class</li>
+</ul>
+
+<h4 id="member-inner-class">Member inner class</h4>
+
+<p>A member inner class is declared inside a class the same way a member field or a member method for the class is declared. It can be declared as <code class="highlighter-rouge">public</code>, <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">protected</code>, or package-level. The instance of a member inner class may exist only within the instance of its enclosing class.</p>
+
+<h4 id="local-inner-class">Local inner class</h4>
+
+<p>A local inner class is declared inside a block. Its scope is limited to the block in which it is declared. Since it’s scope is always limited to its enclosing block, its declaration cannot use any access modifiers such as <code class="highlighter-rouge">public</code>,   <code class="highlighter-rouge">private</code>, or <code class="highlighter-rouge">protected</code>. Typically, a local inner class is defined inside a method. However, it can also be defined in side static initializers, non-static initializers, and constructors. You would use a local inner class when you need to use the class only inside a block.</p>
+
+<p>​	To use a local inner class outside its enclosing block, the local inner class must do one or both of the following:</p>
+
+<ul>
+  <li>Implement a public interface</li>
+  <li>Inherit from another public class and override some of its superclass methods</li>
+</ul>
+
+<h4 id="anonymous-inner-class">Anonymous Inner Class</h4>
+
+<p>An anonymous inner class is the same as a local inner class with one difference: it does not have a name. Since it does not have a name, it cannot have a constructor.</p>
+
+<h3 id="a-static-member-class-is-not-an-inner-class">A static Member Class Is Not an Inner Class</h3>
+
+<p>A member class defined within the body of another class may be declared <code class="highlighter-rouge">static</code>. The following snippet of code declares a top-level class <code class="highlighter-rouge">A</code> and a static member class <code class="highlighter-rouge">B</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">jdojo</span><span class="o">.</span><span class="na">innnerclasses</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+	<span class="c1">// A static member class</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span>
+		<span class="c1">// The body of class B goes here</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>​	A static member class is not an inner class. It is considered a top-level class. It is also called a nested top-level class. Since it is a top-level class, you do not need an instance of its enclosing class to create its object. An instance of class A and an instance of class B can exist independently because both are top-level classes. A static member class can be declared <code class="highlighter-rouge">public</code>, <code class="highlighter-rouge">protected</code>, package-level, or <code class="highlighter-rouge">private</code> to restrict its accessibility outside its enclosing class.</p>
+
+<hr />
+
+<h3 id="closures-and-callbacks">Closures and Callbacks</h3>
+
+<p>In functional programming, a higher order function is an anonymous function that can be treated as a data object. That is, it can be stored in a variable and passed around from one context to another.</p>
+
+<p>【to be continued】</p>
+:ET

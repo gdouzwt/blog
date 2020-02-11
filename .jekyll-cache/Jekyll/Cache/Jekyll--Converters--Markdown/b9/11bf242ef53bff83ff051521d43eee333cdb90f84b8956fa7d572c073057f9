@@ -1,0 +1,16 @@
+I"<h1 id="你们的试题要求">你们的试题要求</h1>
+
+<h2 id="中级试题">中级试题</h2>
+
+<p>使用我们的<a href="https://github.com/deepexi/devops-recruitment/blob/master/back-end/scaffold.md">脚手架工具</a>生成项目<code class="highlighter-rouge">mini-system</code>，实现一个系统最基本的功能：用户认证+权限控制，要求：</p>
+
+<ul>
+  <li>根据RBAC模型进行数据库设计</li>
+  <li>用户密码非明文存储</li>
+  <li>使用JWT进行认证控制</li>
+  <li>使用你喜欢的框架实现接口级的权限控制</li>
+  <li>为重要的逻辑添加单元测试保护</li>
+</ul>
+
+<p>考虑到工作量的问题，不强制要求实现数据的CRUD相关接口，你可以直接往数据库中添加数据来测试上述功能。</p>
+:ET

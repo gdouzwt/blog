@@ -1,0 +1,110 @@
+I"<h1 id="a">A</h1>
+
+<h4 id="一填空题">一、填空题</h4>
+
+<p><strong>1.</strong>  若函数 <script type="math/tex">% <![CDATA[
+f(x) =\begin{cases}a + x, x > 0 \\ e^{-x},\space\space\space x < 0 \end{cases} %]]></script> 在点 $x = 0$ 处连续，则 $a = $ <em>__</em> .</p>
+
+<p><strong>2.</strong>  若 $f(x) = e^{-x}$，则 $f^{(n)}(x) = $ <em>__</em> .</p>
+
+<p><strong>3.</strong>   $\displaystyle \int \ln x dx = $ <em>__</em> .</p>
+
+<p><strong>4.</strong>  曲线 $\displaystyle y = x^3 - x + 1$  在 $(0, 1)$ 处的切线方程为 <em>__</em> .</p>
+
+<p><strong>5.</strong>  函数 $y = x^3 + 3x^2 - 1$ 在 $[-1, 1]$ 上最大值为 <em>__</em> .</p>
+
+<p><strong>6.</strong> 设 $\displaystyle F(x) = \int_{0}^{x^2}(t^3 - t)dt$，则 $F’(1) =$ <em>__</em> .</p>
+
+<p><strong>7.</strong>  $\displaystyle\int_{-1}^{1}(x^3 - \sqrt{1-x^2})dx=$<em>__</em> .</p>
+
+<p><strong>8.</strong> 曲线 $y = x^2$ 与曲线 $y = x$ 所围成图形的面积为 <em>__</em> .</p>
+
+<!--more-->
+
+<h4 id="二计算题">二、计算题</h4>
+
+<p><strong>1.</strong>  $\displaystyle \lim_{x\to 0} \frac{x - \tan x}{x \sin^2 x} $</p>
+
+<p><strong>2.</strong> $\displaystyle\lim_{x \to \infty} \frac{x + \sin x}{x - 2\sin x}$</p>
+
+<p><strong>3.</strong> 设 $y = \ln(e^{3x} + 1)$ ，求 $dy$ .</p>
+
+<p><strong>4.</strong> 设 <script type="math/tex">\displaystyle \begin{cases} x = e^t \sin t \\ y = e^t \cos t \end{cases}</script> ， 求 $\displaystyle \frac{dy}{dx}$ 。</p>
+
+<p><strong>5.</strong> 设函数 $y = y(x)$ 是由方程 $xy + e^{-y} - 1 = 0$ 确定。 求 $\displaystyle \frac{dy}{dx}$ 。</p>
+
+<h4 id="三计算下列各题">三、计算下列各题</h4>
+
+<p><strong>1.</strong>   $\displaystyle \int x \sqrt{1 + x^2} dx$ .</p>
+
+<p><strong>2.</strong>  $\displaystyle \int x e^{3x} dx$.</p>
+
+<p><strong>3.</strong>  $\displaystyle \int_{-1}^{2} \frac{x}{\sqrt{3 - x}} dx$ .</p>
+
+<p><strong>4.</strong> $\displaystyle \int_{2}^{3} \frac{1}{x^2+ 4x - 5} dx$ .</p>
+
+<h4 id="四">四、</h4>
+
+<p><strong>1.</strong>  求函数 $y = 2x^3 - 6x^2 - 18x + 7$ 的单调区间及极值。</p>
+
+<p><strong>2.</strong> 求曲线 $y = xe^{-x}$ 的凹凸区间和拐点。</p>
+
+<h4 id="五">五、</h4>
+
+<p>设函数 $f(x)$ 在$[a, b]$ 上连续，在 $(a, b)$ 内可导， $f(a) = f(b) = 0$ 。</p>
+
+<p>证明：存在 $\xi \in (a, b)$，使 $f(\xi) + f’(\xi) = 0$</p>
+
+<h1 id="b">B</h1>
+
+<h4 id="一填空题-1">一、填空题</h4>
+
+<p><strong>1.</strong>  设函数 <script type="math/tex">f(x) =\begin{cases}a + x, x > 0 \\ e^{-x},\space\space\space x \leq 0 \end{cases}</script> 在点 $x = 0$ 处连续，则 $a = $ <em>__</em> .</p>
+
+<p><strong>2.</strong>  若 $f(x) = x^n$，则 $f^{(n)}(x) = $ <em>__</em> .</p>
+
+<p><strong>3.</strong>   $\displaystyle \int x\ln x dx = $ <em>__</em> .</p>
+
+<p><strong>4.</strong>  曲线 $\displaystyle y = e^x - 1$  在 $(0, 0)$ 处的切线方程为 <em>__</em> .</p>
+
+<p><strong>5.</strong>  函数 $y = 2x^3 + 3x^2 - 1$ 在 $[-2, 2]$ 上最大值为 <em>__</em> .</p>
+
+<p><strong>6.</strong> 设 $\displaystyle F(x) = \int_{0}^{x^3}(t^2 - t)dt$，则 $F’(1) =$ <em>__</em> .</p>
+
+<p><strong>7.</strong>  $\displaystyle\int_{-1}^{1}(x +  \sqrt{1-x^2})dx=$<em>__</em> .</p>
+
+<p><strong>8.</strong> 曲线 $y = x^2$ 与曲线 $y^2 = x$ 所围成图形的面积为 <em>__</em> .</p>
+
+<h4 id="二计算题-1">二、计算题</h4>
+
+<p><strong>1.</strong>  $\displaystyle \lim_{x\to 0} \frac{x - \tan x}{x^2 \sin x} $</p>
+
+<p><strong>2.</strong> $\displaystyle\lim_{x \to \infty} \frac{x + 2\sin x}{x - 3\sin x}$</p>
+
+<p><strong>3.</strong> 设 $y = \ln(e^{-x} + 1)$ ，求 $dy$ .</p>
+
+<p><strong>4.</strong> 设 <script type="math/tex">\displaystyle \begin{cases} x = e^{-t} \sin t \\ y = e^{-t} \cos t \end{cases}</script> ， 求 $\displaystyle \frac{dy}{dx}$ 。</p>
+
+<p><strong>5.</strong> 设函数 $y = y(x)$ 是由方程 $xy + e^{-y} + 1 = 0$ 确定。 求 $\displaystyle \frac{dy}{dx}$ 。</p>
+
+<h4 id="三计算下列各题-1">三、计算下列各题</h4>
+
+<p><strong>1.</strong>   $\displaystyle \int x \sqrt{1 + x^2} dx$ .</p>
+
+<p><strong>2.</strong>  $\displaystyle \int x \sin 3x dx$.</p>
+
+<p><strong>3.</strong>  $\displaystyle \int_{0}^{2} \frac{x}{\sqrt{3 - x}} dx$ .</p>
+
+<p><strong>4.</strong> $\displaystyle \int_{0}^{1} \frac{1}{x^2+ 3x + 2} dx$ .</p>
+
+<h4 id="四-1">四、</h4>
+
+<p><strong>1.</strong>  求函数 $y = 2x^3 - 9x^2 - 12x - 5$ 的单调区间及极值。</p>
+
+<p><strong>2.</strong> 求曲线 $y = xe^{x}$ 的凹凸区间和拐点。</p>
+
+<h4 id="五-1">五、</h4>
+
+<p>证明：$\displaystyle \frac{x}{1 + x} &lt; \ln(1 + x) &lt; x, \space\space(x &gt; 0)$</p>
+
+:ET

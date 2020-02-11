@@ -1,0 +1,7 @@
+I"�<blockquote>
+  <p>原文由 Trisha Gee 在当地时间2019年11月18日发布在 <a href="https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-a-javafx-line-chart/">INTELLIJ IDEA BLOG</a></p>
+</blockquote>
+
+<p>在这一步，我们会看一下如何创建个一JavaFX应用程序显示一个折线图。这个应用程序会用到Spring的特性，类如<a href="https://en.wikipedia.org/wiki/Inversion_of_control">控制反转</a>。</p>
+
+:ET

@@ -1,0 +1,1286 @@
+I"��<h2 id="errata">ERRATA</h2>
+
+<!--more-->
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Chapter</th>
+      <th style="text-align: left">Page</th>
+      <th style="text-align: left">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Introduction</td>
+      <td style="text-align: left">xxxix</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 1: Currently reads: a_b defaults to a null value Should read: $ defaults to 0  In Point number 3: ‘Puma is invalid’ should be ‘Cougar is invalid’ for the explanation for D  ‘E is incorrect’ should be ‘E is correct’  In Point number 4: The first bullet should say ‘starts’ rather than ‘continues’  ‘With y taking a new value’ should be ‘With count taking a new value’  Also, in the second bullet, 1 + 4 should say 1 + 5.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Introduction</td>
+      <td style="text-align: left">xli</td>
+      <td style="text-align: left"><strong>Errata in Text</strong> Point Number 10 currently reads:Reference one points to g1 Should read:Reference two points to g2   Point Number 13 currently reads:D and E are correct Should read:D and E are incorrect</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Introduction</td>
+      <td style="text-align: left">xlii</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  Point number 16: Currently Reads: ‘because an interface may inherit two abstract methods with the same signature’  Should Read: ‘because a class may inherit two abstract methods with the same signature’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">Chapter 1</td>
+      <td style="text-align: left"><strong>Errata in text</strong> eBook Correction Only:  In some of the review questions, the line break is missing between the code that would be in different files. You can assume that each package statement starts a new file.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘each of these five words is in’ should be ‘each of these six words is in’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">8</td>
+      <td style="text-align: left"><strong>Errata in text</strong> The code currently reads: Zoo.mainmethod(Zoo.java:7)  Should Read: Zoo.main(Zoo.java:4)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left"><strong>Errata in text</strong> In the fourth line of the second paragraph, ‘From example’ should be ‘For example’.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">12</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘java.nio.files.Paths’ should be ‘java.nio.file.Paths’ Note:This change should carried out in two instances</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">18</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  The middle code block should have } instead of { on line 5.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">30</td>
+      <td style="text-align: left"><strong>Errata in text</strong> The compiler error message at the top of the page should refer to line 7 rather than line 5.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">31</td>
+      <td style="text-align: left"><strong>Errata in text</strong> At the end of the second paragraph, ‘simplest type it can give the value’ should be ‘simplest value it can give the type’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">53</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  On the first line of table 2.1, ~ should be in the other unary operators section. And on the last line of the table, !=, should be |=.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">54</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In ‘resulting in a value of x of 7. Make sure you understand why the result is 24’, the 7 should be 14</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">54</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In ‘int x = 2 * ((5 + 3) * 4 - 8); This time you would evaluate the addition operator 10 + 3’, the 10 should be 5.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">57</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the second sentence, ‘multiplied’ should be ‘divided’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">61</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  9l should be 9f on the first row</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">62</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: The compound operator will first cast x to a long  Should Read: The compound operator will first cast y to a long</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">64</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Figure 2.1 says ‘true tables’ rather than ‘truth tables’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">69</td>
+      <td style="text-align: left"><strong>Errata in text</strong> ‘block of statement’ should be ‘block of statements’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">71</td>
+      <td style="text-align: left"><strong>Errata in text</strong> The first code example shouldn’t have ‘final’ so the ternary operator is equivalent.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">72</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Remove ‘As of Java 7’ from the first sentence</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">73</td>
+      <td style="text-align: left"><strong>Text Correction</strong> ‘int’ and ‘Integer’ is listed twice in the bulleted list.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">82</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the first example on the page, System.out.println(x) should be removed.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">82</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the first example, ‘y and z were both long’ should be ‘In the multiple terms example, y and z were both long’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">83</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Figure 2.8 says ‘semicolon’ rather than ‘colon’ when pointing to a colon</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">83</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In Figure 2.8, the title should be ‘enhanced for-each statement’ rather than ‘enhancement for statement’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">86</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  values[i]-values[i-1] should be (values[i]-values[i-1]) + “,”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">91</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In table 2.5, the second table header should be ‘Allows unlabeled break’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">96</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 8: Choice E should be changed to ‘None of the above’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">107</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  int indexOf(char ch) should be int indexOf(int ch)  and  int indexOf(char ch, index, fromIndex) should be int indexOf(int ch, int fromIndex)  int indexOf(String str, index fromIndex) should be int indexOf(String str, int fromIndex).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">107</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘int substring’ should be ‘String substring’ in both substring methods</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">108</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently reads: toLowerCase(String str) Should read: toLowerCase()   Currently Reads: toUpperCase(String str) Should Read: toUpperCase()</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">108</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: because the indexes can be backward  Should Read: because the indexes can’t be backward</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">109</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  boolean equals(String str) should be boolean equals(Object obj) Note: You only have to know about String for the exam</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">111</td>
+      <td style="text-align: left"><strong>Text Correction</strong> Currently reads: Animal Should read: AnimAl</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">111</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the third paragraph, there is a stray quote. “‘C’ should be ‘C’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">115</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  On line 6, the line should have a dash at the end</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">118</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the code example, line 7 should have been t1 == t3.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">120</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  On the first line, ‘set all the elements’ should be ‘all elements are set’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">124</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  import java.util.* should be import java.util.*;</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">124</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Currently Reads: Using the length variable  Should Read: using the length field</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">124</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Currently Reads: \ L System.out.print  Should Read: System.out.print</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">125</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the last paragraph, ‘line 5 searches for the index of 1’ should be ‘line 6’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">126</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the first paragraph, ‘line 3 gave the wrong answer’ should be line 7.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">126</td>
+      <td style="text-align: left"><strong>Errata in equation</strong> Corrections in Book Only:  int numbers = should be int[] numbers =</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">126</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the last paragraph of the Autoboxing section, ‘outputs 1’ should be ‘outputs[1]’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">129</td>
+      <td style="text-align: left"><strong>Errata in equation</strong> Corrections in Book Only:  import java.util.* should be import java.util.*;</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">141</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: public static LocalDateTime of(LocalDate date, LocalTime)  Should Read: public static LocalDateTime of(LocalDate date, LocalTime time)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">141</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Month.January, 32) should be Month.January, 32);</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">143</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  LocalDateTime.of(date2 should be LocalDateTime.of(date</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">146</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  toEpochTime should to toEpochSecond</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">147</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: wrong = Period.ofWeeks(7);  Should Read: wrong = Period.ofWeeks(1);</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">148</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  System.out.println(date.format(DateTimeFormatteer.ISO_LOCAL_DATE)); should have a line break immediately before “System”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">150</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘dd means to include the leading zero for a single-digit month’ should be ‘dd means to include the leading zero for a single-digit day’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">168</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘And since it is optional, you can’t have any of them at all.’ should be ‘And since it is optional, you are allowed to not have any of them at all.’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">170</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: int long() {]  Should Read: int longMethod(){</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">172</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: Walk1() is a valid method declaration without an empty method body.  Should Read: Walk1() is a valid method declaration with an empty method body.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">172</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: public void walk2;  Should Read: public void walk2();</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">173</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: Line 20 calls a vararg parameter two parameters  Should Read: Line 20 calls a vararg method with two parameters.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">179</td>
+      <td style="text-align: left"><strong>Errata in text</strong> ‘Bird is not a subclass of Bird’ should say ‘Bird is not a subclass of Goose’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">181</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Table 4.2 INCORRECT: superclass CORRECT: subclass</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">184</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: public static average  Should Read: public static double average</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">184</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In Table 4.3, the empty ‘How?’ cell should be ‘Not without instantiating the object’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">188</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: 4: newNumber(5)  Should Read: 4: newNumber(num)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">191</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the third paragraph, fifth sentence, ‘numbers’ should be ‘number’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">191</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the first sentence of the overloading methods section, it should say ‘same name’ not ‘same signature’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">192</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: everything other than the method signature can vary for overloaded methods  Should Read: everything other than the method name can vary for overloading methods</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">192</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: public void fly(int numMiles) { System.out.println(“short”);  Should Read: public void fly(int numMiles) { System.out.println(“int”);</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">194</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Insert spaces after the answer text, preferably using double quotes, such as:<code class="highlighter-rouge">    [Start of First paragraph]     The answer is "string object "      [Start of Third paragraph]     The answer is "int long ".      [Middle of Third paragraph]     parameter list,  the output becomes "long long ". </code> (Note the spaces before the second double quotes in each of the three corrections.)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">199</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: When overloading methods, the method name and parameter list needed to match.  Should Read: When overloading methods, the method name needs to match</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">203</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the third sentence ‘lines 4 and 5’ should be ‘lines 4, 5 and 6’ when referring to the static initializer</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">204</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  After ‘output Torchie.’, it should say ‘Line 6 then outputs 1.’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">206</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In Table 4.5, ‘Getter methods begin with is if the property is a boolean’, should be ‘Getter methods begin with is or get if the property is a boolean’  ‘Line 14 doesn’t follow the JavaBeans naming conventions. Since playing is a boolean, the getter must begin with is’ should be ‘Line 14 is correct. SInce playing is a boolean, getter is allowed to begin with get or is’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">209</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘that that’ has a duplicate word on the seventh line</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">210</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Currently Reads: 1: public class TraditionalSearch  Should Read: 1: import java.util.*; public class TraditionalSearch</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">211</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘Java replies’ should be ‘Java relies’.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">211</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  a -&gt; a.canHop(); should be a -&gt; a.canHop()</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">213</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘Lambdas are allowed to access variables’ is in the real world scenario twice. The first sentence should be removed.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">216</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the summary section, (a -&gt; a.equals(b) has an extra open paren. It should be a-&gt; a.equals(b)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">219</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 7: ‘ClassRoom’ should be ‘Classroom’ In the line 6, “Mrs. Anderson” should be “Mrs. Anderson”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">222</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 11: Answers D and E should have an extra space at the end</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">226</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 19: In the choice G, the closing } is missing</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">229</td>
+      <td style="text-align: left"><strong>Errata in text</strong> In Point number 25: 1000L should be 100L. This does not affect the correct answer.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">229</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 25: Answers A through D should have an extra space at the end</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">237</td>
+      <td style="text-align: left"><strong>Errata in text</strong> In the first paragraph after the note, second sentence: Remove “subclass or “ in the sentence.  Updated sentence should read as: “The default package private modifier, which is the lack of any access modifier, indicates the class can be accessed only by a class within the same package”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">239</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘user’ should be ‘use’ in ‘Notice the user of both super() and super(age)’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">246</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  “a method a method” should be “a method”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">247</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  The numbers output should be 50.0 and 70.0, not 50.00 and 70.00</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">249</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘The return type void is not a subclass of int’ is reversed. Swap int and void in the sentence</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">249</td>
+      <td style="text-align: left"><strong>Errata in text</strong> In the last paragraph, ‘on the example’ should be ‘on the exam’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">249</td>
+      <td style="text-align: left"><strong>Errata in Text</strong> Currently reads:’constructor to a constructor’ Should read: ‘method to a method’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">254</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ParentClassName.method() should be super.method()</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">261</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the first sentence, ‘brackets’ should be ‘braces’.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">263</td>
+      <td style="text-align: left"><strong>Errata in text</strong> The second to last sentence in the second paragraph should read ‘The key point is that the first concrete class to extend the abstract class must implement all inherited abstract metthods’.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">265</td>
+      <td style="text-align: left"><strong>Errata in text</strong> In the First numbered list entitled “Abstract Class Definition Rules”, item #3:  Add ‘protected’ to the list of items in the sentence. The words, private/protected/final - should use Inline Code font.   Updated sentence should read as:  “Abstract classes may not be marked as private, protected, or final.”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">267</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Point number 4 should be - All top-level interfaces areassumed to have public or default access. They are assumed to be abstract whether this keyword is used or not. Therefore, making a method private, protected or final will trigger a compiler error as it is incompatible with these assumptions.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">269</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘using the extend keyword’ should be ‘using the extends keyword’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">272</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  The second Bear class should have //DOES NOT COMPILE on line 1 as well.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">274</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘The compile will’ should be ‘The compiler will’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">285</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  At the bottom of the page, the coding ‘Feeding reptile’ should be ‘Feeding:’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">276</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  At the bottom of the page, ‘the following class’ should say ‘the following interface’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">291</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 2: Choice E should reference line 7, not line 8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">294</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 10: In choice C, ‘extend’ should be ‘extends’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">295</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 13: The { is missing on line 1 of the provided code</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">301</td>
+      <td style="text-align: left"><strong>Errata in Text</strong> Currently reads:’at mainmethod.Zoo.main(Zoo.java:7)’ Should read: ‘at Zoo.main(Zoo.java:4)’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">6</td>
+      <td style="text-align: left">312</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  “There aren’t any, so the main method throws that new exception” should be “This exception is caught on line 23.”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">6</td>
+      <td style="text-align: left">313</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  Lines 35, 37 and 42 should have a space before the final quote on the line</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">6</td>
+      <td style="text-align: left">314</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  In the ClassCastException section, ‘cast an exception to a subclass’ should be ‘cast an object to a subclass’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">6</td>
+      <td style="text-align: left">317</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book Only:  ‘Common runtime exceptions’ should be ‘Common checked exceptions’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">335</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 14: In the explanation currently reads: ‘Option B is incorrect because package names are case sensitive’  Should read: ‘Option C is incorrect because package names are case sensitive’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">338</td>
+      <td style="text-align: left"><strong>Errata in text</strong> In Point number 14: In the explanation currently reads: ‘The value of result is computed by adding 4 to the original value of 8’  Should Read: ‘The value of result is computed by adding 8 to the original value of 4’   In Point number 18: The answer should be B (not A)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">338</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  Corrections in Book and Online:  In Point number 17: The explanation should say ‘keep going remains true’ rather than ‘keep going is false’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">339</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 2: The explanation should say ‘Line 8 also compares references but is true since both references point to the object from the string pool. Finally, line 9 compares one object from the string pool with one that was explicitly constructed and returns false.’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">340</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 10: The explanation should say ‘The if statement on line 18 returns true because’ rather than ‘The if statement on line 18 returns true’   In Point number 4: In the explanation, abbbaa has an extra b. There should only be two b’s.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">341</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 14:  The explanation should say ‘Option B does not reverse the string’ rather than ‘Option B is a nice distraction resulting avaJ’  The explanation should say ‘starting with 0’ rather than ‘starting with 1’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">342</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 26: The explanation should say ‘The code does compile’ rather than ‘The code does not compile’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Appendix A</td>
+      <td style="text-align: left">344</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 9:  A,C,E. Options B and D are incorrect because they don’t follow the naming convention of beginning with get/is/set. Options C and E follow normal getter and setter conventions. Option A is correct, but the book doesn’t explain this and is out of scope for the exam so give yourself credit if you answered C and E.   Note: The ‘get/is/set’ within the explanation should be styled as Inline Code.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">344</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 10: should say ‘swing ‘ instead of ‘swing’ (missing space)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">344</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  We autobox to objects so it should say ‘can be autoboxed to a Boolean’ rather than ‘boolean’ and ‘autoboxed to a Double’ rather than ‘double’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">344</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 17: ‘pass by reference’ should be ‘pass by value’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">345</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 23: In the explanation, ‘created on line 4’ should be ‘created on line 12’ and ‘created on line 5’ should be ‘created on line 13’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">346</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 2: The last sentence of the explanation should be removed</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">347</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 8: In the first sentence of the explanation, ‘public and static’ should be ‘public, static and final’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">347</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 3: ‘CanHope’ should be ‘CanHop’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">348</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 18: In the explanation, ‘since int is not a subclass of String’ should be ‘since String is not a subclass of int’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">350</td>
+      <td style="text-align: left"><strong>Errata in text</strong> Corrections in Book and Online:  In Point number 8: ‘try try’ should be ‘the try’</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="作者博客的非官方errata">作者博客的非官方Errata</h3>
+
+<p>作者的博客也有个页面维护了包括WILEY官方和读者提供的非官方Errata，地址在 <a href="https://www.selikoff.net/java-oca-8-programmer-i-study-guide/">https://www.selikoff.net/java-oca-8-programmer-i-study-guide/ </a></p>
+
+:ET

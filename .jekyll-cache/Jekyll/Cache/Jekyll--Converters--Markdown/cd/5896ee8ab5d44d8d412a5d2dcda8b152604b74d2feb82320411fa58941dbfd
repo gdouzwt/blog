@@ -1,0 +1,24 @@
+I"�<h5 id="起初">起初</h5>
+
+<p>编写程序，对输入的一个整数，按相反顺序输出该数。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ReverseInt.java</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReverseInt</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"请输入一个整数："</span><span class="o">);</span>
+		<span class="nc">Scanner</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="nc">String</span> <span class="n">value</span> <span class="o">=</span> <span class="s">""</span> <span class="o">+</span> <span class="n">input</span><span class="o">.</span><span class="na">nextBigInteger</span><span class="o">();</span>
+		<span class="n">input</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="nc">String</span> <span class="n">reversed</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+			<span class="n">reversed</span> <span class="o">=</span> <span class="n">reversed</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">reversed</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>当时手写代码，<code class="highlighter-rouge">for</code> 循环的控制条件边界写错了，当时写成了 <code class="highlighter-rouge">for (int i = value.length(); i &gt; 0; i--)</code>  结果数组越界了。应该是 <code class="highlighter-rouge">for (int i = value.length() - 1; i &gt;= 0; i--)</code> 的。</p>
+
+<p>换成 <code class="highlighter-rouge">input.nextBigInteger();</code> 好一点。</p>
+:ET

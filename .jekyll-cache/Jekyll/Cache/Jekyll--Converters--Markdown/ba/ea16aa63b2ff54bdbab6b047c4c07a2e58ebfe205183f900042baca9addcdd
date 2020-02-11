@@ -1,0 +1,7 @@
+I"}<h3 id="在-windows-测试">在 Windows 测试</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jpackage --type exe --name javafx-library --description "Demo of jpackage" --vendor "Zhao Wentao" --app-version 0.0.1 --input input --dest output --main-jar app.jar --win-shortcut --win-menu
+</code></pre></div></div>
+
+<p>需要 Wix Toolsets</p>
+:ET

@@ -1,0 +1,35 @@
+I"�<p>LineageOS Android Distribution https://lineageos.org/</p>
+
+<p>https://download.lineageos.org/extras</p>
+
+<p>https://wiki.lineageos.org/devices/mido/install</p>
+
+<p>Resurrection Remix OS https://www.resurrectionremix.com/</p>
+
+<p>mido https://get.resurrectionremix.com/?dir=mido</p>
+
+<p><a href="https://twrp.me/">TeamWin - TWRP</a></p>
+
+<h3 id="download-twrp-331-0-midoimg"><a href="https://dl.twrp.me/mido/twrp-3.3.1-0-mido.img">Download twrp-3.3.1-0-mido.img</a></h3>
+
+<p>OpenGAPPS</p>
+
+<p>https://opengapps.org/#aboutsection</p>
+
+<p>音量键下 + 开机键进入recovery，然后输入以下命令：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fastboot flash recovery twrp-3.3.1-0-mido.img
+</code></pre></div></div>
+
+<p>接着</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fastboot boot twrp-3.3.1-0-mido.img
+</code></pre></div></div>
+
+<p>一番wipe 之后，sideload，使用以下命令</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb sideload lineage-16.0-20191215-nightly-mido-signed.zip
+</code></pre></div></div>
+
+<p>明天早详细整理</p>
+:ET

@@ -1,0 +1,9 @@
+I"�<blockquote>
+  <p>原文由 Trisha Gee 在当地时间2019年11月29日发布在 <a href="https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-displaying-reactive-data/">INTELLIJ IDEA BLOG</a></p>
+</blockquote>
+
+<p>在这一节，我们看一下如何连接JavaFX折线图到Kotlin Spring Boot服务以实时显示股票价格数据。</p>
+
+<p>在第四步，我们创建了一个JavaFX Spring Boot应用程序显示一个空的折线图。在上一步（第五步），我们整合了WebClientStockClient去连接到股票价格服务。在这一步我们要让折线图实时显示来自Kotlin Spring Boot服务的股票价格数据。</p>
+
+:ET

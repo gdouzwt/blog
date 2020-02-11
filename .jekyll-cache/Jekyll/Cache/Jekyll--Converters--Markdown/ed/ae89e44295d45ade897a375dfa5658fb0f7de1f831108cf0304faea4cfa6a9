@@ -1,0 +1,25 @@
+I"S<h1 id="java是值传递">Java是值传递</h1>
+
+<p>在一本Java面试参考书里面看到一个题目，有如下代码：</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">change</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">,</span> <span class="kt">char</span><span class="o">[]</span> <span class="n">ch</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">str</span> <span class="o">=</span> <span class="s">"test ok"</span><span class="o">;</span>
+        <span class="n">ch</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'g'</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"good"</span><span class="o">);</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">ch</span> <span class="o">=</span> <span class="o">{</span><span class="sc">'a'</span><span class="o">,</span> <span class="sc">'b'</span><span class="o">,</span> <span class="sc">'c'</span><span class="o">};</span>
+        <span class="nc">Test</span> <span class="n">ex</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Test</span><span class="o">();</span>
+        <span class="n">ex</span><span class="o">.</span><span class="na">change</span><span class="o">(</span><span class="n">str</span><span class="o">,</span> <span class="n">ch</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">str</span> <span class="o">+</span> <span class="s">" and "</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">ch</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>问上面程序运行的结果是（）<br />
+A. good and abc<br />
+B. good and gbc<br />
+C. test ok and abc<br />
+D. test ok and gbc</p>
+:ET

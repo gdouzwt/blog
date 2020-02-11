@@ -1,0 +1,9 @@
+I"I<blockquote>
+  <p>原文由 Trisha Gee 在当地时间2019年12月16日发布在 <a href="https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-kotlin-rsocket-server/">INTELLIJ IDEA BLOG</a></p>
+</blockquote>
+
+<p>在这一节，我们使用Spring Profiles让应用程序决定使用哪个客户端（使用服务端发送事件的 WebClient，或 RSocket）连接到Kotlin Spring Boot股票价格服务。</p>
+
+<p>现在我们有了一个RSocket客户端，可以让我们连接到我们的RSocket服务器，我们想在我们的JavaFX应用程序中使用它。</p>
+
+:ET

@@ -1,0 +1,81 @@
+I"�<p>水密舱壁模式是一类容错的应用程序设计。在水密舱壁模式架构中，应用程序的个组成元素被分隔到隔舱中，这样一旦其中一个出故障，其它部分仍能够运行。这是命名来自船体当中的分隔区域（水密舱壁）。如果一艘船的水密隔舱坏了，那么只是受损部位会进水（其它部分被隔开了），这样能够防止沉船。</p>
+
+<p><img src="/img/Compartments_and_watertight_subdivision_of_a_ship's_hull_(Seaman's_Pocket-Book,_1943).jpg" alt="水密壁舱" /> <!--more--></p>
+
+<h2 id="场景与问题">场景与问题</h2>
+
+<p>一个基于云的应用程序可能包括多个服务，每个服务可能有一个或者多个消费者。一个服务超负荷或者出故障会影响到这个服务的所有消费者。而且，一个消费者可能同时对多个服务发起请求，每个请求都占用着资源。当消费者向一个错误配置的服务或无反应的服务发起请求，那么客户端请求所占用的资源可能不能及时地释放。随着对服务的请求继续发起，此类资源可能会被耗尽。例如，客户端连接池可能会耗尽。在那情况下，消费者对于其它服务的请求会受到影响。最终导致消费者不仅没法再对原来无响应的服务发起请求，而且也不能对其它服务发起请求了。同样的资源耗尽问题也影响着有多个消费者的服务。来自一个客户端的大量请求可能会耗尽服务可用的资源。其它消费者就没有办法再消费服务，导致雪崩故障效应。</p>
+
+<h2 id="解决方案">解决方案</h2>
+
+<p>将服务实例按照消费者的负载和可用性要求分为不同的组。 这种设计有助于隔离故障，并允许你在即使是故障情况下仍能为部分消费者维持服务功能。</p>
+
+<p>一个消费者同样也可以分区资源，服务调用间资源互不影响。（即调用某个服务的资源不会影响到用于调用另一个服务的资源。 ） 例如，一个需要调用多个服务的消费者可能会为每个服务指定一个连接池。如果一个服务开始出故障，那只会影响到指定给那个服务的连接池，而消费者仍然可以继续使用其它服务。</p>
+
+<p>这种模式的好处有以下几点：</p>
+
+<ul>
+  <li>将消费者和服务从雪崩故障中隔离开来。一个影响到一个消费者或服务的问题可以被隔离在它自己的水密舱壁里，防止解决方案整体失败。</li>
+  <li>能让你在发生故障的情况下保留部分功能。其它服务和应用程序功能能够继续运行。</li>
+  <li>可以让你部署能为消费者应用提供不同服务质量的服务。优先级高的消费者池可以配置使用高优先级的服务。</li>
+</ul>
+
+<p>下面的图展示围绕调用独立服务的连接池构造的水密舱壁。如果服务A（Service A）出故障或者其它毛病，它的连接池已经隔开了，所以只有使用了指派给服务A的线程池的工作负荷（workload）会受到影响。而使用服务B和C的工作负荷没受影响，能够继续不间断运行。</p>
+
+<p><img src="/img/bulkhead-1.png" alt="First diagram of the Bulkhead pattern" /></p>
+
+<p>下一个图展示了多个客户端调用一个服务。每个客户端分别被指派一个服务实例。 客户端 1（Client 1）发起太多请求了并且压垮了它的服务实例。因为每个服务实例都是分别隔离开的，其它的客户端可以继续发起请求。</p>
+
+<p><img src="/img/bulkhead-2.png" alt="First diagram of the Bulkhead pattern" /></p>
+
+<h2 id="问题与思考">问题与思考</h2>
+
+<ul>
+  <li>根据业务以及应用程序的技术性需求定义分区。</li>
+  <li>当将服务或消费者分区到水密舱壁，应考虑技术上能提供的隔离级别，也要考虑开销成本，性能以及可维护性。</li>
+  <li>考虑将水密舱壁模式与重试、断路器还有节流模式结合起来实现更加周密的故障处理机制。</li>
+  <li>当将消费者分区到水密舱壁，考虑使用进程，线程池以及信号量。像Netflix Hystrix还有Polly的项目提供了框架用于创建消费者水密舱壁。</li>
+  <li>当将服务分区到水密舱壁，考虑将它们部署到独立的虚拟机，容器或进程。容器在资源隔离和相对低开销方面提供了一个好的平衡点。</li>
+  <li>使用异步消息通信的服务可以通过不同的队列隔离开来。每个队列可以有一组专用的实例处理消息，或者一个单组实例，使用算法出队和分发处理。</li>
+  <li>确定水密舱壁的粒度级别。例如，如果你想在分区上放租户，你可以将每个租户放到独立的分区，或者将几个租户放到一个分区。</li>
+  <li>监控每个分区的性能和服务水平协议（Service Level Agreement）</li>
+</ul>
+
+<h2 id="何时使用这种模式">何时使用这种模式</h2>
+
+<p>这种模式适用于：</p>
+
+<ul>
+  <li>隔离用于消费一系列后端服务的资源，尤其是即使其中一个服务无响应，应用程序能够提供某些级别的功能的情况。</li>
+  <li>将重要的消费者与普通消费者隔离开。</li>
+  <li>防止应用程序发生雪崩故障。</li>
+</ul>
+
+<p>这种模式不适用于：</p>
+
+<ul>
+  <li>项目中不能接受对资源的低效利用。</li>
+  <li>没有必要增加复杂度的情况。</li>
+</ul>
+
+<h2 id="例子">例子</h2>
+
+<p>下面的Kubernetes配置文件创建了一个隔离的容器用于运行单个服务，定义了它自己的CPU和内存资源以及限额。</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">drone-management</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">drone-management-container</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">drone-service</span>
+    <span class="na">resources</span><span class="pi">:</span>
+      <span class="na">requests</span><span class="pi">:</span>
+        <span class="na">memory</span><span class="pi">:</span> <span class="s2">"</span><span class="s">64Mi"</span>
+        <span class="na">cpu</span><span class="pi">:</span> <span class="s2">"</span><span class="s">250m"</span>
+      <span class="na">limits</span><span class="pi">:</span>
+        <span class="na">memory</span><span class="pi">:</span> <span class="s2">"</span><span class="s">128Mi"</span>
+        <span class="na">cpu</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1"</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,119 @@
+I"<h1 id="a">A</h1>
+
+<h4 id="一求下列极限5-x-4--20-分">一、求下列极限（5 X 4 = 20 分）</h4>
+
+<p><strong>1.</strong>  $\displaystyle \lim_{x\to\infty}(\frac{2x+3}{2x-3})^{3x+2}$</p>
+
+<p><strong>2.</strong>  $\displaystyle\lim_{x\to0} \frac{x-\arcsin x}{\sin x^3}$</p>
+
+<p><strong>3.</strong>  $\displaystyle \lim_{x \to 0} (1 - \frac{x^2}{2})^{\frac{1}{\sin^2 x}}$</p>
+
+<p><strong>4.</strong>  $\displaystyle\lim_{x\to x^{0^+}} \frac{\int_{0}^{x^2}t^{\frac{3}{2}}dt}{\int_{0}^{x}t(t-\sin t)dt}$</p>
+
+<!--more-->
+
+<h4 id="二">二、</h4>
+
+<p>求函数 $\displaystyle f(x) = \frac{x - 1}{x^2 - 3x + 2}$ 的间断点并判别其类型。（6 分）</p>
+
+<h4 id="三">三、</h4>
+
+<p>求下列导数或微分 （6 X 4 = 24 分）</p>
+
+<p><strong>1.</strong> 设 $\displaystyle y = \ln \cos e^{2x}$， 求 $\displaystyle \frac{dy}{dx}$ 。</p>
+
+<p><strong>2.</strong> 设函数 $\displaystyle  y = \arcsin \sqrt{1 -x^2}$，求 $dy$ .</p>
+
+<p><strong>3.</strong> 求由方程 $\ln \sqrt{x^2 + y^2} = \arcsin \sqrt{1 - x^2}$， 求 $dy$ .</p>
+
+<p><strong>4.</strong> 设 <script type="math/tex">\displaystyle \begin{cases} y = \ln(1+t^2) \\ x = \arctan t \end{cases}</script>，求 $\displaystyle \frac{d^2 y}{d x^2}$ 。</p>
+
+<h4 id="四计算下列积分--5-x-4--20-分">四、计算下列积分 （ 5 X 4 = 20 分）</h4>
+
+<p><strong>1.</strong>  $\displaystyle \int \frac{x^2}{1-2x^3}dx$</p>
+
+<p><strong>2.</strong> $\displaystyle\int x^2 \arctan x dx$</p>
+
+<p><strong>3.</strong> $\displaystyle \int_{0}^{1}x^2 \sqrt{1 - x^2}dx$.</p>
+
+<p><strong>4.</strong> $\displaystyle \int_{0}^{+\infty}\frac{x}{(1 + x^2)^2}dx$</p>
+
+<h4 id="五">五、</h4>
+
+<p>证明方程 $\displaystyle \ln x = \frac{x}{e} - 1$ 在区间 $(e^{-1}, e^3)$ 内至少有一个实根。</p>
+
+<h4 id="六">六、</h4>
+
+<p>求曲线 $\displaystyle y = (2x - 5) \sqrt [3] {x^2}$ 的凹凸区间和拐点。</p>
+
+<h4 id="七">七、</h4>
+
+<p>用拉格朗日中值定理证明不等式：</p>
+
+<p>$nb^{n-1}(a-b) \lt a^n - b^n \lt na^{n-1}(a - b)$ ，其中 $0 \lt b \lt a, n \gt 1$。</p>
+
+<h4 id="八">八、</h4>
+
+<p>求由 $y = x^3, x = 2, y = 0$ 所围成图形的面积，并求该图形绕 $x$ 轴旋转一周所得旋转体的体积。</p>
+
+<hr />
+
+<h1 id="b">B</h1>
+
+<h4 id="一求下列极限5-x-4--20-分-1">一、求下列极限（5 X 4 = 20 分）</h4>
+
+<p><strong>1.</strong>  $\displaystyle \lim_{x\to\infty}(\frac{3x+2}{3x-1})^{2x}$</p>
+
+<p><strong>2.</strong>  $\displaystyle\lim_{x\to0} (\frac{1}{x} - \frac{1}{e^x - 1})$</p>
+
+<p><strong>3.</strong>  $\displaystyle \lim_{x \to 1} x^{\frac{1}{1-x}}$</p>
+
+<p><strong>4.</strong>  $\displaystyle\lim_{x\to x^{0^+}} \frac{(\int_{0}^{x}\cos t^2 dt)^2}{\int_{0}^{x}\sin t^2 dt}$</p>
+
+<!--more-->
+
+<h4 id="二-1">二、</h4>
+
+<p>求函数 $\displaystyle f(x) = \frac{x - 1}{x^2 - 5x + 4}$ 的间断点并判别其类型。（6 分）</p>
+
+<h4 id="三-1">三、</h4>
+
+<p>求下列导数或微分 （6 X 4 = 24 分）</p>
+
+<p><strong>1.</strong> 设 $\displaystyle y = \ln \cos e^{3x}$， 求 $\displaystyle \frac{dy}{dx}$ 。</p>
+
+<p><strong>2.</strong> 设函数 $\displaystyle  y = \sqrt [a]{x}+\sqrt[x]{a}+\sqrt[x]{x}$，求 $dy$ .</p>
+
+<p><strong>3.</strong> 求由方程 $e^{xy} + y\ln x = \sin 2x$ 所确定的隐函数 $y  = y(x)$ 的导数 $\displaystyle \frac{dy}{dx}$ .</p>
+
+<p><strong>4.</strong> 设 <script type="math/tex">\displaystyle \begin{cases} x = e^t \\ y = \sin t \end{cases}</script>，求 $\displaystyle \frac{d^2 y}{d x^2}$ 。</p>
+
+<h4 id="四计算下列积分--5-x-4--20-分-1">四、计算下列积分 （ 5 X 4 = 20 分）</h4>
+
+<p><strong>1.</strong>  $\displaystyle \int \frac{1}{1-\cos 2x}dx$</p>
+
+<p><strong>2.</strong> $\displaystyle\int x \ln^2 x dx$</p>
+
+<p><strong>3.</strong> $\displaystyle \int_{0}^{1}x^3 \sqrt{1 - x^2}dx$.</p>
+
+<p><strong>4.</strong> $\displaystyle \int_{0}^{+\infty}\frac{1}{(1 + x)^3}dx$</p>
+
+<h4 id="五-1">五、</h4>
+
+<p>证明方程 $\displaystyle x\ln x = 2$ 在区间 $(1, e)$ 内至少有一个实根。</p>
+
+<h4 id="六-1">六、</h4>
+
+<p>求曲线 $\displaystyle y = 2x^3 - 3x^2 - 36x + 25$ 的凹凸区间和拐点。</p>
+
+<h4 id="七-1">七、</h4>
+
+<p>用拉格朗日中值定理证明不等式：</p>
+
+<p>$\displaystyle \frac{a-b}{a} \lt \ln \frac{a}{b} \lt \frac{a-b}{b}$ ，其中 $0 \lt b \lt a$。</p>
+
+<h4 id="八-1">八、</h4>
+
+<p>求由 $y = x^2, y = x, x = 2$ 所围成图形的面积，并求该图形绕 $x$ 轴旋转一周所得旋转体的体积。</p>
+
+:ET

@@ -1,0 +1,10 @@
+I"<h3 id="gof-定义">GoF 定义</h3>
+
+<blockquote>
+  <p>Separate the construction of a complex object from its representation so that the same construction processes can create different representations.</p>
+
+  <p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同表示。（中文版书里的翻译）</p>
+</blockquote>
+
+<p>Builder 在《设计模式》的中文版里边翻译为“生成器”，那我就按这个译法吧。生成器模式属于创建型模式（Creational patterns），它关注如何创建对象。当需要构建的对象比较复杂，由多个部分组成，也就说它的构造方法会有很多参数，就可以考虑使用这种模式。生成器模式认为对象的构建机制应该独立于它的组成部分（也就是属性），对象的<strong>构建过程</strong>不关注对象的<strong>组成部分</strong>。所以同一个构建过程可以构建出不同表示（属性）的对象（通过<strong>改变构建步骤</strong>）。</p>
+:ET

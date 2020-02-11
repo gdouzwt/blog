@@ -1,0 +1,27 @@
+I"�<h2 id="输入数据到整型数组">输入数据到整型数组</h2>
+
+<h4 id="问题">问题</h4>
+
+<p>从控制台标准输入读取键盘输入的数，存放到整型数组里面。数组的长度不确定，这种情况怎么处理？<!--more--></p>
+
+<h4 id="解决方法">解决方法</h4>
+
+<p>先输入字符串数组，中间按照某种模式（正则表达式）分隔开，得到字符串数组。取字符串数组(String[])的长度作为整型数组（int[])的初始长度，然后将字符串数组(String[])转化为整型数组。 Java 代码实现如下：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+	<span class="nc">Scanner</span> <span class="n">stdIn</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+    
+    <span class="nc">String</span><span class="o">[]</span> <span class="n">strArray</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">strArray</span> <span class="o">=</span> <span class="n">stdIn</span><span class="o">.</span><span class="na">nextLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">"\\s*,\\s*"</span><span class="o">);</span>  <span class="c1">// ','分割，前后可以有空格</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">intArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">strArray</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span> <span class="n">strArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">intArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">strArray</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="结束">结束</h4>
+
+<p>基本可以满足要求，如果想到更加方便，简洁的方式再更新。</p>
+
+:ET

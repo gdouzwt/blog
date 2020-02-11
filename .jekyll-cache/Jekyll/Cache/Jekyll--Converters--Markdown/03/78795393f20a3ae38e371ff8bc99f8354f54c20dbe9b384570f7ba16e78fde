@@ -1,0 +1,268 @@
+I"�i<blockquote>
+  <p>原文由 Trisha Gee 在2019年12月13日发布在 <a href="https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-java-rsocket-client/">INTELLIJ IDEA BLOG</a></p>
+</blockquote>
+
+<p>在这一节，我们添加一个RSocket客户端，用来连接上一节创建的RSocket服务器。</p>
+
+<p>现在，我们有了一个使用Spring WebClient的端到端应用程序。在上一节中，我们介绍了一个新的RSocket服务器，在这节，我们将看到如何创建一个客户端来连接它</p>
+
+<!--more-->
+
+<h3 id="创建一个集成测试">创建一个集成测试</h3>
+
+<p>与<code class="highlighter-rouge">WebClientStockClient</code>一样，我们将通过集成测试来驱动RSocket客户端，测试看起来与<code class="highlighter-rouge">WebClientStockClientIntegrationTest</code>几乎相同。</p>
+
+<ol>
+  <li>所以让我们复制这个测试并将其重命名为<code class="highlighter-rouge">RSocketStockClientIntegrationTest</code>。</li>
+  <li>将变量<code class="highlighter-rouge">WebClientStockClient</code>改为<code class="highlighter-rouge">RSocketStockClient</code>并重命名为<code class="highlighter-rouge">rSocketStockClient</code>。</li>
+  <li>（提示：使用IntelliJ IDEA的rename refactoring来重命名，会将其余地方用到的这个变量都重命名了，不需要查找和替换）。</li>
+  <li>我们知道这不需要WebClient，因为<code class="highlighter-rouge">WebClientStockClient</code>才需要的。移除构造函数参数和字段声明。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">RSocketStockClientIntegrationTest</span> <span class="o">{</span>
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">shouldRetrieveStockPricesFromTheService</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// given</span>
+        <span class="nc">RSocketStockClient</span> <span class="n">rSocketStockClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RSocketStockClient</span><span class="o">();</span>
+ 
+        <span class="c1">// when</span>
+        <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="n">prices</span> <span class="o">=</span> <span class="n">rSocketStockClient</span><span class="o">.</span><span class="na">pricesFor</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">);</span>
+ 
+        <span class="c1">// then</span>
+        <span class="nc">Assertions</span><span class="o">.</span><span class="na">assertNotNull</span><span class="o">(</span><span class="n">prices</span><span class="o">);</span>
+        <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="n">fivePrices</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="na">take</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+        <span class="nc">Assertions</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">fivePrices</span><span class="o">.</span><span class="na">count</span><span class="o">().</span><span class="na">block</span><span class="o">());</span>
+        <span class="nc">Assertions</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">,</span> <span class="n">fivePrices</span><span class="o">.</span><span class="na">blockFirst</span><span class="o">().</span><span class="na">getSymbol</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>（注意：这代码现在还未能通过编译）</p>
+
+<h3 id="创建-rsocket-客户端">创建 RSocket 客户端</h3>
+
+<ol>
+  <li><code class="highlighter-rouge">RSocketStockClient</code>还不存在，让我们创建一个空类。</li>
+  <li>（提示：在红色的<code class="highlighter-rouge">RSocketStockClient</code>代码按下 Alt+Enter会给我们选择创建这个类）</li>
+  <li>测试假定要一个<code class="highlighter-rouge">pricesFor</code>方法，所以在<code class="highlighter-rouge">RSocketStockClient</code>里面创建这个缺少的方法。</li>
+  <li>（提示：在<code class="highlighter-rouge">RSocketStockClient</code>里红色的<code class="highlighter-rouge">pricesFor</code>方法按下Alt+Enter会给我们创建这个方法的选择，并且有正确的方法签名。)</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RSocketStockClient</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="nf">pricesFor</span><span class="o">(</span><span class="nc">String</span> <span class="n">symbol</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="引入-stockclient-接口">引入 StockClient 接口</h3>
+
+<p>当然方法声明看起来跟在<code class="highlighter-rouge">WebClientStockClient</code>里面的一样，所以这是引入接口的好时机，让两个客户端都实现同样的接口。</p>
+
+<ol>
+  <li>创建一个接口<code class="highlighter-rouge">StockClient</code>我们希望<code class="highlighter-rouge">pricesFor</code>方法出现在接口上，因为这个方法在两个客户端类的方法签名一样的。</li>
+  <li>（提示：在<code class="highlighter-rouge">WebClientStockClient</code>上使用IntelliJ IDEA的Extract Interface 功能，可以自动地创建一个带有 <code class="highlighter-rouge">pricesFor</code>方法的接口。）</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">StockClient</span> <span class="o">{</span>
+    <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="nf">pricesFor</span><span class="o">(</span><span class="nc">String</span> <span class="n">symbol</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>确保<code class="highlighter-rouge">WebClientStockClient</code>已经更新为实现新的<code class="highlighter-rouge">StockClient</code>接口了，并且添加了<code class="highlighter-rouge">@Override</code>注解到<code class="highlighter-rouge">pricesFor</code>方法上。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WebClientStockClient</span> <span class="kd">implements</span> <span class="nc">StockClient</span> <span class="o">{</span>
+    <span class="c1">// 这里进行初始化...</span>
+ 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="nf">pricesFor</span><span class="o">(</span><span class="nc">String</span> <span class="n">symbol</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 这里是实现</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>对<code class="highlighter-rouge">RSocketStockClient</code>也是同样的操作</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RSocketStockClient</span> <span class="kd">implements</span> <span class="nc">StockClient</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="nf">pricesFor</span><span class="o">(</span><span class="nc">String</span> <span class="n">symbol</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>目前测试能通过编译，运行它看到不能通过测试。它失败的原因应该是在<code class="highlighter-rouge">assertNotNull</code>断言上，因为我们从<code class="highlighter-rouge">pricesFor</code>方法返回null。</li>
+</ol>
+
+<h3 id="实现rsocket链接">实现RSocket链接</h3>
+
+<p>通常 在测试驱动开发中，我们会采取一些小步骤来使测试通过，然后再有更详细的测试。在本课程中我们将直接进入并实现能用的RSocket客户端。</p>
+
+<ol>
+  <li>在stock-client模块添加一个<a href="https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-rsocket">spring-boot-starter-rsocket</a>依赖到pom.xml文件</li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencies&gt;</span>
+	<span class="nt">&lt;dependency&gt;</span>
+		<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+		<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-webflux<span class="nt">&lt;/artifactId&gt;</span>
+	<span class="nt">&lt;/dependency&gt;</span>
+	<span class="nt">&lt;dependency&gt;</span>
+		<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+		<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-rsocket<span class="nt">&lt;/artifactId&gt;</span>
+	<span class="nt">&lt;/dependency&gt;</span>
+	<span class="c">&lt;!-- more dependencies... --&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>添加一个类型为<code class="highlighter-rouge">RSocketRequester</code>的字段<code class="highlighter-rouge">rSocketRequester</code>到<code class="highlighter-rouge">RSocketStockClient</code>。</li>
+  <li>为它添加一个构造函数参数</li>
+  <li>（提示：IntelliJ IDEA可以为字段自动生构造函数参数）</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RSocketStockClient</span> <span class="kd">implements</span> <span class="nc">StockClient</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">RSocketRequester</span> <span class="n">rSocketRequester</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="nf">RSocketStockClient</span><span class="o">(</span><span class="nc">RSocketRequester</span> <span class="n">rSocketRequester</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rSocketRequester</span> <span class="o">=</span> <span class="n">rSocketRequester</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="c1">// pricesFor 方法...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>在<code class="highlighter-rouge">pricesFor</code>方法，调用<code class="highlighter-rouge">rSocketRequester.route</code>。 对于路由，我们想要使用跟在后端RSocket服务定义的相同，在我们的例子中是“stockPrices”。</li>
+  <li>通过<code class="highlighter-rouge">data</code>方法向服务器发送一个股票代号。</li>
+  <li>我们期望调用返回一个股票价格的<code class="highlighter-rouge">Flux</code>，所以将<code class="highlighter-rouge">StockPrice.class</code>传入到<code class="highlighter-rouge">retrieveFlux</code>方法。</li>
+  <li>返回这些调用<code class="highlighter-rouge">pricesFor</code>方法的结果，而不是<code class="highlighter-rouge">null</code>。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RSocketStockClient</span> <span class="kd">implements</span> <span class="nc">StockClient</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">RSocketRequester</span> <span class="n">rSocketRequester</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="nf">RSocketStockClient</span><span class="o">(</span><span class="nc">RSocketRequester</span> <span class="n">rSocketRequester</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rSocketRequester</span> <span class="o">=</span> <span class="n">rSocketRequester</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="nf">pricesFor</span><span class="o">(</span><span class="nc">String</span> <span class="n">symbol</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">rSocketRequester</span><span class="o">.</span><span class="na">route</span><span class="o">(</span><span class="s">"stockPrices"</span><span class="o">)</span>
+                               <span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="n">symbol</span><span class="o">)</span>
+                               <span class="o">.</span><span class="na">retrieveFlux</span><span class="o">(</span><span class="nc">StockPrice</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="创建一个-rsocketrequester">创建一个 RSocketRequester</h3>
+
+<p>测试代码不能通过编译，因为我们添加了一个<code class="highlighter-rouge">rSocketRequester</code>到构造函数参数，然而在测试里我们没有<code class="highlighter-rouge">RSocketRequester</code>实例。</p>
+
+<ol>
+  <li>在测试里创建一个名为<code class="highlighter-rouge">createRSocketRequester</code>的私有方法，放在上方靠近其它对象初始化的位置。</li>
+  <li>为<code class="highlighter-rouge">RSocketRequester.Builder</code>创建一个字段。如果我们添加<code class="highlighter-rouge">@Autowired</code>注解，Spring将会为我们的测试注入一个实例。</li>
+  <li>要让Spring管理我们的测试，我们需要将它注解为<code class="highlighter-rouge">@SpringBootTest</code>。</li>
+  <li>在<code class="highlighter-rouge">createRSocketRequester</code>里面，使用<code class="highlighter-rouge">rSocketRequester</code>通过TCP连接到我们的RSocket服务器，它运行在localhost的7000端口。</li>
+  <li>调用<code class="highlighter-rouge">block</code>直到连接上。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootTest</span>
+<span class="kd">class</span> <span class="nc">RSocketStockClientIntegrationTest</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">RSocketRequester</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span><span class="o">;</span>
+ 
+    <span class="kd">private</span> <span class="nc">RSocketRequester</span> <span class="nf">createRSocketRequester</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="na">connectTcp</span><span class="o">(</span><span class="s">"localhost"</span><span class="o">,</span> <span class="mi">7000</span><span class="o">).</span><span class="na">block</span><span class="o">();</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">shouldRetrieveStockPricesFromTheService</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// implementation...</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="通过集成测试">通过集成测试</h3>
+
+<p>我们期待这个测试能运行，但我们错过了一些重要的东西。我们发现个错误，说missing a SpringBootConfiguration看起来可能有点令人费解。实际上，这个模块并没有任何SpringBootApplication。因为这是用于作为一个库，给其它应用代码共享代码的，它本身不是一个应用程序。让我们看一种解决方案让测试跑起来。</p>
+
+<ol>
+  <li>在test目录里创建一个类<code class="highlighter-rouge">TestApplication</code>。</li>
+  <li>将它注解为<code class="highlighter-rouge">@SpringBootApplication</code>。</li>
+  <li>重新运行集成测试，所有东西应该按预期启动，并且测试应该通过了。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootApplication</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestApplication</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="使用-stepverifier-进行测试">使用 StepVerifier 进行测试</h3>
+
+<p>一旦测试通过了，我们可以假设客户端已经成功地通过RSocket连接到了服务器，获取一个<code class="highlighter-rouge">Flux</code>的<code class="highlighter-rouge">StockPrice</code>对象，可以去其中的前五个，然后检查第一个是否有正确的股票代码。这是稍微简单的测试响应式应用程序的方式。还有其它的方式，其中一种就是使用StepVerifier使用这种方式，我们可以编写我们期望看到的事件。</p>
+
+<ol>
+  <li>创建一个新的StepVerifier从prices Flux里面取5个价格。</li>
+  <li>使用<a href="https://projectreactor.io/docs/test/release/api/reactor/test/StepVerifier.Step.html#expectNextMatches-java.util.function.Predicate-">expectNextMatches</a>检查所有5个股票价格对应的股票代码是正确的。</li>
+  <li>调用去检查不仅这些期望达到了，并且在这5个之后没有更多的<code class="highlighter-rouge">StockPrice</code>对象了。</li>
+  <li>删除旧的断言（StepVerifier将它们全部替换了）。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">shouldRetrieveStockPricesFromTheService</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// given</span>
+    <span class="nc">RSocketStockClient</span> <span class="n">rSocketStockClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RSocketStockClient</span><span class="o">(</span><span class="n">createRSocketRequester</span><span class="o">());</span>
+ 
+    <span class="c1">// when</span>
+    <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="n">prices</span> <span class="o">=</span> <span class="n">rSocketStockClient</span><span class="o">.</span><span class="na">pricesFor</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">);</span>
+ 
+    <span class="c1">// then</span>
+    <span class="nc">StepVerifier</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">prices</span><span class="o">.</span><span class="na">take</span><span class="o">(</span><span class="mi">5</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">expectNextMatches</span><span class="o">(</span><span class="n">stockPrice</span> <span class="o">-&gt;</span> <span class="n">stockPrice</span><span class="o">.</span><span class="na">getSymbol</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">expectNextMatches</span><span class="o">(</span><span class="n">stockPrice</span> <span class="o">-&gt;</span> <span class="n">stockPrice</span><span class="o">.</span><span class="na">getSymbol</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">expectNextMatches</span><span class="o">(</span><span class="n">stockPrice</span> <span class="o">-&gt;</span> <span class="n">stockPrice</span><span class="o">.</span><span class="na">getSymbol</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">expectNextMatches</span><span class="o">(</span><span class="n">stockPrice</span> <span class="o">-&gt;</span> <span class="n">stockPrice</span><span class="o">.</span><span class="na">getSymbol</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">expectNextMatches</span><span class="o">(</span><span class="n">stockPrice</span> <span class="o">-&gt;</span> <span class="n">stockPrice</span><span class="o">.</span><span class="na">getSymbol</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">verifyComplete</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This approach can support much more than this simple example, and is also very useful for testing time-based publishers like ours. 这种方式可以支持比这个简单例子更多的操作，而且对于测试像我们这种基于时间的发布者很有用。</p>
+
+<h3 id="添加重试退避已经错误处理策略">添加重试退避已经错误处理策略</h3>
+
+<p>我们还有最后一件事要考虑。我们的<code class="highlighter-rouge">WebClientStockClient</code>定义了一个退避重试策略，以及简单的错误处理方法。实际上我们对于<code class="highlighter-rouge">RSocketStockClient</code>也采取同样的方式。</p>
+
+<ol>
+  <li>从<code class="highlighter-rouge">WebClientStockClient</code>复制<code class="highlighter-rouge">retryBackoff</code>和<code class="highlighter-rouge">doOnError</code>步骤并粘贴到 <code class="highlighter-rouge">RSocketStockClient.pricesFor</code>里面。</li>
+  <li>重新运行测试，它应该还能通过的。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Log4j2</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RSocketStockClient</span> <span class="kd">implements</span> <span class="nc">StockClient</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">RSocketRequester</span> <span class="n">rSocketRequester</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="nf">RSocketStockClient</span><span class="o">(</span><span class="nc">RSocketRequester</span> <span class="n">rSocketRequester</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rSocketRequester</span> <span class="o">=</span> <span class="n">rSocketRequester</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Flux</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="nf">pricesFor</span><span class="o">(</span><span class="nc">String</span> <span class="n">symbol</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">rSocketRequester</span><span class="o">.</span><span class="na">route</span><span class="o">(</span><span class="s">"stockPrices"</span><span class="o">)</span>
+                               <span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="n">symbol</span><span class="o">)</span>
+                               <span class="o">.</span><span class="na">retrieveFlux</span><span class="o">(</span><span class="nc">StockPrice</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+                               <span class="o">.</span><span class="na">retryBackoff</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nc">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="nc">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">20</span><span class="o">))</span>
+                               <span class="o">.</span><span class="na">doOnError</span><span class="o">(</span><span class="nc">IOException</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">e</span> <span class="o">-&gt;</span> <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">()));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>现在我们在后端有了发送股票价格的RSocket服务器，以及能够连接到它并查看价格的RSocket客户端。在下一节，我们会看一下如何从使用<code class="highlighter-rouge">WebClientStockClient</code>切换到<code class="highlighter-rouge">RSocketStockClient</code>。</p>
+
+<p><a href="https://github.com/zwt-io/rsb/">全部代码在 GitHub</a>：https://github.com/zwt-io/rsb/</p>
+:ET

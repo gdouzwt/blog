@@ -1,0 +1,21 @@
+I"P<h2 id="lambda-expressions">Lambda Expressions</h2>
+
+<h4 id="introducing-lambda-expressions">Introducing Lambda Expressions</h4>
+
+<h5 id="lambda-expression-基础">Lambda Expression 基础</h5>
+
+<h5 id="函数式接口">函数式接口</h5>
+
+<h5 id="一些函数表达式例子">一些函数表达式例子</h5>
+<p>演示一个简单的 Lambda 表达式</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Demonstrate a simple lambda expression. </span>
+ 
+<span class="c1">// A functional interface. </span>
+<span class="kd">interface</span> <span class="nc">MyNumber</span> <span class="o">{</span> 
+  <span class="kt">double</span> <span class="nf">getValue</span><span class="o">();</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>使用 Lambda 表达式</p>
+:ET

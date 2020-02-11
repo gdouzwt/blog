@@ -1,0 +1,18 @@
+I"(<p>The notation  $x = \ln y$  is a shorthand for the <em>natural logarithm</em> to the base $e$:  $x = \log_{e} y$ . This notation is used throughout mathematics, science, and engineering.</p>
+
+<p>The shorthand notation  $x = \log y$  is sometimes used when the base $b$ remains fixed and is understood from the context. The “understood” base, however, can vary from place to place:</p>
+
+<ul>
+  <li>
+    <p>$x = \log y$  often means  $x = \ln y$  in <strong>mathematics</strong> texts.</p>
+  </li>
+  <li>
+    <p>$x = \log y$  often means  $x = \lg y$  in <strong>science and engineering</strong> texts.</p>
+  </li>
+  <li>
+    <p>$x = \log y$  often means  $x = \log_{2} y$  in <strong>computer science</strong> texts.</p>
+  </li>
+</ul>
+
+<p>Be careful when reading or using  $x = \log y$ .<!--more--></p>
+:ET

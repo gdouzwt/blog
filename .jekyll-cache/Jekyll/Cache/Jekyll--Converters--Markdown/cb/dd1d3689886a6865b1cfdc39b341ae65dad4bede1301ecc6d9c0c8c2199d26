@@ -1,0 +1,129 @@
+I"]<h2 id="concurrency-并发">Concurrency 并发</h2>
+
+<h3 id="synchronized-语句块">Synchronized 语句块</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">synchronizing</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.concurrent.ExecutorService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.Executors</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SheepManager</span> <span class="o">{</span>
+	
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">sheepCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+	
+	<span class="c1">// private void incrementAndReport() {</span>
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">incrementAndReport</span><span class="o">()</span> <span class="o">{</span>
+		<span class="kd">synchronized</span><span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">((++</span><span class="n">sheepCount</span><span class="o">)+</span><span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+		<span class="nc">ExecutorService</span> <span class="n">service</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">service</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+			
+			<span class="nc">SheepManager</span> <span class="n">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SheepManager</span><span class="o">();</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> 
+				<span class="n">service</span><span class="o">.</span><span class="na">submit</span><span class="o">(()-&gt;</span> <span class="n">manager</span><span class="o">.</span><span class="na">incrementAndReport</span><span class="o">());</span>
+			<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+				<span class="k">if</span> <span class="o">(</span><span class="n">service</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">service</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
+			<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>使用 Monitor 或称为 Lock，使用 synchronized 的时候，注意🔒的对象是那个。保证同步，就要去要锁同一个对象。<!--more--></p>
+
+<p>并发集合类</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>类名称</th>
+      <th>接口</th>
+      <th>元素有序？</th>
+      <th>可排序？</th>
+      <th>阻塞？</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ConcurrentHashMap</td>
+      <td>ConcurrentMap</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>ConcurrentLinkedDeque</td>
+      <td>Deque</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>ConcurrentLinkedQueue</td>
+      <td>Queue</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>ConcurrentSkipListMap</td>
+      <td>ConcurrentMap, SortedMap, NavigableMap</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>ConcurrentSkipListSet</td>
+      <td>SortedSet, NavigableSet</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>CopyOnWriteArrayList</td>
+      <td>List</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>CopyOnWriteArraySet</td>
+      <td>Set</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>LinkedBlockingDeque</td>
+      <td>BlockingQueue, BlockingDeque</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>LinkedBlockingQueue</td>
+      <td>BlockingQueue</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="understanding-copyonwrite-collections">Understanding CopyOnWrite Collections</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CopyOnWriteArrayList</span><span class="o">&lt;&gt;(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">52</span><span class="o">));</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">Integer</span> <span class="nl">item:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">item</span><span class="o">+</span><span class="s">" "</span><span class="o">);</span>
+	<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">9</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Size: "</span><span class="o">+</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+</code></pre></div></div>
+
+:ET

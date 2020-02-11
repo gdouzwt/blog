@@ -1,0 +1,177 @@
+I"�O<blockquote>
+  <p>原文由 Trisha Gee 在当地时间2019年11月29日发布在 <a href="https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-displaying-reactive-data/">INTELLIJ IDEA BLOG</a></p>
+</blockquote>
+
+<p>在这一节，我们看一下如何连接JavaFX折线图到Kotlin Spring Boot服务以实时显示股票价格数据。</p>
+
+<p>在第四步，我们创建了一个JavaFX Spring Boot应用程序显示一个空的折线图。在上一步（第五步），我们整合了WebClientStockClient去连接到股票价格服务。在这一步我们要让折线图实时显示来自Kotlin Spring Boot服务的股票价格数据。</p>
+
+<!--more-->
+
+<h3 id="设置好图表数据">设置好图表数据</h3>
+
+<ol>
+  <li>在stock-ui模块的<code class="highlighter-rouge">ChartController</code>，创建一个<code class="highlighter-rouge">initialize</code>方法，这个方法会在FXML的字段被值填充完成后被调用。这个<code class="highlighter-rouge">initialize</code>方法会设置好图表数据的来源。</li>
+  <li>在图表上调用<code class="highlighter-rouge">setData</code>方法并创建一个局部变量<code class="highlighter-rouge">data</code>用于保存系列数据列表，用于传入到这个方法。</li>
+  <li>创建一个<code class="highlighter-rouge">Series</code>添加到data列表，并传入到<code class="highlighter-rouge">seriesData</code>。</li>
+  <li>创建<code class="highlighter-rouge">seriesData</code>作为一个字段，即空列表，使用<code class="highlighter-rouge">FXCollections.observableArrayList()</code>。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChartController</span> <span class="o">{</span>
+    <span class="nd">@FXML</span>
+    <span class="kd">private</span> <span class="nc">LineChart</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;</span> <span class="n">chart</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">WebClientStockClient</span> <span class="n">webClientStockClient</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">ObservableList</span><span class="o">&lt;</span><span class="nc">Data</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;&gt;</span> <span class="n">seriesData</span> <span class="o">=</span> <span class="nc">FXCollections</span><span class="o">.</span><span class="na">observableArrayList</span><span class="o">();</span>
+ 
+    <span class="kd">public</span> <span class="nf">ChartController</span><span class="o">(</span><span class="nc">WebClientStockClient</span> <span class="n">webClientStockClient</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">webClientStockClient</span> <span class="o">=</span> <span class="n">webClientStockClient</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@FXML</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">ObservableList</span><span class="o">&lt;</span><span class="nc">XYChart</span><span class="o">.</span><span class="na">Series</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="nc">FXCollections</span><span class="o">.</span><span class="na">observableArrayList</span><span class="o">();</span>
+        <span class="n">data</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">XYChart</span><span class="o">.</span><span class="na">Series</span><span class="o">&lt;&gt;(</span><span class="n">seriesData</span><span class="o">));</span>
+        <span class="n">chart</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="订阅到价格数据">订阅到价格数据</h3>
+
+<p>我们需要为图表从某处获取数据。这就是我们为什么添加了<code class="highlighter-rouge">webClientStockClient</code>。</p>
+
+<ol>
+  <li>在<code class="highlighter-rouge">initialize</code>方法内调用<code class="highlighter-rouge">webClientStockClient</code>的<code class="highlighter-rouge">pricesFor</code>方法，并传入用于获取股票价格的代号。现在我们可以暂时将这个值设为“SYMBOL”。</li>
+  <li>我们需要将一些东西订阅到由这个调用返回的<code class="highlighter-rouge">Flux</code>。最简单的做法是调用<code class="highlighter-rouge">subscribe</code>并传入<code class="highlighter-rouge">this</code>。</li>
+  <li>让<code class="highlighter-rouge">ChartController</code>实现<code class="highlighter-rouge">java.util.function.Consumer</code>并让它消费<code class="highlighter-rouge">StockPrice</code>。</li>
+  <li>实现<code class="highlighter-rouge">Consumer</code>里边的<code class="highlighter-rouge">accept</code>方法。</li>
+  <li>（提示：我们可以通过在类声明上红色的字按下Alt+Enter并选择”implement methods”让IntelliJ IDEA 实现满足接口所需的方法）。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChartController</span> <span class="kd">implements</span> <span class="nc">Consumer</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="o">{</span>
+ 
+    <span class="c1">// fields and constructor here...</span>
+ 
+    <span class="nd">@FXML</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">ObservableList</span><span class="o">&lt;</span><span class="nc">XYChart</span><span class="o">.</span><span class="na">Series</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="nc">FXCollections</span><span class="o">.</span><span class="na">observableArrayList</span><span class="o">();</span>
+        <span class="n">data</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">XYChart</span><span class="o">.</span><span class="na">Series</span><span class="o">&lt;&gt;(</span><span class="n">seriesData</span><span class="o">));</span>
+        <span class="n">chart</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+ 
+        <span class="n">webClientStockClient</span><span class="o">.</span><span class="na">pricesFor</span><span class="o">(</span><span class="s">"SYMBOL"</span><span class="o">).</span><span class="na">subscribe</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">accept</span><span class="o">(</span><span class="nc">StockPrice</span> <span class="n">stockPrice</span><span class="o">)</span> <span class="o">{</span>
+        
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="显示价格数据">显示价格数据</h3>
+
+<p>我们要决定当获取到<code class="highlighter-rouge">StockPrice</code>的时候要做什么。我们从股票价格数据里面添加适当的值到图表的系列数据上。</p>
+
+<ol>
+  <li>在<code class="highlighter-rouge">accept</code>内，已新的Data实例调用<code class="highlighter-rouge">seriesData.add</code>。</li>
+  <li>对于Data的y值，我们可以从股票价格的时间获取，然后取其中的“秒”值。这是<code class="highlighter-rouge">int</code>类型，它需要转换为 <code class="highlighter-rouge">String</code>，因此放在一个<code class="highlighter-rouge">String.valueOf</code>调用里。</li>
+  <li>（提示：我们可以用后缀补全参数去将一个表达式包含在一个方法调用里以简化对<code class="highlighter-rouge">String.valueOf</code>的调用，当我们已经输入了表达式）。</li>
+  <li>对于x值，我们使用来自股票价格的<code class="highlighter-rouge">price</code>值。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">accept</span><span class="o">(</span><span class="nc">StockPrice</span> <span class="n">stockPrice</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">seriesData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">XYChart</span><span class="o">.</span><span class="na">Data</span><span class="o">&lt;&gt;(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">stockPrice</span><span class="o">.</span><span class="na">getTime</span><span class="o">().</span><span class="na">getSecond</span><span class="o">()),</span>
+                                      <span class="n">stockPrice</span><span class="o">.</span><span class="na">getPrice</span><span class="o">()));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>这看起来不错，但是这个编程模型还有一样东西需要考虑。修改系列数据会反映在对用户界面的更新，会被UI线程绘制。这个<code class="highlighter-rouge">accept</code>方法是运行在不同的线程的，监听着来自后端服务的事件。我们要告知UI线程，当有机会时运行这段代码。</p>
+
+<p>调用<code class="highlighter-rouge">Platform.runLater</code>，并在UI线程传入一个Lambda表达式。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">accept</span><span class="o">(</span><span class="nc">StockPrice</span> <span class="n">stockPrice</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Platform</span><span class="o">.</span><span class="na">runLater</span><span class="o">(()</span> <span class="o">-&gt;</span> 
+        <span class="n">seriesData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">XYChart</span><span class="o">.</span><span class="na">Data</span><span class="o">&lt;&gt;(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">stockPrice</span><span class="o">.</span><span class="na">getTime</span><span class="o">().</span><span class="na">getSecond</span><span class="o">()),</span>
+                                          <span class="n">stockPrice</span><span class="o">.</span><span class="na">getPrice</span><span class="o">()))</span>
+    <span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="运行-chart-应用程序">运行 chart 应用程序</h3>
+
+<ol>
+  <li>确保后端的Kotlin Spring Boot服务正在运行（<code class="highlighter-rouge">StockSeriviceApplication</code>）。</li>
+  <li>回到UI模块并运行我们的JavaFX应用程序，<code class="highlighter-rouge">StockUiApplication</code>。</li>
+  <li>你应该能看到一个JavaFX折线图根据价格数据自动地更新。（见视频里 3:20的例子）</li>
+</ol>
+
+<h3 id="显示股票代码名称">显示股票代码名称</h3>
+
+<ol>
+  <li>将硬编码的股票代号提取到一个局部变量，我们想在不止一个地方用到它。</li>
+  <li>（提示：我们可以使用 IntelliJ IDEA 的 Extract Variable(<a href="https://www.jetbrains.com/help/idea/extract-variable.html">文档</a>) (<a href="https://youtu.be/W_IiuORF16E">视频</a>) 轻松完成此操作。）</li>
+  <li>我们可以给系列一个标签，通过在<code class="highlighter-rouge">Series</code>的构造器传入股票代码作为参数。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">symbol</span> <span class="o">=</span> <span class="s">"SYMBOL"</span><span class="o">;</span>
+    <span class="nc">ObservableList</span><span class="o">&lt;</span><span class="nc">XYChart</span><span class="o">.</span><span class="na">Series</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="nc">FXCollections</span><span class="o">.</span><span class="na">observableArrayList</span><span class="o">();</span>
+    <span class="n">data</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">XYChart</span><span class="o">.</span><span class="na">Series</span><span class="o">&lt;&gt;(</span><span class="n">symbol</span><span class="o">,</span> <span class="n">seriesData</span><span class="o">));</span>
+    <span class="n">chart</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+ 
+    <span class="n">webClientStockClient</span><span class="o">.</span><span class="na">pricesFor</span><span class="o">(</span><span class="n">symbol</span><span class="o">).</span><span class="na">subscribe</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>现在当我们重新运行应用程序，我们可以看到股票代码出现在系列的标签上。</p>
+
+<h3 id="代码清理">代码清理</h3>
+
+<p>这些代码太多类型信息有点笨拙，让我们简化一下。我们可以在这里提到的很多类的名称上按下Alt+Enter去让IntelliJ IDEA建议自动执行这些更改。</p>
+
+<ol>
+  <li>导入Series本身以移除不必要的XYChart前缀。</li>
+  <li>为<code class="highlighter-rouge">observableArrayList</code>添加一个静态导入，这样我们就不用到处重复<code class="highlighter-rouge">FXCollections</code>。</li>
+  <li>添加一个<code class="highlighter-rouge">valueOf</code>导入，使得设置图表数据那行更简短一些。</li>
+  <li>导入<code class="highlighter-rouge">Data</code>类以移除其它重复的<code class="highlighter-rouge">XYChart</code>。</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChartController</span> <span class="kd">implements</span> <span class="nc">Consumer</span><span class="o">&lt;</span><span class="nc">StockPrice</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@FXML</span>
+    <span class="kd">private</span> <span class="nc">LineChart</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;</span> <span class="n">chart</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">WebClientStockClient</span> <span class="n">webClientStockClient</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">ObservableList</span><span class="o">&lt;</span><span class="nc">Data</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;&gt;</span> <span class="n">seriesData</span> <span class="o">=</span> <span class="n">observableArrayList</span><span class="o">();</span>
+ 
+    <span class="kd">public</span> <span class="nf">ChartController</span><span class="o">(</span><span class="nc">WebClientStockClient</span> <span class="n">webClientStockClient</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">webClientStockClient</span> <span class="o">=</span> <span class="n">webClientStockClient</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@FXML</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">symbol</span> <span class="o">=</span> <span class="s">"SYMBOL"</span><span class="o">;</span>
+        <span class="nc">ObservableList</span><span class="o">&lt;</span><span class="nc">Series</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">observableArrayList</span><span class="o">();</span>
+        <span class="n">data</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Series</span><span class="o">&lt;&gt;(</span><span class="n">symbol</span><span class="o">,</span> <span class="n">seriesData</span><span class="o">));</span>
+        <span class="n">chart</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+ 
+        <span class="n">webClientStockClient</span><span class="o">.</span><span class="na">pricesFor</span><span class="o">(</span><span class="n">symbol</span><span class="o">).</span><span class="na">subscribe</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">accept</span><span class="o">(</span><span class="nc">StockPrice</span> <span class="n">stockPrice</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Platform</span><span class="o">.</span><span class="na">runLater</span><span class="o">(()</span> <span class="o">-&gt;</span>
+            <span class="n">seriesData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Data</span><span class="o">&lt;&gt;(</span><span class="n">valueOf</span><span class="o">(</span><span class="n">stockPrice</span><span class="o">.</span><span class="na">getTime</span><span class="o">().</span><span class="na">getSecond</span><span class="o">()),</span>
+                                      <span class="n">stockPrice</span><span class="o">.</span><span class="na">getPrice</span><span class="o">()))</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>这次重构并不会改变代码的行为，所以我们重新运行看到一切都跟之前一样可用。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>用这几行代码，我们创建了一个JavaFX应用程序使用了Spring 的WebClient去连接到 Spring Boot 服务，订阅到价格数据流并实时将股票价格数据绘制在折线图上。</p>
+
+<p><a href="https://github.com/zwt-io/rsb/">全部代码在 GitHub</a>：https://github.com/zwt-io/rsb/</p>
+:ET

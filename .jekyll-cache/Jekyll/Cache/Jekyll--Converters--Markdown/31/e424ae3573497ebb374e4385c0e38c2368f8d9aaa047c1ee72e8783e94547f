@@ -1,0 +1,19 @@
+I"�<h2 id="常见类的用途">常见类的用途</h2>
+
+<h3 id="springapplicationbuilder">SpringApplicationBuilder</h3>
+
+<p><code class="highlighter-rouge">java.lang.Object</code><br />
+​	<code class="highlighter-rouge">org.springframework.boot.builder.SpringApplicationBuilder</code></p>
+
+<p>Builder for <code class="highlighter-rouge">SpringApplication</code> and <code class="highlighter-rouge">ApplicationContext</code> instances with convenient fluent API and context hierarchy support. Simple example of a context hierarchy:<br />
+<code class="highlighter-rouge">new SpringApplicationBuider(ParentConfig.class).child(ChildConfig.class).run(args);</code><br />
+Another common use case is setting active profiles and default properties to set up the environment for an application:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nc">SpringApplicationBuilder</span><span class="o">(</span><span class="nc">Application</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">profiles</span><span class="o">(</span><span class="s">"server"</span><span class="o">)</span>
+    			<span class="o">.</span><span class="na">properties</span><span class="o">(</span><span class="s">"transport=local"</span><span class="o">).</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>If your needs are simpler, consider using the static convenience methods in SpringApplication instead.</p>
+
+<p>(org.springframework.boot:spring-boot:2.2.4.RELEASE)</p>
+:ET

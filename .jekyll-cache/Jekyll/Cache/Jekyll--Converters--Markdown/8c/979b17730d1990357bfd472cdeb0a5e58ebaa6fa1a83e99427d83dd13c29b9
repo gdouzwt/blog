@@ -1,0 +1,119 @@
+I":<h2 id="使用-protected-访问控制符">使用 protected 访问控制符</h2>
+
+<p>这是基础内容了，但是不能轻视，越基础越要清晰理解。<!--more--></p>
+
+<h3 id="protected-access">Protected Access</h3>
+
+<p>这是用于演示 <code class="highlighter-rouge">protected</code> 关键字的代码包图。</p>
+
+<p><img src="/img/image-20191102082917612.png" alt="image-20191102082917612" /></p>
+
+<p><img src="/img/image-20191102204121667.png" alt="image-20191102204121667" /></p>
+
+<p>首先创建一个 <code class="highlighter-rouge">Bird</code> 类并将其成员设置为 <code class="highlighter-rouge">protected</code> ：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">pond</span><span class="o">.</span><span class="na">shore</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Bird</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="nc">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">"floating"</span><span class="o">;</span>		<span class="c1">// protected 访问</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">floatInWater</span><span class="o">()</span> <span class="o">{</span>			<span class="c1">// protected 访问</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>接着我们创建一个子类：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">pond</span><span class="o">.</span><span class="na">goose</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">pond.shore.Bird</span><span class="o">;</span>		<span class="c1">// 在不同的包</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Gosling</span> <span class="kd">extends</span> <span class="nc">Bird</span> <span class="o">{</span>		<span class="c1">// 创建子类</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">swim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">floatInWater</span><span class="o">();</span>		<span class="c1">// 调用 protected 成员</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>	<span class="c1">// 调用 protected 成员</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>运行以上代码，会打印 <em>floating</em> 两次，一次因为调用 <code class="highlighter-rouge">floatInWater()</code> 另一次因为 <code class="highlighter-rouge">swim()</code> 里面的 <code class="highlighter-rouge">println()</code>。 因为 <code class="highlighter-rouge">Gosling</code> 是 <code class="highlighter-rouge">Bird</code> 的子类，它可以访问这些成员，即使不在同一个包。 记住 <code class="highlighter-rouge">protected</code> 允许所有默认访问权限所允许的。(Remember <code class="highlighter-rouge">protected</code> also gives us access to everything that default access does.) 意味着与 <code class="highlighter-rouge">Bird</code> 在同一个包的类可以访问它的 <code class="highlighter-rouge">protected</code> 成员。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">pond</span><span class="o">.</span><span class="na">shore</span><span class="o">;</span>			<span class="c1">// 与 Bird 在同一个包</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BirdWatcher</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">watchBird</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Bird</span> <span class="n">bird</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Bird</span><span class="o">();</span>
+        <span class="n">bird</span><span class="o">.</span><span class="na">floatInWater</span><span class="o">();</span>	<span class="c1">// 调用 protected 成员</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bird</span><span class="o">.</span><span class="na">text</span><span class="o">);</span>	<span class="c1">// 调用 protected 成员</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>现在我们尝试在不同的包做同样的操作：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">pond</span><span class="o">.</span><span class="na">inland</span><span class="o">;</span>			<span class="c1">// 与 Bird 不在同一个包</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BirdWatcherFromAfar</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">watchBird</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Bird</span> <span class="n">bird</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Bird</span><span class="o">();</span>
+        <span class="n">bird</span><span class="o">.</span><span class="na">floatInWater</span><span class="o">();</span>	<span class="c1">// 不能通过编译</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bird</span><span class="o">.</span><span class="na">text</span><span class="o">);</span>	<span class="c1">// 不能通过编译</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">BirdWatcherFromAfar</code> 与 <code class="highlighter-rouge">Bird</code> 不在同一个包，且不是 <code class="highlighter-rouge">Bird</code> 的子类，所以无法访问 <code class="highlighter-rouge">Bird</code> 的 <code class="highlighter-rouge">protected</code> 成员。</p>
+
+<p>好了，现在看看下面这个例子：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">pond</span><span class="o">.</span><span class="na">swan</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">pond.shore.Bird</span><span class="o">;</span>			<span class="c1">// 与 Bird 不在同一个包</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Swan</span> <span class="kd">extends</span> <span class="nc">Bird</span> <span class="o">{</span>	<span class="c1">// 但是 Bird 的子类</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">swim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">floatInWater</span><span class="o">();</span>		<span class="c1">// 包访问父类</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>	<span class="c1">// 包访问父类</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">helpOtherSwanSwim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Swan</span> <span class="n">other</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Swan</span><span class="o">();</span>
+        <span class="n">other</span><span class="o">.</span><span class="na">floatInWater</span><span class="o">();</span>	<span class="c1">// 包访问父类</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">text</span><span class="o">);</span>		<span class="c1">// 包访问父类</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">helpOtherBirdSwim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Bird</span> <span class="n">other</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Bird</span><span class="o">();</span>
+        <span class="n">other</span><span class="o">.</span><span class="na">floatInWater</span><span class="o">();</span>	<span class="c1">// 不能通过编译</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">text</span><span class="o">);</span>		<span class="c1">// 不能通过编译</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>上面代码，<code class="highlighter-rouge">helpOtherBirdSwim()</code> 方法里面 <code class="highlighter-rouge">other.floatInWater()</code> 和 <code class="highlighter-rouge">System.out.println(other.text)</code> 不能通过编译是因为引用变量 <code class="highlighter-rouge">other</code> 的类型是 <code class="highlighter-rouge">Bird</code>。 如果通过引用变量访问一个成员，能否访问取决于引用的<strong>变量的类型</strong>。</p>
+
+<p>再看看下面这个例子：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">pond</span><span class="o">.</span><span class="na">goose</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">pond.shore.Bird</span><span class="o">;</span>			
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Goose</span> <span class="kd">extends</span> <span class="nc">Bird</span> <span class="o">{</span>	
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">helpGooseSwim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Goose</span> <span class="n">other</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Goose</span><span class="o">();</span>
+        <span class="n">other</span><span class="o">.</span><span class="na">floatInWater</span><span class="o">();</span>	
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">text</span><span class="o">);</span>		
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">helpOtherGooseSwim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Bird</span> <span class="n">other</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Goose</span><span class="o">();</span>
+        <span class="n">other</span><span class="o">.</span><span class="na">floatInWater</span><span class="o">();</span>	<span class="c1">// 不能通过编译</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">text</span><span class="o">);</span>		<span class="c1">// 不能通过编译</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>上面代码中，在第二个方法 <code class="highlighter-rouge">helpOtherGooseSwim()</code> 有问题，尽管创建的是一个 <code class="highlighter-rouge">Goose</code> 对象，但是 <code class="highlighter-rouge">other</code> 保存的引用类型是 <code class="highlighter-rouge">Bird</code>。因为 <code class="highlighter-rouge">Goose</code> 与 <code class="highlighter-rouge">Bird</code> 不在同一个包，而且 <code class="highlighter-rouge">Bird</code> 不是 <code class="highlighter-rouge">Goose</code> 的子类，所以不允许访问 <code class="highlighter-rouge">Bird</code> 的成员。</p>
+
+<p>在看多一个例子：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">pond</span><span class="o">.</span><span class="na">duck</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">pond.goose.Goose</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GooseWatcher</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">watch</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Goose</span> <span class="n">goose</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Goose</span><span class="o">();</span>
+        <span class="n">goose</span><span class="o">.</span><span class="na">floatInWater</span><span class="o">();</span>	<span class="c1">// 不能通过编译</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>代码不能通过编译的原因是我们不在 <code class="highlighter-rouge">Goose</code> 类里面。 <code class="highlighter-rouge">floatInWater()</code> 方法是 <code class="highlighter-rouge">Bird</code> 类中声明的。 <code class="highlighter-rouge">GooseWatcher</code> 与 <code class="highlighter-rouge">Bird</code> 不在同一个包，而且不是 <code class="highlighter-rouge">Bird</code> 的子类。<code class="highlighter-rouge">Goose</code> 继承自 <code class="highlighter-rouge">Bird</code> 只是允许 <code class="highlighter-rouge">Goose</code> 访问 <code class="highlighter-rouge">floatInWater()</code> ，而不是 <code class="highlighter-rouge">Goose</code> 的调用者。</p>
+:ET

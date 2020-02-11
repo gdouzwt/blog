@@ -1,0 +1,113 @@
+I"�(<h3 id="先回顾基本概念-overloading-and-overriding">先回顾基本概念 Overloading and Overriding</h3>
+
+<p>主要需要总结的是:</p>
+
+<p>​	When multiple overloaded methods are present, Java looks for the closest match first. It tries to find the following:</p>
+
+<ul>
+  <li>Exact match by type</li>
+  <li>Matching a superclass type</li>
+  <li>Converting to larger primitive type</li>
+  <li>Converting to an autoboxed type</li>
+  <li>Varargs</li>
+</ul>
+
+<p>For overriding, the overridden method has a few rules:</p>
+
+<ul>
+  <li>The access modifier must be the same or more accessible.</li>
+  <li>The return type must be the same or a more restrictive type, also known as <em>covariant return types</em>.</li>
+  <li>If any checked exceptions are thrown, only the same exceptions or subclasses of those exceptions are allowed to be thrown.</li>
+</ul>
+
+<p>The method must not be static. (If they are, the method is hidden and not overridden.)</p>
+
+<h4 id="关于-instanceof-操作符null-的情况null-不是-object">关于 instanceof 操作符，null 的情况，null 不是 Object.</h4>
+
+<p>instanceof 不能比较没有任何继承关系的类。 而接口可以，因为接口可以被实现。</p>
+
+<p>然后入正题:
+<!--more--></p>
+
+<h3 id="understanding-virtual-method-invocation">Understanding Virtual Method Invocation</h3>
+
+<p>先看代码：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">feed</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Cow</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">feed</span><span class="o">()</span> <span class="o">{</span> <span class="n">addHay</span><span class="o">();</span> <span class="o">}</span>
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">addHay</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Bird</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">feed</span><span class="o">()</span> <span class="o">{</span> <span class="n">addSeed</span><span class="o">();</span> <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addSeed</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Lion</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">feed</span><span class="o">()</span> <span class="o">{</span> <span class="n">addMeat</span><span class="o">();</span> <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addMeat</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The Animal class is abstract, and it requires that any concrete Animal subclass have a feed() method. The three subclasses that we defined have a one-line feed() method that delegates to the class-specific method. A Bird still gets seed, a Cow still gets hay, and so forth. Now the method to feed the animals is really easy. We just call feed() and the proper subclass’s version is run.</p>
+
+<p>​	This approach has a huge advantage. The feedAnimal() method doesn’t need to change when we add a new Animal subclass. We could have methods to feed the animals all over code. Maybe the animals get fed at different times on different days. No matter. feed() still gets called to do the work.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">feedAnimal</span><span class="o">(</span><span class="nc">Animal</span> <span class="n">animal</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">animal</span><span class="o">.</span><span class="na">feed</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>​	We’ve just relied on virtual method invocation. We actually saw virtual methods on the OCA. They are just regular non-static methods. Java looks for an overridden method rather than necessarily using the one in the class that the compiler says we have. The only thing new about virtual methods on OCP is that Oracle now calls them virtual methods in the objectives. You can simply think of them as methods.</p>
+
+<p>​	In the above example, we have an Animal instance, but Java didn’t call feed on the Animal class. Instead Java looked at the actual type of animal at runtime and called feed on that.</p>
+
+<p>​	Notice how this technique is called virtual method invocation. <strong>Instance variables don’t work this way.</strong> In this example, the Animal class refers to name. It uses the one in the superclass and not the subclass.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"???"</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Lion</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Leo"</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PlayWithAnimal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Animal</span> <span class="n">animal</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Lion</span><span class="o">();</span>
+        <span class="n">animal</span><span class="o">.</span><span class="na">printName</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>​	This outputs ???. The name declared in Lion would only be used if name was referred to from Lion (or a subclass of Lion.) But no matter how you call printName(), it will use the Animal’s name, not the Lion’s name.</p>
+
+<p>​	Aside from the formal sounding name, there isn’t anything new here. Let’s try one more example to make sure that the exam can’t trick you. What does the following print?</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">careFor</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">play</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"pet animal"</span><span class="o">);</span>
+    <span class="o">}}</span>
+<span class="kd">class</span> <span class="nc">Lion</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"toss in meat"</span><span class="o">);</span>
+    <span class="o">}}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PalyWithAnimal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Animal</span> <span class="n">animal</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Lion</span><span class="o">();</span>
+        <span class="n">animal</span><span class="o">.</span><span class="na">careFor</span><span class="o">();</span>
+    <span class="o">}}</span>
+</code></pre></div></div>
+
+<p>​	This correct answer is <em>toss in meat</em>. The main method creates a new Lion and calls careFor. Since only the Animal superclass has a careFor method, it executes. That method calls play. Java looks for overridden methods, and it sees that Lion implements play. Even though the call is from the Animal class, Java still looks at subclasses, which is good because you don’t want to pet a Lion!</p>
+:ET
