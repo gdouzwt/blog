@@ -6,7 +6,7 @@ email: zhao@wen-tao.com
 description: ""
 keyword: "ZWT, Blog, zhaowentao, 招文桃, Spring Boot, gdouzwt"
 url: "https://zwt.io"       # your host, for absolute URL
-baseurl: "/"      # for example, '/blog' if your blog hosted on 'host/blog'
+# baseurl: "/"      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/gdouzwt/gdouzwt.github.io.git"
 logo: /img/brand-logo.png
 excerpt_separator: <!--more-->
@@ -57,7 +57,6 @@ highlighter: none
 markdown: kramdown
 kramdown:
   input: GFM # use Github Flavored Markdown !important
-  
   syntax_higlighter_opts:
     disable: true
 
