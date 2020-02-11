@@ -33,6 +33,8 @@ permalink: pretty
 paginate: 10
 exclude: ["scss","less","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md"]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
+
+future: true
 whitelist:
   - jekyll-asciidoc
 
