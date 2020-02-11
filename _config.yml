@@ -59,6 +59,7 @@ asciidoctor:
     - source-highlighter=none
     - icons=font
     - experimental=true
+    - imagesdir=/img
 
 # Markdown 设置
 # replace redcarpet to kramdown,
