@@ -36,7 +36,8 @@ permalink: pretty
 paginate: 10
 exclude: ["scss","less","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md"]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
-
+whitelist:
+  - jekyll-asciidoc
 
 
 # Gems
@@ -49,7 +50,9 @@ plugins:
 
 
 # Asciidoc 设置
-asciidoc: {}
+asciidoc:
+  # require_front_matter_header: true
+  excerpt_separator: "\n//more\n"
 asciidoctor:
   base_dir: :docdir
   safe: unsafe
@@ -57,12 +60,13 @@ asciidoctor:
     - idseparator=_
     - source-highlighter=none
     - icons=font
+    - experimental=true
 
 # Markdown 设置
 # replace redcarpet to kramdown,
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
 # document: http://jekyllrb.com/docs/configuration/#kramdown
-# highlighter: none
+
 highlighter: none
 markdown: kramdown
 kramdown:
