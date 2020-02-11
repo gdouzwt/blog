@@ -28,7 +28,7 @@ public class Outer {
 
 An instance of an inner class can only exist within an instance of its enclosing class. That is, you must have an instance of the enclosing class before you can create an instance of an inner class. This is useful in enforcing the rule that one object cannot exist without the other.
 
-An inner class has full access to all the members, including private members, of its enclosing class.
+An inner class has full access to all the members, including private members, of its enclosing class.<!--more-->
 
 ### Advantages of Using Inner Classes
 
@@ -84,12 +84,10 @@ public class A {
 
 
 
-
-
-
-
 ---
 
 ### Closures and Callbacks
 
-In functional programming, a higher order function is an anonymous function that can be treated as a data object. That is, it can be stored in a variable and passed around from one context to another. It might be invoked
+In functional programming, a higher order function is an anonymous function that can be treated as a data object. That is, it can be stored in a variable and passed around from one context to another. 
+
+【to be continued】

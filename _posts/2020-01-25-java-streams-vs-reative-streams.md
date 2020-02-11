@@ -36,7 +36,7 @@ System.out.println(
 		.collect(toList()));
 ```
 
-
+<!--more-->
 
 #### functional programming == functional composition + lazy evaluation
 
