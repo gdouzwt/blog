@@ -5,4 +5,8 @@ require 'rake-jekyll'
 # See https://github.com/jirutka/rake-jekyll for more options.
 Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
     t.committer = '招文桃 <zhao@wen-tao.com>'
+    t.deploy_branch = -> {
+        gh_user = ENV['TRAVIS_REPO_SLUG'].to_s.split('/').first
+        remote_url.match(/[:\/]#{gh_user}\.github\.io\.git$/) ? 'master' : 'gh-pages'
+      }
 end
