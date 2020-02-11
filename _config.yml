@@ -27,9 +27,6 @@ jianshu_username:   4f528075fae8
 twitter_username:   gdouzwt
 bilibili_username:  86621709
 
-
-
-
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
@@ -48,10 +45,9 @@ plugins:
   - jekyll-asciidoc
   - jekyll-sitemap
 
-
 # Asciidoc 设置
 asciidoc:
-  # require_front_matter_header: true
+  require_front_matter_header: true
   excerpt_separator: "\n//more\n"
 asciidoctor:
   base_dir: :docdir
