@@ -4,6 +4,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     asciidoctor (2.0.10)
+    coderay (1.1.2)
     colorator (1.1.0)
     concurrent-ruby (1.1.6)
     em-websocket (0.5.1)
@@ -51,6 +52,9 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.3)
+    rake (10.5.0)
+    rake-jekyll (1.1.0)
+      rake (~> 10.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -66,10 +70,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  coderay
   jekyll
   jekyll-asciidoc
   jekyll-paginate
-  jekyll-sitemap (~> 1.4)
+  jekyll-sitemap
+  rake-jekyll
 
 BUNDLED WITH
    2.1.4
