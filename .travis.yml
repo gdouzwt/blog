@@ -3,10 +3,11 @@ env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 install: 
-  - gem install jekyll
+  - bundle update
+  - bundle install
 
 script: 
-  - jekyll build
+  - bundle exec jekyll build
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   
