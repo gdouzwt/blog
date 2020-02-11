@@ -28,6 +28,10 @@ tags:
 
 //more
 
+
+==== 杂记
+使用 Travis CI 也挺好玩的，搭建起持续集成的工作流。
+
 bold *constrained* & **un**constrained
 
 italic _constrained_ & __un__constrained
