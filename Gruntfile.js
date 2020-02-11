@@ -63,7 +63,7 @@ module.exports = function(grunt) {
             expanded: {
                 options: {
                     style: 'expanded',
-                    noSourceMap: 'on'
+                    sourcemap: 'none'
                 },
                 files: {
                     "css/<%= pkg.name %>.css": "scss/<%= pkg.name %>.scss"
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
             minified: {
                 options: {
                     style: 'compressed',
-                    noSourceMap: 'on'
+                    sourcemap: 'none'
                 },
                 files: {
                     "css/<%= pkg.name %>.min.css": "scss/<%= pkg.name %>.scss"
