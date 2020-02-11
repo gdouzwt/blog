@@ -1,21 +1,21 @@
-= AsciiDoc is Writing Zen
-Doc Writer <doc.writer@example.com>
+= Sample Page
+招文桃 <zhao@wen-tao.com>
+:page-layout: post
+// :page-permalink: /sample/
+:url-asciidoctor: http://asciidoctor.org
 :icons: font
 
-_Zen_ in the *art* of writing `plain text` with http://asciidoc.org[AsciiDoc].
+This is a sample page composed in _AsciiDoc_.
+Jekyll converts it to HTML using {url-asciidoctor}[Asciidoctor].
+
+[source,java]
+public class Hello {
+  public static void main(String[] args) {
+    System.out.println("Hello");
+  }
+}
 
 [TIP]
-Use http://asciidoctor.org[Asciidoctor] for the best AsciiDoc experience.
-footnote:[Not to mention the best looking output!]
-Then icon:twitter[role=aqua] about it!
+and what now
 
-== Sample Section
-
-[square]
-* item 1
-* item 2
-
-[source, ruby]
-----
-puts "Hello, World!"
-----
+icon:twitter[role=aqua]
