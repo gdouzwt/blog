@@ -1,9 +1,0 @@
-I"w<blockquote>
-  <p>原文由 Trisha Gee 在当地时间2019年11月11日发布在 <a href="https://blog.jetbrains.com/idea/2019/11/tutorial-reactive-spring-boot-a-javafx-spring-boot-application/">INTELLIJ IDEA BLOG</a></p>
-</blockquote>
-
-<p>这是第三步，演示如何创建一个 响应式应用程序，使用Spring Boot, Kotlin，Java和JavaFX。</p>
-
-<p>这个第三步演示如何创建一个由Spring Boot启动并管理的JavaFX应用程序，因此我们可以在JavaFX应用程序中使用Spring的特性，例如控制反转。本文也有配套的<a href="https://www.bilibili.com/video/av82672621">视频</a>。</p>
-
-:ET

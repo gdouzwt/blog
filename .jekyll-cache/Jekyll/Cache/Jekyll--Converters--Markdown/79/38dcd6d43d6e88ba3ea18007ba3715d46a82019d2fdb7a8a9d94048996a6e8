@@ -1,4 +1,0 @@
-I"%<h2 id="item-1-consider-static-factory-methods-instead-of-constructors">ITEM 1: Consider static factory methods instead of constructors</h2>
-
-<p>属于 “创建和销毁对象” 那章。静态工厂方法跟“四人帮”设计模式里面的<em>工厂方法</em>模式是不同的。</p>
-:ET

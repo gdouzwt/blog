@@ -1,9 +1,0 @@
-I"o<blockquote>
-  <p>原文由 Trisha Gee 在当地时间2019年12月2日发布在 <a href="https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-subscribing-multiple-consumers/">INTELLIJ IDEA BLOG</a></p>
-</blockquote>
-
-<p>在这一节，我们更新实时更新图表显示多于一种股票价格，也就意味着订阅多于一个消费者到我们的响应式价格数据流。</p>
-
-<p>在上一步，我们让JavaFX折线图订阅到来自响应式Spring Boot的服务，并实时显示它们。在这一步，我们要更新图表，让它能多次订阅并在同一个图表显示多组数据。</p>
-
-:ET

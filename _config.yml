@@ -45,6 +45,7 @@ anchorjs: true # if you want to customize anchor. check out line:181 of `post.ht
 plugins:
   - jekyll-paginate
   - jekyll-asciidoc
+  - jekyll-sitemap
 
 
 # Markdown 设置
@@ -52,9 +53,11 @@ plugins:
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
 # document: http://jekyllrb.com/docs/configuration/#kramdown
 # highlighter: none
+highlighter: none
 markdown: kramdown
 kramdown:
   input: GFM # use Github Flavored Markdown !important
+  
   syntax_higlighter_opts:
     disable: true
 

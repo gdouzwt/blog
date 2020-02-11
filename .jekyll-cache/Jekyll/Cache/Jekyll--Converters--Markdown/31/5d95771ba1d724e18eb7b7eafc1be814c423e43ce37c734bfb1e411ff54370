@@ -1,8 +1,0 @@
-I"3<h3 id="目录">目录</h3>
-
-<h4 id="第1章-mybatis入门-1">第1章 MyBatis入门 1</h4>
-
-<h5 id="11-mybatis简介-2">1.1 MyBatis简介 2</h5>
-
-<p>与其他的ORM不同，MyBatis没有将Java对象与数据库表关联起来，而是将Java方法与SQL语句关联。SQL语句可以被动态生成。</p>
-:ET

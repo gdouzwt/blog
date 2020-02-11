@@ -5,4 +5,5 @@ gem 'jekyll'
 group :jekyll_plugins do
   gem 'jekyll-paginate'
   gem 'jekyll-asciidoc'
+  gem 'jekyll-sitemap', '~> 1.4'
 end

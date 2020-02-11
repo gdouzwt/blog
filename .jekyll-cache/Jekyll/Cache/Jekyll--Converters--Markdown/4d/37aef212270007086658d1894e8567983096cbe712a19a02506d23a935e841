@@ -1,9 +1,0 @@
-I"<blockquote>
-  <p>原文由 Trisha Gee 在2019年12月13日发布在 <a href="https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-java-rsocket-client/">INTELLIJ IDEA BLOG</a></p>
-</blockquote>
-
-<p>在这一节，我们添加一个RSocket客户端，用来连接上一节创建的RSocket服务器。</p>
-
-<p>现在，我们有了一个使用Spring WebClient的端到端应用程序。在上一节中，我们介绍了一个新的RSocket服务器，在这节，我们将看到如何创建一个客户端来连接它</p>
-
-:ET

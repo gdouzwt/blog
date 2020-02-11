@@ -1,9 +1,0 @@
-I"8<h2 id="使用-maven-创建最简单的项目">使用 Maven 创建最简单的项目</h2>
-
-<p>在安装好了 Maven 之后，可以在命令行窗口输入以下命令创建一个简单的 Maven 项目：</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn archetype:generate <span class="nt">-DgroupId</span><span class="o">=</span>io.zwt.app <span class="nt">-DartifactId</span><span class="o">=</span>my-app <span class="nt">-DarchetypeArtifactId</span><span class="o">=</span>maven-archetype-quickstart <span class="nt">-DarchetypeVersion</span><span class="o">=</span>1.4 <span class="nt">-DinteractiveMode</span><span class="o">=</span><span class="nb">false</span>
-</code></pre></div></div>
-
-<p>可以看到结果生成了一个目录为 my-app 的项目：</p>
-:ET
