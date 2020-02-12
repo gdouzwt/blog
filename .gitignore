@@ -1,16 +1,13 @@
 # node
 node_modules
 
-# Created by https://www.gitignore.io/api/macos
-# .jekyll-metadata
 ### macOS ###
 *.DS_Store
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
+# Icon
 Icon
-
 
 # Thumbnails
 ._*
@@ -31,9 +28,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# End of https://www.gitignore.io/api/macos
-
 # debug file
 _site
 .jekyll-cache
 .sass-cache
+.idea

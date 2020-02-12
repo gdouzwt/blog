@@ -1,32 +1,25 @@
 {
-    "name": "zwt",
-    "title": "TAO",
-    "author": "Tao <zhao@wen-tao.com>",
-    "version": "1.7.0",
-    "license": "MIT",
-    "homepage": "https://zwt.io",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/gdouzwt/gdouzwt.github.io"
-    },
-    "bugs": "https://github.com/gdouzwt/gdouzwt.github.io/issues",
-    "devDependencies": {
-        "grunt": "latest",
-        "grunt-banner": "latest",
-        "grunt-contrib-less": "latest",
-        "grunt-contrib-sass": "latest",
-        "grunt-contrib-uglify": "latest",
-        "grunt-contrib-watch": "^1.1.0",
-        "grunt-sass": "latest",
-        "node-sass": "latest"
-    },
-    "scripts": {
-        "preview": "cd _site; python -m SimpleHTTPServer 8020",
-        "py3view": "cd _site; python3 -m http.server 8020",
-        "watch": "grunt watch & npm run preview & jekyll serve -w",
-        "py3wa": "grunt watch & npm run py3view & jekyll serve -w",
-        "boil": "git push boilerplate boilerplate:master",
-        "push": "git push origin master --tag",
-        "cafe": "git co gitcafe-pages; git merge master; git push gitcafe gitcafe-pages:gitcafe-pages --tag; git co master;"
-    }
+  "name": "zwt",
+  "title": "TAO",
+  "author": "招文桃 <zhao@wen-tao.com>",
+  "version": "v1.3",
+  "license": "MIT",
+  "homepage": "https://zwt.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gdouzwt/blog"
+  },
+  "bugs": "https://github.com/gdouzwt/blog/issues",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-banner": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "node-sass": "latest"
+  },
+  "scripts": {
+    "watch": "grunt watch & jekyll serve",
+    "push": "git push origin master --tag"
+  }
 }

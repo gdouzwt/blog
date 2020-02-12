@@ -5,16 +5,16 @@ header-img: img/leimu.jpg
 email: zhao@wen-tao.com
 description: ""
 keyword: "ZWT, Blog, zhaowentao, 招文桃, Spring Boot, gdouzwt"
-url: "https://zwt.io"       # your host, for absolute URL
-# baseurl: "/"      # for example, '/blog' if your blog hosted on 'host/blog'
+url: "https://zwt.io"
+# baseurl: "/"
 github_repo: "https://github.com/gdouzwt/blog.git"
 logo: /img/brand-logo.png
 excerpt_separator: <!--more-->
 
 # Sidebar settings
-sidebar: true                           # whether or not using Sidebar.
+sidebar: true
 sidebar-about-description: "堅持信念"
-sidebar-avatar: /img/large.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/large.png
 badge: /img/badge.png
 
 # SNS settings
@@ -28,20 +28,15 @@ twitter_username:   gdouzwt
 bilibili_username:  86621709
 
 # Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 incremental: true
 permalink: pretty
 paginate: 10
-exclude: ["scss","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md","LICENSE"]
+exclude: ["scss",".idea","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md","LICENSE"]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
 
 future: true
 whitelist:
   - jekyll-asciidoc
-
-
-# Gems
-# from PR#40, to support local preview for Jekyll 3.0
 
 plugins:
   - jekyll-paginate
@@ -62,11 +57,6 @@ asciidoctor:
     - experimental=true
     - imagesdir=/img
 
-# Markdown 设置
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
-
 highlighter: none
 markdown: kramdown
 kramdown:
@@ -74,35 +64,10 @@ kramdown:
   syntax_higlighter_opts:
     disable: true
 
-# 评论系统
-# Disqus（https://disqus.com/）
-# disqus_username: zhaowentao
-
-# Gitalk
-# gitalk:
-#   enable: true    #是否开启Gitalk评论
-#   clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-#   clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
-#   repo: qiubaiying.github.io    #仓库名称
-#   owner: qiubaiying    #github用户名
-#   admin: qiubaiying
-#   distractionFreeMode: true #是否启用类似FB的阴影遮罩
-
-
-# 百度统计
-# Analytics settings
-# Baidu Analytics
-# ba_track_id: b50bf2b12b5338a1845e33832976fd68
-
-# # Google Analytics
-# ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
-# ga_domain: qiubaiying.top               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
-
 
 # 主题标签
 featured-tags: true                     # 是否使用首页标签
 featured-condition-size: 1              # 相同标签数量大于这个数，才会出现在首页
-
 
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
@@ -110,11 +75,10 @@ service-worker: true
 
 # 友情链接
 friends: [
-    {
-        title: "LY Blog",
-        href: "https://yingiul.com/"
-    },{
-        title: "简书·招文桃",
-        href: "https://www.jianshu.com/u/4f528075fae8/"
-    }
-]
+{
+  title: "LY Blog",
+  href: "https://yingiul.com/"
+},{
+  title: "简书·招文桃",
+  href: "https://www.jianshu.com/u/4f528075fae8/"
+}]
