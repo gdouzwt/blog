@@ -2,7 +2,7 @@
 node_modules
 
 # Created by https://www.gitignore.io/api/macos
-
+.jekyll-metadata
 ### macOS ###
 *.DS_Store
 .AppleDouble

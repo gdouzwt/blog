@@ -39,6 +39,12 @@ module.exports = function(grunt) {
                     spawn: false,
                 }
             },
+            livereload: {
+                options: {
+                    livereload: true,
+                },
+                files: '_site/*'
+            }
         },
         sass: {
             expanded: {
