@@ -29,6 +29,7 @@ bilibili_username:  86621709
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+incremental: true
 permalink: pretty
 paginate: 10
 exclude: ["scss","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md","LICENSE"]
