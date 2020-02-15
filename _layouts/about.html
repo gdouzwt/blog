@@ -106,7 +106,7 @@ layout: default
                 col-xs-12
                 sidebar-container
             ">
-            <!-- Featured Tags -->
+            <!-- Featured Tags 关掉
             {% if site.featured-tags %}
             <section>
                 <hr class="hidden-sm hidden-xs">
@@ -121,112 +121,27 @@ layout: default
                     {% endfor %}
                 </div>
             </section>
-            {% endif %}
+            {% endif %} -->
 
             <!-- Short About -->
-            <section class="visible-md visible-lg">
-                <hr>
-                <h5><a href="{{'/about/' | prepend: site.baseurl }}">关于我</a></h5>
-                <div class="short-about">
-                    {% if site.sidebar-avatar %}
-                    <a href="{{ site.baseurl }}/about">
-                        <img src="{{site.sidebar-avatar}}" style="cursor: pointer"/>
-                    </a>
-                    {% endif %}
-                    {% if site.sidebar-about-description %}
-                    <p>{{site.sidebar-about-description}}</p>
-                    {% endif %}
-                    <!-- SNS Link -->
-                    <ul class="list-inline">
-                        {% if site.RSS %}
-                        <li>
-                            <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
-                            <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-                                    </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        <!-- add bilibili add target = "_blank" to <a> by Tao -->
-                        {% if site.bilibili_username %}
-                        <li>
-                            <a target="_blank" href="https://space.bilibili.com/{{ site.bilibili_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fas fa-tv  fa-stack-1x fa-inverse"></i>
-                                    </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        <!-- add jianshu add target = "_blank" to <a> by BY -->
-                        {% if site.jianshu_username %}
-                        <li>
-                            <a target="_blank" href="https://www.jianshu.com/u/{{ site.jianshu_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fab  fa-stack-1x fa-inverse">简</i>
-                                    </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% if site.twitter_username %}
-                        <li>
-                            <a href="https://twitter.com/{{ site.twitter_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% if site.zhihu_username %}
-                        <li>
-                            <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fab  fa-stack-1x fa-inverse">知</i>
-                                    </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% if site.weibo_username %}
-                        <li>
-                            <a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% if site.facebook_username %}
-                        <li>
-                            <a target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
-                                    </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% if site.github_username %}
-                        <li>
-                            <a target="_blank" href="https://github.com/{{ site.github_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                            </a>
-                        </li>
-                        {% endif %}
 
-                    </ul>
-                    {% if site.email %}
-                    <p>✉️ <a href="mailto:{{site.email}}">zhao@wen-tao.com</a></p>
-                    {% endif %}
-                </div>
-            </section>
+            <hr>
+            <h5>资格认证</h5>
+            <div>
+                <a target="_blank" href="https://www.youracclaim.com/badges/dee74bd5-6ec6-455a-b28b-c125291b7232/">
+                    <img src="{{site.badge}}" style="cursor: pointer" alt="徽章"/>
+                </a>
+            </div>
+            <h5>微信公众号</h5>
+            <div>
+
+                <a target="_blank" href="https://mp.weixin.qq.com/s?__biz=MzA3Mzk5OTI3NQ==&mid=2656333570&idx=2&sn=d54012a7e8ff6993e76e8ba85b72b4b8&chksm=84a6b9c6b3d130d0f52f8febbd6ce03a1829612f38c8607124f84c504422a7eb1f1c1da80bc1&token=1630091799&lang=zh_CN#rd">
+                    <img src="{{site.wechat}}" style="cursor: pointer"/>
+                </a>
+                <!-- <div data-iframe-width="263" data-iframe-height="391.86" data-share-badge-id="dee74bd5-6ec6-455a-b28b-c125291b7232"> -->
+                <!-- </div><script type="text/javascript" async src="//cdn.youracclaim.com/assets/utilities/embed.js"></script> -->
+                <!-- <iframe name="acclaim-badge" allowtransparency="true" frameborder="0" id="embedded-badge-dee74bd5-6ec6-455a-b28b-c125291b7232" scrolling="no" src="//www.youracclaim.com/embedded_badge/dee74bd5-6ec6-455a-b28b-c125291b7232" style="width: 263px; height: 391.86px;" title="View my verified achievement on Acclaim."></iframe> -->
+            </div>
             <!-- Friends Blog -->
             {% if site.friends %}
             <hr>
@@ -237,13 +152,7 @@ layout: default
                 {% endfor %}
             </ul>
             {% endif %}
-            <hr>
-            <h5>资格认证</h5>
-            <div>
-                <a target="_blank" href="https://www.youracclaim.com/badges/dee74bd5-6ec6-455a-b28b-c125291b7232/">
-                    <img src="{{site.badge}}" style="cursor: pointer" alt="徽章"/>
-                </a>
-            </div>
+
         </div>
         {% endif %}
     </div>
