@@ -44,9 +44,7 @@ public class TopLevel {
 - 一个实例变量（instance variable）：`value`
 - 两个方法（method）：`getValue()` and `setValue()`
 
-A class can also be declared within another class. This type of class is called an *inner* class. If the class declared within another class is explicitly or implicitly declared static, it is called a nested class, not an inner class. The class that contains the inner class is called an *enclosing* class or an *outer* class. Consider the following declaration of the `Outer` and `Inner` classes:
-
-一个类也可以声明在另一个类里面。这种类称为*内部类*。如果定义在另一个类中的类显式或隐式被声明为static，则它被称为嵌套类，而不是内部类。
+一个类也可以声明在另一个类里面。这种类称为*内部类*。如果定义在另一个类中的类显式或隐式被声明为static，则它被称为嵌套类，而不是内部类。包含内部类的类称为*外层类*或*外部类*。看一下下面的 `Outer` 和 `Inner` 类声明：
 
 ```java
 // Outer.java
@@ -54,9 +52,9 @@ pakcage io.zwt.innerclasses;
 
 public class Outer {
 	public class Inner {
-		// Members of the Inner class go here
+		// 内部类的成员在这里
 	}
-	// Other members of the Outer class go here
+	// 外部类的其它成员在这里
 }
 ```
 
