@@ -30,7 +30,7 @@ tags:
    }
    ```
 
-   That will be :  io.zwt.innerclasses.exercises.A.B
+   That will be :  `io.zwt.innerclasses.exercises.A.B`
 
 3. Consider the following declaration for top-level class named Cup and a member inner class named Handle:
 
