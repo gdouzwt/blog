@@ -32,7 +32,7 @@ bilibili_username:  86621709
 incremental: true
 permalink: pretty
 paginate: 10
-exclude: ["scss",".idea","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md","LICENSE"]
+exclude: ["scss",".idea","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md","LICENSE",".travis.yml","codecov.yml"]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
 
 future: true
@@ -68,7 +68,7 @@ kramdown:
 
 # 主题标签
 featured-tags: true                     # 是否使用首页标签
-featured-condition-size: 1              # 相同标签数量大于这个数，才会出现在首页
+featured-condition-size: 3              # 相同标签数量大于这个数，才会出现在首页
 
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
@@ -82,4 +82,9 @@ friends: [
 },{
   title: "简书·招文桃",
   href: "https://www.jianshu.com/u/4f528075fae8/"
-}]
+},
+{
+  title: "JHipster中文学习网",
+  href: "https://learnjhipster.cn/"
+}
+]
