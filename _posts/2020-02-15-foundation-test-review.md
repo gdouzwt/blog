@@ -719,6 +719,379 @@ The modifier static pertains only to member classes, not to top level or local o
 
 ##### How will you initialize a `SimpleDateFormat` object to that the following code will print the full name of the month of the given date?
 
+- [ ] `SimpleDateFormat sdf = new SimpleDateFormat("MMMM", Locale.FRANCE);`
+
+  > Upper case M is for Month. For example, for February and December, the following will be printed:
+>
+  > M => 2, 12  
+  > MM => 02, 12  
+  > MMM => févr., déc.  
+  > MMMM => février, décembre  
+
+- [ ] `SimpleDateFormat sdf = new SimpleDateFormat("M*", Locale.FRANCE);`
+
+  > M* will print the month number (i.e. 2 for Feb and 12 for Dec), followed by \*. For example, 2* or 12*
+
+- [ ] `SimpleDateFormat sdf = new SimpleDateFormat("mmmm", Locale.FRANCE);`
+
+  > Lower case m is for minutes. So mmmm will print the current minute, where the first two digits will always be zero. For example, 0032 or 0002.
+
+- [ ] `SimpleDateFormat sdf = new SimpleDateFormat("mmm", Locale.FRANCE);`
+
+- [ ] `SimpleDateFormat sdf = new SimpleDateFormat("MM", Locale.FRANCE);`
+
+**Explanation**
+
+For the purpose of the exam, you need to know the basic codes for printing out a date. The important ones are m, M, d, D, e, y, s, S, h, H, and z.  
+You should check the complete details of these patterns here:  
+https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/format/DateTimeFormatter.html
+
+The important point to understand is how the length of the pattern determines the output of text and numbers.
+
+Text: The text style is determined based on the number of pattern letters used. Less than 4 pattern letters will use the short form. Exactly 4 pattern letters will use the full form. Exactly 5 pattern letters will use the narrow form. Pattern letters 'L', 'c', and 'q' specify the stand-alone from of the text styles.
+
+Number: If the count of letters is one, then the value is output using the minimum number of digits and without padding. Otherwise, the count of digits is used as the width of the output field, with the value zero-padded as necessary. The following pattern letters have constrains on the count of letters. Only one letter of 'c' and 'F' can be specified. Up to two letters of 'd', 'H', 'h', 'K', 'k', 'm', and 's' can be specified. Up to three letters of 'D' can be specified.
+
+Number/Text: If the count of pattern letters is 3 or greater, use the Text rules above. Otherwise use the Number rules above.
+
+---
+
+##### Code that uses generic collection classes can interoperate with code that uses raw collections classes because of?
+
+- [x] type erasure
+
+  > Type erasure means that a compiled java class does not contain any of the generic information that is present in the java file. In other words, the compiler removes the generic information from a java class when it compile it into byte code. For example, `List<String> list;` and `List list;` are compiled to the same byte code. Therefore, at run time, it does not matter whether you've used generic classes or not and this kinds of classes to interoperate because they are essentially the same class to the JVM.
+  >
+  > Type erasure ensure that no new classes are created for parameterized types; consequently, generics incur no runtime overhead.
+
+- [ ] reification
+
+  > This is just the opposite of type erasure. Here, all the type information is preserved in the byte code. In Java, arrays are reified. For example, 
+  >
+  > ```java
+  > ArrayList[] alArray = new ArrayList[1];
+  > Collection[] cArray = alArray;
+  > cArray[0] = new HashSet();
+  > ```
+  >
+  > The above code will compile fine. But it will throw an `java.lang.ArrayStoreException` at run time because the byte code contains the information that `cArray` actually points to an array of `ArrayList`s and not of `HasSet`s.
+
+- [ ] just in time compilation
+
+- [ ] byte code instrumentation
+
+字节码操作好像有点意思。
+
+---
+
+Which variables declared in the encapsulating class or in the method, can an inner class access if the inner class is defined in a static method of encapsulating class?
+
+- [x]  All static variables
+
+- [ ] All final instance variables
+
+- [ ] All instance variables
+
+- [ ] All automatic variables
+
+- [x] All final or effectively final static or automatic variables
+
+  > An effectively final variable means even though it is not declared final, it is never assigned a value again throughout the code after being assigned a value at the time of declaration.
+
+**Explanation**
+
+Consider the following code:
+
+```java
+public class TestClass
+{
+    static int si = 10; int ii = 20;
+    public static void inner()
+    {
+        int ai = 30; // automatic variable
+        ai = 31; // ai is not effectively final anymore.
+        final int fai = 40; // automatic final variable
+        class Inner
+        {
+            public Inner() { System.out.println(si+"    "+fai);  }
+        }
+        new Inner();
+    }
+    public static void main(String[] args) { TestClass.inner(); }
+}
+```
+
+Since method `inner()` is a static method, only `si` and `fai` are accessible in class Inner. Note that `ai` and `ii` are not accessible. If method `inner()` were a non-static, `ii` would have been accessible. If the line `ai = 31;` did not exist, `ai` would have been accessible.
+
+---
+
+Which of the following command line switches is required for the assert statements to be executed while running a Java class?
+
+- [ ] `ea`
+
+- [ ] `ua`
+
+- [ ] `a`
+
+- [ ] No switch is needed, they are on by default.
+
+  > No, assertions are turned off by default.
+
+- [ ] `source`
+
+**Explanation**
+
+Although not explicitly mentioned in the exam objectives, OCP Java 11 Part 2 Exam requires you to know about the switches used to enable and disable assertions. Here are a few important points that you should know:
+
+Assertions can be enabled or disabled for specific classes and/or packages. To specify a class, use the class name. To specify a package, use the package name followed by "..."(three dots also known as ellipses):
+
+`java -ea:<class> myPackage.myProgram`
+
+`java -da:<package>... myPackage.myProgram`
+
+You can have multiple `-ea/-da` flags on the command line. For example, multiple flags allow you to enable assertions in general, but disable them in a particular package.
+
+`java -ea -da:com.xyz... myPackage.myProgram`
+
+The above command enables assertions for all classes  in all packages, but then the subsequent `-da` switch disables them for the `com.xyz` package and its subpackages.
+
+To enable assertion for one package and disable for other you can use:
+
+`java -ea:<package1>... -da:<package2>... myPackage.myProgram`
+
+You can enable or disable assertions in the unnamed root package (i.e. the default package) using the following commands:
+
+`java -ea:... myPackage.myProgram`
+
+`java -da:... myPackage.myProgram`
+
+Note that when you use a package name in the `ea` or `da` flag, the flag applies to that package as well as its subpackages. For example, 
+
+`java -ea:com... -da:com.enthuware... com.enthuware.Main`
+
+The above command first enables assertions for all the classes in `com` as well as for the classes in the subpackages of `com`. It then disables assertions for classes in package `com.enthuware` and its subpackages.
+
+Another thing is that -ea/-da do not apply to system classes. For system classes (i.e. the classes that com bundled with the JDK/JRE), you need to use `-enablesystemassertions/-esa` or `-disablesystemassertions/-dsa`
+
+Note that * and ** are not valid wildcards for including subpackages.
+
+---
+
+##### Which of the following is/are valid functional interface?
+
+- [ ] ```java
+  interface F {
+      default void m() {}
+  }
+  ```
+
+  It is not a valid functional interface because it does not have an abstract method.
+
+- [ ] ```java
+  interface F {
+      default void m() {}
+      static void n() {}
+  }
+  ```
+
+  It is not a valid functional interface because it does not have an abstract method.
+
+- [ ] ```java
+  interface F {
+      void m();
+      void n();
+  }
+  ```
+
+  It is not a valid functional interface because it has more than one abstract methods.
+
+- [x] ```java
+  interface F {
+      default void m() { }
+      abstract void n();
+  }
+  ```
+
+  The use of abstract keyword is redundant here, but it legal.
+
+- [ ] ```java
+  interface F {
+      void m() {}
+  }
+  ```
+
+  This will not compile because the method has a body but it lacks the keyword default.
+
+**Explanation**
+A functional interface is an interface that contains exactly one abstract method. It may contain zero or more default methods and/or static methods in addition to the abstract method. Because a functional interface contains exactly one abstract method, you can omit the name of that method when you implement it using a lambda expression. For example, consider the following interface -
+
+```java
+interface Predicate<T> {
+    boolean test(T t);
+}
+```
+
+The purpose of this interface is to provide a method that operates on an object of class T and return a boolean.
+
+You could have a method that takes an instance of class that  implements this interface defined like this - 
+
+```java
+public void printImportantData(ArrayList<Data> dataList, Predicate<Data> p) {
+    for (Data d: dataList) {
+        if (p.test(d)) System.out.println(d);
+    }
+}
+```
+
+where Data class could be as simple as `public class Data { public int value; }`
+
+Now, you can call the above method as follows:
+
+`printImportantData(al, (Data d) -> { return d.value > 1; } );`
+
+Notice the lack of method name here. This is possible because the interface has only one abstract method so the compiler can figure out the name. This can be shortened to:
+
+`printImportantData(al, d -> d.value > 1);`
+
+Notice that there is no declaration of d! The compiler can figure out all information it needs because the interface has only one abstract method and that method has only one parameter. So you don't need to write all those things in your code.
+
+Compare the above approach to the old style using an inner class that does the same thing - 
+
+```java
+printImportantData(al, new Predicate<Data>() {
+    public boolean test(Data d) {
+        return d.value > 1;
+    }
+});
+```
+
+The `Predicate` interface described above can be used anywhere there is a need to "do something with an object and return a boolean" and is actually provided by the standard java library in `java.util.function` package. This package provides a few other useful functional interfaces.
+
+`Predicate<T>` Represents a predicate (boolean-valued function) of one argument of type T.  
+`Consumer<T>` Represents an operation that accepts a single input argument of type T and returns no result.    
+`Function<T, R>` Represents a function that accepts one argument of type T and produces a result of type R  
+`Supplier<T>` Represents a supplier of results of type T.
+
+Please see http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html for learning Lambda expressions in Java.
+
+---
+
+看段代码，判断输出：
+
+```java
+import java.util.HashSet;
+
+enum SIZE {
+    TALL, GRANDE, JUMBO;
+}
+
+public class CoffeeMug {
+    public static void main(String[] args) {
+        HashSet<SIZE> hs = new HashSet<>();
+        hs.add(SIZE.TALL); hs.add(SIZE.JUMBO); hs.add(SIZE.GRANDE); 
+        hs.add(SIZE.TALL); hs.add(SIZE.TALL); hs.add(SIZE.JUMBO); 
+
+        for(SIZE s: hs) System.out.println(s);
+    }
+}
+```
+There are two concepts involved in this question:
+1. A `Set` (such as a `HashSet`) does not allow duplicate elements. If you add a duplicate element, it is ignored. Thus, only three unique `SIZE` elements are stored.
+
+It is important to understand how the `add()` method of a Set works :
+`boolean add(E o)`
+	Adds the specified element to this set if it is not already present (optional operation). More formally, adds the specified element, o, to this set if this set contains no element e such that `(o==null ? e==null : o.equals(e))`. If this set already contains the specified element, the call leaves this set unchanged and returns false. In combination with the restriction on constructors, this ensures that sets never contain duplicate elements.
+
+2. The order of elements is not defined in `HashSet`. So while retrieving elements, it can return them in any order.
+
+Remember that, `TreeSet` does store elements in their **natural sorted order**. 
+
+Also remember that the order of Enums is the order in which they are defined. It is not necessarily same as alphabetical order of their names.
+
+---
+
+Which of these statements concerning nested classes and interfaces are true?
+
+- [ ] An instance of a static nested class has an inherent outer instance.
+
+  > Because static nested class is a static class.
+
+- [ ] A static nested class can contain non-static member variables.
+
+  > It is like any other normal class.
+
+- [ ] A static nested interface can contain static member variables.
+
+  > Static nested interface is similar to top level interface.
+
+- [ ] A static nested interface has an inherent outer instance associated with it.
+
+  > A static nested interface is a static interface and so does not have an associated outer instance.
+
+- [ ] For each instance of the outer class, there can exist many instances of a non-static inner class.
+
+**Explanation**
+Note the difference between an Inner class and a static nested class. Inner class means a NON STATIC class defined inside a class. Remember: A nested class is any class whose declaration occurs within the body of another class or interface. A top level class is a class that is not a nested class. An inner class is a nested class that is not explicitly or implicitly declared static. A class defined inside an interface is implicitly static. For example,
+
+```java
+public class A  // outer class
+{
+   static public class B //Static Nested class . It can be used in other places: A.B b = new A.B(); There is no outer instance.
+   {
+   }
+   class C //Inner class. It can only be used like this: A.C c = new A().new C(); Outer instance is needed.
+   {
+   }
+}
+```
+One can define a class as a static member of any top-level class. Now consider the following contents of a file named I1.java ...  
+
+```java
+public interface I1
+{
+    public void mA();
+    public interface InnerI1
+    {
+        int k = 10;
+        public void innerA();
+    }
+}
+```
+Here, interface `InnerI1` is implicitly **STATIC** and so is called as static nested interface. 'k' is a `static` (& `final`) member of this interface. If you do `'javap'` on I1 it prints: Compiled from I1.java  
+
+```java
+public interface I1
+    /* ACC_SUPER bit NOT set */
+{
+    public abstract void mA();
+    public static interface I1. InnerI1
+    /* ACC_SUPER bit NOT set */
+    {
+        public static final int k;
+        public abstract void innerA();
+    }
+}
+```
+This interface can be referred to in other places like:  
+
+```java
+class MyClass implements I1.InnerI1
+{
+...
+}
+```
+This is similar to referring a Top Level class.  
+
+---
+
+
+
+
+
+
+
+
+
 
 
 
