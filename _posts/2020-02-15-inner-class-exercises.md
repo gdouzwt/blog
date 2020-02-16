@@ -14,7 +14,7 @@ tags:
 
 1. What is an inner class? Differentiate between member, local, and anonymous inner classes.
 
-   An inner class declares inside a top-level class without a static modifier. Inner classes that declared at member level are called member inner classes, local to the method, or instance initialization block are local inner class. And local inner classes that have no name are anonymous inner classes.
+   An inner class declares inside a top-level class without a static modifier. Inner classes that declared at member level are called member inner classes, local to the method, or instance initialization block are local inner class. And local inner classes that have no name are anonymous inner classes.<!--more-->
 
    > An inner class is a class declared inside the  body of another class. A member inner class is declared inside a class. It can be declared as public, private, protected, or package-level. A local inner class is declared inside a block. Its scope is limited to the block in which it is declared. An anonymous inner class is the same as  local inner class, but has no name. It is declared and an object of the class is created at the same time.
 

@@ -1,5 +1,5 @@
 ---
-`typora`-root-url: ../
+typora-root-url: ../
 layout:     post
 title:      816 基准测试回顾
 date:       '2020-02-15T22:10'
@@ -18,7 +18,7 @@ All Known Implementing Classes:
  `ScheduledThreadPoolExecutor`
 
 An `ExecutorService` that can schedule commands to run after a given delay, or to execute periodically.
-The schedule     methods create tasks with various delays and return a task object that can     be used to cancel or check execution. The `scheduleAtFixedRate` and  `scheduleWithFixedDelay` methods create and execute tasks that run periodically until cancelled.
+The schedule     methods create tasks with various delays and return a task object that can     be used to cancel or check execution. The `scheduleAtFixedRate` and  `scheduleWithFixedDelay` methods create and execute tasks that run periodically until cancelled.<!--more-->
 
 Commands submitted using the `Executor.execute(java.lang.Runnable)` and `ExecutorService.submit` methods are scheduled with a requested delay of zero. Zero and negative delays (but not periods) are also allowed in schedule methods, and are treated as     requests for immediate execution.
 
@@ -384,7 +384,7 @@ Which of these statements concerning the use of standard collection interfaces a
 
   It grows as more elements are added.
 
-- [ ] Some operations may throw an UnsupportedOperationException.
+- [x] Some operations may throw an UnsupportedOperationException.
 
 **Explanation**
 
