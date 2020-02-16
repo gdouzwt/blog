@@ -1084,6 +1084,30 @@ This is similar to referring a Top Level class.
 
 ---
 
+##### Which of the following annotations are retained for run time?
+
+- [ ] `@SuppressWarnings`
+
+  > It is defined with @Retention(SOURCE)
+
+- [ ] `@Override`
+
+  > It is defined with @Retention(SOURCE)
+
+- [x] `@SafeVarargs`
+
+  > It is defined with @Retention(RUNTIME)
+
+- [x] `@FunctionalInterface`
+
+  > It is defined with @Retention(RUNTIME)
+
+- [x] `@Deprecated`
+
+  > It is defined with @Retention(RUNTIME)
+
+---
+
 
 
 
