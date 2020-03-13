@@ -34,28 +34,21 @@ Builder 在《设计模式》的中文版里边翻译为“生成器”，那我
 #### 代码实现
 
 ```java
-package jdp2e.builder.demo;
-
 import java.util.LinkedList;
 
-//The common interface
 // 公共接口
 interface Builder {
 	void startUpOperations();
-
 	void buildBody();
-
 	void insertWheels();
-
 	void addHeadlights();
-
 	void endOperations();
 
-	/* The following method is used to retrieve the object that is constructed. */
+	/* 用于获取已经构建好的对象的方法。*/
 	Product getVehicle();
 }
 
-//Car class
+// Car 类
 class Car implements Builder {
 	private String brandName;
 	private Product product;
@@ -66,7 +59,7 @@ class Car implements Builder {
 	}
 
 	public void startUpOperations() {
-		// Starting with brand name
+		// 开始就设置品牌名称
 		product.add(String.format("Car model is :%s", this.brandName));
 	}
 
@@ -90,7 +83,7 @@ class Car implements Builder {
 	}
 }
 
-//Motorcycle class
+// Motorcycle 类
 class MotorCycle implements Builder {
 	private String brandName;
 	private Product product;
@@ -116,7 +109,7 @@ class MotorCycle implements Builder {
 	}
 
 	public void endOperations() {
-		// Finishing up with brand name
+		// 添加品牌名称作为收尾
 		product.add(String.format("Motorcycle model is :%s", this.brandName));
 	}
 
@@ -125,11 +118,11 @@ class MotorCycle implements Builder {
 	}
 }
 
-// Product class 
+// Product 类 
 class Product {
 	/*
-	 * You can use any data structure that you prefer. I have used
-	 * LinkedList<String> in this case.
+	 * 你可以使用任何数据结构，这里使用
+	 * LinkedList<String> 
 	 */
 	private LinkedList<String> parts;
 
@@ -138,7 +131,7 @@ class Product {
 	}
 
 	public void add(String part) {
-		// Adding parts
+		// 添加部件
 		parts.addLast(part);
 	}
 
@@ -149,11 +142,11 @@ class Product {
 	}
 }
 
-// Director class 
+// Director 类 
 class Director {
 	Builder builder;
 
-	// Director knows how to use the builder and the sequence of steps.
+	// Director 知道如何使用 builder 以及调用步骤。
 	public void construct(Builder builder) {
 		this.builder = builder;
 		builder.startUpOperations();
@@ -173,12 +166,12 @@ public class BuilderPatternExample {
 		Builder fordCar = new Car("Ford");
 		Builder hondaMotorycle = new MotorCycle("Honda");
 
-		// Making Car
+		// 造小车 Car
 		director.construct(fordCar);
 		Product p1 = fordCar.getVehicle();
 		p1.showProduct();
 
-		// Making MotorCycle
+		// 造摩托 MotorCycle
 		director.construct(hondaMotorycle);
 		Product p2 = hondaMotorycle.getVehicle();
 		p2.showProduct();
@@ -277,38 +270,33 @@ Motorcycle model is :Honda
 #### 代码实现
 
 ```java
-package jdp2e.builder.demo;
-
-//The common interface
+// 公共接口
 interface ModifiedBuilder {
 	/*
-	 * All these methods return type is ModifiedBuilder. This will help us to apply
-	 * method chaining
+	 * 所有这些方法的返回值类型都是 ModifiedBuilder。这样可以做链式调用
 	 */
 	ModifiedBuilder startUpOperations(String startUpMessage);
-
 	ModifiedBuilder buildBody(String bodyType);
-
 	ModifiedBuilder insertWheels(int noOfWheels);
-
 	ModifiedBuilder addHeadlights(int noOfHeadLights);
-
 	ModifiedBuilder endOperations(String endOperationsMessage);
 
-	/* Combine the parts and make the final product. */
+	/* 组合部件制造最终产品。 */
 	ProductClass constructCar();
 
-	// Optional method:To get the already constructed object
+	// 可选的方法：获取已构建的产品
 	ProductClass getConstructedCar();
 }
 
-//Car class
+//Car 类
 class CarBuilder implements ModifiedBuilder {
-	private String startUpMessage = "Start building the product";// Default start-up message
-	private String bodyType = "Steel";// Default body
-	private int noOfWheels = 4;// Default number of wheels
-	private int noOfHeadLights = 2;// Default number of head lights
-	private String endOperationsMessage = "Product creation completed";// Default finish up message
+    // 默认起始消息
+	private String startUpMessage = "Start building the product";
+    private String bodyType = "Steel"; // 默认车身类型
+	private int noOfWheels = 4; // 默认车轮数量
+	private int noOfHeadLights = 2; // 默认车头灯数量
+	// 默认结束消息
+	private String endOperationsMessage = "Product creation completed";
 	ProductClass product;
 
 	@Override
@@ -344,18 +332,19 @@ class CarBuilder implements ModifiedBuilder {
 	@Override
 	public ProductClass constructCar() {
 
-		product = new ProductClass(this.startUpMessage, this.bodyType, this.noOfWheels, this.noOfHeadLights,
+		product = new ProductClass(this.startUpMessage, this.bodyType,
+                                   this.noOfWheels, this.noOfHeadLights,
 				this.endOperationsMessage);
 		return product;
 	}
 
-	@Override
+    @Override
 	public ProductClass getConstructedCar() {
 		return product;
 	}
 }
 
-//Product class 
+// Product 类 
 final class ProductClass {
 	private String startUpMessage;
 	private String bodyType;
@@ -363,7 +352,8 @@ final class ProductClass {
 	private int noOfHeadLights;
 	private String endOperationsMessage;
 
-	public ProductClass(final String startUpMessage, String bodyType, int noOfWheels, int noOfHeadLights,
+	public ProductClass(final String startUpMessage, String bodyType,
+                        int noOfWheels, int noOfHeadLights,
 			String endOperationsMessage) {
 		this.startUpMessage = startUpMessage;
 		this.bodyType = bodyType;
@@ -371,11 +361,9 @@ final class ProductClass {
 		this.noOfHeadLights = noOfHeadLights;
 		this.endOperationsMessage = endOperationsMessage;
 	}
-
 	/*
-	 * There is no setter methods used here to promote immutability. Since the
-	 * attributes are private and there is no setter methods, the keyword "final" is
-	 * not needed to attach with the attributes.
+	 * 没有使用 setter 方法，加强不可以变性。因为属性是私有，且没有 setter 方法，
+	 * 所以不必要使用 final 关键字。
 	 */
 	@Override
 	public String toString() {
@@ -386,19 +374,18 @@ final class ProductClass {
             noOfHeadLights + "\n endOperationsMessage=" + 
             endOperationsMessage;
 	}
-
 }
 
-//Director class 
+// Director 类 
 public class BuilderPatternModifiedExample {
 
 	public static void main(String[] args) {
 		System.out.println("***Modified Builder Pattern Demo***");
 		/*
-		 * Making a custom car (through builder) Note the steps: 
-		 * Step1:Get a builder object with required parameters 
-		 * Step2:Setter like methods are used.They will set the optional fields also. 
-		 * Step3:Invoke the constructCar() method to get the final car.
+		 * 构造一个定制的小车（通过使用 builder），注意步骤：
+		 * 第1步：已必要的参数获取一个 builder 对象。
+		 * 第2步：使用类似 setter 的方法设置可选字段。
+		 * 第3步：调用 constructCar() 方法去获取最终生成的小车。
 		 */
 		final ProductClass customCar1 = new CarBuilder()
             .addHeadlights(5)
@@ -408,8 +395,7 @@ public class BuilderPatternModifiedExample {
 		System.out.println(customCar1);
 		System.out.println("--------------");
 		/*
-		 * Making another custom car (through builder) with a different sequence and
-		 * steps.
+		 * 用不同的步骤构造另一个定制小车（通过使用 builder）
 		 */
 		ModifiedBuilder carBuilder2 = new CarBuilder();
 		final ProductClass customCar2 = carBuilder2
@@ -419,17 +405,16 @@ public class BuilderPatternModifiedExample {
             .constructCar();
 		System.out.println(customCar2);
 		System.out.println("--------------");
-
 		/*
-		 * customCar2 = carBuilder2.insertWheels(70)//error because customCar2 is final
+		 * 错误，因为 customCar2 是 final 的
+         * customCar2 = carBuilder2.insertWheels(70)
 		 * .addHeadlights(6) .startUpOperations("I am making my own car")
 		 * .constructCar(); System.out.println(customCar2);
-		 */
-		
-		// Verifying the getConstructedCar() method
+		 */		
+		// 验证 getConstructedCar() 方法
+        
 		final ProductClass customCar3 = carBuilder2.getConstructedCar();
 		System.out.println(customCar3);
-
 	}
 }
 
@@ -481,7 +466,7 @@ endOperationsMessage=Product creation completed
 
 #### 静态嵌套类，链式调用
 
-这里补充 Effective Java 第三版里边 Item 2 所讲的 **Consider a builder when faced with many constructor parameters** 的代码例子，因为觉得这里面的例子稍微高级一点，应用到静态嵌套类（不知道这样翻译准不准确，英文是 Static nested class）。 在吐槽完 Telescoping constructor pattern (does not scale well!) 和 JavaBeans Pattern (allows inconsistency, mandates mutability) 之后，Josh Bloch 给出了一种 Builder Pattern，代码如下：
+这里补充 Effective Java 第三版里边 Item 2 所讲的 **Consider a builder when faced with many constructor parameters** 的代码例子，因为觉得这里面的例子稍微高级一点，应用到静态嵌套类（不知道这样翻译准不准确，英文是 Static nested class）。 在说完 Telescoping constructor pattern (does not scale well!) 和 JavaBeans Pattern (allows inconsistency, mandates mutability) 缺点之后，Joshua Bloch 给出了一种 Builder Pattern，代码如下：
 
 ```java
 // Builder Pattern
@@ -523,7 +508,6 @@ public class NutritionFacts {
         public Builder carbohydrate(int val)
         	{ carbohydrate = val;  return this; }
         
-        
         // 返回最终产品
         public NutritionFacts build() {
             return new NutritionFacts(this);
@@ -552,7 +536,7 @@ NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8).
 
 这样的链式调用，易写、易读，模仿了像 Python 或 Scala 中的命名参数（named optional parameters).
 
-#### 生成器模式适用于类继承体系结构
+#### 适用于类继承体系结构
 
 即抽象类有抽象 builder，具体类有具体的 builder，例如以下代码是一个抽象类，代表各种披萨：
 
@@ -579,7 +563,7 @@ public abstract class Pizza {
 }
 ```
 
-上面的 `Pizza.Builder` 是带有*递归类型参数*的泛型，加上抽象的 `self` 方法，可以允许子类实现方法链式调用。因为 Java 没有 self 类型，这种做法是模仿 self 类型的习惯。(This workaround for the fat that Java lacks a self type is known as the **simulated self-type idiom**.)
+上面的 `Pizza.Builder` 是带有*递归类型参数*的泛型，加上抽象的 `self` 方法，可以允许子类实现方法链式调用。因为 Java 没有 self 类型，这种做法是模仿 self 类型的习惯。(This workaround for the fact that Java lacks a self type is known as the **simulated self-type idiom**.)
 
 然后接下来是两个具体的 `Pizza` 子类：
 
@@ -660,3 +644,6 @@ Calzone calzone = new Calzone.Builder()
 - Joshua Block. *Effective Java, Third Edition.* Addison-Wesley, 2018
 - [设计模式杂谈——模式与反模式之争](https://blog.csdn.net/jiangpingjiangping/article/details/78067595)
 
+> 更新记录：
+>
+> 2020年3月13日 下午3点13分 修正一些错别字，整理一下代码格式，和替换注释为中文。
