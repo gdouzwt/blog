@@ -61,8 +61,6 @@ public class ChartController {
 }
 ```
 
-
-
 ### 创建 WebClientStockClient bean
 
 IntelliJ IDEA 通过告知我们找不到类型为`WebClientStockClient`去帮助我们发现`ChartController`存在的问题。让我们修复它。
@@ -88,8 +86,6 @@ public class ClientConfiguration {
     }
 }
 ```
-
-
 
 ### 启用自动装配
 

@@ -668,7 +668,7 @@ tags:
     - [x] Most of the actual date related classes in the Date-Time API such as `LocalDate`, `LocalTime`, and `LocalDateTime` are immutable. 
       
     > These classes do not have any setters. Once created you cannot change their contents. Even their constructors are **private**. 
-      
+    
     - [ ] `LocalDateTime` includes time zone information but `LocalDate` does not. 
       > None of `LocalDate`, `LocalDateTime`, or `LocalTime` store zone information. 
       > 
@@ -703,11 +703,11 @@ tags:
     - [x] A character literal can be used as a value for a case label. 
       
     > `boolean`, `long`, `float` and `double` cannot be used. 
-      
+    
     - [x] A 'long' cannot be used as a switch variable. 
       
     > `boolean`, `long`, `float` and `double` cannot be used. 
-      
+    
     - [x] An empty switch block is a valid construct. 
 
     - [ ] A switch block must have a `default` label. 
@@ -879,7 +879,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
     - [ ] The modulus operator `%` can only be used with integer operands. 
       
     > It can be used on floating points operands also. For example, `5.5 % 3 = 2.5` 
-      
+    
     - [x] `&` can have integral as well as boolean operands. 
 
     - [x] The arithmetic operators `*`, `/` and `%` have the same level of precedence. 
@@ -887,7 +887,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
     - [ ] `&&` can have integer as well as boolean operands. 
       
     > `!`, `&&` and `||` operate only on booleans. 
-      
+    
     - [ ] `~` can have integer as well as boolean operands. 
       
       > `~` Operates only on integral types. 
@@ -912,7 +912,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
     - [ ] An interface can be extended by an abstract class. 
       
     > A class "implements" an interface. It does not "extend" an interface. 
-      
+    
     - [ ] An interface can be extended by a concrete class. 
 
     - [ ] An abstract class cannot implement an interface. 
@@ -932,7 +932,7 @@ Which of the following declarations defined in a non-abstract class, is equivale
     - [ ] Conversion from `int` to `float` needs a cast. 
       
     > It does not need a cast because a `float` can hold any value of `int`. Note that the opposite is not true because of the loss of precision. 
-      
+    
     - [x] Conversion from `byte`, `char`, or `short` to `int`, `long` or `float` does not need a case. 
       
       > Because `int`, `long`, or `float` are bigger than `byte` `char` or `short`. 

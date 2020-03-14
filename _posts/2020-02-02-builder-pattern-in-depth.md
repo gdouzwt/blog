@@ -198,8 +198,6 @@ This is a body of a Motorcycle
 Motorcycle model is :Honda
 ```
 
-
-
 ### Q & A 
 
 1. 使用生成器模式有什么好处?
@@ -629,8 +627,6 @@ NyPizza pizza = new NyPizza.Builder(SAMLL)
 Calzone calzone = new Calzone.Builder()
     .addTopping(HAM).sauceInside().build();
 ```
-
-
 
 ### 总结
 

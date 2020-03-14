@@ -108,8 +108,6 @@ public void accept(StockPrice stockPrice) {
 }
 ```
 
-
-
 ### 运行 chart 应用程序
 
 1. 确保后端的Kotlin Spring Boot服务正在运行（`StockSeriviceApplication`）。

@@ -14,11 +14,7 @@ tags:
 
 <!--more-->
 
-
-
 ![image-20200122001604874](/img/image-20200122001604874.png)
-
-
 
 module-info.java 是模块的信息。
 
@@ -29,4 +25,3 @@ module io.zwt.common {
 
 }
 ```
-

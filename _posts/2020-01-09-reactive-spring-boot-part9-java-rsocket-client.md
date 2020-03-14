@@ -66,8 +66,6 @@ public class RSocketStockClient {
 }
 ```
 
-
-
 ### 引入 StockClient 接口
 
 当然方法声明看起来跟在`WebClientStockClient`里面的一样，所以这是引入接口的好时机，让两个客户端都实现同样的接口。
@@ -163,8 +161,6 @@ public class RSocketStockClient implements StockClient {
     }
 }
 ```
-
-
 
 ### 创建一个 RSocketRequester
 
@@ -264,8 +260,6 @@ public class RSocketStockClient implements StockClient {
     }
 }
 ```
-
-
 
 现在我们在后端有了发送股票价格的RSocket服务器，以及能够连接到它并查看价格的RSocket客户端。在下一节，我们会看一下如何从使用`WebClientStockClient`切换到`RSocketStockClient`。
 

@@ -60,8 +60,6 @@ public class ClientConfiguration {
 }
 ```
 
-
-
 ### 选择使用哪个 Bean
 
 如果我们回到JavaFX的`ChartController`（在stock-ui 模块），这个类就是用了`StockClient`去连接到价格服务，并在图表上显示价格的。IntelliJ IDEA 旗舰版在这个类显示警告，说这里边有多于一个Bean符合 StockClient 类型，也就是我们的`rSocketStockClient`和`webClientStockClient`。我们需要配置一种方式，指定我们实际想要使用哪个客户端。一种做法是使用Spring profiles。
@@ -83,8 +81,6 @@ public StockClient rSocketStockClient(RSocketRequester rSocketRequester) {
 }
 ```
 
-
-
 ### 选择激活的配置
 
 如果我们使用的是IntelliJ IDEA旗舰版，当我们在`ChartController`里面，我们可以看到错误已经消失了。但我们还是需要指定想要使用哪个配置(profile)。
@@ -99,8 +95,6 @@ spring.profiles.active=sse
 
 3.  重新运行应用程序，程序应该按预期启动，并像之前那样显示两组价格数据。
 4. 注意到在运行窗口，JavaFX应用程序已经以*sse*配置启动。
-
-
 
 ### 调试日志
 
@@ -125,8 +119,6 @@ public Flux<StockPrice> pricesFor(String symbol) {
 ```
 
 3. 重新运行应用程序，我们应该看到两个日志消息，表示我们当前使用的是WebClient stock client。
-
-
 
 ### 通过 RSocket 获取价格
 

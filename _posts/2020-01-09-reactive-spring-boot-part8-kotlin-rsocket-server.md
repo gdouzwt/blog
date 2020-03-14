@@ -15,8 +15,6 @@ tags:
 
 > 原文由 Trisha Gee 在当地时间2019年12月9日发布在 [INTELLIJ IDEA BLOG](https://blog.jetbrains.com/idea/2019/12/tutorial-reactive-spring-boot-kotlin-rsocket-server/)
 
-
-
 在这一节，我们将给Kotlin后端添加一个新的服务，这次是通过RSocket，一种为响应式数据流而生的协议，发送价格数据。
 
 目前为止，我们以及成功地创建了一个端到端的应用程序，从Kotlin Spring Boot后端发送价格数据，并且将它们展示到一个JavaFX折线图上。那用的是HTTP的服务器发送事件。 但是，既然我们这个是响应式应用程序，我们可能想要选择一种更加适合流式数据的协议。
@@ -90,8 +88,6 @@ class PriceService {
  
 // StockPrice数据类在这里
 ```
-
-
 
 ### 将共享代码移入 PriceService
 
@@ -173,13 +169,9 @@ class PriceService {
 }
 ```
 
-
-
 ### 重构减少模板代码
 
 在`RestController`和`RSocketController`上的`prices`函数现在都只是直接调用`PriceService`所有所有通用的代码都在要给地方了。Kotlin让我们可以进一步简化代码。
-
-
 
 1. 将`prices`函数转化为一个表达式体（expression body），并移除声明的返回值类型。
 2. （提示：如果我们在函数的花括号上按下 Alt + Enter，IntelliJ IDEA 会提供选项"Convert to expression body" 完成这个操作之后，返回值类型会被高亮，然后我们可以轻松将它删除）。
@@ -228,8 +220,6 @@ class RSocketController(val priceService: PriceService) {
 }
 ```
 
-
-
 ### 设置好一个 RSocket 服务器
 
 现在如果我们启动应用程序，我们可以看到哪个服务器已经被启动。目前，我们应该只能看到8080端口的 Netty。我们想RSocket服务器也启动。
@@ -242,19 +232,6 @@ spring.rsocket.server.port=7000
 
 只需要在这里定义端口就足以让Spring Boot为我们启动一个RSocket服务器，因此我们只需要重启应用程序，我们会看到一个Netty RSocket服务器启动在7000端口（例子可以看配套视频的最后）。
 
-
-
 现在我们在7000端口有了一个价格服务准备好给客户端通过RSocket去连接获取价格数据了。下一节，我们将连接到这个服务器，并消费价格数据。
 
 [全部代码在 GitHub](https://github.com/zwt-io/rsb/)：https://github.com/zwt-io/rsb/
-
-
-
-
-
-
-
-
-
-
-

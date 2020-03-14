@@ -229,8 +229,6 @@ public class CountryMapperTest {
 
 上手简单，感觉还不错的样子。
 
-
-
 #### 第2章 MyBatis XML方式的基本用法 15
 
 ##### 2.1 一个简单的权限控制需求 16
@@ -355,8 +353,6 @@ id 回写
 不同数据库的selectKey使用方式不同
 
 ##### 2.5 update用法 42
-
-
 
 ##### 2.6 delete用法 45
 

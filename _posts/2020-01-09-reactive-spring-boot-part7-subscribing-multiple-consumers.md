@@ -25,8 +25,6 @@ tags:
 
 那个`ChartController`负责管理数据如何显示的，包含了一个将`ChartController`自身订阅到客户端的调用，那个客户端监听股票价格服务（请看前面的文章了解`ChartController`的初始状态）我们要修改这个，所以我们有不止一个订阅者。
 
-
-
 1. 在`ChartController`内的订阅者调用，替换`this`为一个新的类型的构造函数，`PriceSubscriber`. 这个类会负责管理从客户端消费价格数据。
 2. 将`PriceSubscriber`作为内部类，它需要实现`Consumer`并消费`StockPrice`。
 3. （提示：IntelliJ IDEA能够为我们自动创建这个，如果我们在`PriceSubscriber`名称初次敲入时按下Alt+Enter）。
@@ -114,8 +112,6 @@ public class ChartController {
 
 如果我们重新运行应用程序，这图表应该像之前那样运行（假设后端服务也在运行），因为我们并没有改变行为，只是重构了订阅。
 
-
-
 ### 添加第二个订阅者
 
 1. 将`symbol`重命名为`symbol1`，因为我们要有另一个这东西，重命名symbol本身，然后让我们也重命名`priceSubscriber`。
@@ -146,8 +142,6 @@ public void initialize() {
 
 现在当我们重新运行应用程序，我们可以看到两个不同的系列在图表上追踪两个不同的股票价格，正如在视频的3:30看到的那样。
 
-
-
 ### 整理代码
 
 现在我们的应用程序按预期运行，我们可以重构一下代码如果我们想的话。
@@ -173,8 +167,6 @@ public void initialize() {
     chart.setData(data);
 }
 ```
-
-
 
 ### 额外的重构（不在视频中）
 
@@ -220,8 +212,6 @@ public class ChartController {
     }
 }
 ```
-
-
 
 ### 总结
 

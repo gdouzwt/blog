@@ -189,8 +189,6 @@ class MultiThreadDemo {
 }
 ```
 
-
-
 #### 使用 `isAlive()` 和 `join()`
 
 ```java
@@ -576,8 +574,6 @@ class Deadlock implements Runnable {
 }
 ```
 
-
-
 #### 线程的挂起，恢复和停止
 
 ```java
@@ -657,8 +653,6 @@ class SuspendResume {
   }
 }
 ```
-
-
 
 #### 获取一个线程的状态
 

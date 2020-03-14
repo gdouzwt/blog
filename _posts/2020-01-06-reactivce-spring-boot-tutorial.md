@@ -17,8 +17,6 @@ tags:
 >
 > 原版是在现场演示的，录播视频时长 1:08:28. 现场版就比较生动吧，有血有肉的，有开场白，也开玩笑活跃气氛。现场写代码，有时候出错，展示了调试的思路，与观众有互动。后面重新整理的录屏版就比较言简意赅，也不会有出错和调试的情节，节省读者时间。<!--more-->
 
-
-
 ![image-20200112205309462](/img/image-20200112205309462.png)
 
 
@@ -40,9 +38,6 @@ tags:
 - [Java RSocket客户端](https://www.bilibili.com/video/av82756397) ✔
 - [用Spring Profiles切换客户端](https://www.bilibili.com/video/av82762131) ✔
 
-
-
 [本系列视频课程的播放列表](https://www.bilibili.com/medialist/detail/ml796846209)
 
 [代码在 GitHub](https://github.com/zwt-io/rsb)
-

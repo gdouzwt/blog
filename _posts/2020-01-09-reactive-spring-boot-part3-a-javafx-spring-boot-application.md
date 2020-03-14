@@ -56,8 +56,6 @@ public class StockUiApplication {
 }
 ```
 
-
-
 ### 更新Spring Boot设置
 
 因为这是一个JavaFX应用程序，不是一个Web应用程序。所以在这个模块的application.properties里添加：
@@ -65,8 +63,6 @@ public class StockUiApplication {
 ```properties
 spring.main.web-application-type=none
 ```
-
-
 
 ### 创建一个 JavaFX 应用程序类
 
@@ -103,8 +99,6 @@ public class ChartApplication extends Application {
     }
 }
 ```
-
-
 
 ### 设置好 Spring Boot 应用程序类
 
@@ -160,8 +154,6 @@ static class StageReadyEvent extends ApplicationEvent {
 }
 ```
 
-
-
 ### 创建应用程序上下文
 
 在`Application`类里面有些其它有用的方法我们可以重写利用一下。
@@ -177,8 +169,6 @@ public void init() {
     applicationContext = new SpringApplicationBuilder(StockUiApplication.class).run();
 }
 ```
-
-
 
 ### 关闭应用程序上下文
 
@@ -233,8 +223,6 @@ public class ChartApplication extends Application {
 }
 ```
 
-
-
 ### 监听应用程序事件
 
 我们需要一些东西去监听我们所创建的`StageReadyEvent`。
@@ -285,11 +273,7 @@ static class StageReadyEvent extends ApplicationEvent {
 
 这个`Stage`已经准备就是可用于我们的用户界面。我们可以运行我们的`StockUiApplication`，然后看到它成功地作为一个Spring Boot应用程序启动了。同时它也启动了一个Java进程显示一个UI如果我们有创建的话。目前位置，我们已经成功地创建了一个由Spring管理并启动的JavaFX应用程序，并且允许我们方便地使用Spring应用程序的特性。
 
-
-
 [全部代码在 GitHub](https://github.com/zwt-io/rsb/)
-
-
 
 
 

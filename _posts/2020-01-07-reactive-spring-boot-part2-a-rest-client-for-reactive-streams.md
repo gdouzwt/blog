@@ -19,15 +19,11 @@ tags:
 
 这是第二步，演示如何创建一个 Java 客户端连接到一个发送一系列服务端发送事件的流。我们将使用测试驱动开发来进行开发客户端并进行测试。[视频在 B 站](https://www.bilibili.com/video/av81233693)
 
-
-
 本教程是一系列视频，概述了构建完整的Spring Boot的许多步骤，具有 Kotlin 服务后端，Java 客户端和 JavaFX 用户界面的应用程序。
 
 第二个视频将展示如何创建。一个响应式Spring Java客户端，连接到每秒流式传输股票价格的REST服务。
 
 <!--more-->
-
-
 
 ### 创建客户端工程
 
@@ -56,15 +52,11 @@ IntelliJ IDEA 从 Spring Initializr 获取工程，并适当地设置IDE。选�
 1. 删除Spring Initializr为我们创建的`StockClientApplication`，在这个模块我们不需要它，因为该模块将成为其他模块的库。
 2. 创建一个类WebClientStockClient。它将使用Spring的WebClient来，连接到股票价格服务。
 
-
-
 ```java
 public class WebClientStockClient {
 
 }
 ```
-
-
 
 ### 创建客户端的测试
 
@@ -76,8 +68,6 @@ public class WebClientStockClient {
 4. 用快捷键 Alt+Insert (⌘N) 生成测试的方法，在生成菜单中选择 “Test Method” 。
 5. 这不会是测试驱动开发的完美示例，因为我们只是创建一个只测试最佳情况的测试，有时称为快乐路径测试。将测试命名为像 `shouldRetrieveStockPricesFromTheService`
 6. 为测试创建一个 `WebClientStockClient` 实例
-
-
 
 ```java
 class WebClientStockClientIntegrationTest {
@@ -132,8 +122,6 @@ public class WebClientStockClient {
 
    并用于JSON序列化。
 
-
-
 ```java
 @Data
 @AllArgsConstructor
@@ -145,8 +133,6 @@ public class StockPrice {
 }
 ```
 
-
-
 ### 为测试添加断言
 
 我们回到 WebClientStockClientIntegrationTest 并添加一些断言， 我们需要检查`Flux<StockPrice>`是否符合预期。
@@ -154,8 +140,6 @@ public class StockPrice {
 1. 将返回的 Flux 保存到 prices 局部变量。
 2. 添加此为非空的断言。
 3. 添加一个断言，如果如果我们从Flux中取出五个价格，我们不止得到一个价格。
-
-
 
 ```java
 @Test
@@ -189,8 +173,6 @@ public class WebClientStockClient {
     }
 // ...rest of the class here
 ```
-
-
 
 现在我们想要使用 WebClient 在我们的方法中调用 REST 服务。
 
@@ -242,16 +224,12 @@ public class WebClientStockClient {
 }
 ```
 
-
-
 ### 运行集成测试
 
 回到 `WebClientStockClientIntegrationTest`，可以看到有些需要修复的东西。
 
 1. 我们现在需要给客户端一个 `WebClient`， 在测试中将其创建为字段。
 2. （使用智能补全 `Ctrl+Shift+空格`， IntelliJ IDEA 甚至可以建议创建 `WebClient` 实例的完整语句）
-
-
 
 ```java
 class WebClientStockClientIntegrationTest {
@@ -264,14 +242,10 @@ class WebClientStockClientIntegrationTest {
 // ...其余代码
 ```
 
-
-
 1. 为了进行集成测试，REST 服务必须要运行。回到上一个期创建的 `StockServiceApplication` 并运行起来。
 2. 运行 `WebClientStockClientIntegrationTest`。 你可以用边栏上的图标或使用快捷键 `Ctrl+Shift+F10` (macOS 快捷键是 ⌃⇧R ) ，或者双击 `Ctrl` (“run anything”) 然后输入测试的名称。
 
 现在我们应该可以看到测试为绿色通过。如果我们看一下输出，可以看到我们正在解码带有符号的 `StockPrice` 对象，随机价格和时间。
-
-
 
 ### 更多关于在集成测试中使用断言
 
@@ -303,23 +277,11 @@ class WebClientStockClientIntegrationTest {
 }
 ```
 
-
-
 ### 总结
 
 测试响应式应用程序是一项技能，而且还有比我们所展示的更好的方法。但是，我们已经成功地使用了集成测试来驱动股票价格客户端的API和功能，该客户端连接到发出服务器发送事件，并返回`Flux<StockPrice>`对象可被其他服务消费的端点。在本教程的后续视频中，我们将展示如何执行此操作。
 
 [全部代码在 GitHub](https://github.com/zwt-io/rsb/)
-
-
-
-
-
-
-
-
-
-
 
 
 

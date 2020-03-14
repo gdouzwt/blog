@@ -50,8 +50,6 @@ public class SheepManager {
 
 使用 Monitor 或称为 Lock，使用 synchronized 的时候，注意🔒的对象是那个。保证同步，就要去要锁同一个对象。<!--more-->
 
-
-
 并发集合类
 
 | 类名称                | 接口                                   | 元素有序？ | 可排序？ | 阻塞？ |
@@ -66,8 +64,6 @@ public class SheepManager {
 | LinkedBlockingDeque   | BlockingQueue, BlockingDeque           | Yes        | No       | Yes    |
 | LinkedBlockingQueue   | BlockingQueue                          | Yes        | No       | Yes    |
 
-
-
 ### Understanding CopyOnWrite Collections
 
 ```java
@@ -79,4 +75,3 @@ for (Integer item: list) {
 System.out.println();
 System.out.println("Size: "+list.size());
 ```
-

@@ -46,11 +46,9 @@ public class BeeperControl {
 }
 ```
 
-
-
 ---
 
-##### Which of the following statements are correct?
+**Which of the following statements are correct?**
 
 - [ ] A List stores elements in a Sorted Order.
 
@@ -82,7 +80,7 @@ public class BeeperControl {
 
 ---
 
-##### How many methods have to be provided by a class that is not abstract and that implements Serializable interface?
+**How many methods have to be provided by a class that is not abstract and that implements Serializable interface?**
 
 - [x] 0
 
@@ -94,15 +92,13 @@ public class BeeperControl {
 
 - [ ] 3
 
-
-
 ---
 
 Simple rule to determine sorting order: spaces < numbers < uppercase < lowercase
 
 ---
 
-##### Given that a code fragment has just created a JDBC Connection and has executed an update statement, which of the following statements is correct?
+**Given that a code fragment has just created a JDBC Connection and has executed an update statement, which of the following statements is correct?**
 
 - [ ] Changes to the database are pending a commit call on the connection.
 
@@ -124,7 +120,7 @@ JDBC 默认开启了自动提交。
 
 ---
 
-##### Which statements concerning the relation between a non-static inner class and its outer class instances are true?
+**Which statements concerning the relation between a non-static inner class and its outer class instances are true?**
 
 - [ ] Member variables of the outer instance are always accessible to inner instances, regardless of their accessibility modifiers.
 
@@ -140,11 +136,9 @@ JDBC 默认开启了自动提交。
 
   > There is no such rule.
 
-
-
 ---
 
-##### Which interfaces does java.util.NavigableMap extend directly or indirectly?
+**Which interfaces does java.util.NavigableMap extend directly or indirectly?**
 
 - [ ] `java.util.SortedSet`
 
@@ -172,11 +166,9 @@ Implementations of entry-returning methods are expected to return `Map.Entry` pa
 
 Methods `subMap(K, K)`, `headMap(K)`, and `tailMap(K)` are specified to return `SortedMap` to allow existing implementations of `SortedMap` to be compatibly retrofitted to implement `NavigableMap`, but extensions and implementations of this interface are encouraged to override these methods to return `NavigableMap`. Similarly, `SortedMap.keySet()` can be overridden to return `NavigableSet`.
 
-
-
 ---
 
-##### Which of the following standard functional interfaces is most suitable to process a large collection of int primitives and return processed data for each of them?
+**Which of the following standard functional interfaces is most suitable to process a large collection of int primitives and return processed data for each of them?**
 
 - [ ] `Function<Integer>`
 - [x] `IntFunction`
@@ -192,11 +184,9 @@ Now, since the problem statement requires something to be returned after process
 
 Therefor, **`IntFunction`** is most appropriate in this case.
 
-
-
 ---
 
-##### In which of the following cases can the Console object be acquired?
+**In which of the following cases can the Console object be acquired?**
 
 You had to select 1 option
 
@@ -268,7 +258,7 @@ The `printIt()` method expects a Collection of Strings. Therefore, the reference
 
 ---
 
-##### Which of the following standard functional interface returns void?
+**Which of the following standard functional interface returns void?**
 
 - [ ] `Supplier`
 
@@ -416,38 +406,38 @@ Identify correct statements about the Java module system.
 
   In addition to reading every other named module, an automatic module is also made to read the unnamed module. Thus, while running a modular application, the classpath option can be used to enable automatic modules to access third party non-modular jars.
 
-  **Explanation**
+**Explanation**
 
-  **Bottom Up Approach for modularizing an application**
+**Bottom Up Approach for modularizing an application**
 
-  While modularizing an app using the bottom-up approach, you basically need to convert lower level libraries into modular jars before you can convert the higher level libraries. For example, if a class in **A.jar** directly uses a class from **B.jar**, and a class in **B.jar** directly uses a class from **C.jar**, you need to first modularize **C.jar** and then **B.jar** before you can modularize **A.jar**.
+While modularizing an app using the bottom-up approach, you basically need to convert lower level libraries into modular jars before you can convert the higher level libraries. For example, if a class in **A.jar** directly uses a class from **B.jar**, and a class in **B.jar** directly uses a class from **C.jar**, you need to first modularize **C.jar** and then **B.jar** before you can modularize **A.jar**.
 
-  Thus, bottom up approach is possible only when the dependent libraries are modularized already.
+Thus, bottom up approach is possible only when the dependent libraries are modularized already.
 
-  **Top Down Approach for modularzing an application**
+**Top Down Approach for modularzing an application**
 
-  While modularizing an app in a top-down approach, you need to remember the following points - 
+While modularizing an app in a top-down approach, you need to remember the following points - 
 
-  1. Any jar file can be converted into an automatic module by simply putting that jar on the *module-path* instead of the *classpath*. Java automatically derives the name of this module from the jar file.
+1. Any jar file can be converted into an automatic module by simply putting that jar on the *module-path* instead of the *classpath*. Java automatically derives the name of this module from the jar file.
 
-  2. Any jar that is put on classpath(instead of *module-path*) is loaded as part of the "unnamed" module.
+2. Any jar that is put on classpath(instead of *module-path*) is loaded as part of the "unnamed" module.
 
-  3. An explicitly named module (which means, a module that has an explicitly defined name in its *module-info.java* file) can specify dependency on an automatic module just like it does for any other module i.e. by adding a `requires <module-name>;` clause in its module info but it cannot do so for the unnamed module because there is no way to write a `requires` clause without a name. In other words, named module can access classes present in an automatic module but not in the unnamed module.
+3. An explicitly named module (which means, a module that has an explicitly defined name in its *module-info.java* file) can specify dependency on an automatic module just like it does for any other module i.e. by adding a `requires <module-name>;` clause in its module info but it cannot do so for the unnamed module because there is no way to write a `requires` clause without a name. In other words, named module can access classes present in an automatic module but not in the unnamed module.
 
-  4. Automatic modules are given access to classes in the unnamed module (even though there is no explicitly defined module-info and requires clause in an automatic module). In other words, a class from an automatic module will be able to read a class in the unnamed module without doing anything special.
+4. Automatic modules are given access to classes in the unnamed module (even though there is no explicitly defined module-info and requires clause in an automatic module). In other words, a class from an automatic module will be able to read a class in the unnamed module without doing anything special.
 
-  5. An automatic module exports all its packages and is allowed to read all packages exported by other modules. Thus, an automatic module can access: all packages of all other automatic modules + all packages exported by all explicitly named modules + all packages of the unnamed module (i.e. classes loaded from the classpath).
+5. An automatic module exports all its packages and is allowed to read all packages exported by other modules. Thus, an automatic module can access: all packages of all other automatic modules + all packages exported by all explicitly named modules + all packages of the unnamed module (i.e. classes loaded from the classpath).
 
-     Thus, if your application jar **A** directly uses a class from another jar **B**, then you would have to convert **B** into a module (either named or automatic). If **B** uses another jar **C**, then you can leave **C** on the class path if **B** hasn't yet been migrated into a named module. Otherwise, you would have to convert **C** into an automatic module as well.
+   Thus, if your application jar **A** directly uses a class from another jar **B**, then you would have to convert **B** into a module (either named or automatic). If **B** uses another jar **C**, then you can leave **C** on the class path if **B** hasn't yet been migrated into a named module. Otherwise, you would have to convert **C** into an automatic module as well.
 
-     **Note:**
+   **Note:**
 
-     There are two possible ways for an automatic module to get its name:
+   There are two possible ways for an automatic module to get its name:
 
-     1. When an Automatic-Module-Name entry is available in the manifest, its value is the name of the automatic module.
-     2. Otherwise, a name is derived from the JAR filename (see the ModuleFinder JavaDoc for the derivation algorithm) - Basically, hyphens are converted into dots and the version number part is ignored. So, for example, if you put `mysql-connector-java-8.0.11.jar` on module path, its module name would be `mysql.connector.java`
+   1. When an Automatic-Module-Name entry is available in the manifest, its value is the name of the automatic module.
+   2. Otherwise, a name is derived from the JAR filename (see the ModuleFinder JavaDoc for the derivation algorithm) - Basically, hyphens are converted into dots and the version number part is ignored. So, for example, if you put `mysql-connector-java-8.0.11.jar` on module path, its module name would be `mysql.connector.java`
 
-  ---
+---
 
 Using a `Callable` would be more appropriate than using a `Runnable` in which of the following situations?
 
@@ -485,7 +475,7 @@ The `Callable` interface is similar to `Runnable`, in that both are designed for
 
 ---
 
-##### 65 Which of the following collection implementations are thread-safe?
+**65 Which of the following collection implementations are thread-safe?**
 
 - [ ] ArrayList
 - [ ] HashSet
@@ -505,7 +495,7 @@ From Java 1.5 onwards, you can also use a new Concurrent library available in `j
 
 ---
 
-##### Complete the code so that a Portfolio object can be serialized and deserialized properly.
+**Complete the code so that a Portfolio object can be serialized and deserialized properly.**
 
 这题主要考察序列化与反序列化，正确答案如下：
 
@@ -518,7 +508,6 @@ public class Bond {
     String ticker = "bac";
     double coupon = 8.3;
 }
-
 class Portfolio implements Serializable {
     String accountName;
     transient Bond bond = new Bond();
@@ -528,7 +517,6 @@ class Portfolio implements Serializable {
         os.writeObject(bond.ticker);
         os.writeDouble(bond.coupon);
     }
-
     private void readObject(ObjectInputStream os) throws Exception {
         os.defaultReadObject();
         this.bond = new Bond();
@@ -548,7 +536,7 @@ class Portfolio implements Serializable {
 
 ---
 
-##### Which of the following are standard annotations used to suppress various warnings generated by the compiler?
+**Which of the following are standard annotations used to suppress various warnings generated by the compiler?**
 
 - [ ] `@SuppressWarning("rawtypes")`
 
@@ -590,7 +578,7 @@ This annotation is not repeatable. Therefore, you cannot use it twice on the sam
 
 ---
 
-##### You are implementing a special sorting algorithm that can sort objects of different classes. Which of the following class declarations will you use?
+**You are implementing a special sorting algorithm that can sort objects of different classes. Which of the following class declarations will you use?**
 
 - [ ] ```java
   public class SpecialSorter<> {
@@ -629,7 +617,7 @@ This annotation is not repeatable. Therefore, you cannot use it twice on the sam
 
 ---
 
-##### Which of the following statements are true?
+**Which of the following statements are true?**
 
 - [x] A nested class may be declared static.
 
@@ -703,7 +691,7 @@ Which of the following options can be a part of a correct inner class declaratio
 
 ---
 
-##### Which of the following statements are true?
+**Which of the following statements are true?**
 
 - [ ] Package member classes can be declared static.
 - [x] Classes declared as members of top-level classes can be declared static.
@@ -717,13 +705,12 @@ The modifier static pertains only to member classes, not to top level or local o
 
 ---
 
-##### How will you initialize a `SimpleDateFormat` object to that the following code will print the full name of the month of the given date?
+**How will you initialize a `SimpleDateFormat` object to that the following code will print the full name of the month of the given date?**
 
 - [ ] `SimpleDateFormat sdf = new SimpleDateFormat("MMMM", Locale.FRANCE);`
 
   > Upper case M is for Month. For example, for February and December, the following will be printed:
->
-  > M => 2, 12  
+>M => 2, 12  
   > MM => 02, 12  
   > MMM => févr., déc.  
   > MMMM => février, décembre  
@@ -756,7 +743,7 @@ Number/Text: If the count of pattern letters is 3 or greater, use the Text rules
 
 ---
 
-##### Code that uses generic collection classes can interoperate with code that uses raw collections classes because of?
+**Code that uses generic collection classes can interoperate with code that uses raw collections classes because of?**
 
 - [x] type erasure
 
@@ -877,7 +864,7 @@ Note that * and ** are not valid wildcards for including subpackages.
 
 ---
 
-##### Which of the following is/are valid functional interface?
+**Which of the following is/are valid functional interface?**
 
 - [ ] ```java
   interface F {
@@ -1084,7 +1071,7 @@ This is similar to referring a Top Level class.
 
 ---
 
-##### Which of the following annotations are retained for run time?
+**Which of the following annotations are retained for run time?**
 
 - [ ] `@SuppressWarnings`
 
@@ -1107,6 +1094,143 @@ This is similar to referring a Top Level class.
   > It is defined with @Retention(RUNTIME)
 
 ---
+
+**Your application needs to load a set of key value pairs from a database table which never changes. Multiple threads need to access this information but none of them changes it.  Which class would be the most appropriate to store such data if the values need not be keep in a sorted fashion?**
+
+- [ ] `Hashtable`
+- [x] `HashMap`
+- [ ] `Set`
+- [ ] `TreeMap`
+- [ ] `List`
+
+**Explanation**
+
+You should know that all `Hashtable` methods are synchronized and this compromises its performance for simultaneous reads.  
+Since no thread modifies the data, it is not efficient to use a `Hashtable`.
+A `HashMap` is perfect choice because its methods are not synchronized and so it allows efficient multiple reads. `TreeMap` is used to keep the keys sorted which makes it a little bit slower than `HashMap`.
+`Set` and `List` can't be used since we need to store Key-value pairs.
+
+---
+
+**A programmer has written the following code to ensure that the phone number is not null and is of 10 characters:**
+
+```java
+public void processPhoneNumber(String number) {
+    assert number != null && number.length() == 10 : "Invalid phone number";
+    ...
+}
+```
+
+Which of the given statements regarding the above code are correct?
+
+- [ ] This is an appropriate use of assertions.
+
+- [ ] This code will not work  in all situations.
+
+  > It will not work if assertions are disabled.
+
+- [ ] The given code is syntactically correct.
+
+- [ ] Constrains on input parameters should be enforced using assertions.
+
+**Explanation**
+
+As a rule, assertions should not be used to assert the validity of input parameters of a public method. Since assertions may be disabled at the wish of the user of the program, input validation will not occur when assertions are disabled. A public method should ensure in all situations(whether assertions are enabled or disabled) that the input parameters are valid before proceeding with the rest of the code. For this reason, input validation should always be done using the standard exception mechanism:
+
+`if(number == null || number.length() != 10) throw new RuntimeException("Invalid phone number");`
+
+However, assertions may be used to validate the input parameters of a private method. This is because private methods are called only by the developer of the class. Therefore, if a private method is called with an invalid parameter, this problem should be rectified at the development stage itself. It cannot occur in the production stage, so there is not need to throw an explicit exception.
+
+---
+
+**Which clause(s) are used by a module definition that implements a service?**
+
+- [ ] exports
+
+  > A service provider module is not read directly by a service user module. So, *exports* clause is not required.
+
+- [ ] provides
+
+  > The provider module must specify the service interface and the implementing class that implements the service interface. For example, 
+  >
+  > provides org.printservice.api.Print with com.myprinter.PrintImpl
+
+- [x] uses
+
+  > A uses clause is used by the module that uses a service. For example,
+  >
+  > uses org.printservice.api.Print;
+
+- [ ] implements
+
+  > This is not a valid clause in module-info.
+
+- [x] requires
+
+  > The implementing module must require the module that defines the service interface.
+
+**Explanation**
+
+For example, if an `abc.print` module implements an `org.printing.Print` service interface defined in `PrintServiceAPI` module using `com.abc.PrintImpl` class, then this is how its module-info should look:
+
+```java
+module abc.print {
+    requires PrintServiceAPI; //required because this module defines the service interface org.printing.Print
+    uses org.printing.Print; //specifies that this module uses this service
+    
+    //observe that abc.print module is not required.
+}
+```
+
+---
+
+**Which of the following statements regarding the assertion mechanism of Java is NOT correct?**
+
+- [x] Assertions require changes at the JVM level.
+
+  > No change is required in the JVM for supporting assertions.
+
+- [ ] Assertions require changes at the API level.
+
+  > Besides the 'assert' keyword, new methods are added in `java.lang.Class` and `java.lang.ClassLoader` classes.
+
+- [ ] Assertions can be enabled or disabled through the command line at the time of execution of (i.e. starting) the program.
+
+  > By using the switches, -ea and -da or -enableassertions or -disableassertions
+
+- [ ] Code that uses Assertions cannot be run on version below 1.4
+
+  > Because of the 'assert' keyword.
+
+- [x] Code written for JDK version 1.3 cannot be compiled under JDK version 1.4
+
+  > It can be compiled by using -source flag: javac -source 1.3 classname.java
+
+---
+
+**Identify correct statements about annotations.**
+
+- [ ] @SuppressWarnings can be used only on a class, constructor, or a method.
+
+  > Actually, it can be used on several things. Its target can be a **TYPE**, **FIELD**, **METHOD**, **PARAMETER**, **CONSTRUCTOR**, **LOCAL_VARABLE**, and **MODULE**.
+
+- [x] @Override can only be used on instance methods.
+
+- [ ] @SafeVarargs can only be used on methods.
+
+  > It can be used on constructors and methods.
+
+- [ ] @Deprecated can be used only on a class, constructor, or a method.
+
+  > Actually, it can be used on serval things, Its target can be a **CONSTRUCTOR**, **FIELD**, **LOCAL_VARIABLE**, **METHOD**, **PACKAGE**, **MODULE**,**PARAMETER**,**TYPE**.
+
+- [ ] @SuppressWarnings("all") can be used suppress all warnings from a method or a class.
+
+  > Although you can pass any string value to the SuppressWarnings annotation (unrecognized values are ignored), the Java specification mandates only three values - unchecked, deprecation, and removal. Different compilers and IDEs may support other values in addition to these three. There is no rule that says the value "all" has to suppress all warnings (although a compiler or an IDE may do that upon seeing this value.)
+
+---
+
+
 
 
 

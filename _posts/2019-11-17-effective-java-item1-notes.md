@@ -34,8 +34,6 @@ tags:
 1. 只提供私有静态工厂方法（没有 `public` 或 `protected` 构造器）的类不能被继承（派生），不过有时候是好事，因为鼓励使用组合而不是继承。
 2. 比较难找，因为不想构造器那样出现在 java doc。
 
-
-
 ### 一些静态工厂方法的例子：
 
 - **from** —— 一种类型转换方法，取一个参数并返回此类型对应的实例，例如：
@@ -69,8 +67,6 @@ tags:
 - **type** —— **get*Type*** 和 **new*Type*** 的更精简替换，例如：
 
   `List<Complaint> litany = Collections.list(legacyLitany);`
-
-
 
 ### 总结
 

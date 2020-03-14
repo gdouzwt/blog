@@ -63,8 +63,6 @@ class LambdaDemo {
 }
 ```
 
-
-
 另一个lambda demo
 
 ```java
@@ -96,8 +94,6 @@ class LambdaDemo2 {
 
 ```
 
-
-
 演示需要两个参数的 lambda 
 
 ```java
@@ -122,8 +118,6 @@ class LambdaDemo3 {
   } 
 }
 ```
-
-
 
 #### 语句块函数表达式
 
@@ -187,8 +181,6 @@ class BlockLambdaDemo2 {
   } 
 }
 ```
-
-
 
 #### 泛型函数式接口
 
@@ -822,8 +814,6 @@ class ConstructorRefDemo3 {
 }
 ```
 
-
-
 #### 预定义的函数式接口
 
 内置的函数式接口
@@ -852,5 +842,3 @@ class UseFunctionInterfaceDemo {
   } 
 }
 ```
-
-

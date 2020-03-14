@@ -14,8 +14,6 @@ Java核心技术，说到底基础还不够硬。今天又没有睡觉，状态�
 
 到目前为止，参加了4次在线笔试吧，第一次是TCL，很简单，第二次是步步高很多实战类型，第三次是亚信科技，中等上难度，内容全面，居然还考jsp，第四次是CVTE，这个选择题中等难，最后两道编程题，一道关于系统设计的题。<!--more-->
 
-
-
 得要做个思维导图啊，而且应该是自己的总结，而不是那别人的总结。现在先回顾考过的题目，分类总结一下。
 
 ### 题型方面
@@ -24,8 +22,6 @@ Java核心技术，说到底基础还不够硬。今天又没有睡觉，状态�
 - 不定项选择
 - 编程题
 - 简单题/系统设计题
-
-
 
 ### Java Core 基础考点
 
@@ -183,12 +179,6 @@ public class TestRef {
 
 解释：
 
-
-
-
-
-
-
 ### String Handling(字符串处理)
 
 `String`, `StringBuffer`, `StringBuilder` 这3个都是`final` 修饰的，所以不能被继承。 而且它们都实现了 `CharSequence` 接口。 
@@ -237,10 +227,6 @@ class SubStringCons {
 - `String(StringBuilder strBuildObj) // 由StringBuilder创建字符串`
 
 String Literals 是可以作`String` 对象直接调用方法的， 如 `"abc".length();`
-
-
-
-
 
 - 关于对象成员占用内存的说法哪个正确？
 

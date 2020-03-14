@@ -23,9 +23,7 @@ tags:
 
 这是第一步：使用 Kotlin 创建一个响应式 Spring Boot 服务。
 
-这篇博文包含一个视频演示一步步操作过程和一个文字版的操作过程（从视频的讲稿演变而来）给那些更偏好文字版的人。
-
-这个教程是我们构建一个完整的使用 [Kotlin](https://kotlinlang.org/) 写的 Spring Boot 应用作后端， [Java](https://jdk.java.net/13/) 写客户端以及一个  JavaFX 写的用户界面的其中一些步骤。
+这篇博文包含一个视频演示一步步操作过程和一个文字版的操作过程（从视频的讲稿演变而来）给那些更偏好文字版的人。这个教程是我们构建一个完整的使用 [Kotlin](https://kotlinlang.org/) 写的 Spring Boot 应用作后端， [Java](https://jdk.java.net/13/) 写客户端以及一个  JavaFX 写的用户界面的其中一些步骤。
 
 教程的第一步是创建一个 [Kotlin 版的 Spring Boot 应用](https://spring.io/guides/tutorials/spring-boot-kotlin/)，作为应用程序的后端。我们将会创建一个 [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) 服务，可在后面的教程中接入。
 
@@ -53,8 +51,6 @@ tags:
 
 IntelliJ IDEA 会使用 Spring Initializr 去创建项目并正确地导入到 IDE。启用 [Maven 的 auto-import （自动导入）](https://www.jetbrains.com/help/idea/maven-importing.html#auto_import)，这样当修改 pom.xml 文件时，项目的依赖会自动刷新。
 
-
-
 #### Spring Boot 项目
 
 在项目窗口我们看到已创建的项目的结构，包括一个 Kotlin 目录和 Spring Boot 创建的默认应用程序类。
@@ -79,8 +75,6 @@ IntelliJ IDEA 旗舰版有[对 Spring 应用的全面支持](https://www.jetbrai
 
 从应用程序类文件中运行这个基本的应用的程序（使用快捷键）Windows 或 Linux 是 Ctrl + Shift + F10 （macOS 是  ⌃⇧R ），或者双击 Ctrl（运行任意东西）并输入 "StockServiceApplication" 以运行应用程序。它应该会成功启动的，并有 [Netty](https://netty.io/) 运行在 8080 端口。关闭它可使用快捷键 Ctrl + F2 ( ⌘F2 )。
 
-
-
 #### 创建一个 REST Controller
 
 现在我们知道项目能运行，我们可以开始添加功能了。
@@ -100,8 +94,6 @@ class RestController() {
 }
 ```
 
-
-
 #### 为股票价格创建一个数据类（data class)
 
 1. （贴士：我们可以让 IntelliJ IDEA 创建 `StockPrice` 类，选中红色的 StockPrice 按下 Alt + Enter 并选择“Create class StockPrice”）。
@@ -114,8 +106,6 @@ data class StockPrice(val symbol: String,
                       val price: Double,
                       val time: LocalDateTime)
 ```
-
-
 
 #### 生成并返回股票价格
 
@@ -162,8 +152,6 @@ class RestController() {
 }
 ```
 
-
-
 #### 运行应用
 
 运行应用看是否能正确启动。打开浏览器并访问 http://localhost:8080/stocks/DEMO，你应该可以看到每秒有一个事件发生，并看到股票价格以 JSON 字符串的形式呈现。
@@ -171,8 +159,6 @@ class RestController() {
 ```json
 data:{"symbol":"DEMO","price":89.06318870033823,"time":"2019-10-17T17:00:25.506109"}
 ```
-
-
 
 #### 总结
 
@@ -206,26 +192,3 @@ data class StockPrice(val symbol: String, val price: Double, val time: LocalDate
 在接下来的教程里，我们将会展示如何连接到这个服务器获取股票价格，还有如何创建一个图表实时显示股票价格更新。
 
 代码在 GitHub：[https://github.com/zwt-io/rsb](https://github.com/zwt-io/rsb)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -58,7 +58,8 @@ class RSocketSecurityConfiguration {
     @Bean
     RSocketMessageHandler messageHandler(RSocketStrategies strategies) {
         RSocketMessageHandler mh = new RSocketMessageHandler();
-        mh.getArgumentResolverConfigurer().addCustomResolver(new AuthenticationPrincipalArgumentResolver());
+        mh.getArgumentResolverConfigurer()
+            .addCustomResolver(new AuthenticationPrincipalArgumentResolver());
         mh.setRSocketStrategies(strategies);
         return mh;
     }
@@ -181,7 +182,7 @@ class GreetingResponse {
 
 ### 结束
 
-感觉直接看代码也挺好理解的，就不勉强添加太多文字说明了。有什么不明白的，可以看视频讲解。
+感觉直接看代码也挺好理解的，就不勉强添加太多文字说明了。有什么不明白的，可以看[视频讲解](https://www.bilibili.com/video/av95256090)。
 
 
 

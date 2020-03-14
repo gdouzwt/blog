@@ -30,8 +30,6 @@ For overriding, the overridden method has a few rules:
 
 The method must not be static. (If they are, the method is hidden and not overridden.)
 
-
-
 #### 关于 instanceof 操作符，null 的情况，null 不是 Object.
 
 instanceof 不能比较没有任何继承关系的类。 而接口可以，因为接口可以被实现。

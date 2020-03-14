@@ -26,8 +26,6 @@ tags:
 - 2015.06.17 [2015年第十届“毕昇杯”全国电子创新设计暨物联网应用系统设计竞赛获一等奖（旅行智能助载系统）](http://www.techshine.com/bsb/xw_view.asp?id=104) 
 - 2015.06.07 [2015年“粤嵌杯”广东省首届大学生物联网和大数据创新应用大赛获一等奖（基于蓝牙4.0的智能跟踪行李箱）](http://news.gdou.edu.cn/show.php?contentid=18526) 
 
-
-
 ## 读书
 [我在读的书](https://book.douban.com/people/gdouzwt/do)
 

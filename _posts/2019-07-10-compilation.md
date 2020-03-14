@@ -130,8 +130,6 @@ Java编译器`javac`产生适用于JVM的“字节码”，字节码也属于一
 
 #### 扫描器
 
-
-
 #### 解析器
 
 `syntax directed`, `recursive descent`
@@ -143,8 +141,6 @@ compilationUnit ::= [package qualifiedIdentifier;]
 ```
 认为不变吗？
 测试一下，改变文件内容后，url是否更新。
-
-
 
 
 #### 抽象语法树

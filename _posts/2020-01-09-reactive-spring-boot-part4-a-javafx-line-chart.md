@@ -51,8 +51,6 @@ public void onApplicationEvent(StageReadyEvent event) {
 
 现在我们要明确这个父级元素是来自哪里的。
 
-
-
 ### 使用 FXML
 
 我们要使用FXML定义用户界面上需要哪些元素。在FXML上定义视图元素使得视图与模型以及控制器之间清晰地分离开（如果我们遵循MVC模式的话）。
@@ -121,8 +119,6 @@ public class StageInitializer implements ApplicationListener<StageReadyEvent> {
 }
 ```
 
-
-
 ### 创建 FXML 文件
 
 1. 去到resource目录(src/main/resources)并创建一个新的FXML文件。
@@ -186,8 +182,6 @@ public class StageInitializer implements ApplicationListener<StageReadyEvent> {
 
 当我们重新运行应用程序的时候，我们应该看到JavaFX在标题栏中使用这个新的标题。
 
-
-
 ### 设置从applicatio.properties读取应用程序标题
 
 硬编码字符串怎么说都是不好的，所以让我们从其它地方获取这个标题的值。
@@ -207,8 +201,6 @@ public StageInitializer(@Value("${spring.application.ui.title}") String applicat
 ```
 
 现在当我们运行这个应用程序（例如通过按两下Ctrl运行任何东西），我们应该能看到窗口标题使用了从这个应用程序属性获得的值。
-
-
 
 ### 从 Spring 获取 JavaFX 控制器
 
@@ -237,8 +229,6 @@ public StageInitializer(@Value("${spring.application.ui.title}") String applicat
             fxmlLoader.setControllerFactory(aClass -> applicationContext.getBean(aClass));
 // ...rest of the class
 ```
-
-
 
 ### 创建一个折线图
 
