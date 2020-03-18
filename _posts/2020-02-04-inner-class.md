@@ -169,17 +169,29 @@ public class A {
     public class B {
         // Can have a compile-time static constant field
         public final static int DAYS_IN_A_WEEK = 7; // OK
+
+        // Cannot have the following declaration, because it is not
         // a compile-time constant, even though it is final
-        // 上面一句不对，str 不能用 new String("Hello");
-        // 差点被坑了🕳
         public final static String str = new String("Hello");
-		// 可以用 public final static String str = "Hello";
+		// 可以用 public final static String str = "Hello"; 是常量
     }
 }
 ```
 
+> 注意 成员接口和成员枚举是隐式 static 的，因此不能声明在内部类里。
 
 ### 内部类和编译器的魔法
+
+成员内部类和嵌套内部类：
+
+`<outer-class-name>$<member-or-nested-class-name>`
+
+局部内部类：
+
+`<outer-class-name>$<a-number><local-inner-class-name>`
+匿名内部类：
+
+`<outer-class-name>$<a-number>`
 
 ### 闭包与回调
 
