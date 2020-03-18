@@ -21,5 +21,9 @@
   "scripts": {
     "watch": "grunt watch & jekyll serve",
     "push": "git push origin master --tag"
+  },
+  "dependencies": {
+    "update": "^0.7.4",
+    "upgrade": "^1.1.0"
   }
 }
