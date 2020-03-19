@@ -199,4 +199,7 @@ In functional programming, a higher order function is an anonymous function that
 
 ### 在静态上下文定义内部类
 
-### 总结
+很少有用到，发现 static {} 里面可以放 {} 这样
+
+
+

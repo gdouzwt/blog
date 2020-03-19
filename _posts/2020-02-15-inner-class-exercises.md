@@ -85,7 +85,7 @@ tags:
                System.out.println("Inner: Inner.this.value = " + 
                                  Inner.this.value);
                System.out.println("Inner: Outer.this.value = " + 
-                                 Outer.this.vlaue);
+                                 Outer.this.value);
            }
        }
        
@@ -104,6 +104,20 @@ tags:
        }
    }
    ```
+
+   > 19680112
+   >
+   > 19680112
+   >
+   > 19680112
+
+   > 19690919
+   >
+   > 19690919
+   >
+   > 19690919
+   >
+   > 19680112
 
 5. The following declaration of an AnonymousTest class does not compile. Describe the reasons and steps you might take to fix the error.
 
@@ -125,6 +139,8 @@ tags:
        }
    }
    ```
+
+   > x is not effectively final, make that effectively final by removing assignment x = 300;
 
 6. Consider the following declaration for a top-level class A and a member inner class B:
 
@@ -151,9 +167,13 @@ tags:
    
    public class C extends A.B {
        /* Define a constructor for class C here */
+       public C(A a) {
+           a.super();
+           System.out.println("C is created.")
+       }
        
        public static void main(String[] args) {
-           C c = /* Your code goes here */;
+           C c = new C(new A())/* Your code goes here */;
        }
    }
    ```
@@ -172,7 +192,7 @@ tags:
 
    b. It can inherit from one class and implement multiple interfaces.
 
-   c. It can inherit from one class or implement one interface.
+   c. It can inherit from one class or implement one interface. ✔ 
 
    d. It can implement multiple interfaces, but inherits from only one class.
 
@@ -197,6 +217,16 @@ tags:
    }
    ```
 
+   > 4
+   >
+   > Computer.class
+   >
+   > Computer$Mouse.class
+   >
+   > Computer$Mouse.Button.class
+   >
+   > Computer$1.class
+
 9. The following declaration of class H does not compile. Point out the problem and suggest a solution.
 
    ```java
@@ -212,6 +242,8 @@ tags:
    }
    ```
 
+   > Declare x as static, or declare J as non-static.
+
 10. Consider the following declaration of a top-level class P and a nested static class Q:
 
     ```java
@@ -220,7 +252,9 @@ tags:
     
     public class P {
         public static class Q {
-            System.out.println("Hello from Q.");
+            {
+                System.out.println("Hello from Q.");
+            }
         }
     }
     ```
@@ -233,10 +267,10 @@ tags:
     
     public class PTest {
         public static void main(String[] args) {
-            P.Q q = /* Your code goes here */ ;
+            P.Q q = /* Your code goes here */ new P.Q();
         }
     }
     ```
 
-    
+    > P serve as namespace.
 
