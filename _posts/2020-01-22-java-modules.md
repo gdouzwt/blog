@@ -10,18 +10,41 @@ tags:
     - Java 11
 ---
 
-为了准备 1Z0-816，所以要学习一下 Java 11 的基础部分。
+为了准备 1Z0-816，要学习一下 Java 11 的基础部分。
 
 <!--more-->
 
-![image-20200122001604874](/img/image-20200122001604874.png)
+<img src="/img/image-20200122001604874.png" alt="image-20200122001604874"  />
 
-module-info.java 是模块的信息。
+#### 模块描述符语法
 
-一个新的关键词 `module` ，最简单的一个模块如下：
+***ModuleDeclaration:***  
+	***{Annotation} [***`open`***]*** `module` ***Identifier {. Identifier}***  
+		{***{ModuleDirective}***}
+
+***ModuleDirective:***  
+  `requires` ***{RequiresModifier} ModuleName*** ;    
+  `exports` ***PackageName [***`to` ***ModuleName*** ***{, ModuleName}]*** ;  
+  `opens` ***PackageName [***`to` ***ModuleName {, ModuleName}]*** ;  
+  `uses` ***TypeName*** ;  
+  `provides` ***TypeName*** `with` ***TypeName {, TypeName}*** ;
+
+***RequiresModifier:***  
+  *(one of)*  
+  `transitive` `static`
+
+#### 创建模块
+
+*module-info.java* 是模块描述符。最简单的一个模块如下：
 
 ```java
 module io.zwt.common {
-
 }
 ```
+
+#### 定义模块间依赖
+
+#### 模块的访问控制
+
+#### 服务消费者与服务提供者
+

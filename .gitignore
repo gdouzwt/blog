@@ -31,5 +31,6 @@ Temporary Items
 # debug file
 _site
 .jekyll-cache
+.jekyll-metadata
 .sass-cache
-.idea
+.idea/
