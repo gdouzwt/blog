@@ -37,7 +37,7 @@ tags:
 
 #### 服务端应用
 
-GreetingsServiceApplication.java
+GreetingsServiceApplication.java  <!--more-->
 
 ```java
 // 省略导入
