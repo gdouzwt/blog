@@ -6,7 +6,7 @@ date:       '2020-03-22T18:42'
 subtitle:   OCP 11-1 Book
 keywords:   OCP 11
 author:     招文桃
-catalog:    true
+catalog:    false
 tags:
     - Java
     - OCP
@@ -18,7 +18,7 @@ tags:
 4. D -> G The -m or --module option is used to specify the module and class name. The -p or -module-path option is used to specify the location of the modules. Option D would be correct if the rest of the command were correct. However, running a program requires specifying the package name with periods (.) instead of slashes. Since the command is incorrect, option G is correct.
 5. AF -> AFG Options C and D are incorrect because there is no use keyword. Options A and F are correct because opens is for reflection and uses declares an API that consumes a service. Option G is also correct as the file can be completely empty. This is just something you have to memorize.
 6. BDF -> BC Packages inside a module are not exported by default, making option B correct and option A incorrect. Exporting is necessary for other code to use the packages; it is not necessary to call the main() method at the command line, making option C correct and option D incorrect. The module-info.java file has the correct name and compiles, making options E and F incorrect.
-7. EF -> DG Options A, B, E, and F are incorrect because they refer to keywords that don’t exist. The requires transitive keyword is used when specifying a module to be used by the requesting module and any other modules that use the requesting module. Therefore, dog needs to specify the transitive relationship, and option G is correct. The module puppy just needs to require dog, and it gets the transitive dependencies, making option D correct.<!--more-->
+7. EF -> DG Options A, B, E, and F are incorrect because they refer to keywords that don't exist. The requires transitive keyword is used when specifying a module to be used by the requesting module and any other modules that use the requesting module. Therefore, dog needs to specify the transitive relationship, and option G is correct. The module puppy just needs to require dog, and it gets the transitive dependencies, making option D correct.<!--more-->
 8. ABCD -> ABD Options A and B are correct because the -p (--module-path) option can be passed when compiling or running a program. Option D is also correct because jdeps can use the --module-path option when listing dependency information.
 9. AEF -> AB The -p specifies the module path. This is just a directory, so all of the options have a legal module path. The -m specifies the module, which has two parts separated by a slash. Options E and F are incorrect since there is no slash. The first part is the module name. It is separated by periods (.) rather than dashes (-), making option C incorrect. The second part is the package and class name, again separated by periods. The package and class names must be legal Java identifiers. Dashes (-) are not allowed, ruling out option D. This leaves options A and B as the correct answers.
 10. B

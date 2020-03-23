@@ -5,476 +5,392 @@ title:      816 基准测试回顾
 date:       '2020-02-15T22:10'
 subtitle:   OCP 816
 author:     招文桃
-catalog:    true
+catalog:    false
 tags:
     - Java 11
     - OCP 11
 ---
 
-**How many methods have to be provided by a class that is not abstract and that implements Serializable interface?**  
+**1.** Which of the following annotations are retained for run time?  
 
-- [x] 0  
-  > Serializable interface does not declare any methods. That is why is also called as a "marker" interface.  
-- [ ] 1  
-- [ ] 2  
-- [ ] 3  
-
-**Given that a code fragment has just created a JDBC Connection and has executed an update statement, which of the following statements is correct?**  
-
-- [ ] Changes to the database are pending a commit call on the connection.  
-- [ ] Changes to the database will be rolled back if another update is executed without committing the previous update.  
-- [x] Changes to the database will be committed right after the update statement has completed execution.  
-  > A Connection is always in auto-commit mode when it is created. As per the problem statement, an update was fired without explicitly disabling the auto-commit mode, the changes will be committed right after the update statement has finished execution.  
-- [ ] Changes to the database will be committed when another query (update or select) is fired using the connection.  
-
-**Explanation**  
-When a connection is created, it is in auto-commit mode. i.e. auto-commit is enabled. This means that each individual SQL statement is treated as a transaction and is automatically committed right after it is completed. (A statement is completed when all of its result sets and update counts have been retrieved. In almost all cases, however, a statement is completed, and therefore committed, right after it is executed.)  
-
-The way to allow two or more statements to be grouped into a transaction is to disable the auto-commit mode. Since it is enabled by default, you have to explicitly disable it after creating a connection by calling `con.setAutoCommit(false);`  
-
-**Which interfaces does java.util.NavigableMap extend directly or indirectly?**  
-
-- [ ] `java.util.SortedSet`  
-- [x] `java.util.Map`  
-- [x] `java.util.SortedMap`  
-- [ ] `java.util.TreeMap`  
-  > `TreeMap` is a class that implements `NavigableMap` interface. `ConcurrentSkipListMap` is the other such class.  
-- [ ] `java.util.List`  
-
-**Explanation**  
-A `NavigableMap` is a `SortedMap` (which in turn extends Map) extended with navigation methods returning the closest matches for given search targets. Methods `lowerEntry`, `floorEntry`, `ceilingEntry`, and `higherEntry` return Map. Entry objects associated with keys respectively less than, less than or equal, greater than or equal, and greater than a give key, returning null if there is no such key. Similarly, methods `lowerKey`, `ceilingKey`, and `higherKey` return only the associated keys.  
-
-All of these methods are designed for locating, not traversing entries.  
-
-A `NavigableMap` may be accessed and traversed in either ascending or descending key order. The `descendingMap` method returns a view of the map with the senses of all relational and directional methods inverted. The performance of ascending operations and views is likely to be faster than that of descending ones. Methods `subMap`, `headMap`, and `tailMap` differ from the like-named `SortedMap` methods in accepting additional arguments describing whether lower and upper bounds are inclusive versus exclusive. Submaps of any NavigableMap must implement the NavigableMap interface.  
-
-This interface additionally defines methods `firstEntry`, `pollFirstEntry`, `lastEntry`, and `pollLastEntry` that return and/or remove the least and greatest mapping, if any exist, else returning null.  
-
-Implementations of entry-returning methods are expected to return `Map.Entry` pairs representing snapshots of mappings at the time they were produced, and thus generally do not support the optional `Entry.setValue` method. Note however that it is possible to change mappings in the associated map using method put.  
-
-Methods `subMap(K, K)`, `headMap(K)`, and `tailMap(K)` are specified to return `SortedMap` to allow existing implementations of `SortedMap` to be compatibly retrofitted to implement `NavigableMap`, but extensions and implementations of this interface are encouraged to override these methods to return `NavigableMap`. Similarly, `SortedMap.keySet()` can be overridden to return `NavigableSet`.  
+- [ ] @SuppressWarnings  
+  > It is defined with @Retention(SOURCE)  
+- [ ] @Override  
+  > It is defined with @Retention(SOURCE)  
+- [x] @SafeVarargs  
+  > It is defined with @Retention(RUNTIME)  
+- [x] @FunctionalInterface  
+  > It is defined with @Retention(RUNTIME)  
+- [x] @Deprecated  
+  > It is defined with @Retention(RUNTIME)  
 
 ---
 
-**In which of the following cases can the Console object be acquired?**  
-
-- [ ] When the JVM is started from an interactive command line with explicitly redirecting the standard input and output streams to Console.  
-- [x] When the JVM is started from an interactive command line without redirecting the standard input and output streams.  
-- [ ] When the JVM is started in the background with the standard input and output streams directed to Console.  
-- [ ] When the JVM is started in the background without redirecting the standard input and output streams.  
-
-**Explanation**  
-Whether a virtual machine has a console is dependent upon the underlying platform and also upon the manner in which the virtual machine is invoked. If the virtual machine is started from an interactive command line without redirecting the standard input and output streams then its console will exist and will typically be connected to the keyboard and display from which the virtual machine was launched. If the virtual machine is started automatically, for example by a background job scheduler, then it will typically not have a console.  
-
-If this virtual machine has a console then it is represented by a unique instance of this class which can be obtained by invoking the `System.console()` method. If no console device is available then an invocation of that method will return null.  
-
----
-
-Which of the following are wrapper classes for primitive types?  
-
-- [ ] `java.lang.String`  
-- [ ] `java.lang.Void`  
-  > There is Void class but it does not wrap any primitive type.  
-- [ ] `java.lang.Null`  
-  > There is no Null class in java.  
-- [ ] `java.lang.Object`  
-- [ ] None of the above  
-
-**Explanation**  
-Frequently it is necessary to represent a value of primitive type as if it were an object. There are following wrapper classes for this purpose:  
-
-`Byte`, `Char`, `Character`, `Short`, `Integer`, `Long`, `Float`, and `Double`.  
-
-Note that Byte, Short, Integer, Long, Float and Double extend from Number which is an abstract class. An object of type Double, for example, contains a field whose type is double, representing that value in such a way that a reference to it can be stored in a variable of reference type. These classes also provide a number of methods for converting among primitive values, as well as supporting such standard methods as `equals` and `hasCode`.  
-
-**It is important to understand that objects of wrapper classes are immutable.**
-
----
-
-Complete the following code so that it will print dick, harry, and tom in that order.  
-
-```java
-public class TestClass {
-    public static void main(String[] args) {
-        Set<String> holder = new TreeSet<>();
-        holder.add("tom");
-        holder.add("dick");
-        holder.add("harry");
-        holder.add("tom");
-        printIt(holder);
-    }
-    public static void printIt(Collection<String> list) {
-        for(String s : list) System.out.println(s);
-    }
-}
-```
-
----
-
-**Which of the following standard functional interface returns void?**  
-
-- [ ] `Supplier`  
-  > It takes no argument and returns an object.  
-  > `T get()`  
-- [ ] `Function`  
-  > Represents a function that accepts one argument and produces a result.  
-  > `R apply(T t)`  
-  > Applies this function to the given argument.  
-- [ ] `Predicate`  
-  > It takes and argument and returns a boolean:  
-  > `boolean test(T t)`  
-  > Evaluates this predicate on the given argument.  
-- [x] `Consumer`  
-  > Its functional method is:  
-  > `void accept(T t)`  
-  > Performs this operation on the given argument.  
-  > It also has the following default method:  
-  > `default Consumer<T> andThen(Consumer<? super T> after)`  
-  > Returns a composed `Consumer` that performs, in sequence, this operation followed by the after operation.  
-- [ ] `UnaryOperator`  
-  > Represents an operation on a single operand that produces a result of the same type as its operand. This is a specialization of `Function` for the case where the operand and result are of the same type.  
-
-**Explanation**  
-You should go through the description of all the functional interfaces given **[here](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html)**  
-
----
-
-Which of the following switches is/are used for controlling the execution of assertions at run time?
-
-- [ ] `-ua`  
-- [x] `-da`  
-  > It is a short form for 'disable assertions'.  
-- [x] `-enableassertions`  
-- [ ] `-assert`  
-- [ ] `-keepassertions`  
-
-**Explanation**  
-Although not explicitly mentioned in the exam objectives, OCP Java 11 Part 2 Exam requires you to know about the switches used to enable and disable assertions. Here are a few important points that you should know:  
-Assertions can be enabled or disabled for specific classes and/or packages. To specify a class, use the class name. To specify a package, use the package name followed by "..."(three dots also known as ellipses):  
-`java -ea:<class> myPackage.myProgram`  
-`java -da:<package>... myPackage.myProgram`  
-You can have multiple `-ea/-da` flags on the command line. For example, multiple flags allow you to enable assertions in general, but disable them in a particular package.  
-`java -ea -da:com.xyz... myPackage.myProgram`  
-The above command enables assertions for all classes  in all packages, but then the subsequent `-da` switch disables them for the `com.xyz` package and its subpackages.  
-To enable assertion for one package and disable for other you can use:  
-`java -ea:<package1>... -da:<package2>... myPackage.myProgram`  
-You can enable or disable assertions in the unnamed root package (i.e. the default package) using the following commands:  
-`java -ea:... myPackage.myProgram`  
-`java -da:... myPackage.myProgram`  
-Note that when you use a package name in the `ea` or `da` flag, the flag applies to that package as well as its subpackages. For example,  
-`java -ea:com... -da:com.enthuware... com.enthuware.Main`  
-The above command first enables assertions for all the classes in `com` as well as for the classes in the subpackages of `com`. It then disables assertions for classes in package `com.enthuware` and its subpackages.  
-Another thing is that -ea/-da do not apply to system classes. For system classes (i.e. the classes that com bundled with the JDK/JRE), you need to use `-enablesystemassertions/-esa` or `-disablesystemassertions/-dsa`  
-Note that * and ** are not valid wildcards for including subpackages.  
-
----
-
-Which of these statements concerning the use of standard collection interfaces are true?  
-
-- [ ] None of the standard collection classes are thread safe.  
-  > Vector and Hashtable are.  
-- [ ] class HashSet implements SortedSet.  
-- [ ] Collection classes implementing List cannot have duplicate elements.  
-  > List is meant for ordering of elements. Duplicates are allowed.  
-- [ ] ArrayList can only accommodate a fixed number of elements.  
-  > It grows as more elements are added.  
-- [x] Some operations may throw an UnsupportedOperationException.  
-
-**Explanation**  
-Some operations may throw an UnsupportedOperationException. This exception type is unchecked, and code calling these operations is not required to explicitly handle exceptions of this type.
-
----
-
-**Which of the following are standard annotations used to suppress various warnings generated by the compiler?**
-
-- [ ] `@SuppressWarning("rawtypes")`  
-- [ ] `@SuppressWarning( {"deprecation", "unchecked"} )`  
-- [ ] `@SuppressWarning("deprecation", "unchecked")`  
-  > Syntax is incorrect because this annotation takes only one value type String array. So, if you want to pass multiple string values, you must pass an array containing those values.  
-- [ ] `@SafeVarargs`  
-  > This can be used on a constructor or a method. If a constructor or a method tries to perform unsafe operations involving a var args parameter and a parameterized collection, a warning is generated. This annotation suppresses that warning. Example:  
-  >
-  > ```java
-  > @SafeVarargs // Not actually safe but still suppresses the warning
-  > static void m(List<String>... stringList) {
-  >     Object[] array = stringLists;
-  >     List<Integer> temList = Arrays.asList(42);
-  >     array[0] = temList; // Semantically invalid, but compiles without warnings because of the annotation
-  >     String s = stringLists[0].get(0);  // Oh no, ClassCastException at runtime!
-  > }
-  > ```  
-
-- [ ] `@Override`  
-  > This annotation is used only on methods. It causes a warning to be generated if a method does not actually override any method from the base class. It does not suppress any warning.  
-- [ ] `@Deprecated`  
-  > This annotation causes a warning to be generated. It does not suppress any warning.  
-
-**Explanation**  
-As per JLS 11 section 9.6.4.5, `@SuppressWarning` must support three values: `unchecked`, `deprecation`, and `removal`. However, it is not an error if you use a value that is not supported by the compiler. A compiler simply ignores it.
-
-Different compilers may support more values. For example, Oracle's javac compiler supports a large number of values (https://docs.oracle.com/en/java/javase/11/tools/javac.html). The ones that you should be aware of for the exam are: `none`, `rawtypes`, `serial`, and `varargs`.
-
-This annotation is not repeatable. Therefore, you cannot use it twice on the same type. However, you can specify multiple values like this: `@SuppressWarning({ "deprecation", "unchecked"} )`
-
----
-
-**You are implementing a special sorting algorithm that can sort objects of different classes. Which of the following class declarations will you use?**
-
-- [ ] ```java
-  public class SpecialSorter<> {
-      ...
-  }
-  ```
-
-- [x] ```java
-  public class SpecialSorter<K> {
-      ...
-  }
-  ```
-
-  > This is the correct way to define a generic class. Within the class, you can use K as a type, for example:
-  >
-  > ```java
-  > public class SpecialSorter<K> {
-  >     public void sort(ArrayList<K> items) {
-  >         K item = items.get(0);
-  >         // ...
-  >     }
-  > }
-  > ```
-
-- [ ] ```java
-  public class <SpecialSorter> {
-      ...
-  }
-  ```
-
-- [ ] ```java
-  public class SpecialSorter(K) {
-      ...
-  }
-  ```
-
----
-
-**Code that uses generic collection classes can interoperate with code that uses raw collections classes because of?**
-
-- [x] type erasure  
-  > Type erasure means that a compiled java class does not contain any of the generic information that is present in the java file. In other words, the compiler removes the generic information from a java class when it compile it into byte code. For example, `List<String> list;` and `List list;` are compiled to the same byte code. Therefore, at run time, it does not matter whether you've used generic classes or not and this kinds of classes to interoperate because they are essentially the same class to the JVM.  
-  > Type erasure ensure that no new classes are created for parameterized types; consequently, generics incur no runtime overhead.  
-- [ ] reification  
-  > This is just the opposite of type erasure. Here, all the type information is preserved in the byte code. In Java, arrays are reified. For example,  
-  >
-  > ```java
-  > ArrayList[] alArray = new ArrayList[1];
-  > Collection[] cArray = alArray;
-  > cArray[0] = new HashSet();
-  > ```
-  >
-  > The above code will compile fine. But it will throw an `java.lang.ArrayStoreException` at run time because the byte code contains the information that `cArray` actually points to an array of `ArrayList`s and not of `HasSet`s.
-
-- [ ] just in time compilation  
-- [ ] byte code instrumentation  
-字节码操作好像有点意思。
-
----
-
-
-
-**Which of the following is/are valid functional interface?**
-
-- [ ] ```java
-  interface F {
-      default void m() {}
-  }
-  ```
-
-  It is not a valid functional interface because it does not have an abstract method.
-
-- [ ] ```java
-  interface F {
-      default void m() {}
-      static void n() {}
-  }
-  ```
-
-  It is not a valid functional interface because it does not have an abstract method.
-
-- [ ] ```java
-  interface F {
-      void m();
-      void n();
-  }
-  ```
-
-  It is not a valid functional interface because it has more than one abstract methods.
-
-- [x] ```java
-  interface F {
-      default void m() { }
-      abstract void n();
-  }
-  ```
-
-  The use of abstract keyword is redundant here, but it legal.
-
-- [ ] ```java
-  interface F {
-      void m() {}
-  }
-  ```  
-
-This will not compile because the method has a body but it lacks the keyword default.  
-
-**Explanation**  
-A functional interface is an interface that contains exactly one abstract method. It may contain zero or more default methods and/or static methods in addition to the abstract method. Because a functional interface contains exactly one abstract method, you can omit the name of that method when you implement it using a lambda expression. For example, consider the following interface -  
-
-```java
-interface Predicate<T> {
-    boolean test(T t);
-}
-```
-
-The purpose of this interface is to provide a method that operates on an object of class T and return a boolean.  
-
-You could have a method that takes an instance of class that  implements this interface defined like this -  
-
-```java
-public void printImportantData(ArrayList<Data> dataList, Predicate<Data> p) {
-    for (Data d: dataList) {
-        if (p.test(d)) System.out.println(d);
-    }
-}
-```
-
-where Data class could be as simple as `public class Data { public int value; }`  
-
-Now, you can call the above method as follows:  
-
-`printImportantData(al, (Data d) -> { return d.value > 1; } );`  
-
-Notice the lack of method name here. This is possible because the interface has only one abstract method so the compiler can figure out the name. This can be shortened to:  
-
-`printImportantData(al, d -> d.value > 1);`  
-
-Notice that there is no declaration of d! The compiler can figure out all information it needs because the interface has only one abstract method and that method has only one parameter. So you don't need to write all those things in your code.  
-
-Compare the above approach to the old style using an inner class that does the same thing -  
-
-```java
-printImportantData(al, new Predicate<Data>() {
-    public boolean test(Data d) {
-        return d.value > 1;
-    }
-});
-```  
-
-The `Predicate` interface described above can be used anywhere there is a need to "do something with an object and return a boolean" and is actually provided by the standard java library in `java.util.function` package. This package provides a few other useful functional interfaces.  
-
-`Predicate<T>` Represents a predicate (boolean-valued function) of one argument of type T.  
-`Consumer<T>` Represents an operation that accepts a single input argument of type T and returns no result.  
-`Function<T, R>` Represents a function that accepts one argument of type T and produces a result of type R  
-`Supplier<T>` Represents a supplier of results of type T.
-
-Please see [http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html) for learning Lambda expressions in Java.
-
----
-
-看段代码，判断输出：
-
-```java
-import java.util.HashSet;
-
-enum SIZE {
-    TALL, GRANDE, JUMBO;
-}
-
-public class CoffeeMug {
-    public static void main(String[] args) {
-        HashSet<SIZE> hs = new HashSet<>();
-        hs.add(SIZE.TALL); hs.add(SIZE.JUMBO); hs.add(SIZE.GRANDE);
-        hs.add(SIZE.TALL); hs.add(SIZE.TALL); hs.add(SIZE.JUMBO);
-        for(SIZE s: hs) System.out.println(s);
-    }
-}
-```  
-
-There are two concepts involved in this question:
-
-1. A `Set` (such as a `HashSet`) does not allow duplicate elements. If you add a duplicate element, it is ignored. Thus, only three unique `SIZE` elements are stored.
-
-It is important to understand how the `add()` method of a Set works :  
-`boolean add(E o)`
-    Adds the specified element to this set if it is not already present (optional operation). More formally, adds the specified element, o, to this set if this set contains no element e such that `(o==null ? e==null : o.equals(e))`. If this set already contains the specified element, the call leaves this set unchanged and returns false. In combination with the restriction on constructors, this ensures that sets never contain duplicate elements.
-
-2. The order of elements is not defined in `HashSet`. So while retrieving elements, it can return them in any order.  
-
-Remember that, `TreeSet` does store elements in their **natural sorted order**.  
-
-Also remember that the order of Enums is the order in which they are defined. It is not necessarily same as alphabetical order of their names.
-
----
-
-
-
-**Which of the following annotations are retained for run time?**
-
-- [ ] `@SuppressWarnings`  
-  > It is defined with `@Retention(SOURCE)`  
-- [ ] `@Override`  
-  > It is defined with `@Retention(SOURCE)`  
-- [x] `@SafeVarargs`  
-  > It is defined with `@Retention(RUNTIME)`  
-- [x] `@FunctionalInterface`  
-  > It is defined with `@Retention(RUNTIME)`  
-- [x] `@Deprecated`  
-  > It is defined with `@Retention(RUNTIME)`  
-
----
-
-**Your application needs to load a set of key value pairs from a database table which never changes. Multiple threads need to access this information but none of them changes it.  Which class would be the most appropriate to store such data if the values need not be keep in a sorted fashion?**
-
-- [ ] `Hashtable`
-- [x] `HashMap`
-- [ ] `Set`
-- [ ] `TreeMap`
-- [ ] `List`
+**2.** Your application needs to load a set of key value pairs from a database table which never changes. Multiple threads need to access this information but none of them changes it.  
+Which class would be the most appropriate to store such data if the values need not be kept in a sorted fashion?  
+
+- [ ] Hashtable  
+- [x] HaspMap  
+- [ ] Set  
+- [ ] TreeMap  
+- [ ] List  
 
 **Explanation**  
 You should know that all `Hashtable` methods are synchronized and this compromises its performance for simultaneous reads.  
-Since no thread modifies the data, it is not efficient to use a `Hashtable`.  
-A `HashMap` is perfect choice because its methods are not synchronized and so it allows efficient multiple reads. `TreeMap` is used to keep the keys sorted which makes it a little bit slower than `HashMap`.  
-`Set` and `List` can't be used since we need to store Key-value pairs.
+Since not thread modifies the data, it is not efficient to use a `Hashtable`.  
+A `HashMap` is a perfect choice because its methods are not synchronized and so it allows efficient multiple reads. TreeMap is used to keep the keys sorted which makes it a little bit slower than `HashMap`.  
+`Set` and `List` can't be used since we need to store Key-value pairs.  <!--more-->
 
 ---
 
-**A programmer has written the following code to ensure that the phone number is not null and is of 10 characters:**
+**3.** A programmer has written the following code to ensure that the phone number is not null and is of 10 characters:  
 
 ```java
 public void processPhoneNumber(String number) {
-    assert number != null && number.length() == 10 : "Invalid phone number";
-    ...
+  assert number != null && number.length() == 10 : "Invalid phone number";
+  ...
 }
 ```
 
 Which of the given statements regarding the above code are correct?  
 
 - [ ] This is an appropriate use of assertions.  
-- [ ] This code will not work  in all situations.  
-  > It will not work if assertions are disabled.  
+- [ ] This code will not in all situations.  
 - [ ] The given code is syntactically correct.  
 - [ ] Constrains on input parameters should be enforced using assertions.  
 
 **Explanation**  
-As a rule, assertions should not be used to assert the validity of input parameters of a public method. Since assertions may be disabled at the wish of the user of the program, input validation will not occur when assertions are disabled. A public method should ensure in all situations(whether assertions are enabled or disabled) that the input parameters are valid before proceeding with the rest of the code. For this reason, input validation should always be done using the standard exception mechanism:
+As a rule, assertions should not be used to assert the validity of the input public method. Since assertions may be disabled at wish of the user of the program, input validation will not occur when assertions are disabled. A public method should ensure in all situations(whether assertions are enabled or disabled) that the input parameters are valid before proceeding with the rest of the code. For this reason, input validation should always be done using the standard exception mechanism:  
 
 `if(number == null || number.length() != 10) throw new RuntimeException("Invalid phone number");`
 
-However, assertions may be used to validate the input parameters of a private method. This is because private methods are called only by the developer of the class. Therefore, if a private method is called with an invalid parameter, this problem should be rectified at the development stage itself. It cannot occur in the production stage, so there is not need to throw an explicit exception.
+However, assertions may be used to validate the input parameters of a private method. This is because private methods are called only by the developer of the class. Therefore, if a private method is called with an invalid parameter, this problem should be rectified at the development stage itself. It cannot occur in the production stage, so there is no need to throw an explicit exception.  
 
 ---
 
-**Which clause(s) are used by a module definition that implements a service?**
+**8.** Which is/are the root interface(s) for all collection related interfaces?  
+
+- [ ] BaseCollection  
+- [x] Collection  
+- [ ] List  
+- [ ] Set  
+- [x] Map  
+
+**Explanation**  
+All name-value maps such as `java.util.HashMap` and `java.util.TreeMap` implement `java.util.Map` and all collections such as `java.util.ArrayList`, and `java.util.LinkedList` implement `java.util.Collection`.  
+
+---
+
+**9.** You have a collection (say, an ArrayList) which is read by multiple reader threads and which is modified by a single writer thread. The collection allows multiple concurrent reads but does not tolerate concurrent read and write. Which of the following strategies will you use to obtain best performance?  
+
+- [ ] synchronize all access to the collection.  
+  > While this is a valid approach, if you do this then even the reader threads will not be able to read concurrently. This will drastically reduce performance.  
+- [ ] make the collection variable final.  
+- [ ] make the collection variable final and volatile.  
+  > Making it final and volatile will only ensure that all threads access the same collection object but it will not prevent simultaneous access by reader and writer threads.  
+- [ ] Wrap the collection into its synchronized version using Collections.synchronizedCollection().  
+  > This is same as option 1 and has the same issue.  
+- [x] Encapsulate the collection into another class and use ReadWriteLock to manage read and write access.  
+
+**Explanation**  
+Since the collection allows multiple simultaneous reads, it is ok for multiple threads to access the collection simultaneously if they are not modifying the collection. On the other hand, a writer thread must get sole custody of the collection before modifying. This can be easily achieved by using a ReadWriteLock. For example:  
+
+```java
+public class MultipleReadersSingleWriter {
+    private final ArrayList<String> theList = new ArrayList<String>();
+    //Note that ReadWriteLock is an interface.
+    private final ReadWriteLock rwl = new ReentrantReadWriteLock();
+    private final Lock r = rwl.readLock();
+    private final Lock w = rwl.writeLock();
+    public String read(){
+        r.lock();
+        try{
+            System.out.println("reading");
+            if(theList.isEmpty()) return null;
+            else return theList.get(0);
+        }finally{
+            r.unlock();
+        }
+    }
+    public void write(String data){
+        w.lock();
+        try{
+            System.out.println("Written "+data);
+            theList.add(data);
+        }finally{
+            w.unlock();
+        }
+    }
+}
+```
+
+---
+
+**11.** Which variables of the encapsulating class can an inner class access, if the inner class is defined in a instance method of the encapsulating class?  
+
+- [x] All static variables.  
+- [x] All final instance variables.  
+- [x] All instance variables.  
+- [ ] All automatic variables.  
+- [x] All final and effectively final automatic variables.  
+
+**Explanation**   
+Consider the following code:  
+
+```java
+public class TestClass
+{
+  static int si = 10; int ii = 20;
+  public void inner() {
+    int ai = 30; // automatic variable
+    ai = 31; // ai is not effectively final anymore
+    final int fai = 40; // automatic final variable
+    class Inner {
+      public Inner() { System.out.println(si" "+ii+" "+fai); }
+    }
+    new Inner();
+  }
+  public static void main(String[] args) { ne TestClass().inner(); }
+}
+```
+
+As method `inner()` is an instance method(i.e. non-static method), `si`, `ii`, and `fai` are accessible in class `Inner`. Note that `ai` is not accessible because it is not effectively final. If the line `ai = 31;` did not exist, `ai` would have been accessible. If method `inner()` were a static method, `ii` would have been inaccessible. Prior to Java 8, only final local variables were accessible to the inner class but in Java 8, event effectively final local variables of the method are accessible to the inner defined in that method as well.  
+
+**12.** Which interface would you use to represent a collection having non-unique objects in the order of insertion?  
+> List  
+> java.util.List  
+
+**Explanation**  
+`java.util.List` interface is implemented by collections that maintain sequences of possibly non-unique elements. Elements retain their ordering in the sequence. Collection classes implementing `SortedSet` maintain their elements sorted in the set.  
+
+---
+
+**14.** Identify the correct statement about i18n.  
+
+- [ ] I18N class allows you to port your code from multiple regions and/or languages.  
+  > There is no class named I18N.  
+- [x] You should use Locale and formatter objects such as NumberFormat and DateFormat to generate locale specific output.  
+- [ ] The i18n method of NumberFormat and DateFormat allows you to generate locale specific output.  
+- [x] Using default locale for NumberFormat and DateFormat automatically ensures that the formatted text will be localized to the location - [ ] setting of the machine on which the code is run.(Assuming the default locale hasn't been explicitly changed by any means.)  
+  > When not passed to the `getInstance()` method, the default `Locale` is used, which is same as the one set by the operating system. If you want to change it,(for example, if you want to generate French format on a US machine), you must create a new `Locale("fr", "FR")` object and use the following methods to get an appropriate NumberFormat or DateFormat instance -  
+  > NumberFormat: `NumberFormat getInstance(Locale locale)`  
+  > DateFormat: `DateFormat getDateInstance(int style, Locale locale)`  
+  > Note that DateFormat does not have `getInstance(Locale locale)` method.  
+- [ ] i18n stands for Internationalization and it is handled automatically by Java.  
+
+---
+
+**15.** Which of the following statements are correct regarding abstract classes and interfaces?  
+
+- [ ] An abstract class can have private as well as static methods while an interface can not have static methods.  
+  > Interfaces can have static methods(public as well as private). Interfaces cannot have protected methods. It cannot have non-public fields and instance fields.  
+- [ ] An abstract class cannot implement multiple interfaces while an interface can extend multiple interfaces.  
+  > An abstract class(or any class for that matter) can implement any number of interfaces.  
+- [ ] Abstract classes can have abstract methods but interface cannot.  
+  > Both abstract classes and interfaces can have abstract as well as non-abstract methods. The difference is that by default(i.e. when no modifier is specified), the methods of an abstract class have "default" access and are non-abstract(i.e. must have a body), while the methods of an interface are public and abstract.  
+- [x] Abstract classes can have instance fields but interfaces can't  
+  > Fields of an interface are always public, static, and final.  
+- [x] An abstract class can have final methods but an interface cannot.  
+
+**16.** Which of the following statements are correct?  
+
+- [x] Assertions can be enabled or disabled on a class basis.  
+  > Yes, it can be enabled/disabled for class as well as package basis using -ea or -da flags.  
+- [ ] Assertions are appropriate to check whether method parameters are valid.  
+  > Since it does not say which kind of methods (public or private), you should assume all methods.  
+- [ ] Conditional compilation is used to allow an application that uses assertions to run with maximum performance.  
+  > Assertion can be disabled without recompiling the code.  
+- [ ] When an assertion fails, a programmer may either throw an exception or simply return from the method.  
+  > When an assertion fails, a programmer should always throw the exception.  
+
+**Explanation**  
+An assertion signifies a basic assumption made by the programmer that he/she believes to be true at all times. It is never a wise idea to try to recover when an assertion fails because that is the whole purpose of assertions: that the program should fail if that assumption fails.  
+
+---
+
+**17.** Complete the code so that the user can enter a password on the command line.  
+
+```java
+import java.io.Console;
+public class TestClass {
+  public static void main(String[] args) throws Exception {
+    Console c = System.console();
+    char[] cha = c.readPassword("Please enter password:");
+    String pwd = new String(cha);
+    System.out.println("pwd = "+pwd);
+  }
+}
+```
+
+**Explanation**  
+**1.** `Console` class is in `java.io` package.  
+**2.** Correct way to retrieve the `Console` object is `System.console();` There is only one `Console` object so `new Console();` doesn't make sense. And therefore, Console's constructor is not public.  
+**3.** You can read user's input using either `readLine()` or `readPassword()`. Here, since you are reading password, `readPassword()` should be used. `readPassword()` ensures that the keys typed by the user aren't echoed to the command prompt.  
+
+---
+
+**19.** What will the following code print?  
+
+```java
+ReentrantLock rlock = new ReentrantLock();
+boolean f1 = rlock.lock();
+System.out.println(f1);
+boolean f2 = rlock.lock();
+System.out.println(f2);
+```
+
+- [ ]
+  > true  
+  > true  
+- [ ]
+  > true  
+  > false  
+- [ ]
+  > true  
+- [ ] It will not compile.  
+  > `java.util.concurrent.locks.Lock` interface's `lock()` method returns `void`, while its `tryLock()` returns `boolean`.  
+  Had the code been:  
+
+```java
+ReentrantLock rlock = new ReentrantLock();
+boolean f1 = rlock.tryLock();
+System.out.println(f1);
+boolean f2 = rlock.tryLock();
+System.out.println(f2);
+```
+
+It would have printed:  
+> true  
+> true  
+
+Note that `java.util.concurrent.locks.ReentrantLock` class implements `java.util.concurrent.locks.Lock` interface.  
+
+---
+
+**21.** Anonymous inner classes always extend directly from the Object class.  
+
+- [ ] True  
+- [x] False  
+
+**Explanation**  
+When you create an anonymous class for an interface, it extends from Object. For example,  
+button.addActionListener( new ActionListener() {  public void actionPerformed(ActionEvent ae) { } }  );  
+But if you make an anonymous class from another class then it extends from that class. For example, consider the following class:  
+
+```java
+class MyListener implements ActionListener {
+  public void actionPerformed(ActionEvent ae) {
+    System.out.println("MyListener class");
+  }
+}
+
+button.addActionListener(new MyListener() {
+  public void actionPerformed(ActionEvent ea) {
+    System.out.println("Anonymous Listener class");
+  }
+});
+```
+
+Here the anonymous class actually extends from MyListener class and successfully overrides the actionPerformed() method.  
+
+---
+
+**22.** Consider the following code:  
+
+```java
+Locale myLoc = new Locale("fr", "FR");
+ResourceBundle rb = ResourceBundle.getBundle("appmessages", myLoc);
+//INSERT CODE HERE
+```
+
+Which of the following lines of code will assign a ResourceBundle for a different Locale to rb than the one currently assigned?  
+(Assume appropriate import statements)  
+
+- [x] rb = ResourceBundle.getBundle("appmessages", new Locale("ch", "CH"));  
+- [ ] rb = ResourceBundle.getBundle("appmessages", CHINA);  
+  > In this question, the import statements are not specified. If appropriate imports are present (i.e. import static java.util.Locale.*; ), this will work fine. In the exam, you may see a couple of question that have such ambiguous options. In our opinion, it is best not to assume anything special or out of ordinary. Therefore, this option should not be selected.  
+- [ ] myLoc.setLocale(Locale.CHINA);  
+  > There is no setLocale() method in Locale.  
+- [ ] myLoc.setLocale(new Locale("ch", "CH"));  
+- [x] rb = ResourceBundle.getBundle("appmessages", Locale.CHINA);  
+- [ ] rb.setLocale(Locale.CHINA);  
+  > There is no setLocale() method in Locale.  
+
+**Explanation**  
+Note that once a `ResourceBundle` is retrieved, changing the Locale will not affect the `ResourceBundle`. You have to retrieve a new `ResourceBundle` by passing in the new `Locale` and then assign it to the variable.  
+
+---
+
+**23.** Which of these methods are defined in the Map interface?  
+
+- [ ] contains(Object o)  
+- [ ] addAll(Collection c)  
+- [x] remove(Object o)  
+- [x] values()  
+- [ ] toArray()  
+
+**Explanation**  
+The Map interface defines the methods `remove(Object)` and `values()`. It does not define  methods `contains()`, `addAll()` and `toArray()`  
+Methods with these names are defined in the Collection interface, but Map does not extend from Collection.  
+
+---
+
+**24.** Insert appropriate methods so that the following code will produce expected output.  
+
+```java
+import java.util.*;
+public class TestClass {
+  public static void main(String[] args) {
+    NavigableSet<String> myset = new TreeSet<String>();
+    myset.add("a"); myset.add("b"); myset.add("c");
+    myset.add("aa"); myset.add("bb"); myset.add("c");
+    System.out.println(myset.floor("a"));
+    System.out.println(myset.ceiling("aaa"));
+    System.out.println(myset.lower("a"));
+    System.out.println(myset.higher("bb"));
+  }
+}
+```
+
+**Expected output.**  
+> a  
+> b  
+> null  
+> c  
+
+**25.** Complete the following code so that it will print each line in the given file.  
+
+```java
+import java.io.*;
+class Liner {
+  public void dumper(File f) throws IOException {
+    FileReader x1 = new FileReader(f);
+    BufferedReader x2 = new BufferedReader(x1);
+    String x3 = x2.readLine();
+    while (x3 != null) {
+      System.out.println(x3);
+      x3 = x2.readLine();
+    }
+  }
+}
+```
+
+**26.** Which of the following statements are correct?  
+
+- [ ] Assertions are usually enabled in the production environment.  
+- [ ] Assertions are usually disabled in the development and testing environment.  
+  > Just the reverse is true.
+- [ ] Assertions can be enabled selectively on per class basis but not on per package basis.  
+- [x] Assertions can be enabled selectively on per class basis as well as on per package basis.  
+  > Yes, it can be enabled/disabled on class as well as package basis -ea or -da flags.  
+- [x] It is not a good practice to write code that recovers from an assertion failure.  
+
+**Explanation**  
+An assertion signifies a basic assumption made by the programmer that he/she believes to be true at all times. It is never a wise idea to try to recover when an assertion fails is the whole prupose of assertions: that the program should fail if that assumption fails.  
+
+---
+
+**27.** Which clause(s) are used by a module definition that implements a service?  
 
 - [ ] exports  
   > A service provider module is not read directly by a service user module. So, *exports* clause is not required.  
@@ -502,7 +418,7 @@ module abc.print {
 
 ---
 
-**Which of the following statements regarding the assertion mechanism of Java is NOT correct?**  
+**31.** Which of the following statements regarding the assertion mechanism of Java is NOT correct?  
 
 - [x] Assertions require changes at the JVM level.  
   > No change is required in the JVM for supporting assertions.  
@@ -517,10 +433,10 @@ module abc.print {
 
 ---
 
-**Identify correct statements about annotations.**
+**32.** Identify correct statements about annotations.  
 
 - [ ] @SuppressWarnings can be used only on a class, constructor, or a method.  
-  > Actually, it can be used on several things. Its target can be a **TYPE**, **FIELD**, **METHOD**, **PARAMETER**, **CONSTRUCTOR**, **LOCAL_VARABLE**, and **MODULE**.  
+  > Actually, it can be used on several things. Its target can be a **TYPE**, **FIELD**, **METHOD**, **PARAMETER**, **CONSTRUCTOR**, **LOCAL_VARIABLE**, and **MODULE**.  
 - [x] @Override can only be used on instance methods.  
 - [ ] @SafeVarargs can only be used on methods.  
   > It can be used on constructors and methods.  
@@ -529,53 +445,35 @@ module abc.print {
 - [ ] @SuppressWarnings("all") can be used suppress all warnings from a method or a class.  
   > Although you can pass any string value to the SuppressWarnings annotation (unrecognized values are ignored), the Java specification mandates only three values - unchecked, deprecation, and removal. Different compilers and IDEs may support other values in addition to these three. There is no rule that says the value "all" has to suppress all warnings (although a compiler or an IDE may do that upon seeing this value.)  
 
-1
+---
 
-2
+**33.** Which of the following is thrown when an assertion fails?  
 
-3
+- [x] AssertionError  
+- [ ] AssertionException  
+- [ ] RuntimeException  
+- [ ] AssertionFailedException  
+- [ ] Exception  
 
-8
+**Explanation**  
+A java.lang.AssertionError is thrown.  
 
-9
+```java
+public class java.lang.AssertionError extends java.lang.Error {
+  public java.lang.AssertionError();
+  public java.lang.AssertionError(java.lang.Object);
+  public java.lang.AssertionError(boolean);
+  public java.lang.AssertionError(char);
+  public java.lang.AssertionError(int);
+  public java.lang.AssertionError(long);
+  public java.lang.AssertionError(float);
+  public java.lang.AssertionError(double);
+}
+```
 
-11
+---
 
-12
-
-14
-
-15
-
-16
-
-17
-
-19
-
-21
-
-22
-
-23
-
-24
-
-25
-
-26
-
-27
-
-31
-
-32
-
-33
-
-38
-
-**40.** Which of the following are required to construct a Locale?  
+**38.** Which of the following are required to construct a Locale?  
 
 - [x] language  
 - [ ] region  
@@ -585,7 +483,7 @@ module abc.print {
 - [ ] state  
 - [ ] culture  
 
-**Explanation**
+**Explanation**  
 Locale needs at least a language to be constructed. It has three constructor -  
 `Locale(String language)`  
 Construct a locale from a language code.  
@@ -598,6 +496,34 @@ For example:
 `new Locale("fr", "FR");` // language is French, Country is France.  
 `new Locale("fr", "CA");` // language is French, Country is Canada, so this means, you are trying to use Canadian dialect of French.  
 `new Locale("en", "IN");` // language is English, COuntry is India, so this means, you are trying to use Indian dialect of English.  
+
+---
+
+**40.** Which of the following are standard Java annotations?  
+
+- [ ] @NonNull  
+  > This is not a standard Java annotation.  
+  > Although this annotation is officially not in scope for the OCP Java 11 exam, we have seen questions on the exam that require knowledge about this annotation. It exists in Spring framework as well as in **[Checker Framework](https://checkerframework.org/manual/)**, which is referred in an Oracle **[blog](https://blogs.oracle.com/java-platform-group/java-8s-new-type-annotations)**  
+  > It can be applied to a field, method parameter, or method return type.  
+  > org.springframework.lang  
+  > Annotation Type NonNull  
+  > @Target(value={METHOD,PARAMETER,FIELD})  
+  > @Retention(value=RUNTIME)  
+  > @Documented @Nonnull  
+  > @TypeQualifierNickname  
+  > public @interface NonNull  
+  > A common Spring annotation to declare that annotated elements cannot be null.  
+  > It can be used like this:  
+  > **1.** @NonNull String getString(@NonNull String input){ return "adsf"; };  
+  > **2.** @NonNull String name; //instance or class fields  
+  > **3.** Function<Integer, Integer> fin =  (@NonNull var x) -> 2*x;//lambda expression  
+  > You may see the details of the NonNull annotation of the checker framework **[here](https://checkerframework.org/api/org/checkerframework/checker/nullness/qual/NonNull.html)**  
+- [ ] @Interned  
+  > @Interned is not a standard Java annotation.  
+  > Although this annotation is officially not in scope for the OCP Java 11 exam, we have seen questions on the exam that require knowledge about this annotation. It exists in Spring framework as well as in **[Checker Framework](https://checkerframework.org/manual/)**, which is referred in an Oracle **[blog](https://blogs.oracle.com/java-platform-group/java-8s-new-type-annotations)**  
+  > 
+- [x] @Repeatable  
+- [x] @Retention  
 
 ---
 
@@ -631,7 +557,7 @@ public class ChangeFileNames {
 }
 ```
 
-**Explanation**
+**Explanation**  
 This programs illustrates the usage of many important File class methods.  
 **1.** The `isDirectory()` method returns `true` if the file object represents a directory.  
 **2 and 3.** File class has two methods for returning the contents of a directory (although it has more but for the exam, you need to know only these two):  
@@ -654,7 +580,7 @@ The for loop is expecting 'files' to be an array or a Collection of File objects
 - [ ] It depends on whether the inner class is defined in a method or not.  
 - [ ] None of the above.  
 
-**Explanation**
+**Explanation**  
 In general, there is no restriction on what a nested class may or may not extend.  
 FYI, a nested class is any class whose declaration occurs within the body of another class or interface. A top level class is a class that is not a nested class. An inner class is a nested class that is not explicitly or implicitly declared static.  
 
@@ -670,7 +596,7 @@ FYI, a nested class is any class whose declaration occurs within the body of ano
 - [ ] java.sql.Date  
   > This is a class and not an interface. It is provided by the JDBC API.  
 
-**Explanation**
+**Explanation**  
 `java.sql.ResultSet` is another important interface that a driver must provide.  
 Besides these, there are several interfaces and methods that a driver must provide but they are not relevant for the exam. If you want to learn more, please refer JDBC Specification.  
 
@@ -683,7 +609,7 @@ Besides these, there are several interfaces and methods that a driver must provi
 - [ ] When a JDBC Connection is created, its auto-commit feature is disabled.  
 - [ ] When a JDBC Connection is created, it is in commit mode undetermined.  
 
-**Explanation**
+**Explanation**  
 When a connection is created, it is in auto-commit mode. i.e. auto-commit is enabled. This means that each individual SQL statement is treated as a transaction and is automatically committed right after it is completed. (A statement is completed when all of its result sets and update counts have been retrieved. In almost all cases, however, a statement is completed, and therefore committed, right after it is executed.)  
 The way to allow two or more statements to be grouped into a transaction is to disable the auto-commit mode. Since it is enabled by default, you have to explicitly disable it after creating a connection by calling `con.setAutoCommit(false);`  
 
@@ -699,7 +625,7 @@ The way to allow two or more statements to be grouped into a transaction is to d
 - [x] Anonymous classes cannot define constructors explicitly in Java code.  
 - [x] Anonymous classes cannot be static.  
 
-**Explanation**
+**Explanation**  
 Non-static inner classes can contain final static fields (but not methods).  
 Anonymous classes cannot have explicitly defined constructors, since they have no names.  
 Remember: A nested class is any class whose declaration occurs within the body of another class or interface. A top level class is a class that is not a nested class. An inner class is a nested class that is not explicitly or implicitly declared `static`. A class defined inside an interface is implicitly `static`.  
@@ -969,12 +895,11 @@ class Portfolio implements Serializable {
 ```
 
 **Explanation**  
-
-1. Bond class does not implement Serializable. Therefore, for Portfolio to be serialized, 'bond' must be transient.  
-2. `writeObject` method takes `ObjectOutputStream` as the only parameter, while `readObject` method takes `ObjectInputStream`.  
-3. To serialize the object using the default behavior, you must call `objectOutputStream.defaultWriteObject();` or `objectOutputStream.writeFields();`. This will ensure that instance field of Portfolio object are serialized.  
-4. To deserialize the object using the default behavior, you must call `objectInputStream.defaultReadObject();` or `objectInputStream.readFields();`. This will ensure that instance fields of Portfolio object are deserialized.  
-5. The order of values to be read explicitly in `readObject` must be exactly the same as the order they were written in `writeObject`. Here, ticker was written before coupon and so ticker must be read before coupon.  
+**1.** Bond class does not implement Serializable. Therefore, for Portfolio to be serialized, 'bond' must be transient.  
+**2.** `writeObject` method takes `ObjectOutputStream` as the only parameter, while `readObject` method takes `ObjectInputStream`.  
+**3.** To serialize the object using the default behavior, you must call `objectOutputStream.defaultWriteObject();` or `objectOutputStream.writeFields();`. This will ensure that instance field of Portfolio object are serialized.  
+**4.** To deserialize the object using the default behavior, you must call `objectInputStream.defaultReadObject();` or `objectInputStream.readFields();`. This will ensure that instance fields of Portfolio object are deserialized.  
+**5.** The order of values to be read explicitly in `readObject` must be exactly the same as the order they were written in `writeObject`. Here, ticker was written before coupon and so ticker must be read before coupon.  
 
 ---
 
@@ -1093,7 +1018,23 @@ Note that * and ** are not valid wildcards for including subpackages.
 
 ---
 
-**72.**  
+**72.** Complete the following code so that it will print dick, harry, and tom in that order.  
+
+```java
+public class TestClass {
+    public static void main(String[] args) {
+        Set<String> holder = new TreeSet<>();
+        holder.add("tom");
+        holder.add("dick");
+        holder.add("harry");
+        holder.add("tom");
+        printIt(holder);
+    }
+    public static void printIt(Collection<String> list) {
+        for(String s : list) System.out.println(s);
+    }
+}
+```
 
 **Explanation**  
 The output is expected to contain unique items. This implies that you need to use a `Set`. The output is also expected to be sorted. Thus, `TreeSet` is the only option.  
@@ -1172,7 +1113,7 @@ Commands submitted using the `Executor.execute(java.lang.Runnable)` and `Executo
 
 All schedule methods accept relative delays and periods as arguments, not absolute times or dates. It is a simple matter to transform an absolute time represented as a Date to the required form. For example, to schedule at a certain future date, you can use: `schedule(task, date.getTime() - System.currentTimeMillis(), TimeUnit.MILLISECONDS)`. Beware however that expiration of a relative delay need not coincide with the current Date at which the task is enabled due to network time synchronization protocols, clock drift, or other factors. The Executors class provides convenient factory methods for the `ScheduledExecutorService` implementations provided in this package.  
 
-**Explanation:**
+**Explanation**  
 Following is a usage example that sets up a `ScheduledExecutorService` to beep every ten seconds for an hour:
 
 ```java
