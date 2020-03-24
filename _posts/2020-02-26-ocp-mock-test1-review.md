@@ -197,7 +197,7 @@ public class TestClass {
 
 ---
 
-**9.** Given: 
+**9.** Given:
 
 ```java
 class Booby {
