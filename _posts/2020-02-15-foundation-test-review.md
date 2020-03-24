@@ -248,7 +248,7 @@ System.out.println(f2);
   > false  
 - [ ]
   > true  
-- [ ] It will not compile.  
+- [x] It will not compile.  
   > `java.util.concurrent.locks.Lock` interface's `lock()` method returns `void`, while its `tryLock()` returns `boolean`.  
   Had the code been:  
 
