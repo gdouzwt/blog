@@ -40,8 +40,10 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta">{{ page.date | date: "%Y年%-m月%-d日" }}&nbsp;&nbsp;发布</span>
-                    <span class="meta">{{ page.last-modified | date: "%Y年%-m月%-d日" }}&nbsp;&nbsp;更新</span>
+                    <span class="meta">{{ page.date | date: "%Y年%-m月%-d日" }}&nbsp;发布</span>
+                    {% if page.last-modified %}
+                    <span class="meta">{{ page.last-modified | date: "%Y年%-m月%-d日" }}&nbsp;更新</span>
+                    {% endif %}
                 </div>
             </div>
         </div>
