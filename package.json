@@ -1,15 +1,16 @@
 {
   "name": "zwt",
-  "title": "TAO",
+  "title": "zwt",
   "author": "招文桃 <zhao@wen-tao.com>",
-  "version": "v1.3",
+  "version": "1.4.1",
   "license": "MIT",
-  "homepage": "https://zwt.io",
+  "homepage": "https://zwt.io/",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gdouzwt/blog"
+    "url": "https://github.com/gdouzwt/blog/"
   },
-  "bugs": "https://github.com/gdouzwt/blog/issues",
+  "bugs": "https://github.com/gdouzwt/blog/issues/",
   "devDependencies": {
     "grunt": "latest",
     "grunt-banner": "latest",
