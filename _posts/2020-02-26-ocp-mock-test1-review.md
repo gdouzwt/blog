@@ -3,7 +3,7 @@ typora-root-url: ../
 layout:     post
 title:      OCP-1Z0-816 模拟测试1回顾
 date:       '2020-02-26T15:15'
-subtitle:   记录部分
+subtitle:   题目比较多
 keywords:   Oracle Certified, OCP 11, Java 11, 1Z0-816
 author:     招文桃
 catalog:    false
@@ -12,6 +12,414 @@ tags:
     - 1Z0-816
     - 认证考试
 ---
+
+**4.** Given:  
+
+```java
+Path p1 = Paths.get("c:\\temp\\test1.txt");
+Path p2 = Paths.get("c:\\temp\\test2.txt");
+```
+
+Which of the following code fragments moves the file test1.txt to test2.txt, even if test2.txt exists?  
+
+- [ ] Files.move(p1, p2);  
+  > This will throw a `java.nio.file.FileAlreadyExistsException` if the file already exists.  
+- [x] Files.move(p1, p2, StandardCopyOption.REPLACE_EXISTING);  
+- [ ] try(Files.move(p1, p2)) { }  
+  > `Files.move` returns a `Path` object (of the destination file), which is not a resource that can be closed because it does not implement `AutoCloseable` interface. So this will not compile.  
+- [ ] try(Files.copy(p1, p2, StandardCopyOption.REPLACE_EXISTING)) { Files.delete(p1); }  
+- [x] Files.copy(p1, p2, StandardCopyOption.REPLACE_EXISTING); Files.delete(p1);  
+
+**Explanation**  
+Files.copy method will copy the test1.txt into test2.txt. If test2.txt doesn't exist, it will be created. However, Files.isSameFile method doesn't check the contents of the file. It is meant to check if the two path objects resolve to the same file or not. In this case, they are not, and so, it will return false.  
+The following is brief JavaDoc description for both the methods:  
+`public static Path copy(Path source, Path target, CopyOption... option) throws IOException`  
+Copy a file to a target file.  
+This method copies a file to the target file with the options parameter specifying how the copy is performed. By default, the copy fails if the target file already exists or is a symbolic link, except if the source are the same file, in which case the method completes without copying the file.  
+File attributes are not required to be copied to the target file. If symbolic links are supported, and the file is a symbolic link, then the final target of the link is copied. If the file is a directory in the target location(entries in the directory are not copies).  
+The options parameter may include any of the following:  
+**REPLACE_EXISTING** If the target file exists, then the target file is replaced if it is not a non-empty directory. If the target file exists and is a symbolic link, then the symbolic link itself, not the target of the link, is replaced.  
+**COPY_ATTRIBUTES** Attempts to copy the file attributes associated with this file to the target file. The exact file attributes that are copied is platform and file system dependent and therefore unspecified. Minimally, the last-modified-time is copied to the target file if supported by both the source and target file store. Copying of file timestamps may result in precision loss.  
+**NOFOLLOW_LINKS** Symbolic links are not followed. If the file is a symbolic link, then the symbolic link itself, not the target of the link, is copied. It is implementation specific if file attributes can be copied to the new link. In other words, the **COPY_ATTRIBUTES** option may be ignored when copying a symbolic link.  
+An implementation of this interface may support additional implementation specific options.  
+Copying a file is not an atomic operation. If an `IOException` is thrown then it possible that the target file is incomplete or some of its file attributes have not been copied from the source file. When the `REPLACE_EXISTING` option is specified and the target file exists, then the target file is replaced. The check for the existence of the file and the creation of the new file may not be atomic with respect to other file system activities.  
+`public static Path move(Path source, Path target, CopyOption... options) throws IOException`  
+Move or rename a file to a target file.  
+By default, this method attempts to move the file to the target file, failing if the target file exists except if the source and target are the same file, in which case this method has no effect. If the file is a symbolic link then the symbolic link itself, not the target of the link, is moved. This method may be invoked to move an empty directory. In some implementations a directory has entries for special files or links that are created when the directory is created. In such implementations a directory is considered empty when only the special entries exist. When invoked to move a directory that is not empty then the directory is moved if it does not require moving the entries in the directory. For example, renaming a directory on the same FileStore will usually not require moving the entries in the directory. When moving a directory requires that its entries be moved then this method fails (by throwing an `IOException`). To move a file tree may involve copying rather than moving directories and this can be done using the copy method in conjunction with the Files.walkFileTree utility method.  
+The options parameter may include any of the following:  
+**REPLACE_EXISTING**  If the target file exists, then the target file is replaced if it is not a non-empty directory. If the target file exists and is a symbolic link, then the symbolic link itself, not the target of the link, is replaced.
+**ATOMIC_MOVE** The move is performed as an atomic file system operation and all other options are ignored. If the target file exists then it is implementation specific if the existing file is replaced or this method fails by throwing an `IOException`. If the move cannot be performed as an atomic file system operation then `AtomicMoveNotSupportedException` is thrown. This can arise, for example, when the target location is on a different FileStore and would require that the file be copied, or target location is associated with a different provider to this object. An implementation of this interface may support additional implementation specific options.  
+Where the move requires that the file be copied then the last-modified-time is copied to the new file. An implementation may also attempt to copy other file attributes but is not required to fail if the file attributes cannot be copied. When the move is performed as a non-atomic operation, and a IOException is thrown, then the state of the files is not defined. The original file and the target file may both exist, the target file may be incomplete or some of its file attributes may not been copied from the original file.  
+
+---
+
+**5.** Consider the following code:  
+
+```java
+class LowBalanceException extends ____ {  // 1
+    public LowBalanceException(String msg) { super(msg); }
+}
+
+class WithdrawalException extends ____ { // 2 
+    public WithdrawalException(String msg) { super(msg); }
+}
+
+class Account {
+    double balance;
+    public void withdraw(double amount) throws WithdrawalException {
+        try {
+            throw new RuntimeException("Not Implemented");
+        } catch (Exception e) {
+            throw new LowBalanceException( e.getMessage());
+        }
+    }
+    public static void main(String[] args) {
+        try {
+            Account a = new Account();
+            a.withdraw(100.0);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+```
+
+What can be inserted at // 1 and // 2 so that the above code will prints Not Implemented?  
+
+- [ ] Exception Exception  
+- [ ] Exception LowBalanceException  
+- [x] WithdrawalException Exception  
+- [ ] WithdrawalException RuntimeException  
+
+**Explanation**  
+**1.** The withdraw method declares that it throws `WithdrawalException`. This means that the only exceptions that can come out of this method are WithdrawalExceptions (which means `WithdrawalException` or its subclasses) or RuntimeExceptions.  
+**2.** The try block in withdraw method throws a `RuntimeException`. It will be caught by the `catch(Exception)` block because `RuntimeException` is-a `Exception`. The code in the catch block throws a LowBalanceException, which is not caught. Thus, it will be thrown out of this method, which means LowBalanceException must either be a `RuntimeException` or be a `WithdrawalException` (i.e. must extend `WithdrawalException`) to satisfy the throws clause of the withdraw method.  
+**3.** The `main()` method does not have a throws clause but the call to `withdraw()` is enclosed within a try block with `catch(Exception)`. Thus, `WithdrawalException` can extend either `Exception` or `RuntimeException`.  
+
+---
+
+**6.** Which of the following lines will cause the compilation to fail?  
+
+```java
+public enum EnumA{ A, AA, AAA};  //1
+
+public class TestClass //2
+{
+  public enum EnumB { B, BB, BBB }; //3
+  public static enum EnumC { C, CC, CCC }; //4
+  public TestClass()
+  {
+    enum EnumD { D, DD, DDD } //5
+  }
+  public void methodX()
+  {
+    public enum EnumE{ E, EE, EEE } //6
+  }
+  public static void main(String[] args) //7
+  {
+    enum EnumF {F, FF, FFF }; //8
+  }
+}
+```
+
+- [x] 1,2, or both depending on the file name.  
+  > Since both EnumA and TestClass are public, they must be defined in a file with a name of EnumA.java and TestClass.java respectively.  
+- [ ] 3  
+  > A public (or non-public) enum can be defined inside any class.  
+- [ ] 4  
+  > A enum can be defined as a static member of any class. You can also have multiple public enums with in the same class.  
+- [x] 5  
+  > An enum cannot be defined inside any method or constructor  
+- [x] 6  
+  > An enum cannot be defined inside any method or constructor  
+- [ ] 7  
+  > There is nothing wrong with this line.  
+- [x] 8  
+  > An enum cannot be defined inside any method or constructor  
+
+**Explanation**  
+You need to know the following facts about enums:  
+**1.** Enum constructor is always private. You cannot make it public or protected. If an enum type has no constructor declarations, then a private constructor that takes no parameters is automatically provided.  
+**2.** An enum is implicitly final, which means you cannot extend it.  
+**3.** You cannot extend an enum from another enum or class because an enum implicitly extends java.lang.Enum. But an enum can implement interfaces.  
+**4.** Since enum maintains exactly one instance of its constants, you cannot clone it. You cannot even override the clone method in an enum because java.lang.Enum makes it final.  
+**5.** Compiler provides an enum with two public static methods automatically - `values()` and `valueOf(String)`. The `values()` method returns an array of its constants and `valueOf()` method tries to match the String argument exactly (i.e. case sensitive) with an enum constant and returns that constant if successful otherwise it throws `java.lang.IllegalArgumentException`.  
+**6.** By default, an enum's `toString()` prints the enum name but you can override it to print anything you want.  
+The following are a few more important facts about `java.lang.Enum` which you should know:  
+**1.** It implements `java.lang.Comparable` (thus, an enum can be added to sorted collections such as `SortedSet`, `TreeSet`, and `TreeMap`).  
+**2.** It has a method `ordinal()`, which returns the index (starting with 0) of that constant i.e. the position of that constant in its enum declaration.  
+**3.** It has a method `name()`, which returns the name of this enum constant, exactly as declared in its enum declaration.  
+
+---
+
+**8.** Which statements about the following code are correct?  
+
+```java
+interface House{
+  public default String getAddress() {
+    return "101 Main Str";
+  }
+}
+interface Office {
+  public static String getAddress() {
+    return "101 Smart Str";
+  }
+}
+interface WFH extends House, Office {
+  private boolean isOffice() {
+    return true;
+  }
+}
+class HomeOffice implements House, Office {
+  public String getAddress() {
+    return "R No 1, Home";
+  }
+}
+public class TestClass {
+  public static void main(String[] args) {
+    Office off = new HomeOffice(); //1
+    System.out.println(off.getAddress()); //2
+  }
+}
+```
+
+- [ ] Code for class HomeOffice will cause compilation to fail.  
+- [ ] Code for interface WFH will cause compilation to fail.  
+  > Since Java 9, an interface is allowed to have private(but not protected) static as well as instance methods.  
+- [ ] It will compile fine and print R No 1, Home when run.  
+- [ ] Line at //1 will cause compilation to fail.  
+- [ ] Line at //2 will cause compilation to fail.  
+  > Since the declared type of variable off is Office, compiler will check the call to getAddress against Office interface. However, getAddress in Office is static and Java 8 requires static interface method to be invoked using the interface name instead of a reference variable. That is why, the compiler will raise the following error message:  
+  > TestClass.java:26 error: illegal static interface method call  
+  >    System.out.println(h.getAddress()); //2  
+  > the receiver expression should be replaced with the type qualifier 'Office'
+  > 1 error
+
+---
+
+**9.** Given: 
+
+```java
+class Booby {
+}
+class Dooby extends Booby {
+}
+class Tooby extends Dooby {
+}
+
+and the following declarations:  
+```
+
+`List<? super Booby> bV = null;`  
+`List<? extends Tooby> tV = null;`  
+Which of the following statements will compile without any error?  
+
+---
+
+**11.**
+
+---
+
+**14.**
+
+---
+
+**15.**
+
+---
+
+**17.**
+
+---
+
+**20.**
+
+---
+
+**21.**
+
+---
+
+**25.**
+
+---
+
+**27.**
+
+---
+
+**29.**
+
+---
+
+**30.**
+
+---
+
+**31.**
+
+---
+
+**32.**
+
+---
+
+**33.**
+
+---
+
+**34.**
+
+---
+
+**35.**
+
+---
+
+**36.**
+
+---
+
+**39.**
+
+---
+
+**41.**
+
+---
+
+**42.**
+
+---
+
+**43.**
+
+---
+
+**45.**
+
+---
+
+**46.**
+
+---
+
+**48.**
+
+---
+
+**49.**
+
+---
+
+**50.**
+
+---
+
+**51.**
+
+---
+
+**53.**
+
+---
+
+**57.**
+
+---
+
+**58.**
+
+---
+
+**60.**
+
+---
+
+**61.**
+
+---
+
+**63.**
+
+---
+
+**64.**
+
+---
+
+**65.**
+
+---
+
+**66.**
+
+---
+
+**67.**
+
+---
+
+**70.**
+
+---
+
+**71.**
+
+---
+
+**73.**
+
+---
+
+**78.**
+
+---
+
+**80.**
+
+---
+
+**81.**
+
+---
+
+**82.**
+
+---
+
+**83.**
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **How many methods have to be provided by a class that is not abstract and that implements Serializable interface?**  
 
@@ -499,53 +907,3 @@ The options parameter may include any of the following:
 Where the move requires that the file be copied then the last-modified-time is copied to the new file. An implementation may also attempt to copy other file attributes but is not required to fail if the file attributes cannot be copied. When the move is performed as a non-atomic operation, and an `IOException` is thrown, then the state of the files is not defined. The original file and the target file may both exist, the target file may be incomplete or some of its file attributes may not been copied from the original file.
 
 ---
-
-Consider the following code:
-
-```java
-class LowBalanceException extends ____ {  // 1
-    public LowBalanceException(String msg) { super(msg); }
-}
-
-class WithdrawalException extends ____ { // 2 
-    public WithdrawalException(String msg) { super(msg); }
-}
-
-class Account {
-    double balance;
-    public void withdraw(double amount) throws WithdrawalException {
-        try {
-            throw new RuntimeException("Not Implemented");
-        } catch (Exception e) {
-            throw new LowBalanceException( e.getMessage());
-        }
-    }
-    public static void main(String[] args) {
-        try {
-            Account a = new Account();
-            a.withdraw(100.0);
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-}
-```
-
-What can be inserted at // 1 and // 2 so that the above code will prints Not Implemented?
-
-- [ ] Exception
-  Exception
-- [ ] Exception
-  LowBalanceException
-- [x] WithdrawalException
-  Exception
-- [ ] WithdrawalException
-  RuntimeException
-
-**Explanation**
-
-1. The withdraw method declares that it throws WithdrawalException. This means that the only exceptions that can come out of this method are WithdrawalExceptions  (which means WithdrawalException or its subclasses) or RuntimeExceptions.
-2. The try block in withdraw method throws a RuntimeException. It will be caught by the catch(Exception) block because RuntimeException is-a Exception. The code in the catch block throws a LowBalanceException, which is not caught. Thus, it will be thrown out of this method, which means LowBalanceException must either be a RuntimeException or be a WithdrawalException (i.e. must extend WithdrawalException) to satisfy the throws clause of the withdraw method.
-3. The main() method does not have a throws clause but the call to withdraw() is enclosed within a try block with catch(Exception). Thus, WithdrawalException can extend either Exception or RuntimeException.
-
-[To be continued!]
