@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'jekyll'
 gem 'coderay'
 gem 'rake-jekyll'
-gem "rake", ">= 12.3.3"
+gem 'rake'
 
 group :jekyll_plugins do
   gem 'jekyll-paginate'
