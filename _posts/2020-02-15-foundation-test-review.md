@@ -55,8 +55,9 @@ public void processPhoneNumber(String number) {
 Which of the given statements regarding the above code are correct?  
 
 - [ ] This is an appropriate use of assertions.  
-- [ ] This code will not in all situations.  
-- [ ] The given code is syntactically correct.  
+- [x] This code will not work in all situations.  
+  > It will not work if assertions are disabled.  
+- [x] The given code is syntactically correct.  
 - [ ] Constrains on input parameters should be enforced using assertions.  
 
 **Explanation**  
