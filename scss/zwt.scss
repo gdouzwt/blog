@@ -230,27 +230,22 @@ code {
   ul,
   ol {
     // Override default ol style
-    margin-bottom: 0;
-    display: block;
-    list-style-type: decimal;
-    margin-block-start: 5px;
-    margin-block-end: 5px;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+
     padding-inline-start: 30px;
-    
+
     @media screen and (max-width: 768px) {
       & {
-        padding-left: 30px;
+        padding-inline-start: 30px;
       }
     }
 
     @media screen and (max-width: 500px) {
       & {
-        padding-left: 20px;
+        padding-inline-start: 20px;
       }
     }
   }
+
   ol ol,
   ol ul,
   ul ol,
@@ -788,7 +783,6 @@ footer {
     margin: 0;
     font-size: 0.85em;
     line-height: 1.764705882em;
-    vertical-align: baseline;
     opacity: 0;
     -webkit-transition: top 0.3s ease, opacity 0.3s ease;
     -moz-transition: top 0.3s ease, opacity 0.3s ease;
@@ -967,6 +961,7 @@ img::-moz-selection {
 }
 
 // tag_cloud
+
 #tag_cloud {
   margin: 20px 0 15px 0;
 
@@ -1004,12 +999,12 @@ img::-moz-selection {
     margin-top: 0px;
   }
 
-  hr:last-of-type {
-    //display: none;
-  }
+  // hr:last-of-type {
+  //display: none;
+  // }
 }
 
-.listing-seperator {
+.listing-separator {
   color: #0085a1;
   font-size: 21px !important;
 
@@ -1024,6 +1019,7 @@ img::-moz-selection {
 }
 
 // Customize Style for Posts in One-Tag-List
+
 .one-tag-list {
   .tag-text {
     font-weight: 200;
@@ -1119,65 +1115,6 @@ img::-moz-selection {
   .icon-bar+.icon-bar {
     margin-top: 3px;
   }
-}
-
-
-/* Hux customize Style for Duoshuo */
-.comment {
-  margin-top: 20px;
-
-  #ds-thread {
-    #ds-reset {
-      a.ds-like-thread-button {
-        border: 1px solid #ddd;
-        border-radius: 0;
-        background: white;
-        box-shadow: none;
-        text-shadow: none;
-      }
-
-      a.ds-thread-liked {}
-
-      li.ds-tab a.ds-current {
-        border: 1px solid #ddd;
-        border-radius: 0;
-        background: white;
-        box-shadow: none;
-        text-shadow: none;
-      }
-
-      .ds-textarea-wrapper {
-        //border:1px solid #ddd;
-        background: none;
-      }
-
-      .ds-gradient-bg {
-        background: none;
-      }
-
-      .ds-post-options {
-        border-bottom: 1px solid #ccc;
-      }
-
-      .ds-post-button {
-        border-bottom: 1px solid #ccc;
-      }
-
-      //v1.6 flatten button
-      .ds-post-button {
-        background: white;
-        box-shadow: none;
-
-        &:hover {
-          background: $gray-light;
-        }
-      }
-    }
-  }
-}
-
-#ds-smilies-tooltip ul.ds-smilies-tabs li a {
-  background: white !important;
 }
 
 

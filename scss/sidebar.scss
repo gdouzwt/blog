@@ -34,7 +34,8 @@
   a {
     color: $gray-l !important;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       color: $brand-primary !important;
     }
   }
@@ -43,7 +44,8 @@
     a {
       border-color: $gray-l;
 
-      &:hover, &:active {
+      &:hover,
+      &:active {
         border-color: $brand-primary;
       }
     }
@@ -62,7 +64,7 @@
       margin-bottom: 20px;
     }
 
-    .list-inline > li {
+    .list-inline>li {
       padding-left: 0;
     }
   }
