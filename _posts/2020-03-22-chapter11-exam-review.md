@@ -20,19 +20,21 @@ tags:
 **D.** No defined types  
 **E.** Platform independence  
 
-**2.** Which statement is true of the following module? **F -> D**
+**2.** Which statement is true of the following module? **D**
 
+```none
 zoo.staff
 |---zoo
 |-- staff
 |-- Vet.java
+```
 
-**A.** The directory structure shown is a valid module.
-**B.** The directory structure would be a valid module if module.java were added directly underneath zoo.staff.
-**C.** The directory structure would be a valid module if module.java were added directly underneath zoo.
-**D.** The directory structure would be a valid module if module-info.java were added directly underneath zoo.staff.
-**E.** The directory structure would be a valid module if module-info.java were added directly underneath zoo.
-**F.** None of these changes would make this directory structure a valid module.
+**A.** The directory structure shown is a valid module.  
+**B.** The directory structure would be a valid module if module.java were added directly underneath zoo.staff.  
+**C.** The directory structure would be a valid module if module.java were added directly underneath zoo.  
+**D.** The directory structure would be a valid module if module-info.java were added directly underneath zoo.staff.  
+**E.** The directory structure would be a valid module if module-info.java were added directly underneath zoo.  
+**F.** None of these changes would make this directory structure a valid module.  
 
 **解释：**  Modules are required to have a module-info.java file at the root directory of the module. Option D matches this requirement.
 
