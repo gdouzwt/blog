@@ -90,14 +90,14 @@ img.shadow {
 }
 
 // My fix
-ul.task-list {
-  list-style-type: none;
-  padding: 0;
+// ul.task-list {
+//   list-style-type: none;
+//   padding: 0;
 
-  li.task-list-item {
-    list-style-type: none;
-  }
-}
+//   li.task-list-item {
+//     list-style-type: none;
+//   }
+// }
 
 // add margin to task-list-item-checkbox
 input.task-list-item-checkbox {
@@ -213,36 +213,25 @@ code {
     }
   }
 
-  // My fix
-  ul.task-list {
-    @media screen and (max-width: 768px) {
-      & {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      li.task-list-item {
-        list-style-type: none;
-      }
-    }
-  }
 
   ul,
   ol {
     // Override default ol style
-
     padding-inline-start: 30px;
 
-    @media screen and (max-width: 768px) {
-      & {
-        padding-inline-start: 30px;
+    &.task-list {
+      list-style-type: none;
+      padding-inline-start: 5px;
+
+      @media screen and (max-width: 500px) {
+        & {
+          padding-inline-start: 5px;
+        }
       }
     }
 
-    @media screen and (max-width: 500px) {
-      & {
-        padding-inline-start: 20px;
-      }
+    &.task-list-item {
+      list-style-type: none;
     }
   }
 
@@ -580,7 +569,7 @@ code {
   .post-heading {
     h1 {
       font-size: 30px;
-      margin-bottom: 24px;
+      margin-bottom: 10px 0;
     }
 
     .subheading,
@@ -594,14 +583,14 @@ code {
       font-size: 17px;
       line-height: 1.4;
       font-weight: normal;
-      margin: -5px 0 30px;
+      margin: 0;
     }
 
     .meta {
-      @include serif;
       font-style: normal;
       font-weight: 300;
       font-size: 18px;
+      color: $gray-light;
 
       a {
         color: white;
@@ -610,15 +599,19 @@ code {
 
     @media only screen and (min-width: 768px) {
       h1 {
-        font-size: 55px;
+        font-size: 36px;
       }
 
       .subheading {
-        font-size: 30px;
+        font-size: 24px;
       }
 
       .meta {
-        font-size: 20px;
+        margin: 5px 0;
+        float: left;
+        margin-right: 5px;
+        display: block;
+        font-size: 12px;
       }
     }
   }
