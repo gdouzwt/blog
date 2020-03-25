@@ -1,15 +1,16 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      816 基准测试回顾
+title:      816基准测试回顾
 date:       '2020-02-15T22:10'
-last-modified: '2020-03-25T06:03'
-subtitle:   OCP 816
+last-modified: '2020-03-26T02:10'
+subtitle:   
 author:     招文桃
 catalog:    false
 tags:
     - Java 11
     - OCP 11
+    - 1Z0-816
 ---
 
 **1.** Which of the following annotations are retained for run time?  
@@ -157,6 +158,8 @@ public class TestClass
 ```
 
 As method `inner()` is an instance method(i.e. non-static method), `si`, `ii`, and `fai` are accessible in class `Inner`. Note that `ai` is not accessible because it is not effectively final. If the line `ai = 31;` did not exist, `ai` would have been accessible. If method `inner()` were a static method, `ii` would have been inaccessible. Prior to Java 8, only final local variables were accessible to the inner class but in Java 8, event effectively final local variables of the method are accessible to the inner defined in that method as well.  
+
+---
 
 **12.** Which interface would you use to represent a collection having non-unique objects in the order of insertion?  
 > List  
@@ -359,6 +362,8 @@ public class TestClass {
 > b  
 > null  
 > c  
+
+---
 
 **25.** Complete the following code so that it will print each line in the given file.  
 
@@ -787,7 +792,7 @@ Since method `inner()` is a static method, only `si` and `fai` are accessible in
 
 **58.** How will you initialize a `SimpleDateFormat` object to that the following code will print the full name of the month of the given date?  
 
-- [ ] `SimpleDateFormat sdf = new SimpleDateFormat("MMMM", Locale.FRANCE);`  
+- [x] `SimpleDateFormat sdf = new SimpleDateFormat("MMMM", Locale.FRANCE);`  
   > Upper case M is for Month. For example, for February and December, the following will be printed:  
   >M => 2, 12  
   > MM => 02, 12  
@@ -1062,8 +1067,8 @@ Therefore, **`IntFunction`** is most appropriate in this case.
 
 **77.** Which statements concerning the relation between a non-static inner class and its outer class instances are true?  
 
-- [ ] Member variables of the outer instance are always accessible to inner instances, regardless of their accessibility modifiers.  
-- [x] Member variables of the outer instance can always be referred to using only the variable name within the inner instance.  
+- [x] Member variables of the outer instance are always accessible to inner instances, regardless of their accessibility modifiers.  
+- [ ] Member variables of the outer instance can always be referred to using only the variable name within the inner instance.  
   > This is possible only if that variable is not shadowed by another variable in inner class.  
 - [x] More than one inner instance can be associated with the same outer instance.  
 - [x] An inner class can extend its outer classes.  

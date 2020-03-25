@@ -5,7 +5,7 @@ title:      Exercises for Inner class
 date:       '2020-02-15T16:55'
 subtitle:   内部类章节的练习
 author:     招文桃
-catalog:    true
+catalog:    false
 tags:
     - Java
 ---
@@ -23,8 +23,8 @@ tags:
    package io.zwt.innerclasses.exercises;
    
    public class A {
-   	public class B {
-   	}
+       public class B {
+       }
    }
    ```
 
@@ -37,15 +37,15 @@ tags:
    package io.zwt.innerclasses.exercises;
    
    public class Cup {
-   	public class Handle {
-   		public Handle() {
-   			System.out.println("Created a handle for the cup");
-   		}
-   	}
-   	
-   	public Cup() {
-   		System.out.println("Created a cup");
-   	}
+       public class Handle {
+           public Handle() {
+               System.out.println("Created a handle for the cup");
+           }
+       }
+       
+       public Cup() {
+           System.out.println("Created a cup");
+       }
    }
    ```
 

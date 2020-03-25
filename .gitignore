@@ -34,3 +34,4 @@ _site
 .jekyll-metadata
 .sass-cache
 .idea/
+.code/
