@@ -582,82 +582,963 @@ Therefore, option 1, 4, and 5 are valid.
 ---
 
 **25.**
+Given:  
+
+```java
+String sentence = "Life is a box of chocolates, Forrest. You never know what you're gonna get."; //1
+Optional<String> theword = Stream.of(sentence.split("[ ,.]")).anyMatch(w->w.startsWith("g")); //2
+System.out.println(theword.get()); //3
+```  
+
+Which of the following statements are correct?  
+
+- [ ] It may print either gonna or get  
+- [ ] It will print gonna.  
+- [ ] It may print either gonna or get if lines //2 and //3 are changed to: `String theword = Stream.of(sentence.split("[,.]")).anyMatch(w->w.startsWith("g"));` //2 `System.out.println(theword.get());` //3  
+- [ ] It may print either gonna or get if lines //2 and //3 are changed to: `Optional<String> theword = Stream.of(sentence.split("[,.]")).parallel().anyMatch(w->w.startsWith("g"));` //2 `System.out.println(theword.get());` //3  
+- [x] It will fail to compile.  
+  > anyMatch returns a boolean and not an Optional. Therefore, //2 will not compile.  
+  > The expression Stream.of(sentence.split("[,.]")).anyMatch(w->w.startsWith("g")); will actually just return true.  
+
+**Explanation**  
+`anyMatch` returns a boolean and not an Optional. Therefore, //2 will not compile.  
 
 ---
 
 **27.**
+Given:  
+
+```java
+  Connection con = DriverManager.getConnection(dbURL);
+  con.setAutoCommit(false);
+  String updateString =
+        "update SALES " +
+        "set T_AMOUNT = 100 where T_NAME = 'BOB'";
+  Statement stmt = con.createStatement();
+  stmt.executeUpdate(updateString);
+  //INSERT CODE HERE
+```  
+
+What statement can be added to the above code so that the update is committed to the database?  
+
+- [x] con.setAutoCommit(true);  
+- [ ] con.commit(true);  
+  > commit() does not take any parameter.  
+  > FYI, there are two flavors of rollback() - one does not take any argument and another one takes a java.sql.Savepoint as an argument.  
+- [ ] stmt.commit();  
+- [ ] con.setRollbackOnly(false)  
+  > There is no such method in Connection.  
+- [ ] Node code is necessary  
+
+**Explanation**  
+This is a trick question. Since auto-commit has been disabled in the given code (by calling `c.setAutoCommit(false)`), you have to explicitly commit the transaction to commit the changes to the database. The regular way to do this is to call `con.commit()`. Notice that commit method does not take any arguments.  
+
+Another way is to utilize the side effect of changing the auto-commit mode of the connection. If the `setAutoCommit` method is called during a transaction and the auto-commit mode is changed, the transaction is committed. If `setAutoCommit` is called and the auto-commit mode is not changed, the call is a no-op. In this question, `con.setAutoCommit(true)` changes the auto-commit mode of the connection from `false` to `true` and therefore this call commits the changes.  
 
 ---
 
 **28.**
+What will the following code print when run?  
+
+```java
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class PathTest {
+    static Path p1 = Paths.get("c:\\a\\b\\c");
+    public static String getValue(){
+        String x = p1.getName(1).toString();
+        String y = p1.subpath(1,2).toString();
+        return x+" : "+y;
+    }
+    public static void main(String[] args) {
+        System.out.println(getValue());
+    }
+}
+```  
+
+- [x] \b:\b  
+- [ ] b:b  
+- [ ] b:b\c\  
+- [ ] a:a\b  
+- [ ] b:b\c  
+
+**Explanation**  
+Remember the following points about `Path.subpath(int beginIndex, int endIndex)`  
+
+1. Indexing starts from 0.  
+2. Root (i.e. c:\) is not considered as the beginning.  
+3. name at beginIndex is included but name at endIndex is not.  
+4. paths do not start or end with \.  
+Thus, if your path is "c:\\a\\b\\c",  
+
+subpath(1,1) will cause IllegalArgumentException to be thrown.  
+subpath(1,2) will correspond to b.  
+subpath(1,3) will correspond to b/c.  
+
+Remember the following 4 points about Path.getName() method :  
+
+1. Indices for path names start from 0.  
+2. Root (i.e. c:\) is not included in path names.  
+3. \ is NOT a part of a path name.  
+4. If you pass a negative index or a value greater than or equal to the number of elements, or this path has zero name elements, java.lang.IllegalArgumentException is thrown. It DOES NOT return null.  
+
+Thus, for example, If your Path is "c:\\code\\java\\PathTest.java",  
+p1.getRoot()  is c:\  ((For Unix based environments, the root is usually / ).  
+p1.getName(0) is code  
+p1.getName(1) is java  
+p1.getName(2) is PathTest.java  
+p1.getName(3) will cause IllegalArgumentException to be thrown.  
 
 ---
 
 **29.**
+Given:  
+
+```java
+@Retention(RetentionPolicy.RUNTIME)
+public @interface DebugInfo {
+    String value() default "";
+    String[] params();
+    String date();
+    int depth() default 10;
+}
+```  
+
+Which of the following options correctly uses the above annotation?  
+
+- [x] `@DebugInfo(date = "2019", params = "index") void applyLogic(int index){ }`  
+  > The date element is defined as String. So, it doesn't really have to be a date. Any string value will be valid.  
+  > params is defined as a String[]. So, you can either use a single string such as used in this option or a String array such as params={"index"} or params={"index1", "whatever"} or even params={}.  
+  > value and depth elements have default values so, the value for these elements can be omitted.  
+- [ ] `@DebugInfo(date = "2019-1-1", params = { null }) void applyLogic(int index){ }`  
+  > You cannot set an annotation element (or its values, if it is an array) to null.  
+- [x] `@DebugInfo(depth = 10, date = "01/01/2019", params = {"index"}, value="applyLogic") static final String s = null;`  
+  > 1. The order of values for the elements is not important.  
+  > 2. Since @Target annotation is not specified in the definition of @DebugInfo, it will be assumed that @DebugInfo is applicable to all place where annotations can be used.  
+- [ ] `@DebugInfo({"index"}, "01/01/2019") void applyLogic(int index){ }`  
+  > Names of the elements cannot be omitted when there are more than one values. Even when there is only one value, the name of the element can be omitted only if the name of the element is value.  
+- [ ] `@DebugInfo("value", params={"index"}, date="01/01/2019") void applyLogic(int index){ }`  
+  > You cannot omit the name of any element, if you are specifying values for more than one element. So, you must write value="value" instead of just "value".  
 
 ---
 
 **30.**
+Given:  
+
+```java
+String qr = "insert into STOCK ( ID, TICKER, LTP, EXCHANGE ) values( ?, ?, ?, ?)";
+String[] tickers = {"AA", "BB", "CC", "DD" };
+```
+
+You are trying to initialize the STOCK table and for that you need to insert one row for each of the ticker value in the tickers array. Each row has to be initialized with the same values except the ID and TICKER columns, which are different for each row. The ID column is defined as AUTO_INCREMENT and so you need to pass only 0 for this column.  
+
+Which of the following code snippets would you use?  
+
+- [ ] option 1
+
+```java
+for(String ticker: tickers)
+try(PreparedStatement ps = c.preparedStatement(qr);) {
+  ps.setInt(1,0);
+  ps.setString(2, ticker);
+  ps.setDouble(3, 0.0);
+  ps.setString(4, "NYSE");
+  ps.executeUpdate();
+}
+```  
+
+  > This will close the PreparedStatement after each insert. This is very inefficient.  
+
+- [ ] option 2
+
+```java
+try(PreparedStatement ps = c.prepareStatement(qr);)
+{
+  for(String ticker: tickers) {
+    ps.setInt(1, 0);
+    ps.setString(2, ticker);
+    ps.setDouble(3, 0.0);
+    ps.setString(4, "NYSE");
+    ps.executeUpdate()；
+  }
+}
+```  
+
+  > This is better than option 1 but there is no need to set the values for ID, LTP, and EXCHANGE columns in every iteration.  
+
+- [x] option 3
+
+```java
+try(PreparedStatement ps = c.prepareStatement(qr);)
+{
+    ps.setInt(1, 0);
+    ps.setDouble(3, 0.0);
+    ps.setString(4, "NYSE");
+    for(String ticker: tickers) {
+      ps.setString(2, ticker);
+      ps.executeUpdate()；
+    }
+}
+```  
+
+  > All of the options will insert the required rows in the table, however, this option is most suitable because it is the most efficient of all. A PreparedStatement remembers the values once you set them until you close it. So, there is no need to reset the values for ID, LTP, and EXCHANGE columns if they are not changing.  
+
+- [ ] option 4  
+
+```java
+for(String ticker: tickers)
+try(Statement s = c.createStatement(qr);)
+{
+  s.executeUpdate("insert into STOCK (ID, TICKER, LTP, EXCHANGE ) values (0, '"+ticker+"', 0.0, 'NYSE')");
+}
+```
+
+  > This option is as bad as option 1 in terms of performance. Further, it does not offer protection from SQL injection either.  
 
 ---
 
 **31.**
+Given that Book is a valid class with appropriate constructor and getTitle and getPrice methods that return a String and a Double respectively, what can be inserted at //1 and //2 so that it will print the price of all the books having a title that starts with "A"?  
+
+```java
+List<Book> books = Arrays.asList(
+        new Book("Atlas Shrugged", 10.0),
+        new Book("Freedom at Midnight", 5.0),
+        new Book("Gone with the wind", 5.0)
+);
+
+Map<String, Double> bookMap = //1 INSERT CODE HERE
+//2 INSERT CODE HERE
+bookMap.forEach(func);
+```  
+
+- [x] option 1
+
+```java
+books.steam().collect(Collectors.toMap((b->b.getTitle()), b->b.getPrice()));
+// and
+BiConsumer<String, Double> func = (a, b) -> {
+  if(a.startsWith("A")) {
+    System.out.println(b);
+  }
+};
+```
+
+  > 1. The first line generates a `Map<String, Double>` from the List using Stream's collect method. The `Collectors.toMap` method uses two functions to get two values from each element of the stream.  The value returned by the first function is used as a key and the value returned by the second function is used as a value to build the resulting `Map`.  
+  > 2. The `forEach` method of a `Map` requires a `BiConsumer`. This function is invoked for each entry, that is each key-value pair, in the map. The first argument of this function is the key and the second is the value.  
+
+- [ ] option 2
+
+```java
+books.stream().toMap((b->b.getTitle()), b->b.getPrice()));
+// and
+BiConsumer<String, Double> func = (a, b) -> {
+  if(a.startsWith("A")) {
+    System.out.println(b);
+  }
+};
+```
+
+  > toMap is not a valid method in Stream.  
+
+- [ ] option 3
+
+```java
+books.stream().toMap((b->b.getTitle()), b->b.getPrice()));
+// and
+BiConsumer<Map.Entry> func = (b)-> {
+  if(b.getKey().startsWith("A")) {
+    System.out.println(b.getValue());
+  }
+};
+```
+
+  > 1. toMap is not a valid method in Stream.  
+  > 2. BiConsumer requires two generic types and two arguments.  
+
+- [ ] option 4
+
+```java
+books.stream().collect(Collectors.toMap((b->b.getTitle()), b->b.getPrice()));
+// and
+Consumer<Map.Entry<String, Double>> func = (e)-> {
+  if(e.getKey().startsWith("A")) {
+    System.out.println(e.getValue());
+  }
+};
+```
+
+  > The implementation of Consumer is technically correct. However, the forEach method requires a BiConsumer.  
 
 ---
 
 **33.**
+NOTE: If you are not from a Computer Science background, this question will seem very complicated and almost unanswerable. Further, this has more to do with understanding of an algorithm than assertions. Unfortunately, we have seen similar question in the real exam. If you get such a question in your exam, our suggestion is to just mark it and move on. Attempt it only at the end if you have time.  
+
+Given the following code that implements a sorting algorithm:  
+
+```java
+public static void mysort(int[] values){
+    int n = values.length;
+    for(int i = 1; i<n; i++){  
+
+        //1
+        int temp = values[i];
+        int j = i-1;
+        while( (j>-1) && values[j]>temp){
+            values[j+1] = values[j];
+            j--;
+
+            //2
+        }
+        //3
+        values[j+1] = temp;
+
+        //4
+    }
+    //5
+}
+```
+
+To test the working of this code, you want to assert that the elements are partially sorted in the middle of the sorting process using this statement:  
+`assert j<0 || values[j]<=values[j+1];`
+
+Where can this statement be put?  
+
+- [ ] At //1.
+- [ ] At //2.
+- [ ] At //3.
+- [x] At //4.
+- [ ] At //5.
+
+**Explanation**  
+The basic idea behind this algorithm is to determine the right place of an element of among the elements that appear before it in the input array. If a list contains only 1 element, then the list is always already sorted. So, the first top level iteration starts with the second element. In this iteration, the second element is put in the correct position considering just the first two elements. Thus, at the end of the first iteration, first two elements will be sorted. The process is continued till the last element is put in its right place.  
+
+Try to run the above code Step by Step in an editor. Observe the values of the variables.  
 
 ---
 
 **38.**
+What will the following code print when run?  
+
+```java
+  LocalDate d = LocalDate.now();
+  DateFormat df = new DateFormat(DateFormat.LONG);
+  System.out.println(df.format(d));
+```  
+
+- [ ] It will print current date in LONG format.  
+- [ ] It will print the number of milliseconds since 1 Jan 1970.  
+- [x] It will not compile.  
+- [ ] It will throw an exception at runtime.  
+
+**Explanation**  
+`java.text.DateFormat` class provides several static getXXXInstance methods. The following are the important methods that you need to know for the exam:  
+
+`static DateFormat getDateInstance()`  
+          Get a default date/time formatter that uses the SHORT style for both the date and the time.  
+`static DateFormat getDateInstance(int style)`  
+          Gets the date formatter with the given formatting style for the default locale.  
+`static DateFormat getDateInstance(int style, Locale aLocale)`  
+          Gets the date formatter with the given formatting style for the given locale.  
+`static DateFormat getInstance()`  
+          Get a default date/time formatter that uses the default style for both the date and the time.  
+
+Note that valid styles values are : `DateFormat.DEFAULT`, `DateFormat.FULL`, `DateFormat.LONG`, `DateFormat.MEDIUM`, and `DateFormat.SHORT`  
 
 ---
 
 **44.**
+Assuming that STOCK table exists and is empty, what will the following code snippet print?  
+
+```java
+String qr = "insert into STOCK ( ID, TICKER, LTP, EXCHANGE ) values( ?, ?, ?, ?)";
+try(PreparedStatement ps =  c.prepareStatement(qr);)
+{
+    ps.setInt(1, 111);
+    ps.setString(2, "APPL");
+    ps.setDouble(3, 0.0);
+    ps.setString(4, "NYSE");
+    int i = ps.executeUpdate();  //1
+    System.out.println(i);
+}
+```
+
+- [ ] It will not compile due to error at //1.  
+- [ ] It will print 0.  
+- [x] It will print 1.  
+  > executeUpdate returns the number of rows that have been affected by the query. If you execute a query that, for example, causes updates to 10 existing rows, executeUpdate would return 10. Here, 1 row has been inserted and so it will return 1.  
+- [ ] It will print 4.  
+- [ ] It will print -1.  
 
 ---
 
 **45.**
+Given that a method named Double getPrice(String id) exists and may potentially return null, about which of the following options can you be certain that a run time exception will not be thrown?  
+
+- [ ] option 1  
+
+```java
+Optional<Double> price = Optional.of(getPrice("1111"));
+```
+
+  > Optional.of method throws NullPointerException if you try to create an Optional with a null value. If you expect the argument to be null, you should use Optional.ofNullable method, which returns an empty Optional if the argument is null.  
+
+- [x] option 2  
+
+```java
+Optional<Double> price = Optional.ofNullable(getPrice("1111"));  
+Double x = price.orElse(getPrice("2222"));  
+```
+
+- [x] option 3  
+
+```java
+Optional<Double> price = Optional.ofNullable(getPrice("1111"));  
+Double y = price.orElseGet(()->getPrice("333"));  
+```  
+
+  > Optional's `orElseGet` method takes a `java.util.function.Supplier` function as an argument and invokes that function to get a value if the Optional itself is empty. Just like the orElse method, this method does not throw any exception even if the Supplier returns null. It does, however, throw a NullPointerException if the `Optional` is empty and the supplier function itself is null.  
+
+- [ ] option 4  
+
+```java
+Optional<Double> price = Optional.of(getPrice("1111"), 10.0);  
+```  
+
+  > This will not compile because Optional.of takes only one argument.  
+
+- [ ] option 5  
+
+```java
+Optional<Double> price = Optional.of(getPrice("1111"));  
+Double z = price.orElseThrow(()->new RuntimeException("Bad Code"));  
+```  
+
+  > The `orElseThrow` method takes a `Supplier` function that returns an `Exception`. This method is useful when you want to throw a custom exception in case the Optional is empty.  
 
 ---
 
 **46.**
+Whi of the following are correct definitions of a repeatable annotation?  
+
+- [ ] option 1
+
+```java
+@Repeatable
+public @interface Author {
+  int id() default 0;
+  String name;
+}
+```
+  
+  > @Repeatable requires the name of the container class. It cannot be empty. For example, @Repeatable(Authors.class)  
+
+- [ ] option 2
+
+```java
+@Repeatable(List.class)
+public @interface Author {
+  int id() default 0;
+  String name();
+}
+```
+
+- [ ] option 3
+
+```java
+@Repeatable(List<Author>)
+public @interface Author {
+  int id() default 0;
+  String name();
+}
+```
+
+- [x] option 4
+
+```java
+public @interface Authors {
+  Author[] value();
+}
+@Repeatable(Authors.class)
+public @interface Author {
+  int id() default 0;
+  String name();
+}
+```
+
+  > The value of the @Repeatable meta-annotation, in parentheses, is the type of the container annotation that the Java compiler generates to store repeating annotations. Containing annotation type must have a value element with an array type. The component type of the array type must be the repeatable annotation type.  
+
+- [ ] option 5
+
+```java
+public class Authors {
+  Author[] values;
+}
+@Repeatable(Authors.class)
+public @interface Author {
+  int id() default 0;
+  String name();
+}
+```
+
+- [ ] option 6
+
+```java
+public class Authors {
+  List<Author> authors;
+}
+@Repeatable(Authors.class)
+public @interface Author {
+  int id() default 0;
+  String name();
+}
+```
 
 ---
 
 **48.**
+Which of the following is correct regarding a HashSet?  
+
+- [ ] Elements are stored in a sorted order.  
+  > TreeSet does that.  
+- [ ] It is immutable.  
+  > No, you can add/remove elements to/from it.  
+- [x] It only keeps unique elements.  
+- [ ] Elements can be accessed using a unique key.  
+  > HashSet is a Set not a Map.  
+
+**Explanation**  
+public class HashSet extends AbstractSet implements Set, Cloneable, Serializable  
+
+This class implements the Set interface, backed by a hash table (actually a HashMap instance). It makes no guarantees as to the iteration order of the set; in particular, it does not guarantee that the order will remain constant over time. This class permits the null element.  
 
 ---
 
 **50.**
+Given:  
+
+```java
+public @interface Authors{
+   Author[] value();
+}
+@Repeatable(Authors.class)
+public @interface Author {
+    int id() default 0;
+    String value();
+}
+```  
+
+Identify correct usages of the above annotations.  
+**You had to select 2 options**  
+
+- [ ] option 1  
+
+```java
+@Author(1, "bob")
+@Author(2, "alice")
+public class Sample {
+}
+```
+
+  > Must use name=value format for element values because more than one values are being specified.  
+
+- [x] option 2  
+
+```java
+@Authors(@Author("bob"))
+void someMethod(int index) {
+}
+```
+
+  > To make it easy to repeat annotations, Java does not require you to use the container annotation. You can just write @Author("bob") but, internally, Java converts it to @Authors(@Author("bob")).  
+
+- [ ] option 3  
+
+```java
+@Authors(@Author("bob"))
+@Authors(@Author("alice"))
+void someMethod(int index) {
+}
+```
+
+  > The @Author annotation is repeatable, @Authors is not!  
+
+- [x] option 4  
+
+```java
+@Author("bob")
+@Authors(@Author("alice"))
+void someMethod(int index) {
+}
+```
+
+- [ ] option 5  
+
+```java
+@Author("bob")
+@Author(1)
+void someMethod(int index) {
+}
+```
+
+  > The two annotations are different. Their values are not additive. So, while @Author("bob") is valid @Author(1) is not because it does not include a value for the value element.  
+
+- [ ] option 6  
+
+```java
+@Author("bob")
+@Author(id=1, value=null)
+void someMethod(int index) {
+}
+```
+
+  > @Author(id=1, value=null) is invalid because you cannot set an element value to null. The value must be a constant non-null value.  
 
 ---
 
 **54.**
+Given the following code:  
+
+```java
+RandomAccessFile raf = new RandomAccessFile("c:\\temp\\test.txt", "rwd");
+raf.writeChars("hello");
+raf.close();
+```
+
+Which of the following statements are correct?  
+(Assuming that the code has appropriate security permissions.)  
+
+- [x] If the file test.txt does not exist, an attempt will be made to create it.  
+- [ ] If the file test.txt does not exist, an exception will be thrown.  
+- [ ] If the file test.txt exists, an exception will be thrown.  
+- [ ] If the file test.txt, it will be overwritten and all the existing data will be lost.  
+  > Only the initial 5 characters (i.e. 10 bytes) of the file will be overwritten. Any existing data beyond 10 bytes will be left untouched.  
+- [ ] If the file test.txt exists, the given characters will be appended to the end of the existing data.  
+  > When you open the file, the pointer is at the first position. So the given characters will be written at the beginning of the file.  
+
+**Explanation**  
+The permitted values for the access mode and their meanings are:  
+
+"r": Open for reading only. Invoking any of the write methods of the resulting object will cause an IOException to be thrown.  
+"rw": Open for reading and writing. If the file does not already exist then an attempt will be made to create it.  
+"rws": Open for reading and writing, as with "rw", and also require that every update to the file's content or metadata be written synchronously to the underlying storage device.  
+"rwd": Open for reading and writing, as with "rw", and also require that every update to the file's content be written synchronously to the underlying storage device.  
 
 ---
 
 **55.**
+Given the following code:  
+
+```java
+enum Title
+{
+    MR("Mr. "), MRS("Mrs. "), MS("Ms. ");
+    private String title;
+    private Title(String s){
+    title = s;
+    }
+    public String format(String first, String last){
+    return title+" "+first+" "+last;
+    }
+}
+
+//INSERT CODE HERE
+```  
+
+Identify valid code snippets ..  
+
+(Assume that Title is accessible wherever required.)  
+**You had to select 4 options**  
+
+- [ ] option 1  
+
+```java
+class TestClass {
+  void someMethod()
+  {
+    System.out.println(Title.format("Rob", "Miller"));
+  }
+}
+```
+
+  > You cannot call format method directly on Title because format is not a static method. You must call it on Title instances. For example, Title.MR.format().  
+
+- [x] option 2  
+
+```java
+class TestClass {
+  void someMethod()
+  {
+    System.out.println
+  }
+}
+```
+
+- [ ] option 3  
+
+```java
+class TestClass {
+  void someMethod()
+  {
+    System.out.println(MR.format("Rob", "Miller"));
+  }
+}
+```
+
+  > It must be Title.MR.format("Rob", "Miller").
+
+- [ ] option 4  
+
+```java
+enum Title2 extends Ttile
+{
+  DR("Dr. ");
+}
+```
+
+  > An enum cannot extend another enum or class. It may implement an interface though.  
+
+- [ ] option 5  
+
+```java
+class TestClass {
+  void someMethod()
+  {
+    Title.DR dr = new Title.DR("Dr. ");
+  }
+}
+```
+
+  > Enum constants cannot be instantiated/created using the new keyword.  
+
+- [x] option 6  
+
+```java
+enum Title2
+{
+  DR;
+  private Title t;
+}
+```
+
+- [x] option 7  
+
+```java
+enum Title2
+{
+  DR;
+  private Title t = Title.MR;
+}
+```
+
+- [x] option 8  
+
+```java
+enum Title2
+{
+  DR;
+  private Title t = Title.MR;
+  public String format(String s) { return t.format(s, s); };
+}
+```
+
+**Explanation**  
+You need to know the following facts about enums:  
+
+1. Enum constructor is always private. You cannot make it public or protected. If an enum type has no constructor declarations, then a private constructor that takes no parameters is automatically provided.  
+2. An enum is implicitly final, which means you cannot extend it.  
+3. You cannot extend an enum from another enum or class because an enum implicitly extends `java.lang.Enum`. But an enum can implements interfaces.  
+4. Since enum maintains exactly one instance of its constants, you cannot clone it. You cannot even override the clone method in an enum because `java.lang.Enum` makes it final.  
+5. Compiler provides an enum with two public static methods automatically - `values()` and `valueOf(String)`. The `values()` method returns an array of its constants and `valueOf()` method tries to match the String argument exactly (i.e. case sensitive) with an enum constant and returns that constant if successful otherwise it throws `java.lang.IllegalArgumentException`.  
+6. By default, an enum's toString() prints the enum name but you can override it to print anything you want.  
+
+The following are a few more important facts about java.lang.Enum which you should know:  
+
+1. It implements `java.lang.Comparable` (thus, an enum can be added to sorted collections such as `SortedSet`, `TreeSet`, and `TreeMap`).  
+2. It has a method `ordinal()`, which returns the index (starting with 0) of that constant i.e. the position of that constant in its enum declaration.  
+3. It has a method name(), which returns the name of this enum constant, exactly as declared in its enum declaration.  
 
 ---
 
 **57.**
+Given:  
+
+```java
+module abc.print{
+   requires org.pdf;
+   provides org.pdf.Print with com.abc.print.PrintImpl;
+}
+```  
+
+Identify correct statements about the above module.  
+
+- [ ] org.pdf.Print must be an interface.  
+- [ ] org.pdf.Print must be an interface or an abstract class.  
+  > Ideally, Print should be an interface or an abstract class but there is no such technical restriction. As per JLS Section 7.7.4: The service must be a class type, an interface type, or an annotation type. It is a compile-time error if a provides directive specifies an enum type as the service.  
+- [ ] com.abc.print.PrintImpl must have a no-args constructor.  
+  > This is not necessary. It could also have a provider method.  
+- [ ] com.abc.print.PrintImpl must implement(or extend) org.pdf.Print.  
+  > This is not necessary. If PrintImpl has a provider method, then that method could return any sub-type of Print. PrintImpl does not have to be a sub-type of Print.  
+- [x] None of the above are correct.  
+
+**Explanation**  
+Here are the rules for a service provider:  
+
+1. If a service provider explicitly declares a public constructor with no formal parameters, or implicitly declares a public default constructor, then that constructor is called the provider constructor.  
+2. If a service provider explicitly declares a public static method called provider with no formal parameters, then that method is called the provider method.  
+3. If a service provider has a provider method, then its return type must (i) either be declared in the current module, or be declared in another module and be accessible to code in the current module; and (ii) be a subtype of the service specified in the provides directive; or a compile-time error occurs.  
+4. While a service provider that is specified by a provides directive must be declared in the current module, its provider method may have a return type that is declared in another module. Also, note that when a service provider declares a provider method, the service provider itself need not be a subtype of the service.  
+5. If a service provider does not have a provider method, then that service provider must have a provider constructor and must be a subtype of the service specified in the provides directive, or a compile-time error occurs.  
 
 ---
 
 **58.**
+Which of the following statements are correct regarding synchronization and locks?  
+
+- [ ] A thread shares the intrinsic lock of an object with other threads between the time the threads enter a synchronized method and exit the method.  
+  > Just the opposite is true. An intrinsic lock is never shared. Once a thread acquires an intrinsic lock, it owns the lock exclusively until it releases the lock.  
+- [x] When a synchronized method ends with a checked exception, the intrinsic lock held by the thread is released automatically.  
+- [ ] A thread will retain the intrinsic lock if the return from a synchronized method is caused due to an uncaught unchecked exception.  
+  > The intrinsic lock is released when the method ends. Irrespective of how it ends.  
+- [ ] Every object has an intrinsic lock associated with it and that lock is automatically acquired by a thread when it executes a method on that object.  
+  > A thread acquires the intrinsic lock of an object when it enters synchronized method on that object or when it enter a synchronized block that uses that object. The lock is not acquired when a thread enters a non-synchronized method.  
+
+**Explanation**  
+Please go through this link that explains synchronization and intrinsic locks. You will find questions in the exam that use statements given in this trail: [https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html](https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html)  
 
 ---
 
 **59.**
+What will the following code print when compiled and run?  
+
+```java
+import java.io.Serializable;
+class Booby{
+    int i; public Booby(){ i = 10; System.out.print("Booby"); }
+}
+class Dooby extends Booby implements Serializable {
+    int j; public Dooby(){ j = 20; System.out.print("Dooby"); }
+}
+class Tooby extends Dooby{
+    int k; public Tooby(){ k = 30; System.out.print("Tooby"); }
+}
+public class TestClass {
+  public static void main(String[] args) throws Exception{
+    Tooby t = new Tooby();
+    t.i = 100;
+    ObjectOutputStream oos  = new ObjectOutputStream(new FileOutputStream("c:\\temp\\test.ser"));
+    oos.writeObject(t); oos.close();
+    ObjectInputStream ois = new ObjectInputStream(new FileInputStream("c:\\temp\\test.ser"));
+    t = (Tooby) ois.readObject();ois.close();
+    System.out.println(t.i+" "+t.j+" "+t.k);
+  }
+}
+```  
+
+- [ ] Booby Dooby Tooby 100 20 30  
+- [ ] Booby Dooby Tooby Booby Dooby Tooby 10 20 30  
+- [x] Booby Dooby Tooby Booby 10 20 30  
+- [ ] Booby Dooby Tooby Booby 0 20 30  
+- [ ] Booby Dooby Tooby Booby 100 20 30  
+- [ ] Booby Dooby Tooby Booby Dooby Tooby 100 20 30  
+
+**Explanation**  
+Objects of a class that is not marked Serializable cannot be serialized. In this question, class Booby does not implement Serializable and so, its objects cannot be serialized. Class Dooby implements Serializable and since Tooby extends Dooby, it is Serializable as well.  
+
+Now, when you serialize an object of class Tooby, only the data members of Dooby and Tooby will be serialized. Data members of Booby will not be serialized. Thus, the value of i (which is 100) at the time of serialization will not be saved in the file.  
+
+When reading the object back (i.e. deserializing), the constructors of serializable classes are not called. Their data members are set directly from the values present in serialized data. Constructor for unserializable classes is called. Thus, in this case, constructors of Tooby and Dooby are not called but the constructor of Booby is called. Therefore, i is set in the constructor to 10 and j and k are set using the data from the file to 20 and 30 respectively.  
 
 ---
 
 **60.**
+Given:  
+
+```java
+@Target(ElementType.TYPE)
+public @interface DBTable {
+  public String value();
+  public String[] primarykey();
+  public String surrogateKey() default "id";
+}
+```
+
+Identify correct usages of the above annotation.  
+**You had to select 2 options**  
+
+- [ ] option 1
+
+```java
+@DBTable("person", primarykey={"name"})
+interface Person {
+}
+```
+
+  > Must use value="person" because you are specifying values for more than one elements.  
+
+- [x] option 2
+
+```java
+@DBTable(value="person" primarykey={"name"})
+interface Person {
+}
+```
+
+- [ ] option 3
+
+```java
+@DBTable("person", {"name"}, "pid")
+class Person {
+}
+```
+
+  > Must use elementName=elementValue format for specifying element values because you are specifying values for more than one element.  
+
+- [x] option 4
+
+```java
+@DBTable(value="DAYS", primarykey="name")
+enum DAYS {
+  MON, TUE, WED, THU, FRI, SAT, SUN;
+}
+```
+
+  > Since the target of @DBTable annotation is specified as ElementType.TYPE, this annotation can be used on a class, an interface, or an enum.  
+
+- [ ] option 5
+
+```java
+@DBTable("DAYS", {"name"})
+enum DAYS {
+  MON, TUE, WED, THU, FRI, SAT, SUN;
+}
+```
+
+**Explanation**  
+There are two rules that you need to remember while specifying values for annotation elements:  
+
+1. You can omit the element name while specifying a value only when the name of the element is value and only when you are specifying just one value. In other words, if you are specifying values for more than one elements, you need to use the elementName=elementValue format for each element. The order of the elements is not important.  
+2. If an element expects an array, you can specify the values by enclosing them in { }. But if you want to specify an array of length 1, you may omit the { }.  
 
 ---
 
 **62.**
+What will the following code fragment print?  
+
+```java
+Path p1 = Paths.get("x\\y");
+Path p2 = Paths.get("z");
+Path p3 = p1.relativize(p2);
+System.out.println(p3);
+
+```
+
+- [ ] x\y\z  
+- [ ] \z  
+- [ ] ..\z  
+- [x] ..\\..\z  
 
 ---
 
