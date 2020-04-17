@@ -3,6 +3,7 @@ typora-root-url: ../
 layout:     post
 title:      OCP-1Z0-816模拟测试2回顾
 date:       '2020-03-28T12:20'
+last-modified: '2020-04-17T23:43'
 subtitle:   
 keywords:   Oracle Certified, OCP 11, Java 11, 1Z0-816
 author:     招文桃
@@ -72,6 +73,7 @@ A type argument $T_1$ is said to contain another type argument $T_2$, written $T
 - $ T<=\space T$  
 - $T <= \space ? \space extends \space T$  
 - $T <= \space ? \space super \space T$  
+<!--more-->
 
 ---
 
@@ -1536,62 +1538,598 @@ System.out.println(p3);
 ```
 
 - [ ] x\y\z  
+  > Observe what happens when you append this path to p1:  
+  > x\y + \x\y\z => x\y\x\y\z  
+  > This is not same as z  
 - [ ] \z  
+  > Observe what happens when you append this path to p1:  
+  > x\y + \z => x\y\z  
+  > This is not same as z  
 - [ ] ..\z  
+  > Observe what happens when you append this path to p1:  
+  > x\y + ..\z => x\z  
+  > This is not same as z  
 - [x] ..\\..\z  
+  > Observe what happens when you append this path to p1:  
+  x\y + ..\\..\z => x + ..\z => z  
+  > This is what we want. So this is the correct answer.  
+
+  A ".." implies parent folder, therefore imagine that you are taking off one ".." from the right side of the plus sign and removing the last name of the path on the left side of the plus sign.  
+  For example, .. appended to y makes it y\\.., which cancels out.  
+
+**Explanation**  
+You need to understand how relativize works for the purpose of the exam. The basic idea of relativize is to determine a path, which, when applied to the original path will give you the path that was passed. For example, "a/c" relativize "a/b"  is "../b" because "/a/c/../b" is "/a/b" Notice that  "c/.." cancel out.  
+
+Please go through the following description of relativize() method, which explains how it works in more detail.  
+
+Note that in Java 11, the paths are first normalized before relativizing.  
+
+`public Path relativize(Path other)`  
+Constructs a relative path between this path and a given path. Relativization is the inverse of resolution. This method attempts to construct a relative path that when resolved against this path, yields a path that locates the same file as the given path. For example, on UNIX, if this path is "/a/b" and the given path is "/a/b/c/d" then the resulting relative path would be "c/d".  
+
+Where this path and the given path do not have a root component, then a relative path can be constructed.  
+
+A relative path cannot be constructed if only one of the paths have a root component.  
+
+Where both paths have a root component then it is implementation dependent if a relative path can be constructed.  
+
+If this path and the given path are equal then an empty path is returned.  
+
+For any two normalized paths p and q, where q does not have a root component,
+p.relativize(p.resolve(q)).equals(q)  
+
+When symbolic links are supported, then whether the resulting path, when resolved against this path, yields a path that can be used to locate the same file as other is implementation dependent. For example, if this path is "/a/b" and the given path is "/a/x" then the resulting relative path may be "../x". If "b" is a symbolic link then is implementation dependent if "a/b/../x" would locate the same file as "/a/x".  
 
 ---
 
 **63.**
+What will the following code fragment print?  
+
+```java
+Path p1 = Paths.get("\\personal\\readme.txt");
+Path p2 = Paths.get("\\index.html");
+Path p3 = p1.relativize(p2);
+System.out.println(p3);
+```
+
+- [ ] \index.html  
+  > Observe what happens when you append this path to p1:  
+  > \personal\readme.txt + \index.html =>\personal\readme.txt\index.html  
+  > This is not same as \index.html  
+- [ ] \personal\index.html  
+  > Observe what happens when you append this path to p1:  
+  > \personal\readme.txt + \personal\index.html =>\personal\readme.txt\\personal\index.html  
+  > This is not same as \index.html  
+- [ ] personal\index.html  
+  > Observe what happens when you append this path to p1:  
+  > \personal\readme.txt + personal\index.html =>\personal\readme.txt\personal\index.html  
+  > This is not same as \index.html  
+- [x] ..\\..\index.html  
+  > Observe that if you append this path to p1, you will get p2. Therefore, this is the right answer.  
+  > p1 + ..\..\index.html  
+  > =>\personal\readme.txt + ..\..\index.html  
+  > =>\personal + ..\index.html  
+  > =>\index.html  
+  
+  A ".." implies parent folder, therefore imagine that you are taking off one ".." from the right side of the plus sign and removing the last name of the path on the left side of the plus sign.  
+  For example, .. appended to personal makes it personal\.., which cancels out.  
+
+**Explanation**  
+You need to understand how relativize works for the purpose of the exam. The basic idea of relativize is to determine a path, which, when applied to the original path will give you the path that was passed. For example, "a/c" relativize "a/b"  is "../b" because "/a/c/../b" is "/a/b" Notice that  "c/.." cancel out.  
+
+Note that in Java 11, the paths are first normalized before computing relativizing.  
+
+Please go through the following description of relativize() method, which explains how it works in more detail.  
+
+`public Path relativize(Path other)`  
+Constructs a relative path between this path and a given path. Relativization is the inverse of resolution. This method attempts to construct a relative path that when resolved against this path, yields a path that locates the same file as the given path. For example, on UNIX, if this path is "/a/b" and the given path is "/a/b/c/d" then the resulting relative path would be "c/d".  
+
+Where this path and the given path do not have a root component, then a relative path can be constructed.  
+
+A relative path cannot be constructed if only one of the paths have a root component.  
+
+Where both paths have a root component then it is implementation dependent if a relative path can be constructed.  
+
+If this path and the given path are equal then an empty path is returned.  
+
+For any two normalized paths p and q, where q does not have a root component,
+p.relativize(p.resolve(q)).equals(q)
+
+When symbolic links are supported, then whether the resulting path, when resolved against this path, yields a path that can be used to locate the same file as other is implementation dependent. For example, if this path is "/a/b" and the given path is "/a/x" then the resulting relative path may be "../x". If "b" is a symbolic link then is implementation dependent if "a/b/../x" would locate the same file as "/a/x".  
 
 ---
 
 **65.**
+What will the following code print when compiled and run?  
+
+```java
+interface Boiler{
+    public void boil();
+    private static void log(String msg){ //1
+       System.out.println(msg);
+    }
+    public static void shutdown(){
+        log("shutting down");
+    }
+}
+interface Vaporizer extends Boiler{  
+    public default void vaporize(){
+        boil();
+        System.out.println("Vaporized!");
+    }
+}
+public class Reactor implements Vaporizer{
+    public void boil() {
+        System.out.println("Boiling...");
+    }
+
+    public static void main(String[] args) {
+        Vaporizer v =  new Reactor(); //2
+        v.vaporize(); //3
+        v.shutdown(); //4
+    }
+}
+```
+
+- [ ]  option 1  
+
+```none
+Boiling...
+Vaporized!
+shutting down
+```
+
+- [ ] Compilation failure at //1.  
+  > Since Java 9, an interface is allowed to have private (but not protected) static as well as instance methods. Fields of an interface are still always implicitly public, static, and final.  
+- [ ] Compilation failure at //2.  
+- [x] Compilation failure at //4.  
+- [ ] option 5
+
+```none
+If code at //4 is changed to Vaporizer.shutdown();, it will print  Boiling...
+Vaporized!
+shutting down
+```
+
+- [ ] Definition of interface Vaporizer will cause compilation to fail.  
+  > Definition of interface Vaporizer is fine.  
+
+**Explanation**  
+Remember that static method of an interface can only be accessed by using the name of that interface. i.e. `Boiler.shutdown()` in this case. This is unlike a static method of a class, which can be accessed using a subclass name or a variable name as well.  
 
 ---
 
 **66.**
+Given:  
+
+```java
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface DebugInfo {
+    String value();
+    String[] params();
+    String date();
+    int depth();
+}
+```  
+
+Which of the following options correctly uses the above annotation?  
+
+- [x] option 1  
+
+```java
+@DebugInfo(value="applyLogic", date = "2019", depth = 10, params = "index")
+void applyLogic(int index) {
+}
+```
+
+The date element is defined as String. So, it doesn't really have to be a date. Any string value will be valid. params is defined as a `String[]`. So, you can either use a single string such as used in this option or a String array such as `params={"index"}` or `params={"index1", "whatever"}`.  
+
+- [ ] option 2  
+
+```java
+@DebugInfo(value="applyLogic", date = "01/01/2019", depth = "10", params = "index" )
+void applyLogic(int index) {
+}
+```
+
+Since *depth* is defined as `int`, you can't pass "10", You must pass 10 (i.e. without double quotes.)  
+
+- [ ] option 3  
+
+```java
+@DebugInfo(value="applyLogic", date="01/01/2019", depth="10", params = {"index"})
+void applyLogic(int index) {
+}
+```
+
+Since *depth* is defined as `int`, you can't pass "10", You must pass 10 (i.e. without double quotes.)  
+
+- [ ] option 4  
+
+```java
+@DebugInfo(value="applyLogic", date="01/01/2019")
+@DebugInfo(depth = 10, params = {"index"})
+void applyLogic(int index) {
+}
+```
+
+Since @DebugInfo is not annotated with @Repeatable, you can use this annotation only once at any place.  
 
 ---
 
 **69.**
+Identify the correct statements about the following code:  
+
+```java
+import java.util.*;
+class Person {
+    private static int count = 0;
+    private String id = "0"; private String interest;
+    public Person(String interest){ this.interest = interest; this.id = "" + ++count; }
+    public String getInterest(){ return interest;     }
+    public void setInterest(String interest){ this.interest = interest; }
+    public String toString(){ return id; }
+}
+
+public class StudyGroup
+{
+    String name = "MATH";
+    TreeSet<Person> set = new TreeSet<Person>();
+    public void add(Person p) {
+      if(name.equals(p.getInterest())) set.add(p);
+    }
+
+    public static void main(String[] args) {
+      StudyGroup mathGroup = new StudyGroup();
+      mathGroup.add(new Person("MATH"));
+      System.out.println("A");
+      mathGroup.add(new Person("MATH"));
+      System.out.println("B");
+      System.out.println(mathGroup.set);
+    }
+}
+```  
+
+- [ ] It will print : A, B, and then the contents of mathGroup.set.  
+- [ ] It will compile with a warning.  
+- [ ] It will NOT throw an exception at runtime.  
+- [x] It will compile without warning but will throw an exception at runtime.  
+- [ ] It will only print : A  
+- [ ] It will print : A and B.  
+
+**Explanation**  
+Note that `TreeSet` is an ordered set that keeps its elements in a sorted fashion. When you call the `add()` method, it immediately compares the element to be added to the existing elements and puts the new element in its appropriate place. Thus, the foremost requirement of a `TreeSet` is that the elements must either implement `Comparable` interface (which has the `compareTo(Object) method)` and they must also be mutually comparable or the `TreeSet` must be created with by passing a `Comparator` (which has a `compare(Object, Object)` method). For example, you might have two classes \\\\\A\\\\\ and \\\\\B\\\\\ both implementing `Comparable` interface. But if their `compareTo()` method does not work with both the types, you cannot add both type of elements in the same `TreeSet`.  
+
+In this question, `Person` class does not implement `Comparable` interface. Ideally, when you add the first element, since there is nothing to compare this element to, there should be no exception. But when you add the second element, `TreeSet` tries to compare it with the existing element, thereby throwing `ClassCastException` because they don't implement `Comparable` interface. However, this behavior was changed in the `TreeSet` implementation recently and it throws a `ClassCastException` when you add the first element itself.  
+
+The compiler knows nothing about this requirement of `TreeSet` since it is an application level requirement and not a language level requirement. So the program compiles fine without any warning.  
 
 ---
 
 **70.**
+java.util.Locale allows you to do which of the following?  
+**You had to select 2 options**  
+
+- [ ] Provide country specific formatting for fonts.  
+- [ ] Provide country and language specific for HTML pages.  
+- [x] Provide country and language specific formatting for Dates.  
+- [x] Provide country specific formatting for Currencies.  
+- [ ] Provide country and language specific formatting for properties files.  
+  > The objective of Localization is not to format properties files but to format the data that is displayed to the user in country/language specific manner. Resource Bundles, which are nothing but appropriately named properties files, are used along with the `Locale` (i.e. country and language) information to format `Date`, `Currencies`, and text messages in Locale specific manner.  
 
 ---
 
 **73.**
+Identify valid statements.  
+
+- [ ] Locale myLocal = System.getDefaultLocale();  
+  > There is no such method in System class.  
+- [ ] Locale myLocale = Locale.getDefaultLocale();  
+- [x] Locale myLocale = Locale.getDefault();  
+- [x] Locale myLocale = Locale.US;  
+  > Locale class has several static constants for standard country locales.  
+- [ ] Locale myLocale = Locale.getInstance();  
+  > There is no getInstance() method in Locale.  
+- [x] Locale myLocale = new Locale("ru", "RU");  
+  > You don't have to worry about the actual values of the language and country codes. Just remember that both are two lettered codes and country codes are always upper case.  
 
 ---
 
 **74.**
+Consider the following classes:  
+
+```java
+class Boo {
+    public Boo(){ System.out.println("In Boo"); }
+}
+class BooBoo extends Boo {
+    public BooBoo(){ System.out.println("In BooBoo"); }
+}
+
+class Moo extends BooBoo implements Serializable {
+    int moo = 10; { System.out.println("moo set to 10"); }
+    public Moo(){ System.out.println("In Moo"); }
+}
+```
+
+First, the following code was executed and the file moo1.ser was created successfully:  
+
+```java
+  Moo moo = new Moo();
+  moo.moo = 20;
+  FileOutputStream fos = new FileOutputStream("c:\\temp\\moo1.ser");
+  ObjectOutputStream os = new ObjectOutputStream(fos);
+  os.writeObject(moo);
+  os.close();
+```  
+
+Next, the following code was executed.  
+
+```java
+  FileInputStream fis = new FileInputStream("c:\\temp\\moo1.ser");
+  ObjectInputStream is = new ObjectInputStream(fis);
+  Moo moo = (Moo) is.readObject();
+  is.close();
+  System.out.println(moo.moo);
+```
+
+Which of the following will be a part of the output of the second piece of code?  
+
+- [x] In Boo  
+- [x] In BooBoo  
+- [ ] In Moo  
+- [ ] 10  
+- [x] 20  
+- [ ] moo set to 10  
+
+**Explanation**  
+During deserialization, the constructor of the class (or any static or instance blocks) is not executed. However, if the super class does not implement Serializable, its constructor is called. So here, `BooBoo` and `Boo` are not Serializable. So, their constructor is invoked.  
 
 ---
 
 **75.**
+What will the following code print when compiled and run?  
+
+```java
+import java.util.*;
+
+interface Birdie {
+    void fly();
+}
+
+class Dino implements Birdie {
+    public void fly(){ System.out.println("Dino flies"); }
+    public void eat(){ System.out.println("Dino eats");}
+}
+
+class Bino extends Dino {
+    public void fly(){ System.out.println("Bino flies"); }
+    public void eat(){ System.out.println("Bino eats");}
+}
+
+public class TestClass {
+    public static void main(String[] args)    {
+       List<Birdie> m = new ArrayList<>();
+       m.add(new Dino());
+       m.add(new Bino());
+       for(Birdie b : m) {
+    b.fly();
+    b.eat();
+       }
+    }
+}
+```
+
+- [ ] option 1
+
+```java
+Dino flies
+Dino eats
+Bino flies
+Bino eats
+```
+
+- [ ] option 2
+
+```java
+Bino flies
+Bino eats
+```
+
+- [ ] option 3
+
+```java
+Dino flies
+Bino eats
+```
+
+- [x] The code will not compile.  
+  > Note that in the for loop b has been declared to be of type Birdie. But Birdie doesn't define the method eat(), so the compiler will not allow b.eat() even though the actual class of the object referred to by b does have an eat() method.  
+
+- [ ] Exception at run time.  
 
 ---
 
 **76.**
+Consider the following program:  
+
+```java
+import java.io.FileReader;
+import java.io.FileWriter;
+
+public class ClosingTest {
+    public static void main(String[] args) throws Exception {
+        try(FileReader fr = new FileReader("c:\\temp\\license.txt");
+            FileWriter fw = new FileWriter("c:\\temp\\license2.txt") )
+        {
+            int x = -1;
+            while( (x = fr.read()) != -1){
+                fw.write(x);
+            }
+        }
+    }
+}
+```
+
+Identify the correct statements.  
+
+- [ ] The FileWriter object will always be closed before the FileReader object.  
+  > Resources are closed automatically at the end of the try block in reverse order of their creation.  
+- [ ] The order of the closure of the FileWriter and FileReader objects is platform dependent and should not be relied upon.  
+  > The order is defined. They are always closed in the reverse order.  
+- [ ] The FileWriter object will not be closed if an exception is thrown while closing the FileReader object.  
+  > The close method is called on all the resources one by one even if any resource throws an exception in its close method.  
+- [ ] This is not a fail safe approach to managing resources because in certain situations one or both of the resources may be left open after the end of the try block.  
+  > This is the right approach. The close method will be called automatically on all the resources that were opened even if any exception is thrown any where.  
 
 ---
 
 **77.**
+Given:  
+
+```java
+class Book{
+    private String title;
+    private double price;
+    public Book(String title, double price){
+        this.title = title;
+        this.price = price;
+    }
+    //getters/setters not shown
+}
+```
+
+What will the following code print?  
+
+```java
+List<Book> books = Arrays.asList(new Book("Thinking in Java", 30.0),
+                                 new Book("Java in 24 hrs", 20.0),
+                                 new Book("Java Recipies", 10.0));
+double averagePrice = books.stream().filter(b->b.getPrice()>10)
+        .mapToDouble(b->b.getPrice())
+        .average().getAsDouble();
+System.out.println(averagePrice);
+```
+
+- [ ] It will not compile.  
+- [ ] It will thrown an exception at runtime.  
+- [ ] 0.0  
+- [x] 25.0  
+- [ ] 10.0  
+
+**Explanation**  
+This is a straight forward code that chains three operations to a stream. First, it filters out all the element that do not satisfy the condition `b.getPrice()>10`, which means only two elements are left in the stream, second, it maps each `Book` element to a double using the mapping function `b.getPrice()`, which means, the stream now contains two doubles - *20.0* and *30.0*. Finally, the `average()` method computes the average of all the elements. Therefore, the code will print *25.0*.
+
+This is a straight forward code that chains three operations to a stream. First, it filters out all the element that do not satisfy the condition `b.getPrice()>10`, which means only two elements are left in the stream, second, it maps each `Book` element to a double using the mapping function `b.getPrice()`, which means, the stream now contains two doubles - *20.0* and *30.0*. Finally, the `average()` method computes the average of all the elements. Therefore, the code will print *25.0*.
 
 ---
 
 **79.**
+Your group has an existing application (reports.jar) that uses a library (analytics.jar) from another group in your company. Both - the application and the library - use a JDBC driver packaged in ojdbc8.jar.  
+
+Which of the following options describes the steps that will be required to modularize your application?  
+
+- [x] option 1  
+
+```none
+1. Convert analytics.jar and ojdbc8.jar into automatic modules  
+2. Convert reports.jar into a named module.  
+3. Add requires clauses for analytics and ojdbc8 in reports.jar in its module-info.java.
+```
+
+- [ ] option 2  
+
+```none
+1. Modularize analytics.jar and ojdbc8.jar into modules by adding module-info.java to these jars. 2. Convert reports.jar into a named module. 3. Add requires clauses for all packages contained in analytics.jar and ojdbc8.jar that are directly referred to by classes in reports.jar in its module-info.java.
+```
+
+- [ ] option 3  
+
+```none
+1. Convert reports.jar into a named module. 2. Add requires clauses for analytics and ojdbc8 modules in reports.jar in its module-info.java. 3. Use analytics.jar and ojdbc8.jar as unnamed modules.
+```
+
+- [ ] option 4  
+
+```none
+1. Convert ojdbc8.jar into automatic module. 2. Convert analytics.jar into a named module by adding module-info.java to it. In this module-info, export all packages that are used by reports.jar and add requires clauses for all packages of ojdbc.jar that are used by analytics.jar. 3. Convert reports.jar into a named module. Add requires clause for analytics module in reports's module-info.java.
+```
+
+**Explanation**  
+If a module directly uses classes from another jar, then that jar has to be converted into a module (either named or automatic).  
+
+So, if you want to modularize reports.jar, then analytics.jar and ojdbc8.jar must also be converted into a module. Since these two jars are not controlled by you, they can be converted into automatic modules.  
+
+module-info for reports.jar must have requires clauses for the two automatic modules (whose names will be analytics and ojdbc8).  
+
+Since an automatic module is allowed to access classes from all other modules, nothing special needs to be done for analytics.jar. It will be able to access all classes from ojdbc.jar.  
 
 ---
 
 **80.**
+Which of the given options if put at //1 will correctly instantiate objects of various classes defined in the following code?  
+
+```java
+public class TestClass
+{
+   public class A{
+   }
+   public static class B {
+   }
+   public static void main(String args[]){
+      class C{
+      }
+      //1
+   }
+}
+```
+
+- [x] new TestClass().new A();  
+- [ ] new TestClass().new B();  
+- [ ] new TestClass.A();  
+  > A is not static. So on outer instance of TestClass is necessary.  
+- [x] new C();  
+- [ ] new TestClass.C();  
+
+**Explanation**  
+class A is not static inner class of `TestClass`. So it cannot exist without an outer instance of `TestClass`. So, option 1 is the right way to instantiate it. class B is static inner class and can be instantiated like this: `new TestClass.B()`. But `new TestClass().new B()` is not correct.  
+Although not related to this question, unlike popular belief, anonymous class can never be static. Even if created in a static method.  
 
 ---
 
 **81.**
+Consider the following code:  
 
----
+```java
+Statement stmt = null;
+try(Connection c = DriverManager.getConnection("jdbc:derby://localhost:1527/sample", "app", "app"))
+{
+    stmt = c.createStatement();
+    ResultSet rs = stmt.executeQuery("select * from STUDENT");
+    while(rs.next()){
+        System.out.println(rs.getString(1));
+    }
 
+}
+catch(SQLException e){
+    System.out.println("Exception "+e);
+}
+```
 
+Which objects can be successfully used to query the database after the try block ends without any exception?  
+
+- [ ] stmt  
+- [ ] c  
+- [ ] rs  
+- [ ] stmt as well c  
+- [x] None of them.  
+
+**Explanation**  
+There are a few things to note in the question:  
+
+1. Once a `Connection` object is closed, you cannot access any of the subsequent objects such as `Statement` and `ResultSet` that are retrieved from that `Connection`.  
+2. The references declared in the try block (in this case, `c` and `ResultSet`) are not visible outside the try block. Not even in the catch block.  
+3. When a resource is created in the try-with-resources block ( in this case, c), it is closed at the end of the try block irrespective of whether there is an exception in the try block or not.  
+
+Based on the above, it is easy to see that only stmt is visible after the try block but it cannot be successfully used because the `Connection` object from which it was retrieved has already been closed.
