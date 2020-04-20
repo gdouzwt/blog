@@ -14,7 +14,7 @@ excerpt_separator: <!--more-->
 
 # Sidebar settings
 sidebar: true
-sidebar-about-description: "堅持信念"
+# sidebar-about-description: "堅持信念"
 sidebar-avatar: /img/large.png
 badge: /img/oracle-certified-professional-java-se-11-developer.png
 
@@ -76,11 +76,4 @@ service-worker: true
 
 # 友情链接
 friends: [
-{
-  title: "LY Blog",
-  href: "https://yingiul.com/"
-},{
-  title: "简书·招文桃",
-  href: "https://www.jianshu.com/u/4f528075fae8/"
-}
 ]
