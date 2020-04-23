@@ -15,8 +15,8 @@ tags:
 
 ### 翻译和视频制作
 
-2015年翻译制作了一套Android Studio的视频教程字幕，最初发布在我的旧博客(wen-tao.com)  
-服务器到期，没有继续。不过内容被转载到了Android Studio中文社区[Android Studio中文社区](http://ask.android-studio.org/?/explore/category-video)  
+2015年翻译制作了一套Android Studio的视频教程字幕，最初发布在旧博客(wen-tao.com)  
+服务器到期，没有继续。内容被转载到了Android Studio中文社区[Android Studio中文社区](http://ask.android-studio.org/?/explore/category-video)  
 
 B站空间名称为：[Spring微服务](https://space.bilibili.com/86621709),近期更新内容主要涉及：  
 [Spring](https://spring.io/), Spring Boot, [Reactive Stream](https://www.reactive-streams.org/), [RSocket](https://rsocket.io/), WebFlux, Spring Cloud, [JHipster](https://jhipster.tech/)  
@@ -26,6 +26,9 @@ JetBrains Developer Advocate, Trisha Gee 的一个简单的[响应式（Reactive
 Josh Long(龙之春) 2019 年 Devoxx 的演讲——[响应式变革(Reactive Evolution)](https://www.bilibili.com/video/BV1gJ411n7Ev)  
 
 <!--more-->
+### 近期项目  
+
+广东海洋大学体育馆管理系统: [https://gdougym.cn/](https://gdougym.cn/)  
 
 ### 资格认证
 
