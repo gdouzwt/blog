@@ -112,7 +112,154 @@ System.out.println(str1 == str2);
 ③ 调用Thread 的start()方法。  
 
 **3.** 利用递归方法求6!  
+
+答案：本题考查的是递归知识。
+
+使用递归时，关键问题是要明白递归表达式的含义以及递归的终止条件。
+
+实现代码如下：
+
+```java
+public class Test {
+    public static long fac(int n) {
+        if(n > 1)
+            return (n * fac(n - 1));
+        else
+            return 1;
+    }
+    public static void main(String[] args) {
+        System.out.println(fac(6));
+    }
+}
+```
+
+程序运行的结果为
+
+> 720
+
 **4.** 用Java 语言实现一个观察者模式。  
-答案：观察者模式（也被称为发布/订阅模式）提供了避免组件之间紧密耦合的另一种方法，它将观察者和被观察的对象分离开。在该模式中，一个对象通过添加一个方法（该方法允许另一个对象，即观察者注册自己）使本身变得可观察。当可观察的对象更改时，它会将消息发送到已注册的观察者。这些观察者收到消息后所执行的操作与可观察的对象无关，这种模式使得对象可以相互对话，而不必了解原因。Java 语言与C#语言的事件处理机制就是采用的此种设计模式。例如，用户界面（同一个数据可以有多种不同的显示方式）可以作为观察者，业务数据是被观察者，当数据有变化后会通知界面，界面收到通知后，会根据自己的显示方式修改界面的显示。面向对象设计的一个原则是：系统中的每个类将重点放在某一个功能上，而不是其他方面。一个对象只做一件事情，并且将它做好。观察者模式在模块之间划定了清晰的界限，提高了应用程序的可维护性和重用性。设计类图如图1 所示。【准备放图】下面给出一个观察者模式的示例代码，代码的主要功能是实现天气预报，同样的温度信息可以有多种不同的展示方式：  
+答案：观察者模式（也被称为发布/订阅模式）提供了避免组件之间紧密耦合的另一种方法，它将观察者和被观察的对象分离开。在该模式中，一个对象通过添加一个方法（该方法允许另一个对象，即观察者注册自己）使本身变得可观察。当可观察的对象更改时，它会将消息发送到已注册的观察者。这些观察者收到消息后所执行的操作与可观察的对象无关，这种模式使得对象可以相互对话，而不必了解原因。Java 语言与C#语言的事件处理机制就是采用的此种设计模式。例如，用户界面（同一个数据可以有多种不同的显示方式）可以作为观察者，业务数据是被观察者，当数据有变化后会通知界面，界面收到通知后，会根据自己的显示方式修改界面的显示。面向对象设计的一个原则是：系统中的每个类将重点放在某一个功能上，而不是其他方面。一个对象只做一件事情，并且将它做好。观察者模式在模块之间划定了清晰的界限，提高了应用程序的可维护性和重用性。设计类图如图1 所示。
+
+![image-20200531042853475](/img/image-20200531042853475.png)
+
+​																												图1
+
+具体的实现代码的继承关系如图2所示：
+
+![observer-pattern](/img/observer-pattern.png)
+
+​																												图2
+
+下面给出一个观察者模式的示例代码，代码的主要功能是实现天气预报，同样的温度信息可以有多种不同的展示方式：  
+
+```java
+package io.zwt.observer;
+
+public interface Subject {
+    void registerObserver(Observer o);
+    void removeObserver(Observer o);
+    void notifyObservers();
+}
+```
+
+```java
+package io.zwt.observer;
+
+public interface Observer {
+
+    // 更新温度
+    void update(float temp);
+}
+```
+
+```java
+package io.zwt.observer;
+
+import java.util.ArrayList;
+
+public class Whether implements Subject {
+
+    private final ArrayList<Observer> observers = new ArrayList<>();
+    private float temperature;
+
+    @Override
+    public void registerObserver(Observer o) {
+        this.observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        this.observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : this.observers) {
+            observer.update(temperature);
+        }
+    }
+
+    public void whetherChange() {
+        this.notifyObservers();
+    }
+
+    public float getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
+        notifyObservers();
+    }
+}
+```
+
+```java
+package io.zwt.observer;
+
+public class WhetherDisplay1 implements Observer {
+
+    private float temperature;
+
+    public WhetherDisplay1(Subject whether) {
+        whether.registerObserver(this);
+    }
+
+    @Override
+    public void update(float temp) {
+        this.temperature = temp;
+        display();
+    }
+
+    private void display() {
+        System.out.println("display1****:" + this.temperature);
+    }
+}
+```
+
+```java
+package io.zwt.observer;
+
+public class WhetherDisplay2 implements Observer {
+
+    private float temperature;
+
+    public WhetherDisplay2(Subject whether) {
+        whether.registerObserver(this);
+    }
+
+    @Override
+    public void update(float temp) {
+        this.temperature = temp;
+        display();
+    }
+
+    private void display() {
+        System.out.println("display1----:" + this.temperature);
+    }
+}
+```
+
+
 
 **5.** 一个有10 亿条记录的文本文件，已按照关键字排好序存储，请设计一个算法，可以从文件中快速查找指定关键字的记录。  
