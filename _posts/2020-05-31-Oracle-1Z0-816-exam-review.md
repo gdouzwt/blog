@@ -12,13 +12,11 @@ tags:
     - Certification
 ---
 
-Today, I dedicate myself to write this review, hopefully, get it done before I go to bed. I started with OCA Java SE 8 Programmer I exam last year, it took me 12 days to prepare the OCA exam. It was relatively easy to pass the OCA exam, but it was much harder to pass the OCP 11 exam. It took me roughly 3 months to get fully prepared for the ultimate 1Z0-816, namely Java SE 11 Programmer II exam, for which response to the Oracle Certified Professional: Java SE 11 Developer certification. This is by far the most difficult Java certification exam from Oracle/Sun, not just because it covers topics such as modules, functional programming, concurrent programming, IO. But also it includes some new objectives, like Java Secure Coding Guideline. For those who plan on taking the Oracle Java Certification exam, I strongly recommend you take a look at the official exam objectives before you start your study plan. Buy a good book, I think Selikoff's book is great, I use that book for my exam preparation. Study the book chapter by chapter, or by topic, or whatever you want. Be sure to do the exercises, it will help you to consolidate your knowledge. It is also helpful to use flashcards to aid the memorization process. Say some core APIs or some syntax rules. Don't go directly into the quiz without studying the materials thoroughly, that will just a waste of time and energy. Because that's very frustrating to see lots of errors. Take your time, start slowly, and gradually level up the difficulty. 
+Today, I dedicate myself to write this review, hopefully, get it done before I go to bed. I started with OCA Java SE 8 Programmer I exam last year, it took me 12 days to prepare the OCA exam. It was relatively easy to pass the OCA exam, but it was much harder to pass the OCP 11 exam. It took me roughly 3 months to get fully prepared for the ultimate 1Z0-816, namely Java SE 11 Programmer II exam, for which response to the Oracle Certified Professional: Java SE 11 Developer certification. This is by far the most difficult Java certification exam from Oracle/Sun, not just because it covers topics such as modules, functional programming, concurrent programming, IO. But also it includes some new objectives, like Java Secure Coding Guideline. For those who plan on taking the Oracle Java Certification exam, I strongly recommend you take a look at the official exam objectives before you start your study plan. Buy a good book, I think Selikoff's book is great, I use that book for my exam preparation. Study the book chapter by chapter, or by topic, or whatever you want. Be sure to do the exercises, it will help you to consolidate your knowledge. It is also helpful to use flashcards to aid the memorization process. Say some core APIs or some syntax rules. Don't go directly into the quiz without studying the materials thoroughly, that will just a waste of time and energy. Because that's very frustrating to see lots of errors. Take your time, start slowly, and gradually level up the difficulty.  
 
  <!--more-->
 
 ---
-
-
 
 ### 参考书籍
 
@@ -75,8 +73,6 @@ Mock exam software 我使用的是 [OCP Java 11 - 1Z0-816 Mock Exams Practice Te
 
 [Your Guide to Oracle Certification Testing Anywhere](https://blogs.oracle.com/certification/your-guide-to-oracle-certification-testing-anywhere)  在线考试文章
 
-
-
 ---
 
 ### 考试复习大纲
@@ -85,7 +81,7 @@ Mock exam software 我使用的是 [OCP Java 11 - 1Z0-816 Mock Exams Practice Te
 创建并使用 `final` 类  
 创建并使用内部，嵌套，以及匿名类  
 创建并使用枚举  
-**Java 接口 **  
+**Java 接口**  
 创建并使用带有默认方法的接口  
 创建并使用带有私有方法的接口  
 函数式接口与 Lambda 表达式  
@@ -110,11 +106,11 @@ Mock exam software 我使用的是 [OCP Java 11 - 1Z0-816 Mock Exams Practice Te
 使用 `Path` 接口操作文件和目录路径  
 使用 `Files` 类去检查、删除、复制或移动一个文件或目录  
 结合 `Files` 类使用 Stream API  
-**JDBC 数据库应用 **  
+**JDBC 数据库应用**  
 使用 JDBC URLs 和 `DriverManager` 连接到数据库  
 使用 `PreparedStatement` 去执行 CRUD 操作  
 使用 `PreparedStatement` 和 `CallableStatement` APIs 去执行数据库操作  
-**注解 **  
+**注解**  
 表述注解的用途以及典型使用模式  
 应用注解到类和方法  
 描述 JDK 中常用的注解  
@@ -123,7 +119,7 @@ Mock exam software 我使用的是 [OCP Java 11 - 1Z0-816 Mock Exams Practice Te
 使用 try-with-resources 结构  
 创建并使用自定义异常类  
 使用断言测试不变性  
-**泛型与容器 **  
+**泛型与容器**  
 使用包装类，自动装箱和自动拆箱  
 用钻石记号和通配符创建并使用泛型类、方法  
 描述容器框架并使用主要容器接口  
@@ -139,22 +135,22 @@ Streams 上的 Lambda 操作
 使用 `count`, `max`, `min`, `average` 和 `sum` stream 操作执行计算  
 使用 lambda 表达式对容器排序  
 在 streams 使用 `Collectors` ，包括 `groupingBy` 和 `partitioningBy` 操作  
-**模块化应用中的服务 **  
+**模块化应用中的服务**  
 描述服务的组件，包括指令  
 设计一个服务类型，使用 `ServiceLoader` 加载服务，检查服务的依赖，包括消费者和提供者模块  
-**并行 Streams **  
+**并行 Streams**  
 编写使用并行 streams 的代码  
 用 streams 实现分解与归约操作  
-**Java SE 应用安全编码 **  
+**Java SE 应用安全编码**  
 在 Java 应用中预防拒绝服务  
 在 Java 应用中保护机密信息  
 实现数据一致性准则——注入和包含以及输入校验  
 通过限制可访问性和可扩展性保护代码受外部攻击，妥善处理输入校验以及可变性  
 安全地构建敏感对象  
 保护序列化与反序列化  
-**本地化 **  
+**本地化**  
 使用 `Locale` 类  
 使用资源包  
 使用 Java 格式化消息、日期和数字
 
-### 其它有用的信息
+### 其它有用的信息  
