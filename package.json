@@ -3,16 +3,18 @@
   "title": "zwt",
   "author": "招文桃 <zhao@wen-tao.com>",
   "version": "1.4.1",
-  "license": "MIT",
+  "license": "WTFPL",
   "homepage": "https://zwt.io/",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/gdouzwt/blog/"
   },
   "bugs": "https://github.com/gdouzwt/blog/issues/",
   "devDependencies": {
-    "grunt": "latest",
+    "grunt": "~1.2.1",
     "grunt-banner": "latest",
     "grunt-contrib-sass": "latest",
     "grunt-contrib-uglify": "latest",

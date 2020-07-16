@@ -75,5 +75,4 @@ chrome-tab-theme-color: "#000000"
 service-worker: true
 
 # 友情链接
-friends: [
-]
+#friends: []
