@@ -12,6 +12,10 @@ tags:
     - Certification
 ---
 
+>群
+
+> ### OCA/OCP 考试交流QQ群 **157563860**
+
 I started with OCA Java SE 8 Programmer I exam last year, it took me 12 days to prepare the OCA exam. It was relatively easy to pass the OCA exam, but it was much harder to pass the OCP 11 exam. It took me roughly 3 months to get fully prepared for the ultimate 1Z0-816, namely Java SE 11 Programmer II exam, for which response to the Oracle Certified Professional: Java SE 11 Developer certification. This is by far the most difficult Java certification exam from Oracle/Sun, not just because it covers topics such as modules, functional programming, concurrent programming, IO. But also it includes some new objectives, like Java Secure Coding Guideline. For those who plan on taking the Oracle Java Certification exam, I strongly recommend you take a look at the official exam objectives before you start your study plan. Buy a good book, I think Selikoff's book is great, I use that book for my exam preparation. Study the book chapter by chapter, or by topic, or whatever you want. Be sure to do the exercises, it will help you to consolidate your knowledge. It is also helpful to use flashcards to aid the memorization process, for example,  some core APIs or some syntax rules. Don't go directly into the quiz without studying the materials thoroughly, that will just a waste of time and energy. Because that's very frustrating to see lots of errors. Take your time, start slowly, and gradually level up the difficulty.  Below are some useful references.
 
  <!--more-->
