@@ -3,7 +3,7 @@
   "title": "zwt",
   "author": "招文桃 <zhao@wen-tao.com>",
   "version": "1.4.1",
-  "license": "WTFPL",
+  "license": "Apache",
   "homepage": "https://zwt.io/",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
@@ -16,10 +16,11 @@
   "devDependencies": {
     "grunt": "~1.2.1",
     "grunt-banner": "latest",
-    "grunt-contrib-sass": "latest",
-    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-sass": "^2.0.0",
+    "grunt-contrib-uglify": "^5.0.0",
     "grunt-contrib-watch": "latest",
-    "node-sass": "latest"
+    "node-sass": "^5.0.0",
+    "yargs-parser": "^20.2.4"
   },
   "scripts": {
     "watch": "grunt watch & jekyll serve",
