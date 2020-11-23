@@ -1,4 +1,17 @@
-> Spring 单例不是 Java 单例。本文讨论 Spring 的单例与单例模式的区别。 
+---
+typora-root-url: ../
+layout:     post
+title:      Spring单例与单例模式
+date:       '2020-11-02T02:04'
+subtitle:   
+keywords:   Spring
+author:     zwt
+catalog:    true
+tags:
+    - Personal
+    - Notes
+---
+> Spring 单例不是 Java 单例。本文讨论 Spring 的单例与单例模式的区别。  
 
 ### 前言
 单例是 Spring 当中 bean 的默认范围(Scope)。Spring 容器会为某个 bean 定义对象创建唯一的实例，很多时候我们会将这种设计跟《设计模式》(GoF) 书中定义的单例模式作比较。
