@@ -32,7 +32,7 @@ bilibili_username:  86621709
 incremental: true
 permalink: pretty
 paginate: 10
-exclude: ["scss",".idea","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md","LICENSE",".travis.yml","codecov.yml"]
+exclude: ["scss",".idea","_drafts","node_modules","Gruntfile.js","package.json","package-lock.json","Rakefile","Gemfile","Gemfile.lock","README.md","LICENSE",".travis.yml","codecov.yml"]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
 
 future: true
