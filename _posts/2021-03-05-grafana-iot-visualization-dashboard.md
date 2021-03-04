@@ -22,7 +22,7 @@ tags:
 
 #### 服务器
 
-我的服务器用的是旧的台式电脑安装 Ubuntu Server 20.04.2 LTS 操作系统，然后安装 Docker Engine。根据 Docker [官网文档提供的方法](https://docs.docker.com/engine/install/ubuntu/)
+我的服务器用的是旧的台式电脑安装 Ubuntu Server 20.04.2 LTS 操作系统，然后安装 Docker Engine。根据 Docker [官网文档提供的方法 ](https://docs.docker.com/engine/install/ubuntu/) <!--more-->
 
 先安装一些必要的包（如还没有）：
 
@@ -38,5 +38,36 @@ sudo apt-get install \
 
 ```bash
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+
+```bash
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+```bash
+ sudo apt-get update
+ sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
+等 Docker 安装完成后：
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+接下来是安装其它软件。
+
+##### 安装并配置 Mosquitto
+
+```bash
+sudo docker pull eclipse-mosquitto
+```
+
+一款开源的 MQTT broker，然后运行它。
+
+```bash
+sudo docker run -it -p 1883:1883 -p 9001:9001 eclipse-mosquitto
 ```
 
