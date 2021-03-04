@@ -62,12 +62,48 @@ sudo usermod -aG docker $USER
 ##### 安装并配置 Mosquitto
 
 ```bash
-sudo docker pull eclipse-mosquitto
+docker pull eclipse-mosquitto
 ```
 
 一款开源的 MQTT broker，然后运行它。
 
 ```bash
-sudo docker run -it -p 1883:1883 -p 9001:9001 eclipse-mosquitto
+docker run -it -p 1883:1883 -p 9001:9001 eclipse-mosquitto
+```
+
+##### 安装并配置 InfluxDB
+
+InfluxBD 是一款时间序列数据库，可以用于存储与时间相关的数据，适合存传感器收集到的数据。
+
+```bash
+docker pull influxdb
+```
+
+运行 InfluxDB
+
+```bash
+docker run -d -p 8086:8086 -v influxdb:/var/lib/influxdb --name influxdb influxdb
+```
+
+这里是将influxdb作为守护进程启动，并创建了卷用于存储数据在 `/var/lib/influxdb`
+
+###### 如何创建 InfluxDB 数据库和用户
+
+这里需要创建数据库和用户，后面 Telegraf 需要访问数据库，以存储来自 MQTT 的数据。
+
+首先打开 InfluxDB CLI：
+
+```
+docker exec -it influxdb influx
+```
+
+接下来创建数据库和用户：
+
+```bash
+create database sensors
+
+create user "telegraf" with password "telegraf"
+
+grant all on sensors to telegraf
 ```
 
