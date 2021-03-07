@@ -25,4 +25,4 @@ tags:
 
 更新了。上周换了一个防水的超声波模块，因为考虑到我不在老家的时候，如果用那种普通的 HC-SR04，不防水，一两个月就坏，没有空维修就麻烦。所以换了一个防水的，贵很多，但估计会比较耐用、稳定。录了个视频大概聊了一下: [BV1b5411N7UX](https://www.bilibili.com/video/BV1b5411N7UX)
 
-然后关于可视化监控的，见另外一篇文章的介绍 [基于Grafana的物联网可视化仪表盘](https://zwt.io/2021/03/05/grafana-iot-visualization-dashboard/) 。
+然后关于可视化监控的，见另外一篇文章的介绍 [基于Grafana的物联网可视化仪表盘](/2021/03/05/grafana-iot-visualization-dashboard/) 。
