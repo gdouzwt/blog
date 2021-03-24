@@ -1,11 +1,11 @@
 # Site settings
 title: 
-SEOTitle: 招文桃
+SEOTitle: 
 header-img: img/leimu.jpg
 email: zhao@wen-tao.com
 wechat: /img/qrcode_for_gh_4b6cec68d41a_258.jpg
 description: ""
-keyword: "ZWT, Blog, Spring 微服务, 招文桃, Spring Boot, gdouzwt"
+keyword: "ZWT, Blog, Spring 微服务, Spring Boot, gdouzwt"
 url: "https://blog.zwt.io"
 # baseurl: "/"
 github_repo: "https://github.com/gdouzwt/blog.git/"
