@@ -19,12 +19,12 @@ sidebar-avatar: /img/large.png
 badge: /img/oracle-certified-professional-java-se-11-developer.png
 
 # SNS settings
-RSS: true
-weibo_username: 1889654893
+RSS: false
+# weibo_username: 1889654893
 # zhihu_username: wen-taodotcom
-github_username: gdouzwt
+# github_username: gdouzwt
 # facebook_username:  gdouzwt
-jianshu_username:   4f528075fae8
+# jianshu_username:   4f528075fae8
 twitter_username:   gdouzwt
 bilibili_username:  86621709
 
