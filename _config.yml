@@ -1,11 +1,11 @@
 # Site settings
 title: 
-SEOTitle: 招文桃
+SEOTitle: 
 header-img: img/leimu.jpg
 email: zhao@wen-tao.com
 wechat: /img/qrcode_for_gh_4b6cec68d41a_258.jpg
 description: ""
-keyword: "ZWT, Blog, Spring 微服务, 招文桃, Spring Boot, gdouzwt"
+keyword: "ZWT, Blog, Spring 微服务, Spring Boot, gdouzwt"
 url: "https://blog.zwt.io"
 # baseurl: "/"
 github_repo: "https://github.com/gdouzwt/blog.git/"
@@ -19,12 +19,12 @@ sidebar-avatar: /img/large.png
 badge: /img/oracle-certified-professional-java-se-11-developer.png
 
 # SNS settings
-RSS: true
-weibo_username: 1889654893
+RSS: false
+# weibo_username: 1889654893
 # zhihu_username: wen-taodotcom
-github_username: gdouzwt
+# github_username: gdouzwt
 # facebook_username:  gdouzwt
-jianshu_username:   4f528075fae8
+# jianshu_username:   4f528075fae8
 twitter_username:   gdouzwt
 bilibili_username:  86621709
 
