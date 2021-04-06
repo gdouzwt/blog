@@ -16,8 +16,6 @@ tags:
 
 > 本文介绍将 Spring Boot 应用打包为可执行 jar 文件,并将其安装到 Linux 系统作为 `init.d` 服务或 `systemd` 服务。
 
-### 安装 Spring Boot 应用(作为系统服务)
-
 以 jar 形式打包的 Spring  Boot 应用可以使用命令 `java -jar` 运行，但也可以将它作为 Unix 环境的完全可执行文件的形式。一个完全可执行的 jar 可以像其它任何二进制可执行文件那样被执行，或者也可以注册到 `init.d` 或 `systemd`。这样的方式有助于在常见的生产环境中安装和管理 Spring Boot 应用。
 
 要在 Maven 创建一个完全可执行的 jar， 使用以下插件配置：
@@ -41,6 +39,8 @@ bootJar {
 ```
 
 生成的可执行 jar 可以通过命令 `./my-application.jar` (其中 `my-application` 是你的应用 artifact 名称)。包含这个 jar 的目录会用作应用程序的工作目录。
+
+<!--more-->
 
 #### 1. 支持的操作系统
 
