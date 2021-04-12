@@ -93,7 +93,7 @@ $ chown bootapp:bootapp your-app.jar
 
 在这情况下，默认的可执行脚本会以 `bootapp` 用户去运行应用。
 
-> 💡 为降低应用程序的用户被黑，应该考虑禁用它的登录shell，例如，将那个帐户的shell为 `/usr/sbin/nologin`
+> 💡 为降低应用程序的用户被黑的可能性，应该考虑禁用它的登录shell，例如，将那个帐户的shell为 `/usr/sbin/nologin`
 
 应该对应用程序的 jar 文件设置适当的权限，防止被修改。首先，权限设为不可写，只允许它的拥有者读或执行，如：
 
