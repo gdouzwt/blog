@@ -1,7 +1,7 @@
 ---
 typora-root-url: ../
 layout:     post
-title:      安装Spring Boot应用(作为系统服务)
+title:      安装Spring Boot应用作为系统服务
 date:       '2021-04-06T15:54'
 subtitle:   
 keywords:   Spring Boot, Linux, Service
