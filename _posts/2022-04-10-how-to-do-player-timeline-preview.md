@@ -29,7 +29,7 @@ ffmpeg -i 540p30.mp4 -vf fps=1/1 -s 213x120 thumbs/thumb-%05d.jpg
 
 ### 2. 拼接缩略图成精灵图(Sprite)
 
-这一步将由第 1 步中生成的缩略图按照一定的行列数，按顺序拼接成精灵图以减少下载图片数量。这一步骤需要系统安装好 `imagemagick`, 因为会用到其中的 `montage` 命令去拼接缩略图。这个过程已经有 shell 脚本去做，参考自 ![rokudev](https://github.com/rokudev/samples/blob/master/media/TrickPlayThumbnailsHLS/scripts/gen_tiles.sh) 的一个仓库里的脚本。不过我对这个脚本微调了一下，以适应本文描述的做法。主要涉及两点调整，一个是对应地调整格式化打印读取文件时候的表达式，以适配第 1 步中的改动，即 `%03d` 改成 `%05d` 因为考虑到，如果有时长 10 小时的视频，按 1s 间隔取图，就会有 36000 张图，文件名也会去到 `thumb-35999.jpg`，只是为了”扩容“。 第二点改动是将最终拼接生成大图时候的文件名数字编码由从 1 开始改成从 0 开始，即在原来的控制这个数字编码的 shell 变量基础上减 1. 改动后的版本，放到了 ![GitHub Gist](https://gist.github.com/gdouzwt/5b5e3122ffce9cf3051f834514560224).
+这一步将由第 1 步中生成的缩略图按照一定的行列数，按顺序拼接成精灵图以减少下载图片数量。这一步骤需要系统安装好 `imagemagick`, 因为会用到其中的 `montage` 命令去拼接缩略图。这个过程已经有 shell 脚本去做，参考自 [rokudev](https://github.com/rokudev/samples/blob/master/media/TrickPlayThumbnailsHLS/scripts/gen_tiles.sh) 的一个仓库里的脚本。不过我对这个脚本微调了一下，以适应本文描述的做法。主要涉及两点调整，一个是对应地调整格式化打印读取文件时候的表达式，以适配第 1 步中的改动，即 `%03d` 改成 `%05d` 因为考虑到，如果有时长 10 小时的视频，按 1s 间隔取图，就会有 36000 张图，文件名也会去到 `thumb-35999.jpg`，只是为了”扩容“。 第二点改动是将最终拼接生成大图时候的文件名数字编码由从 1 开始改成从 0 开始，即在原来的控制这个数字编码的 shell 变量基础上减 1. 改动后的版本，放到了 [GitHub Gist](https://gist.github.com/gdouzwt/5b5e3122ffce9cf3051f834514560224).
 
 这个脚本的使用如下：
 
