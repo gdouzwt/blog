@@ -1,46 +1,116 @@
+<!--
+  The Head
+-->
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ site.description }}">
-    <meta name="keywords" content="{{ site.keyword }}">
-    <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
+  <!-- Allow having a localized datetime different from the appearance language -->
+  {% if site.prefer_datetime_locale %}
+    <meta name="prefer-datetime-locale" content="{{ site.prefer_datetime_locale }}">
+  {% endif %}
 
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
+  {% if page.layout == 'home' or page.layout == 'post' %}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
+    {% if site.google_analytics.pv.proxy_endpoint %}
+      <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
+    {% endif %}
 
-    <!-- Safari Webpage Icon    by-BY -->
-    <link rel="apple-touch-icon" href="{{ site.baseurl }}/img/apple-touch-icon.png">
+    {% if site.google_analytics.pv.cache_path %}
+      <meta name="pv-cache-path" content="{{ site.google_analytics.pv.cache_path | relative_url }}">
+    {% endif %}
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  {% endif %}
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
+  {% capture seo_tags %}
+    {% seo title=false %}
+  {% endcapture %}
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ "/css/zwt.min.css" | prepend: site.baseurl }}">
+  {% if site.img_cdn and seo_tags contains 'og:image' %}
+    {% assign properties = 'og:image,twitter:image' | split: ',' %}
 
-    <!-- <link rel="stylesheet" href="{{ "/css/asciidoctor.css" | prepend: site.baseurl }}"> -->
+    {% for prop in properties %}
+      {% if site.img_cdn contains '//' %}
+        <!-- `site.img_cdn` is a cross-origin URL -->
+        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{% endcapture %}
+        {% capture replacement %}<meta property="{{ prop }}" content="{{ site.img_cdn }}{% endcapture %}
+      {% else %}
+        <!-- `site.img_cdn` is a local file path -->
+        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{{ site.baseurl }}{% endcapture %}
+        {% assign replacement = target | append: site.img_cdn %}
+      {% endif %}
 
-    <!-- <link rel="stylesheet" href="{{ "/css/prism.css" | prepend: site.baseurl }}"> -->
+      {% assign seo_tags = seo_tags | replace: target, replacement %}
 
-    <!-- Custom Fonts -->
-    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet" type="text/css">
+    {% endfor %}
+  {% endif %}
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css"> -->
+  {{ seo_tags }}
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <title>
+  {%- unless page.layout == "home" -%}
+    {{ page.title | append: " | "}}
+  {%- endunless -%}
+    {{ site.title }}
+  </title>
 
+  {% include favicons.html %}
+
+  {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
+
+    <link href="{{ site.data.assets[origin].webfonts | relative_url }}" rel="stylesheet">
+
+  {% else %}
+
+    {% for cdn in site.data.assets[origin].cdns %}
+      <link rel="preconnect" href="{{ cdn.url }}" {{ cdn.args }}>
+      <link rel="dns-prefetch" href="{{ cdn.url }}" {{ cdn.args }}>
+    {% endfor %}
+
+    <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts }}">
+
+  {% endif %}
+
+  <!-- GA -->
+  {% if jekyll.environment == 'production'
+      and site.google_analytics.id != empty and site.google_analytics.id %}
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    {% if site.google_analytics.pv.proxy_endpoint %}
+      {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
+          | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
+      <link rel="preconnect" href="{{ proxy_url }}" crossorigin="use-credentials">
+      <link rel="dns-prefetch" href="{{ proxy_url }}">
+    {% endif %}
+  {% endif %}
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css }}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ site.data.assets[origin].fontawesome.css }}">
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  {% if site.toc and page.toc %}
+    <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap-toc.css }}">
+  {% endif %}
+
+  {% if page.layout == 'page' or page.layout == 'post' %}
+    <!-- Manific Popup -->
+    <link rel="stylesheet" href="{{ site.data.assets[origin].magnific-popup.css }}">
+  {% endif %}
+
+  <!-- JavaScript -->
+
+  <script src="{{ site.data.assets[origin].jquery.js }}"></script>
+
+  {% unless site.theme_mode %}
+    {% include mode-toggle.html %}
+  {% endunless %}
 </head>

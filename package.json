@@ -1,33 +1,23 @@
 {
-  "name": "zwt",
-  "title": "zwt",
-  "author": "招文桃 <zhao@wen-tao.com>",
-  "version": "1.4.1",
-  "license": "Apache",
-  "homepage": "https://zwt.io/",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
+  "name": "jekyll-theme-chirpy",
+  "version": "5.1.0",
+  "description": "A minimal, responsive, and powerful Jekyll theme for presenting professional writing.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gdouzwt/blog/"
+    "url": "git+https://github.com/cotes2020/jekyll-theme-chirpy.git"
   },
-  "bugs": "https://github.com/gdouzwt/blog/issues/",
+  "author": "Cotes Chung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
+  },
+  "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy#readme",
   "devDependencies": {
-    "grunt": "~1.2.1",
-    "grunt-banner": "latest",
-    "grunt-contrib-sass": "^2.0.0",
-    "grunt-contrib-uglify": "^5.0.0",
-    "grunt-contrib-watch": "latest",
-    "node-sass": "^5.0.0",
-    "yargs-parser": "^20.2.4"
-  },
-  "scripts": {
-    "watch": "grunt watch & jekyll serve",
-    "push": "git push origin master --tag"
-  },
-  "dependencies": {
-    "update": "^0.7.4",
-    "upgrade": "^1.1.0"
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-insert": "^0.5.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
+    "uglify-js": "^3.14.3"
   }
 }
