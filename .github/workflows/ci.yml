@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [2.5, 2.6, 2.7, 3]
+        ruby: [3]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -34,4 +34,4 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Test Site
-        run: bash tools/deploy.sh --dry-run
+        run: bash tools/deploy.sh
