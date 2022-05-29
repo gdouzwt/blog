@@ -82,7 +82,7 @@ theme_mode:   # [light|dark]
 img_cdn: 'https://raw.githubusercontent.com/gdouzwt/blog/main'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'assets/img/large.png'
+avatar: '/img/large.png'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
