@@ -3,7 +3,7 @@ typora-root-url: ../
 layout:     post
 title:      播放器进度条预览实现
 date:       '2022-04-10T23:50'
-subtitle:   
+subtitle:
 keywords:   thumbnails, trick-play, player-preview, HLS
 author:     招文桃
 catalog:    true
@@ -11,7 +11,6 @@ tags:
     - ffmpeg
     - thumbnails
     - preview
-
 ---
 
 本文记录一种播放器进度条预览的实现方式，类似基于 vtt + 精灵图的实现，只不过是通过约定和计算公式确定所截取的雪碧图的小图位置，而不需要依赖 vtt 文件。
@@ -42,6 +41,7 @@ ffmpeg -i 540p30.mp4 -vf fps=1/1 -s 213x120 thumbs/thumb-%05d.jpg
 ### 3. 根据时间线上的位置去确定取哪张精灵图的哪个小格
 
 先直接给出计算公式：
+
 ① 获取哪个精灵图： 时间线当前位置时间 / 120
 > 例如：pos 是 12:55 就是 12 x 60 + 55 = 775 秒
 > 775 / 120 = 6 所以应该去拿 xxx/images/pre_6.jpg 的精灵图
