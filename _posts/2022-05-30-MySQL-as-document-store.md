@@ -34,3 +34,22 @@ tags:
 ```bash
 sudo apt install mysql-shell
 ```
+
+如果用 `apt` 安装有出现依赖库相关的问题，那么可以尝试通过 `snap` 安装：
+
+```bash
+sudo snap install mysql-shell
+```
+
+顺利安装完会提示：
+> mysql-shell 8.0.23 from Canonical✓ installed
+
+MySQL 支持两种语言运行环境，一种是 JavaScript，另一种是 Python。 在 Windows 打开 MySQL shell 貌似默认是用 JavaScript，而在 Ubuntu 默认使用 Python。在终端输入 `mysqlsh` 就可以打开 MySQL shell，不过默认情况下可能没有连接到数据库。使用以下命令连接到数据库，注意 `X Protocol` 使用的端口号是 `33060`。
+
+```bash
+mysqlsh root@192.168.3.33:33060/world_x
+```
+
+其中 `root` 是用户，`192.168.3.33` 是主机 IP，`33060` 是端口号，最后部分是默认的 schema。 `world_x` 是 MySQL 官方提供的一个 example database，是世界上大部分国家/地区、城市等信息的数据库，带 "_x" 是 X Protocol 的版本，用 JSON document 存储数据的。所以这个数据库可以用来练习通过 X Protocol 或者 X DevAPI 使用 MySQL 的文档存储特性。
+
+一般在 Windows 安装 MySQL 8.x 时候会默认自带这个 world_x 示例数据库，且 8.x 版本默认开启 X Plugin（即支持 document store）。 不过如果发现你的 MySQL 实例没有 world_x 这个数据库，那么可以到 MySQL 的网站下载这些数据，只是一个 zip 压缩包，里面包含个 SQL 文件，导入即可。学习 MySQL 参考手册这个主题相关内容时候，录了个[短视频](https://www.bilibili.com/video/BV1RB4y1X7PY)记录。
