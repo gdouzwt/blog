@@ -3,7 +3,7 @@ layout:     post
 title:      MySQL 文档型数据存储
 date:       '2022-05-30T08:20'
 subtitle:   Using MySQL as NoSQL engine
-keywords:   MySQL, NoSQL, JSON
+categories: [MySQL, NoSQL, JSON]
 author:     招文桃
 catalog:    true
 tags:
@@ -31,13 +31,13 @@ tags:
 
 在 Ubuntu 中可以用以下命令安装 MySQL Shell：
 
-```bash
+```console
 sudo apt install mysql-shell
 ```
 
 如果用 `apt` 安装有出现依赖库相关的问题，那么可以尝试通过 `snap` 安装：
 
-```bash
+```console
 sudo snap install mysql-shell
 ```
 
@@ -46,7 +46,7 @@ sudo snap install mysql-shell
 
 MySQL 支持两种语言运行环境，一种是 JavaScript，另一种是 Python。 在 Windows 打开 MySQL shell 貌似默认是用 JavaScript，而在 Ubuntu 默认使用 Python。在终端输入 `mysqlsh` 就可以打开 MySQL shell，不过默认情况下可能没有连接到数据库。使用以下命令连接到数据库，注意 `X Protocol` 使用的端口号是 `33060`。
 
-```bash
+```console
 mysqlsh root@192.168.3.33:33060/world_x
 ```
 
@@ -56,7 +56,7 @@ mysqlsh root@192.168.3.33:33060/world_x
 
 ### MySQL shell 的基本使用
 
-```bash
+```console
 db
 ```
 
@@ -64,7 +64,7 @@ db
 
 会输出 schema 相关信息，可以看到存在哪些 schema 和哪个正在使用。
 
-```bash
+```console
 \use world_x
 
 ```
