@@ -26,3 +26,11 @@ tags:
 - X Plugin
 - X Protocol
 - X DevAPI
+
+#### 安装 MySQL Shell 以便练习
+
+在 Ubuntu 中可以用以下命令安装 MySQL Shell：
+
+```bash
+sudo apt install mysql-shell
+```
