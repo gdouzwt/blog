@@ -3,14 +3,13 @@ layout:     post
 title:      MySQL 文档型数据存储
 date:       '2022-05-30T08:20'
 subtitle:   Using MySQL as NoSQL engine
-categories: [MySQL, NoSQL, JSON]
+categories: MySQL
 author:     招文桃
 catalog:    true
 tags:
     - MySQL
     - NoSQL
     - JSON
-
 ---
 
 > 本文记录使用 MySQL 作为 NoSQL 存储，主要是阅读 MySQL 8.0 Reference Manual 的 Chapter 20 Using MySQL as a Document Store 内容和练习时候的笔记。
