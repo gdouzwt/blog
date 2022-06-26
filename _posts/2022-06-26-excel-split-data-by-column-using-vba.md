@@ -16,5 +16,5 @@ tags:
 
 首先看看表格的结构，和想要分割的效果。
 ![分割数据](/img/excel-split-data.png)
-图 1
+<text align="center">图 1</text>
 
