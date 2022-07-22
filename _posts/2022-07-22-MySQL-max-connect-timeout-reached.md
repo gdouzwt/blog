@@ -19,6 +19,8 @@ tags:
 ![MySQL-max-connect-timeout-error](/img/mysql-max-connect-timeout-2022-07-22_17-38-55.png)
 <p align="center">MySQL 达到最大连接超时错误</p>
 
+紧急处理就是将新服务先停掉，以免影响到原先正常的服务。
+
 ### Hikari CP 数据库连接池配置检查
 
 初步怀疑是新上线的一个服务的 Hikari CP 配置项不恰当导致出现这样的问题。
