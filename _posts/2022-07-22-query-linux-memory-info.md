@@ -19,6 +19,7 @@ tags:
 `dmidecode --help`
 
 如果已经有安装，会见到类似以下输出：
+
 ```bash
 Usage: dmidecode [OPTIONS]
 Options are:
@@ -46,4 +47,14 @@ $ sudo dmidecode | grep -A5 "Memory Device" | grep Size | grep -v Range
         Size: 8192 MB
         Size: No Module Installed
         Size: No Module Installed
+```
+
+#### 查看内存频率
+
+```bash
+liuhuaqiang@shuiguotan:~$ sudo dmidecode | grep -A16 "Memory Device" | grep 'Speed'
+        Speed: Unknown
+        Speed: 1600 MT/s
+        Speed: Unknown
+        Speed: Unknown
 ```
