@@ -14,7 +14,8 @@ tags:
 
 ### 使用 dmidecode 查看内存信息
 
-首先看系统是否已经安装 `dmidecode`:
+首先看系统是否已经安装 dmidecode:
+
 `dmidecode --help`
 
 如果已经有安装，会见到类似以下输出：
