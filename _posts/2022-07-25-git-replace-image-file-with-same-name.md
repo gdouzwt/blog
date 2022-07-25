@@ -21,31 +21,31 @@ tags:
 
 假设原来已经将 `Abc.png` 重命名为 `abc.png`，并提交了，但版本控制仍识别为 `Abc.png`，且 `git status` 已经不显示有变更。
 
-1. 复制一个副本出来
+#### 1. 复制一个副本出来
 
 ```bash
 cp abc.png def.png
 ```
 
-2. 将副本添加到 git 追踪
+#### 2. 将副本添加到 git 追踪
 
 ```bash
 git add def.png
 ```
 
-3. 用副本替换原文件
+#### 3. 用副本替换原文件
 
 ```bash
 git mv -f def.png abc.png
 ```
 
-4. 提交到版本控制
+#### 4. 提交到版本控制
 
 ```bash
 git commit -m'rename Abc.png to abc.png for real!'
 ```
 
-5. 推送到某个远程仓库
+#### 5. 推送到某个远程仓库
 
 ```bash
 git push whatever
