@@ -39,7 +39,15 @@ spring:
         prepStmtCacheSqlLimit: 2048
         useServerPrepStmts: true
 ```
+
 这个跟以往使用的配置，或者说跟 *JHipster* 默认的配置有点点区别。主要是显式指定了 `minimum-idle` 和 `maximum-pool-size` 的值。 下面说说这两个参数的作用，根据 [HikariCP GitHub](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby):
-> `minimumIdle`<br>
+> 🔢`minimumIdle`<br>
 > This property controls the minimum number of *idle connections* that HikariCP tries to maintain in the pool. If the idle connections dip below this value and total connections in the pool are less than `maximumPoolSize`, HikariCP will make a best effort to add additional connections quickly and efficiently. However, for maximum performance and responsiveness to spike demands, we recommend *not* setting this value and instead allowing HikariCP to act as a *fixed size* connection pool. *Default: same as maximumPoolSize*<br>
 > 这个属性控制 HikariCP 在池中尝试维护的最小*空闲连接*数量。如果空闲连接数低于这个值，并且在池中的总连接数少于 `maximumPoolSize` 的值， HikariCP 会尽可能迅速和高效地添加另外的连接。然而，为了最大化性能和对于对突增请求的响应性，我们建议*不*设置这个值，而让 HikariCP 去作为一个*固定大小*连接池。*默认：同 maximumPoolSize* 。
+
+所以没有必要设置 `minimumIdle` 的值。接下来看看 `maximum-pool-size` 的用途：
+
+> 🔢`maximumPoolSize`<br>
+> This property controls the maximum size that the pool is allowed to reach, including both idle and in-use connections. Basically this value will determine the maximum number of actual connections to the database backend. A reasonable value for this is best determined by your execution environment. When the pool reaches this size, and no idle connections are available, calls to getConnection() will block for up to `connectionTimeout` milliseconds before timing out. Please read [about pool sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing). *Default: 10*<br>
+> 这个属性控制连接池能达到的最大大小，包括空闲和正在使用的连接。基本上这个值会决定与数据库后端连接的实际最大数量。一个合理的值最好取决于你的程序执行环境。当连接池达到这个大小，并且没有空闲连接可用，调用 getConnection() 会阻塞直至 `connectionTimeout` 毫秒直到超时。请看[关于连接池大小]
+(https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing)。*默认：10*<br>
