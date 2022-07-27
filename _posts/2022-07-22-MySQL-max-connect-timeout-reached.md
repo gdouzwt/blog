@@ -63,8 +63,13 @@ HikariCP comes with *sane* defaults that perform well in most deployments withou
 #### Essentials
 
 &#128292;``dataSourceClassName``<br/>
-This is the name of the ``DataSource`` class provided by the JDBC driver.  Consult the
+This is the name of the ``DataSource`` class provided by the JDBC driver.
+这是 JDBC 驱动提供的的 ``DataSource`` 实现类的名称。
+Consult the
 documentation for your specific JDBC driver to get this class name, or see the [table](https://github.com/brettwooldridge/HikariCP#popular-datasource-class-names) below.
+
+请查阅你所用的特定 JDBC 驱动的文档去找到这个类的名称，或者看看下方的[表格]((https://github.com/brettwooldridge/HikariCP#popular-datasource-class-names))。
+
 Note XA data sources are not supported.  XA requires a real transaction manager like
 [bitronix](https://github.com/bitronix/btm). Note that you do not need this property if you are using
 ``jdbcUrl`` for "old-school" DriverManager-based JDBC driver configuration.
