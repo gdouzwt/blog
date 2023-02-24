@@ -19,7 +19,7 @@ tags:
 
 ### 创建一个新的虚拟机
 
-```Shell
+```shell
 qm create 8000 --memory 2048 --core 2 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
 ```
 
@@ -27,31 +27,31 @@ qm create 8000 --memory 2048 --core 2 --name ubuntu-cloud --net0 virtio,bridge=v
 
 ### 导入下载好的云镜像到 local-lvm 存储
 
-```Shell
+```shell
 qm importdisk 8000 jammy-server-cloudimg-amd64.img local-lvm
 ```
 
 ### 将新导入的磁盘以 scsi 驱动器的方式装载到新建的虚拟机的 scsi 控制器
 
-```Shell
+```shell
 qm set 8000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-8000-disk-0
 ```
 
 ### 添加 cloud init 驱动器
 
-```Shell
+```shell
 qm set 8000 --ide2 local-lvm:cloudinit
 ```
 
 ### 将 cloud init 驱动器设置为可启动并限制 BIOS 仅从磁盘启动
 
-```Shell
+```shell
 qm set 8000 --boot c --bootdisk scsi0
 ```
 
 ### 添加串口控制台
 
-```Shell
+```shell
 qm set 8000 --serial0 socket --vga serial0
 ```
 
@@ -61,13 +61,13 @@ qm set 8000 --serial0 socket --vga serial0
 
 ### 创建模板（也可以在 Web UI 操作）
 
-```Shell
+```shell
 qm template 8000
 ```
 
 ### 克隆模板（也可以在 Web UI 操作）
 
-```Shell
+```shell
 qm clone 8000 135 --name huihui --full
 ```
 
@@ -75,13 +75,13 @@ qm clone 8000 135 --name huihui --full
 
 如果需要重置机器 id
 
-```Shell
+```shell
 sudo rm -f /etc/machine-id
 sudo rm -f /var/lib/dbus/machine-id
 ```
 
 然后关机，下次启动会生成新的机器 id，如果没有生成，可以运行以下命令：
 
-```Shell
+```shell
 sudo systemd-machine-id-setup
 ```
