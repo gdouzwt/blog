@@ -69,6 +69,6 @@ sudo cloud-init single --name cc_timezone
 
 效果如下图：
 
-[自定义 cloud-init 时区参数](https://notes.zwt.io/share/api/images/7r5OENfEpjYa/image.png)
+![自定义 cloud-init 时区参数](https://notes.zwt.io/share/api/images/7r5OENfEpjYa/image.png)
 
 ### 添加 Cloud-init 磁盘到新建的虚拟机
