@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      在 ESxi 使用 Cloud-init 安装系统的例子
+title:      在 ESXi 使用 Cloud-init 安装系统的例子
 date:       '2023-03-20T22:16'
-subtitle:   using cloud-init in esxi
+subtitle:   using cloud-init in ESXi
 categories: Linux
 author:     招文桃
 catalog:    true
@@ -10,13 +10,13 @@ tags:
     - Linux
 ---
 
-[在 pve 使用 cloud-init 镜像](https://blog.zwt.io/virtualization/2023/02/24/proxmox-cloud-init-images/) 相对来说简单一些，要在 esxi 中使用 cloud-init 镜像，步骤就繁琐一点。本文记录一下在 ESXi-7.0U3f-20036589-standard 中使用 cloud-init 镜像安装并配置 Ubuntu Server Jammy 的步骤。
+[在 pve 使用 cloud-init 镜像](https://blog.zwt.io/virtualization/2023/02/24/proxmox-cloud-init-images/) 相对来说简单一些，要在 ESXi 中使用 cloud-init 镜像，步骤就繁琐一点。本文记录一下在 ESXi-7.0U3f-20036589-standard 中使用 cloud-init 镜像安装并配置 Ubuntu Server Jammy 的步骤。
 
 ### 下载 VMDK 文件
 
-首先去 Ubuntu 的 cloud-images 网站下载对应版本的 VMDK 文件，用于 ESxi 新创建的虚拟机磁盘。
+首先去 Ubuntu 的 cloud-images 网站下载对应版本的 VMDK 文件，用于 ESXi 新创建的虚拟机磁盘。
 
-### 上传到 ESxi 的存储
+### 上传到 ESXi 的存储
 
 
 ### 创建虚拟机
