@@ -16,20 +16,20 @@ tags:
 
 首先去 Ubuntu 的 cloud-images 网站下载对应版本的 VMDK 文件，用于 ESXi 新创建的虚拟机磁盘。
 
-### 上传到 ESXi 的存储
-
-
 ### 创建虚拟机
 
-其他步骤默认即可，去到自定义设置的时候，删掉默认设置的硬盘。虚拟机创建好之后，在存储浏览器那里可以看到有个以虚拟机名称命名的目录。
-将 VMDK 文件复制一份到这个目录里面作为这个新建的虚拟机的硬盘。用复制而不是直接移动过去，是为了可以之后可以继续复用这个 VMDK
+将 VMDK 上传到 ESXi 的存储目录，一路按默认步骤创建虚拟机，去到自定义设置的时候，删掉默认设置的硬盘。虚拟机创建好之后，在存储浏览器那里可以看到有个以虚拟机名称命名的目录。将 VMDK 文件复制一份到这个目录里面作为这个新建的虚拟机的硬盘。用复制而不是直接移动过去，是为了可以之后可以继续复用这个 VMDK
 
-### 修改虚拟机设置
+### 添加 Cloud-init 磁盘到新建的虚拟机
+
+在 ESXi 虚拟机的配置添加 cloud-init 的磁盘镜像作为虚拟机硬盘即可。 留意，一般保存配置之后，回头在编辑才可以修改磁盘空间大小。
+
+### 修改虚拟机设置，添加 Cloud-init userdata
 
 编辑新创建的虚拟机的选项，在【高级】-【配置参数】那里编辑配置，添加两个参数：
-`guestinfo.userdata.encoding` 和 `guestinfo.userdata`。其值分别是 'base64'，表示数据的类型是 base64 格式，和 cloud-init 配置的 yaml 内容的 base64 后字符串。
+`guestinfo.userdata.encoding` 和 `guestinfo.userdata`。其值分别是 'base64'，表示数据的类型是 base64 格式，和 userdata cloud-init 配置的 yaml 内容的 base64 后字符串。
 
-例如，一个最小配置的 yaml 像这样：
+例如，一个最小配置的 userdata yaml 像这样：
 
 ```yml
 #cloud-config
@@ -43,7 +43,7 @@ users:
     lock_passwd: false
 ```
 
-注意 yml 文件开头的 `#cloud-config` 是必须的。以上最小配置，会创建一个用户。这样至少可以登录到系统。 默认 Cloud images 五百多个 M，扩展磁盘 Cloud-init 初始化时候一般会扩展到最大可用空间。
+注意 userdata 的 yml 文件开头的 `#cloud-config` 是必须的。以上最小配置，会创建一个用户。这样至少可以登录到系统。 默认 Cloud images 五百多个 MB，扩展磁盘 Cloud-init 初始化时候一般会扩展到最大可用空间。
 
 其实 Cloud-init 启动过程有一些 modules 可以在 `/etc/cloud/cloud.cfg` 配置的。 而且可以自定义一些配置操作，让 Cloud-init 去运行，例如，配置时区。
 
@@ -71,4 +71,32 @@ sudo cloud-init single --name cc_timezone
 
 ![自定义 cloud-init 时区参数](/img/esxi-cloud-init-image.png)
 
-### 添加 Cloud-init 磁盘到新建的虚拟机
+
+### 添加 metadata 部分，控制虚拟机网络初始化
+
+最常用的 Cloud-init 场景就是给虚拟机设置固定 ip，关于网络的设置，在 cloud-init 属于metadata 部分。所以需要在虚拟机配置那里另外添加两组 key-value:
+`guestinfo.metadata.encoding` 和 `guestinfo.metadata`。其值分别是 'base64'，表示数据的类型是 base64 格式，和 metadata cloud-init 配置的 yaml 内容的 base64 后字符串。
+
+例子如下：
+
+```yml
+network:
+  version: 1
+  config:
+      - type: physical
+        name: ens160
+        subnets:
+        - type: static
+          address: '192.168.3.222'
+          netmask: '255.255.255.0'
+          gateway: '192.168.3.1'
+      - type: nameserver
+        address:
+        - '172.17.11.80'
+        search:
+        - 'linuxfield.com'
+```
+
+这部分不强制要求文件开头要有 `#cloud-config`，上面内容是使用 `version 1` 网络配置，没那么灵活，但是也适合没有使用 netplan 的 Linux 发行版。在 pve 的虚拟机 cloud-init 配置里面，可以通过命令 `qm cloudinit dump [虚拟机 id] [配置类型]` 查看。例如查看虚拟机 100 的 网络配置：
+![虚拟机 100 网络配置 dump](/img/cloud-init-network-dump.png)
+
