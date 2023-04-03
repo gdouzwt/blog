@@ -15,7 +15,7 @@ tags:
 
 例如在工程的 `pom.xml` 文件里面，假设是这样的：
 
-```text-xml
+```xml
 <repositories>
     <repository>
         <snapshots>
@@ -35,7 +35,7 @@ tags:
 
 那么，需要在本地的 `~/.m2/settings.xml` 或者 `.mvn/local-settings.xml` 里面设置以下内容，以允许使用 http 协议的私有仓库：
 
-```text-xml
+```xml
 <settings>
     <mirrors>
         <mirror>
