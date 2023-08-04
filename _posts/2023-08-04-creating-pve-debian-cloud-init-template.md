@@ -53,7 +53,7 @@ qm importdisk 9000 debian-12-generic-amd64.qcow2 local-lvm
 将新导入的磁盘以 scsi 驱动器的方式装载到新建的虚拟机的 scsi 控制器
 
 ```shell
-qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-8000-disk-0
+qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
 ```
 
 添加 cloud init CD ROM 驱动器，用于提供 Cloud-init 参数给虚拟机。
