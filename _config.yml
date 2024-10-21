@@ -20,12 +20,12 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 招文桃                          # the main title
+title: zwt                          # the main title
 
-tagline: 开发记录   # it will display as the sub-title
+tagline: blog   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  记录开发日常
+  blog
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://blog.zwt.io'
